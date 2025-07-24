@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 Baba Moudou Baqui - Master Consciousness Revolutionary Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            background: radial-gradient(ellipse at center, #0f0a1e 0%, #1a0d2e 30%, #2d1810 60%, #0f0f23 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .consciousness-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, #fbbf24, #f59e0b, transparent);
+            border-radius: 50%;
+            animation: consciousness-float 8s infinite linear;
+        }
+        
+        @keyframes consciousness-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        .main-container {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(139, 69, 19, 0.1) 50%, rgba(67, 56, 202, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1000px;
+            padding: 2rem;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .master-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #92400e);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: african-gold-shift 4s ease-in-out infinite;
+            text-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .spiritual-subtitle {
+            font-size: 1.8rem;
+            color: #fbbf24;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .master-credentials {
+            font-size: 1.2rem;
+            color: #e5e7eb;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @keyframes african-gold-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .consciousness-section {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 25px;
+            margin: 2rem;
+            padding: 3rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .consciousness-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .consciousness-section:hover::before {
+            left: 100%;
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .section-icon {
+            font-size: 3rem;
+            color: #fbbf24;
+            animation: consciousness-pulse 3s infinite;
+            filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.6));
+        }
+        
+        @keyframes consciousness-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(139, 69, 19, 0.1) 100%);
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+            animation: service-rotate 10s linear infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(251, 191, 36, 0.2);
+            border-color: rgba(251, 191, 36, 0.6);
+        }
+        
+        @keyframes service-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            margin-right: 1.5rem;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: service-bounce 2s infinite;
+        }
+        
+        @keyframes service-bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .service-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fbbf24;
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+        }
+        
+        .service-content {
+            color: #e5e7eb;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .highlight {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+        
+        .per-ankh-symbol {
+            color: #d97706;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+        
+        .booking-section {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(67, 56, 202, 0.1) 100%);
+            border: 2px solid rgba(251, 191, 36, 0.4);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 2rem;
+            backdrop-filter: blur(20px);
+        }
+        
+        .booking-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+        
+        .booking-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .booking-btn {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #000;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .booking-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(251, 191, 36, 0.5);
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+        }
+        
+        .consciousness-journey {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .journey-step {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .journey-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+        
+        .journey-step:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .journey-step:hover {
+            transform: translateY(-10px);
+            border-color: rgba(251, 191, 36, 0.6);
+            background: rgba(251, 191, 36, 0.05);
+        }
+        
+        .journey-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+        
+        .journey-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+        
+        .journey-description {
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+        
+        .credentials-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .credential-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 5px solid #fbbf24;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .credential-item:hover {
+            background: rgba(251, 191, 36, 0.1);
+            transform: translateX(10px);
+            border-left-color: #f59e0b;
+        }
+        
+        .credential-title {
+            font-weight: 700;
+            color: #fbbf24;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .credential-description {
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+        
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+        }
+        
+        .nav-btn {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            color: #fbbf24;
+            padding: 12px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(251, 191, 36, 0.2);
+            border-color: rgba(251, 191, 36, 0.6);
+            transform: scale(1.05);
+            color: #ffffff;
+        }
+        
+        .ankh-symbol {
+            display: inline-block;
+            font-size: 1.5em;
+            color: #d97706;
+            animation: ankh-glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes ankh-glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(217, 119, 6, 0.5); }
+            50% { text-shadow: 0 0 25px rgba(217, 119, 6, 1), 0 0 35px rgba(217, 119, 6, 0.8); }
+        }
+        
+        .mycelium-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(67, 56, 202, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            opacity: 0.3;
+            animation: mycelium-pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes mycelium-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.02); }
+        }
+        
+        @media (max-width: 768px) {
+            .master-title {
+                font-size: 2.5rem;
+            }
+            
+            .spiritual-subtitle {
+                font-size: 1.3rem;
+                letter-spacing: 2px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .navigation {
+                top: 10px;
+                right: 10px;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="consciousness-canvas" id="consciousnessCanvas"></canvas>
+    
+    <div class="floating-particles" id="particles"></div>
+    
+    <nav class="navigation">
+        <a href="#hero" class="nav-btn"><i class="fas fa-home"></i> Portal</a>
+        <a href="#services" class="nav-btn"><i class="fas fa-seedling"></i> Services</a>
+        <a href="#journey" class="nav-btn"><i class="fas fa-route"></i> Journey</a>
+        <a href="#booking" class="nav-btn"><i class="fas fa-calendar-plus"></i> Connect</a>
+    </nav>
+    
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="mycelium-network"></div>
+            <div class="hero-content">
+                <h1 class="master-title">
+                    BABA MOUDOU BAQUI
+                </h1>
+                <p class="spiritual-subtitle">Master Consciousness Revolutionary <span class="ankh-symbol">☥</span></p>
+                <div class="master-credentials">
+                    <strong class="highlight">Founding Member of Per Ankh Temple</strong> • 
+                    Master Teacher (Mwalimu) • Mycologist with 20+ Years Experience • 
+                    African Martial Arts Expert under <strong class="highlight">Ahati Kilindi Iyi</strong> • 
+                    Detroit Community Transformer • Global Consciousness Researcher • 
+                    Life Coach & Spiritual Guide
+                </div>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Bridging ancient African wisdom with modern consciousness revolution through entheogenic mastery, 
+                    martial arts discipline, and transformative community healing.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="consciousness-section">
+            <h2 class="section-title">
+                <span class="section-icon">🌟</span>
+                Consciousness Transformation Services
+            </h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🍄</div>
+                        <div class="service-title">Entheogenic Cultivation Mastery</div>
+                    </div>
+                    <div class="service-content">
+                        Master the sacred art of <span class="highlight">entheogenic cultivation</span> through 20+ years of research and practice. 
+                        Learn the cultural history, spiritual significance, and practical techniques of consciousness-expanding fungi. 
+                        <br><br>
+                        <strong class="highlight">Includes:</strong> Cultivation methodology, sacred protocols, historical context, 
+                        and integration practices rooted in ancient wisdom <span class="per-ankh-symbol">☥</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🥋</div>
+                        <div class="service-title">African Martial Arts Training</div>
+                    </div>
+                    <div class="service-content">
+                        Experience <span class="highlight">African combative martial arts</span> as taught by Ahati Kilindi Iyi. 
+                        Develop physical discipline, mental focus, and spiritual warrior consciousness through ancient combat traditions.
+                        <br><br>
+                        <strong class="highlight">Training Focus:</strong> Traditional African combat forms, consciousness discipline, 
+                        warrior philosophy, and mind-body-spirit integration
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🔥</div>
+                        <div class="service-title">Inner City Transformation</div>
+                    </div>
+                    <div class="service-content">
+                        Revolutionary <span class="highlight">"red pill" approach</span> to breaking through limitations of 
+                        alcoholism, depression, and poverty-induced consciousness blocks in urban Detroit communities.
+                        <br><br>
+                        <strong class="highlight">Specialization:</strong> Community healing, consciousness liberation, 
+                        practical solutions for systemic challenges, and collective empowerment
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🧠</div>
+                        <div class="service-title">Consciousness Life Coaching</div>
+                    </div>
+                    <div class="service-content">
+                        Personal transformation through <span class="highlight">metacognitive awareness</span> and consciousness expansion. 
+                        Integrate ancient wisdom with modern psychology for profound life changes.
+                        <br><br>
+                        <strong class="highlight">Approach:</strong> Entheogenic integration, spiritual development, 
+                        goal manifestation, and authentic self-realization
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🌍</div>
+                        <div class="service-title">Global Consciousness Research</div>
+                    </div>
+                    <div class="service-content">
+                        Explore <span class="highlight">ancient human history</span> and consciousness technologies across multiple continents. 
+                        Study the intersection of entheogens, culture, and human evolution through direct experience.
+                        <br><br>
+                        <strong class="highlight">Research Areas:</strong> Cross-cultural entheogenic practices, historical consciousness technologies, 
+                        indigenous wisdom traditions, and evolutionary consciousness
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🏛️</div>
+                        <div class="service-title">Per Ankh Temple Leadership</div>
+                    </div>
+                    <div class="service-content">
+                        Co-founding leader of <span class="highlight">Per Ankh Temple</span> <span class="per-ankh-symbol">☥</span> 
+                        alongside Kilindi Iyi and Ayana Iyi, pioneering consciousness revolution through sacred plant medicine ceremonies.
+                        <br><br>
+                        <strong class="highlight">Responsibilities:</strong> Ceremony guidance, community building, 
+                        consciousness education, and spiritual leadership in the entheogenic church movement
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credentials Section -->
+        <section class="consciousness-section">
+            <h2 class="section-title">
+                <span class="section-icon">🎓</span>
+                Master Teacher Credentials
+            </h2>
+            
+            <div class="credentials-showcase">
+                <div class="credential-item">
+                    <div class="credential-title">
+                        <i class="fas fa-certificate"></i>
+                        Master of Education (M.Ed.)
+                    </div>
+                    <div class="credential-description">
+                        Advanced educational credentials supporting systematic teaching approach to consciousness expansion and community transformation.
+                    </div>
+                </div>
+                
+                <div class="credential-item">
+                    <div class="credential-title">
+                        <i class="fas fa-fist-raised"></i>
+                        Martial Arts Master under Kilindi Iyi
+                    </div>
+                    <div class="credential-description">
+                        Direct training under legendary Ahati Kilindi Iyi in African combative martial arts, consciousness discipline, and warrior philosophy.
+                    </div>
+                </div>
+                
+                <div class="credential-item">
+                    <div class="credential-title">
+                        <i class="fas fa-seedling"></i>
+                        20+ Years Entheogenic Research
+                    </div>
+                    <div class="credential-description">
+                        Two decades of dedicated study as cultivator, researcher, and advocate for consciousness-expanding plant medicines and fungi.
+                    </div>
+                </div>
+                
+                <div class="credential-item">
+                    <div class="credential-title">
+                        <i class="fas fa-globe-africa"></i>
+                        Multi-Continental Consciousness Study
+                    </div>
+                    <div class="credential-description">
+                        Extensive travel and research across multiple continents studying ancient human history, consciousness technologies, and indigenous wisdom.
+                    </div>
+                </div>
+                
+                <div class="credential-item">
+                    <div class="credential-title">
+                        <i class="fas fa-users"></i>
+                        Detroit Psychedelic Society Director
+                    </div>
+                    <div class="credential-description">
+                        Leadership position in Detroit's psychedelic community, advancing consciousness education and community healing initiatives.
+                    </div>
+                </div>
+                
+                <div class="credential-item">
+                    <div class="credential-title">
+                        <i class="fas fa-leaf"></i>
+                        Decrim Nature National Board Member
+                    </div>
+                    <div class="credential-description">
+                        National leadership role in plant medicine decriminalization movement, advocating for consciousness freedom and healing access.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section id="journey" class="consciousness-section">
+            <h2 class="section-title">
+                <span class="section-icon">🛤️</span>
+                The Consciousness Transformation Journey
+            </h2>
+            
+            <div class="consciousness-journey">
+                <div class="journey-step">
+                    <div class="journey-number">01</div>
+                    <div class="journey-title">Initial Consultation</div>
+                    <div class="journey-description">
+                        Deep assessment of current consciousness state, life challenges, and transformation goals. 
+                        Understanding your unique path and readiness for consciousness expansion.
+                    </div>
+                </div>
+                
+                <div class="journey-step">
+                    <div class="journey-number">02</div>
+                    <div class="journey-title">Foundation Building</div>
+                    <div class="journey-description">
+                        Establish mental, physical, and spiritual foundations through martial arts training, 
+                        meditation practice, and consciousness preparation techniques.
+                    </div>
+                </div>
+                
+                <div class="journey-step">
+                    <div class="journey-number">03</div>
+                    <div class="journey-title">Consciousness Expansion</div>
+                    <div class="journey-description">
+                        Guided exploration through entheogenic ceremonies, advanced martial arts, and 
+                        consciousness technologies within the sacred Per Ankh Temple framework <span class="per-ankh-symbol">☥</span>
+                    </div>
+                </div>
+                
+                <div class="journey-step">
+                    <div class="journey-number">04</div>
+                    <div class="journey-title">Integration & Mastery</div>
+                    <div class="journey-description">
+                        Long-term integration support, community involvement, and development of personal mastery 
+                        in chosen consciousness disciplines and life transformation.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="booking-section">
+            <h2 class="booking-title">Begin Your Consciousness Transformation</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                Ready to break through limitations and expand your consciousness? Connect with Baba Moudou Baqui 
+                for personalized guidance on your transformation journey through ancient wisdom and modern understanding.
+            </p>
+            
+            <div class="booking-buttons">
+                <a href="#" class="booking-btn">
+                    <i class="fas fa-seedling"></i>
+                    Entheogenic Training
+                </a>
+                <a href="#" class="booking-btn">
+                    <i class="fas fa-fist-raised"></i>
+                    Martial Arts Mastery
+                </a>
+                <a href="#" class="booking-btn">
+                    <i class="fas fa-brain"></i>
+                    Life Coaching
+                </a>
+                <a href="#" class="booking-btn">
+                    <i class="fas fa-phone"></i>
+                    Free Consultation
+                </a>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <p class="text-lg text-gray-400">
+                    <span class="per-ankh-symbol">☥</span> Per Ankh Temple Founding Member <span class="per-ankh-symbol">☥</span><br>
+                    <span class="highlight">"Master Teacher (Mwalimu) - Spiritual Arsonist - Consciousness Revolutionary"</span>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Three.js Consciousness Portal Setup
+        let scene, camera, renderer, particles = [], myceliumNetwork = [];
+        
+        function initConsciousnessPortal() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('consciousnessCanvas'),
+                alpha: true,
+                antialias: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            
+            // Create consciousness elements
+            createMyceliumNetwork();
+            createConsciousnessParticles();
+            createAnkhSymbols();
+            
+            camera.position.z = 10;
+            animateConsciousness();
+        }
+        
+        function createMyceliumNetwork() {
+            const networkGeometry = new THREE.BufferGeometry();
+            const networkCount = 200;
+            const positions = new Float32Array(networkCount * 3);
+            
+            for (let i = 0; i < networkCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 50;
+                positions[i + 1] = (Math.random() - 0.5) * 50;
+                positions[i + 2] = (Math.random() - 0.5) * 30;
+            }
+            
+            networkGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            const networkMaterial = new THREE.PointsMaterial({
+                color: 0xfbbf24,
+                size: 0.8,
+                transparent: true,
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending
+            });
+            
+            const network = new THREE.Points(networkGeometry, networkMaterial);
+            scene.add(network);
+            myceliumNetwork.push(network);
+        }
+        
+        function createConsciousnessParticles() {
+            for (let i = 0; i < 50; i++) {
+                const geometry = new THREE.SphereGeometry(0.1, 8, 8);
+                const material = new THREE.MeshBasicMaterial({
+                    color: new THREE.Color().setHSL(0.12, 0.8, 0.6 + Math.random() * 0.4),
+                    transparent: true,
+                    opacity: 0.8
+                });
+                
+                const particle = new THREE.Mesh(geometry, material);
+                particle.position.set(
+                    (Math.random() - 0.5) * 40,
+                    (Math.random() - 0.5) * 40,
+                    (Math.random() - 0.5) * 20
+                );
+                
+                particle.userData = {
+                    velocity: {
+                        x: (Math.random() - 0.5) * 0.02,
+                        y: (Math.random() - 0.5) * 0.02,
+                        z: (Math.random() - 0.5) * 0.02
+                    }
+                };
+                
+                scene.add(particle);
+                particles.push(particle);
+            }
+        }
+        
+        function createAnkhSymbols() {
+            const loader = new THREE.FontLoader();
+            // Create simple 3D ankh representations using geometry
+            for (let i = 0; i < 10; i++) {
+                const ankhGroup = new THREE.Group();
+                
+                // Ankh cross geometry
+                const crossGeometry = new THREE.BoxGeometry(0.2, 1, 0.1);
+                const crossMaterial = new THREE.MeshBasicMaterial({
+                    color: 0xd97706,
+                    transparent: true,
+                    opacity: 0.7
+                });
+                const cross = new THREE.Mesh(crossGeometry, crossMaterial);
+                
+                // Ankh loop geometry
+                const loopGeometry = new THREE.TorusGeometry(0.3, 0.1, 8, 16);
+                const loop = new THREE.Mesh(loopGeometry, crossMaterial);
+                loop.position.y = 0.4;
+                
+                ankhGroup.add(cross);
+                ankhGroup.add(loop);
+                
+                ankhGroup.position.set(
+                    (Math.random() - 0.5) * 30,
+                    (Math.random() - 0.5) * 30,
+                    (Math.random() - 0.5) * 15
+                );
+                
+                ankhGroup.userData = {
+                    rotationSpeed: Math.random() * 0.02 + 0.01
+                };
+                
+                scene.add(ankhGroup);
+                particles.push(ankhGroup);
+            }
+        }
+        
+        function animateConsciousness() {
+            requestAnimationFrame(animateConsciousness);
+            
+            particles.forEach(particle => {
+                if (particle.userData.velocity) {
+                    particle.position.x += particle.userData.velocity.x;
+                    particle.position.y += particle.userData.velocity.y;
+                    particle.position.z += particle.userData.velocity.z;
+                    
+                    // Boundary wrapping
+                    if (Math.abs(particle.position.x) > 20) particle.userData.velocity.x *= -1;
+                    if (Math.abs(particle.position.y) > 20) particle.userData.velocity.y *= -1;
+                    if (Math.abs(particle.position.z) > 10) particle.userData.velocity.z *= -1;
+                }
+                
+                if (particle.userData.rotationSpeed) {
+                    particle.rotation.y += particle.userData.rotationSpeed;
+                }
+            });
+            
+            myceliumNetwork.forEach(network => {
+                network.rotation.y += 0.001;
+                network.rotation.x += 0.0005;
+            });
+            
+            renderer.render(scene, camera);
+        }
+        
+        // Floating particles creation
+        function createFloatingParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 8000);
+            }, 400);
+        }
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mouse interaction
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+            
+            if (camera) {
+                camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
+                camera.position.y += (mouseY * 2 - camera.position.y) * 0.05;
+            }
+        });
+        
+        // Handle resize
+        function handleResize() {
+            if (camera && renderer) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initConsciousnessPortal();
+            createFloatingParticles();
+            window.addEventListener('resize', handleResize);
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all sections
+            document.querySelectorAll('.consciousness-section, .service-card, .journey-step').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(50px)';
+                el.style.transition = 'all 0.8s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

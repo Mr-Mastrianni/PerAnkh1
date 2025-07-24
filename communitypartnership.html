@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Ankh Sacred Community & Partnership Materials</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sacred-gold: #D4AF37;
+            --earth-green: #2D5016;
+            --deep-amber: #B8860B;
+            --mystical-purple: #4A148C;
+            --healing-blue: #1E3A8A;
+        }
+        
+        .sacred-gradient {
+            background: linear-gradient(135deg, var(--earth-green), var(--deep-amber));
+        }
+        
+        .mystical-gradient {
+            background: linear-gradient(135deg, var(--mystical-purple), var(--healing-blue));
+        }
+        
+        .ankh-shadow {
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .sacred-text {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .modern-text {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .sacred-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .ceremonial-step {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .ceremonial-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--sacred-gold);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white modern-text">
+    
+    <!-- Header Navigation -->
+    <header class="sacred-gradient py-6 sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/95e2001a-462a-4bd2-ad2d-49688f64ed10" alt="Per Ankh Sacred Symbol" class="w-12 h-12 floating-animation">
+                    <h1 class="text-2xl font-bold sacred-text text-white">Per Ankh Sacred Community</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6 text-white">
+                    <a href="#welcome" class="hover:text-yellow-300 transition">Welcome</a>
+                    <a href="#ceremonies" class="hover:text-yellow-300 transition">Ceremonies</a>
+                    <a href="#partnerships" class="hover:text-yellow-300 transition">Partnerships</a>
+                    <a href="#integration" class="hover:text-yellow-300 transition">Integration</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-green-900">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-5xl font-bold mb-6 sacred-text text-yellow-300">Sacred Community Resources</h2>
+                <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                    Comprehensive guidance for spiritual seekers joining our entheogenic community, 
+                    ceremonial partnerships, and sacred alliance frameworks for healing and transformation.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <i class="fas fa-heart text-3xl text-red-500 mb-4"></i>
+                        <h3 class="font-semibold text-lg mb-2">Welcome & Onboarding</h3>
+                        <p class="text-sm">Sacred introduction to our interfaith community</p>
+                    </div>
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <i class="fas fa-hands-helping text-3xl text-blue-500 mb-4"></i>
+                        <h3 class="font-semibold text-lg mb-2">Ceremonial Partnerships</h3>
+                        <p class="text-sm">Collaborative frameworks for sacred work</p>
+                    </div>
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <i class="fas fa-seedling text-3xl text-green-500 mb-4"></i>
+                        <h3 class="font-semibold text-lg mb-2">Integration Resources</h3>
+                        <p class="text-sm">Post-ceremony support and growth guidance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome & Member Onboarding Section -->
+    <section id="welcome" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 sacred-text text-yellow-300">
+                <i class="fas fa-door-open mr-3"></i>Welcome to Per Ankh Sacred Community
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://perankh1.org/wp-content/themes/voyago/assets/images/hero.webp" alt="Per Ankh Community Welcome" class="rounded-lg shadow-2xl w-full">
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="sacred-card p-8 rounded-lg text-gray-800">
+                        <h3 class="text-2xl font-bold mb-6 sacred-text text-green-800">New Member Journey</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="ceremonial-step" data-step="1">
+                                <h4 class="font-semibold text-lg mb-2">Sacred Introduction</h4>
+                                <p class="text-gray-600">Personal consultation to understand your spiritual background, intentions, and readiness for entheogenic work.</p>
+                            </div>
+                            
+                            <div class="ceremonial-step" data-step="2">
+                                <h4 class="font-semibold text-lg mb-2">Safety Education</h4>
+                                <p class="text-gray-600">Comprehensive education on plant medicines, safety protocols, contraindications, and preparation practices.</p>
+                            </div>
+                            
+                            <div class="ceremonial-step" data-step="3">
+                                <h4 class="font-semibold text-lg mb-2">Community Integration</h4>
+                                <p class="text-gray-600">Welcome circle introduction, mentor assignment, and integration into our interfaith spiritual family.</p>
+                            </div>
+                            
+                            <div class="ceremonial-step" data-step="4">
+                                <h4 class="font-semibold text-lg mb-2">First Ceremony Preparation</h4>
+                                <p class="text-gray-600">Intent-setting session, dietary guidance, and spiritual preparation for your first sacred ceremony.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+                            <p class="text-sm text-yellow-800">
+                                <i class="fas fa-lightbulb mr-2"></i>
+                                <strong>Remember:</strong> Our community welcomes all spiritual backgrounds. Whether you're Christian, Buddhist, Muslim, Jewish, Hindu, Indigenous, or exploring your own path, you belong here.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Welcome Resources -->
+            <div class="mt-16">
+                <h3 class="text-3xl font-bold text-center mb-8 sacred-text text-yellow-300">Welcome Resources</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <div class="text-center mb-6">
+                            <i class="fas fa-book text-4xl text-blue-500 mb-4"></i>
+                            <h4 class="font-bold text-xl">Newcomer's Guide</h4>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Community values and principles</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>What to expect in ceremonies</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Preparation and aftercare guidance</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Frequently asked questions</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Contact information for support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <div class="text-center mb-6">
+                            <i class="fas fa-shield-alt text-4xl text-green-500 mb-4"></i>
+                            <h4 class="font-bold text-xl">Safety Protocols</h4>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Medical screening questionnaire</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Medication interaction guide</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Dosage education and calculator</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Emergency protocols</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Integration safety practices</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <div class="text-center mb-6">
+                            <i class="fas fa-users text-4xl text-purple-500 mb-4"></i>
+                            <h4 class="font-bold text-xl">Community Connection</h4>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Welcome circle schedule</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Mentor matching program</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Monthly community gatherings</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Online support groups</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Volunteer opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ceremony Preparation Guide -->
+    <section id="ceremonies" class="py-16 mystical-gradient">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 sacred-text text-white">
+                <i class="fas fa-moon mr-3"></i>Sacred Ceremony Preparation
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="sacred-card p-8 rounded-lg text-gray-800 mb-8">
+                    <div class="text-center mb-8">
+                        <img src="https://perankh1.org/wp-content/uploads/2023/10/ceremony-and-safety.webp" alt="Sacred Ceremony" class="w-full max-w-md mx-auto rounded-lg mb-6">
+                        <h3 class="text-2xl font-bold sacred-text text-green-800">Preparing for Sacred Plant Medicine Work</h3>
+                        <p class="text-gray-600 mt-4">A comprehensive guide to preparing mind, body, and spirit for transformative entheogenic experiences.</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-xl mb-4 text-blue-800">Physical Preparation</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-apple-alt text-green-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Dietary Preparation:</strong>
+                                        <p class="text-sm text-gray-600">3-7 days before ceremony: avoid processed foods, alcohol, caffeine. Focus on fruits, vegetables, whole grains.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-pills text-red-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Medication Review:</strong>
+                                        <p class="text-sm text-gray-600">Discuss all medications with ceremony facilitators. Some may require discontinuation or adjustment.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-bed text-blue-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Rest & Recovery:</strong>
+                                        <p class="text-sm text-gray-600">Ensure adequate sleep, reduce stress, and prepare for 1-2 days of integration time post-ceremony.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-xl mb-4 text-purple-800">Spiritual Preparation</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-pink-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Intent Setting:</strong>
+                                        <p class="text-sm text-gray-600">Spend time in meditation reflecting on what you hope to learn, heal, or explore during ceremony.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-praying-hands text-gold mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Prayer & Meditation:</strong>
+                                        <p class="text-sm text-gray-600">Establish daily practice leading up to ceremony. Connect with your spiritual source.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-journal-whills text-indigo-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Journaling:</strong>
+                                        <p class="text-sm text-gray-600">Begin documenting your intentions, fears, hopes, and spiritual questions before ceremony.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ceremony Types -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-seedling text-3xl text-green-500 mb-3"></i>
+                            <h4 class="font-bold text-lg">Microdose Circles</h4>
+                        </div>
+                        <p class="text-sm mb-4">Gentle introduction to plant medicine with sub-perceptual doses for healing and insight.</p>
+                        <ul class="text-xs space-y-1">
+                            <li><i class="fas fa-clock mr-2 text-blue-500"></i>Duration: 4-6 hours</li>
+                            <li><i class="fas fa-users mr-2 text-purple-500"></i>Group Size: 8-12 people</li>
+                            <li><i class="fas fa-star mr-2 text-yellow-500"></i>Experience Level: Beginner</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-moon text-3xl text-blue-500 mb-3"></i>
+                            <h4 class="font-bold text-lg">Healing Ceremonies</h4>
+                        </div>
+                        <p class="text-sm mb-4">Traditional doses in sacred ceremonial setting for deep healing and spiritual exploration.</p>
+                        <ul class="text-xs space-y-1">
+                            <li><i class="fas fa-clock mr-2 text-blue-500"></i>Duration: 6-8 hours</li>
+                            <li><i class="fas fa-users mr-2 text-purple-500"></i>Group Size: 6-10 people</li>
+                            <li><i class="fas fa-star mr-2 text-yellow-500"></i>Experience Level: Intermediate</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-mountain text-3xl text-purple-500 mb-3"></i>
+                            <h4 class="font-bold text-lg">Vision Quests</h4>
+                        </div>
+                        <p class="text-sm mb-4">Higher dose journeys for experienced practitioners seeking profound spiritual transformation.</p>
+                        <ul class="text-xs space-y-1">
+                            <li><i class="fas fa-clock mr-2 text-blue-500"></i>Duration: 8-12 hours</li>
+                            <li><i class="fas fa-users mr-2 text-purple-500"></i>Group Size: 4-6 people</li>
+                            <li><i class="fas fa-star mr-2 text-yellow-500"></i>Experience Level: Advanced</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Intent Setting Examples -->
+                <div class="sacred-card p-8 rounded-lg text-gray-800">
+                    <h3 class="text-2xl font-bold mb-6 sacred-text text-green-800 text-center">Sacred Intent Examples</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-lg mb-4 text-blue-800">Questions for the Divine</h4>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-start">
+                                    <i class="fas fa-question-circle text-blue-500 mr-3 mt-1"></i>
+                                    <span>"What is my spiritual purpose on earth?"</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-question-circle text-blue-500 mr-3 mt-1"></i>
+                                    <span>"How do I heal my ancestral trauma?"</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-question-circle text-blue-500 mr-3 mt-1"></i>
+                                    <span>"What blocks me from experiencing love?"</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-question-circle text-blue-500 mr-3 mt-1"></i>
+                                    <span>"How can I serve my community better?"</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-lg mb-4 text-purple-800">Healing Statements</h4>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-red-500 mr-3 mt-1"></i>
+                                    <span>"Help me release fear and embrace love"</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-red-500 mr-3 mt-1"></i>
+                                    <span>"Show me my path to spiritual awakening"</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-red-500 mr-3 mt-1"></i>
+                                    <span>"Connect me with my ancestors and guides"</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-red-500 mr-3 mt-1"></i>
+                                    <span>"Heal my relationship with myself"</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Frameworks -->
+    <section id="partnerships" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 sacred-text text-yellow-300">
+                <i class="fas fa-handshake mr-3"></i>Sacred Alliance Partnerships
+            </h2>
+            
+            <div class="max-w-6xl mx-auto">
+                <!-- Partnership Types -->
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <div class="text-center mb-6">
+                            <i class="fas fa-clinic-medical text-4xl text-green-500 mb-4"></i>
+                            <h3 class="font-bold text-xl">Healthcare Partnerships</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Trauma-informed therapists</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Integrative medicine providers</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Mental health professionals</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Harm reduction specialists</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Medical screening partners</li>
+                        </ul>
+                        <div class="mt-6 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-800"><strong>Focus:</strong> Safe, medically-informed ceremonial practices with professional healthcare support.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <div class="text-center mb-6">
+                            <i class="fas fa-university text-4xl text-blue-500 mb-4"></i>
+                            <h3 class="font-bold text-xl">Academic Partnerships</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Research universities</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Ethnobotany programs</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Psychology departments</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Anthropology scholars</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Religious studies programs</li>
+                        </ul>
+                        <div class="mt-6 p-3 bg-blue-50 rounded">
+                            <p class="text-xs text-blue-800"><strong>Focus:</strong> Contributing to scientific understanding while advancing responsible psychedelic research.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sacred-card p-6 rounded-lg text-gray-800">
+                        <div class="text-center mb-6">
+                            <i class="fas fa-globe text-4xl text-purple-500 mb-4"></i>
+                            <h3 class="font-bold text-xl">Indigenous Partnerships</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Traditional medicine keepers</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Indigenous rights organizations</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Cultural preservation groups</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Reciprocity programs</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Educational exchanges</li>
+                        </ul>
+                        <div class="mt-6 p-3 bg-purple-50 rounded">
+                            <p class="text-xs text-purple-800"><strong>Focus:</strong> Honoring traditional wisdom while supporting indigenous communities and preventing appropriation.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collaboration Framework -->
+                <div class="sacred-card p-8 rounded-lg text-gray-800">
+                    <h3 class="text-2xl font-bold mb-6 sacred-text text-green-800 text-center">Partnership Collaboration Protocol</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-lg mb-4 text-blue-800">Partnership Principles</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-balance-scale text-gold mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Reciprocal Benefit:</strong>
+                                        <p class="text-sm text-gray-600">All partnerships must provide mutual value and support each organization's mission.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-shield-alt text-blue-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Safety First:</strong>
+                                        <p class="text-sm text-gray-600">All collaborative work prioritizes participant safety and harm reduction.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-heart text-red-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <strong>Respect & Inclusion:</strong>
+                                        <p class="text-sm text-gray-600">Partnerships must align with our interfaith, inclusive values and cultural sensitivity.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-lg mb-4 text-purple-800">Collaboration Process</h4>
+                            <div class="space-y-3">
+                                <div class="ceremonial-step" data-step="1">
+                                    <h5 class="font-semibold mb-1">Initial Connection</h5>
+                                    <p class="text-sm text-gray-600">Values alignment assessment and mission compatibility review</p>
+                                </div>
+                                <div class="ceremonial-step" data-step="2">
+                                    <h5 class="font-semibold mb-1">Pilot Collaboration</h5>
+                                    <p class="text-sm text-gray-600">Small-scale project to test working relationship and outcomes</p>
+                                </div>
+                                <div class="ceremonial-step" data-step="3">
+                                    <h5 class="font-semibold mb-1">Formal Partnership</h5>
+                                    <p class="text-sm text-gray-600">Written agreement outlining responsibilities, boundaries, and goals</p>
+                                </div>
+                                <div class="ceremonial-step" data-step="4">
+                                    <h5 class="font-semibold mb-1">Ongoing Evaluation</h5>
+                                    <p class="text-sm text-gray-600">Regular assessment of partnership effectiveness and community benefit</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+                        <h5 class="font-bold text-yellow-800 mb-3">Current Partnership Opportunities</h5>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                            <ul class="space-y-2">
+                                <li><i class="fas fa-plus text-green-500 mr-2"></i>Integration therapy referral network</li>
+                                <li><i class="fas fa-plus text-green-500 mr-2"></i>Psychedelic research participation</li>
+                                <li><i class="fas fa-plus text-green-500 mr-2"></i>Community education programs</li>
+                            </ul>
+                            <ul class="space-y-2">
+                                <li><i class="fas fa-plus text-green-500 mr-2"></i>Indigenous wisdom exchange</li>
+                                <li><i class="fas fa-plus text-green-500 mr-2"></i>Interfaith dialogue initiatives</li>
+                                <li><i class="fas fa-plus text-green-500 mr-2"></i>Harm reduction advocacy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Resources -->
+    <section id="integration" class="py-16 sacred-gradient">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 sacred-text text-white">
+                <i class="fas fa-seedling mr-3"></i>Sacred Integration & Aftercare
+            </h2>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12 mb-12">
+                    <div class="sacred-card p-8 rounded-lg text-gray-800">
+                        <h3 class="text-2xl font-bold mb-6 sacred-text text-green-800">Post-Ceremony Support</h3>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-lg mb-3 text-blue-800">Immediate Aftercare (24-48 hours)</h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li><i class="fas fa-bed text-blue-500 mr-2"></i>Rest and gentle recovery time</li>
+                                    <li><i class="fas fa-water text-blue-500 mr-2"></i>Hydration and nourishing foods</li>
+                                    <li><i class="fas fa-journal-whills text-blue-500 mr-2"></i>Journal writing and reflection</li>
+                                    <li><i class="fas fa-phone text-blue-500 mr-2"></i>24-hour support hotline access</li>
+                                    <li><i class="fas fa-users text-blue-500 mr-2"></i>Peer integration circle check-in</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold text-lg mb-3 text-purple-800">Short-term Integration (1-4 weeks)</h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li><i class="fas fa-comments text-purple-500 mr-2"></i>Weekly integration support groups</li>
+                                    <li><i class="fas fa-user-md text-purple-500 mr-2"></i>Individual integration counseling</li>
+                                    <li><i class="fas fa-book text-purple-500 mr-2"></i>Guided reflection exercises</li>
+                                    <li><i class="fas fa-meditation text-purple-500 mr-2"></i>Meditation and mindfulness practice</li>
+                                    <li><i class="fas fa-paint-brush text-purple-500 mr-2"></i>Creative expression workshops</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold text-lg mb-3 text-green-800">Long-term Growth (1-6 months)</h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li><i class="fas fa-calendar text-green-500 mr-2"></i>Monthly progress check-ins</li>
+                                    <li><i class="fas fa-graduation-cap text-green-500 mr-2"></i>Ongoing education workshops</li>
+                                    <li><i class="fas fa-hands-helping text-green-500 mr-2"></i>Volunteer and service opportunities</li>
+                                    <li><i class="fas fa-seedling text-green-500 mr-2"></i>Advanced ceremony preparation</li>
+                                    <li><i class="fas fa-heart text-green-500 mr-2"></i>Mentor program participation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <img src="https://perankh1.org/wp-content/uploads/2023/10/purple-mushroom.png" alt="Sacred Plant Medicine" class="w-full max-w-sm mx-auto mb-6 floating-animation">
+                        
+                        <div class="sacred-card p-6 rounded-lg text-gray-800">
+                            <h4 class="font-bold text-xl mb-4 text-center text-green-800">Integration Toolkit</h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="text-center p-4 bg-blue-50 rounded">
+                                    <i class="fas fa-book-open text-2xl text-blue-500 mb-2"></i>
+                                    <p class="font-semibold">Journal Prompts</p>
+                                    <p class="text-xs">Daily reflection questions</p>
+                                </div>
+                                <div class="text-center p-4 bg-green-50 rounded">
+                                    <i class="fas fa-meditation text-2xl text-green-500 mb-2"></i>
+                                    <p class="font-semibold">Meditation Guides</p>
+                                    <p class="text-xs">Audio and written practices</p>
+                                </div>
+                                <div class="text-center p-4 bg-purple-50 rounded">
+                                    <i class="fas fa-users text-2xl text-purple-500 mb-2"></i>
+                                    <p class="font-semibold">Support Groups</p>
+                                    <p class="text-xs">Peer connection circles</p>
+                                </div>
+                                <div class="text-center p-4 bg-yellow-50 rounded">
+                                    <i class="fas fa-calendar-check text-2xl text-yellow-500 mb-2"></i>
+                                    <p class="font-semibold">Progress Tracker</p>
+                                    <p class="text-xs">Growth milestone tracking</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Integration Practices -->
+                <div class="sacred-card p-8 rounded-lg text-gray-800">
+                    <h3 class="text-2xl font-bold mb-6 sacred-text text-green-800 text-center">Daily Integration Practices</h3>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div>
+                            <h4 class="font-bold text-lg mb-4 text-blue-800">Morning Practices</h4>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-center">
+                                    <i class="fas fa-sun text-yellow-500 mr-3"></i>
+                                    <span>Gratitude meditation (10 minutes)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-pen text-blue-500 mr-3"></i>
+                                    <span>Intention setting for the day</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-journal-whills text-green-500 mr-3"></i>
+                                    <span>Dream and insight journaling</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-leaf text-green-500 mr-3"></i>
+                                    <span>Nature connection time</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-lg mb-4 text-purple-800">Evening Practices</h4>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-center">
+                                    <i class="fas fa-moon text-indigo-500 mr-3"></i>
+                                    <span>Reflection on daily lessons</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-heart text-red-500 mr-3"></i>
+                                    <span>Self-compassion practice</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-book text-purple-500 mr-3"></i>
+                                    <span>Spiritual reading or study</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-praying-hands text-gold mr-3"></i>
+                                    <span>Prayer or blessing practice</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-lg mb-4 text-green-800">Weekly Practices</h4>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-center">
+                                    <i class="fas fa-users text-blue-500 mr-3"></i>
+                                    <span>Community circle participation</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-hands-helping text-green-500 mr-3"></i>
+                                    <span>Service to others or community</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-mountain text-purple-500 mr-3"></i>
+                                    <span>Solo nature retreat time</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-paint-brush text-pink-500 mr-3"></i>
+                                    <span>Creative expression practice</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Resources -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-8">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/95e2001a-462a-4bd2-ad2d-49688f64ed10" alt="Per Ankh Sacred Symbol" class="w-16 h-16 mx-auto mb-4 floating-animation">
+                <h2 class="text-3xl font-bold sacred-text text-yellow-300">Per Ankh Sacred Community</h2>
+                <p class="text-gray-400 mt-2">Bridging Ancient Wisdom & Modern Healing</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <h3 class="font-bold text-lg mb-4 text-white">Community Support</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><i class="fas fa-phone mr-2"></i>24-Hour Crisis Support</li>
+                        <li><i class="fas fa-envelope mr-2"></i>integration@perankh.org</li>
+                        <li><i class="fas fa-calendar mr-2"></i>Weekly Support Circles</li>
+                        <li><i class="fas fa-users mr-2"></i>Peer Mentorship Program</li>
+                    </ul>
+                </div>
+                
+                <div class="text-center">
+                    <h3 class="font-bold text-lg mb-4 text-white">Educational Resources</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><i class="fas fa-book mr-2"></i>Safety & Preparation Guides</li>
+                        <li><i class="fas fa-graduation-cap mr-2"></i>Monthly Workshops</li>
+                        <li><i class="fas fa-podcast mr-2"></i>Integration Podcast Series</li>
+                        <li><i class="fas fa-video mr-2"></i>Online Learning Portal</li>
+                    </ul>
+                </div>
+                
+                <div class="text-center">
+                    <h3 class="font-bold text-lg mb-4 text-white">Partnership Inquiries</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><i class="fas fa-handshake mr-2"></i>partnerships@perankh.org</li>
+                        <li><i class="fas fa-clinic-medical mr-2"></i>Healthcare Provider Network</li>
+                        <li><i class="fas fa-university mr-2"></i>Academic Collaborations</li>
+                        <li><i class="fas fa-globe mr-2"></i>Indigenous Partnerships</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    <i class="fas fa-heart text-red-500 mr-2"></i>
+                    "The true Pioneers in the field of psychedelics have still yet to emerge from the shadows to share their own personal experiences" - Kilindi Iyi
+                </p>
+                <p class="text-gray-500 text-xs mt-4">Per Ankh Entheogenic Church © 2025 | Sacred Community Resources & Partnership Materials</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation classes on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sacred-card elements
+        document.querySelectorAll('.sacred-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

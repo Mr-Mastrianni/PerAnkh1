@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Ankh Entheogenic Church - Mystical Digital Sanctuary</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="admin-auth.js"></script>
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-gold: #B8860B;
+            --dark-purple: #2D1B69;
+            --cosmic-blue: #0F0F23;
+            --matte-black: #0A0A0A;
+            --steel-gray: #1C1C1C;
+            --ethereal-white: #F8F8FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .cinematic-container {
+            position: relative;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, rgba(45, 27, 105, 0.2) 50%, rgba(10, 10, 10, 0.9) 100%);
+        }
+
+        /* Hero Section with Ancient Egyptian Temple */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(10, 10, 10, 0.8) 0%,
+                rgba(45, 27, 105, 0.6) 30%,
+                rgba(184, 134, 11, 0.4) 70%,
+                rgba(212, 175, 55, 0.2) 100%
+            );
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            animation: cosmicFlow 20s ease-in-out infinite alternate;
+        }
+
+        .temple-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 60%;
+            background: linear-gradient(to top,
+                rgba(10, 10, 10, 0.9) 0%,
+                rgba(28, 28, 28, 0.7) 30%,
+                rgba(45, 27, 105, 0.5) 60%,
+                transparent 100%
+            );
+            clip-path: polygon(
+                0% 100%, 15% 80%, 20% 75%, 25% 70%, 30% 60%, 35% 55%, 
+                40% 45%, 45% 40%, 50% 35%, 55% 40%, 60% 45%, 65% 55%, 
+                70% 60%, 75% 70%, 80% 75%, 85% 80%, 100% 100%
+            );
+            animation: templeGlow 8s ease-in-out infinite alternate;
+        }
+
+        .pyramid-left, .pyramid-right {
+            position: absolute;
+            bottom: 20%;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.6) 0%,
+                rgba(184, 134, 11, 0.4) 50%,
+                rgba(28, 28, 28, 0.8) 100%
+            );
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: pyramidPulse 6s ease-in-out infinite alternate;
+        }
+
+        .pyramid-left {
+            left: 15%;
+            animation-delay: -2s;
+        }
+
+        .pyramid-right {
+            right: 15%;
+            animation-delay: -4s;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1000px;
+            padding: 2rem;
+        }
+
+        .floating-ankh {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            color: var(--primary-gold);
+            animation: ankh3DRotation 8s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            filter: drop-shadow(0 10px 20px rgba(212, 175, 55, 0.4));
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 50%, var(--primary-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: titlePulse 4s ease-in-out infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--ethereal-white);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            animation: subtitleGlow 6s ease-in-out infinite alternate;
+        }
+
+        .sacred-geometry {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .geometry-element {
+            position: absolute;
+            border: 2px solid var(--primary-gold);
+            border-radius: 50%;
+            animation: geometryFloat 12s ease-in-out infinite;
+        }
+
+        .geometry-1 {
+            top: 10%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            animation-delay: 0s;
+        }
+
+        .geometry-2 {
+            top: 20%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            animation-delay: -4s;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-radius: 0;
+        }
+
+        .geometry-3 {
+            bottom: 20%;
+            left: 20%;
+            width: 80px;
+            height: 80px;
+            animation-delay: -8s;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 2rem;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--ethereal-white);
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-gold);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Dropdown Navigation Styles */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .dropdown-link:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-gold);
+            padding-left: 1.5rem;
+        }
+
+        .dropdown-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-toggle i {
+            transform: rotate(180deg);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: var(--ethereal-white);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Navigation Styles */
+        @media (max-width: 1024px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 2rem;
+                transform: translateY(-100vh);
+                transition: transform 0.3s ease;
+                border-top: 1px solid rgba(212, 175, 55, 0.3);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(45, 27, 105, 0.3);
+                margin-top: 0.5rem;
+                border-radius: 4px;
+            }
+
+            .nav-dropdown:hover .dropdown-menu {
+                display: block;
+            }
+        }
+
+        .content-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
+            transition: left 0.6s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            animation: iconPulse 3s ease-in-out infinite alternate;
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .feature-description {
+            color: var(--ethereal-white);
+            line-height: 1.6;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(45, 27, 105, 0.4) 0%, rgba(28, 28, 28, 0.8) 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            animation: particleFloat 15s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes cosmicFlow {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(5deg) scale(1.1); }
+        }
+
+        @keyframes templeGlow {
+            0% { 
+                box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.2);
+                filter: brightness(1);
+            }
+            100% { 
+                box-shadow: inset 0 0 100px rgba(212, 175, 55, 0.4);
+                filter: brightness(1.2);
+            }
+        }
+
+        @keyframes pyramidPulse {
+            0% { 
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            100% { 
+                transform: scale(1.05);
+                filter: brightness(1.3);
+            }
+        }
+
+        @keyframes ankh3DRotation {
+            0% { 
+                transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            }
+            50% { 
+                transform: translateX(-50%) rotateY(180deg) rotateZ(5deg);
+                text-shadow: 0 0 50px rgba(212, 175, 55, 1);
+            }
+            100% { 
+                transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            }
+        }
+
+        @keyframes titlePulse {
+            0% { 
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                filter: brightness(1);
+            }
+            100% { 
+                text-shadow: 2px 2px 20px rgba(212, 175, 55, 0.3);
+                filter: brightness(1.1);
+            }
+        }
+
+        @keyframes subtitleGlow {
+            0% { 
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            }
+            100% { 
+                text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        @keyframes geometryFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes iconPulse {
+            0% { 
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            }
+            100% { 
+                transform: scale(1.1);
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        @keyframes particleFloat {
+            0% { 
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { 
+                opacity: 0.6;
+            }
+            90% { 
+                opacity: 0.6;
+            }
+            100% { 
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .content-section {
+                padding: 4rem 1rem;
+            }
+            
+            .pyramid-left, .pyramid-right {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .floating-ankh {
+                font-size: 2.5rem;
+            }
+        }
+
+        .testimonial-section {
+            background: rgba(45, 27, 105, 0.1);
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-style: italic;
+            text-align: center;
+            color: var(--primary-gold);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            color: rgba(212, 175, 55, 0.3);
+        }
+
+        .quote::before {
+            top: -1rem;
+            left: -2rem;
+        }
+
+        .quote::after {
+            bottom: -2rem;
+            right: -2rem;
+        }
+
+        .author {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--ethereal-white);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="cinematic-container">
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-container">
+                <div class="logo">⚱ PER ANKH</div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-links" id="navLinks">
+                    <a href="#home" class="nav-link">Home</a>
+                    
+                    <!-- Core Teachings -->
+                    <div class="nav-dropdown">
+                        <a href="#teachings" class="nav-link dropdown-toggle">Teachings <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="protocols.html" class="dropdown-link">Sacred Protocols</a>
+                            <a href="crystaltech.html" class="dropdown-link">Crystal Technology</a>
+                            <a href="PerAnkhTech.html" class="dropdown-link">Per Ankh Technology</a>
+                            <a href="women'sempowerment.html" class="dropdown-link">Women's Empowerment</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Community -->
+                    <div class="nav-dropdown">
+                        <a href="#community" class="nav-link dropdown-toggle">Community <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="communitypartnership.html" class="dropdown-link">Community Partnership</a>
+                            <a href="sacredcommunityrelationships.html" class="dropdown-link">Sacred Relationships</a>
+                            <a href="urbanyouthoutreach.html" class="dropdown-link">Urban Youth Outreach</a>
+                            <a href="targetaudiencepersonaprofiles.html" class="dropdown-link">Audience Profiles</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Digital Assets -->
+                    <div class="nav-dropdown">
+                        <a href="#digital" class="nav-link dropdown-toggle">Digital Assets <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="nft.html" class="dropdown-link">NFT Ecosystem</a>
+                            <a href="calculator.html" class="dropdown-link">Calculator</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Content & Media -->
+                    <div class="nav-dropdown">
+                        <a href="#content" class="nav-link dropdown-toggle">Content <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="contentcalendar.html" class="dropdown-link">Content Calendar</a>
+                            <a href="contentcalendar2.html" class="dropdown-link">Content Calendar 2</a>
+                            <a href="hiphop.html" class="dropdown-link">Hip-Hop Culture</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Brand & Identity -->
+                    <div class="nav-dropdown">
+                        <a href="#brand" class="nav-link dropdown-toggle">Brand <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="BrandIdentity.html" class="dropdown-link">Brand Identity</a>
+                            <a href="BrandIdentity2.html" class="dropdown-link">Brand Identity 2</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Profiles & People -->
+                    <div class="nav-dropdown">
+                        <a href="#profiles" class="nav-link dropdown-toggle">Profiles <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="mamayana.html" class="dropdown-link">Mama Ayana</a>
+                            <a href="jon.html" class="dropdown-link">Jon</a>
+                            <a href="Shanna1.html" class="dropdown-link">Shanna 1</a>
+                            <a href="Shanna2.html" class="dropdown-link">Shanna 2</a>
+                            <a href="moudoubaqui.html" class="dropdown-link">Moudoubaqui</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools & Resources -->
+                    <div class="nav-dropdown">
+                        <a href="#tools" class="nav-link dropdown-toggle">Tools <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="prompts1.html" class="dropdown-link">Prompts 1</a>
+                            <a href="prompts2.html" class="dropdown-link">Prompts 2</a>
+                            <a href="prompts3.html" class="dropdown-link">Prompts 3</a>
+                            <a href="PER-ANKH-CONSCIOUSNESS-TECHNOLOGY-DOCUMENTATION.md" class="dropdown-link">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Sacred Geometry Background -->
+        <div class="sacred-geometry">
+            <div class="geometry-element geometry-1"></div>
+            <div class="geometry-element geometry-2"></div>
+            <div class="geometry-element geometry-3"></div>
+        </div>
+
+        <!-- Particle System -->
+        <div class="particle-container" id="particles"></div>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            <div class="temple-silhouette"></div>
+            <div class="pyramid-left"></div>
+            <div class="pyramid-right"></div>
+            <div class="floating-ankh">☥</div>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">PER ANKH</h1>
+                <p class="hero-subtitle">
+                    ENTHEOGENIC CHURCH<br>
+                    <em>Ancient Wisdom • Modern Renaissance</em>
+                </p>
+            </div>
+        </section>
+
+        <!-- Mission Statement -->
+        <section class="content-section">
+            <h2 class="section-title">Sacred Mission</h2>
+            <div class="text-center max-w-4xl mx-auto">
+                <p class="text-xl leading-relaxed mb-8 text-gray-300">
+                    <strong>PER-ANKH is a non-denominational, interfaith religious organization.</strong><br>
+                    At Per-Ankh we support the research, understanding and safe access of all Entheogenic plants,
+                    with a focus on <strong class="text-yellow-400">CANNABIS & MAGIC MUSHROOMS</strong>
+                </p>
+                <p class="text-lg leading-relaxed text-gray-300">
+                    We are a community of visionaries exploring the cutting-edge of awakening through psychedelics 
+                    and sacred plant medicines. As worldwide interest in psychedelics expands, we find ourselves 
+                    in the midst of a Psychedelic Renaissance and Global Shamanic Revival.
+                </p>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="testimonial-section">
+            <div class="max-w-4xl mx-auto">
+                <div class="quote">
+                    The true Pioneers in the field of psychedelics have still yet to emerge
+                    from the shadows to share their own personal experiences
+                </div>
+                <div class="author">— Kilindi Iyi</div>
+            </div>
+        </section>
+
+        <!-- Admin-Only Management Section -->
+        <section class="content-section admin-only" data-auth-required="true" style="display: none;">
+            <h2 class="section-title">🔒 Admin Management Portal</h2>
+            <div class="grid-container">
+                <div class="feature-card" data-admin-only="true">
+                    <div class="feature-icon">⚙️</div>
+                    <h3 class="feature-title">Site Configuration</h3>
+                    <p class="feature-description">
+                        Advanced site settings, security configurations, and system maintenance tools.
+                        Only accessible to authenticated administrators.
+                    </p>
+                    <div class="card-actions">
+                        <button class="action-btn" onclick="perAnkhAuth.requireAuth(() => alert('Site configuration panel would open here'))">
+                            Configure Site
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="feature-card" data-admin-only="true">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Analytics Dashboard</h3>
+                    <p class="feature-description">
+                        Detailed visitor analytics, engagement metrics, and performance reports.
+                        Sensitive data restricted to admin access only.
+                    </p>
+                    <div class="card-actions">
+                        <button class="action-btn" onclick="perAnkhAuth.requireAuth(() => alert('Analytics dashboard would open here'))">
+                            View Analytics
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="feature-card" data-admin-only="true">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">User Management</h3>
+                    <p class="feature-description">
+                        Manage community members, admin roles, and access permissions.
+                        Critical security functions for authorized personnel only.
+                    </p>
+                    <div class="card-actions">
+                        <button class="action-btn" onclick="perAnkhAuth.requireAuth(() => alert('User management would open here'))">
+                            Manage Users
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="content-section" id="teachings">
+            <h2 class="section-title">Sacred Pathways</h2>
+            <div class="grid-container">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 class="feature-title">Sacred Teachings Hub</h3>
+                    <p class="feature-description">
+                        Interactive knowledge tree with branches leading to different wisdom areas. 
+                        Access ancient wisdom through modern interfaces with 3D book animations 
+                        and rotating crystal spheres revealing different aspects of entheogenic education.
+                    </p>
+                </div>
+
+                <div class="feature-card" id="explorer">
+                    <div class="feature-icon">🍄</div>
+                    <h3 class="feature-title">Entheogenic Explorer</h3>
+                    <p class="feature-description">
+                        Interactive plant medicine garden with 3D mushroom and cannabis models. 
+                        Safety protocol wizards with step-by-step visual guides and experience 
+                        level assessment with personalized recommendations.
+                    </p>
+                </div>
+
+                <div class="feature-card" id="circle">
+                    <div class="feature-icon">🌸</div>
+                    <h3 class="feature-title">Women's Sacred Circle</h3>
+                    <p class="feature-description">
+                        Moon phase tracker integrated with ceremony scheduling. Womb healing 
+                        visualization with gentle, empowering animations and sister circle 
+                        connector for finding local women's groups.
+                    </p>
+                </div>
+
+                <div class="feature-card" id="mastery">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">High Dose Mastery Academy</h3>
+                    <p class="feature-description">
+                        Crystal technology simulator showing interdimensional experiences. 
+                        Advanced dosage calculator with visual safety indicators and 
+                        secure practitioner forum with Kilindi Iyi memorial tribute.
+                    </p>
+                </div>
+
+                <div class="feature-card" id="community">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title">Community Constellation</h3>
+                    <p class="feature-description">
+                        Member profile galaxies showing connections and relationships.
+                        Event horizon calendar with countdown timers, donation thermometer
+                        with real-time funding goals, and volunteer opportunity board.
+                    </p>
+                    
+                    <!-- Admin-Only Community Stats -->
+                    <div class="admin-only" data-auth-required="true" style="display: none;">
+                        <div style="background: rgba(45, 27, 105, 0.3); padding: 1rem; border-radius: 8px; margin-top: 1rem; border: 1px solid rgba(212, 175, 55, 0.2);">
+                            <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">🔒 Admin Stats</h4>
+                            <p style="font-size: 0.9rem; color: rgba(248, 248, 255, 0.8);">
+                                Active Members: 247 | New This Month: 23 | Engagement Rate: 78%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🧘‍♀️</div>
+                    <h3 class="feature-title">Spiritual Tools Integration</h3>
+                    <p class="feature-description">
+                        Virtual meditation spaces with customizable ambient environments. 
+                        Breath work guides with visual pacing indicators, crystal healing 
+                        selector, and astrology integration for optimal ceremony timing.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="section-title">Support Our Vision Of Light and Transformation</h2>
+                <p class="text-xl mb-8 text-gray-300 leading-relaxed">
+                    At <strong>Per-Ankh Church</strong>, we are dedicated to fostering spiritual growth, healing, and community empowerment.
+                    Your donation fuels the heart of Per-Ankh Church. From sacred ceremonies and workshops to community outreach 
+                    and spiritual guidance, your support helps us grow as a beacon of light and transformation.
+                </p>
+                <p class="text-lg mb-12 text-gray-400">
+                    With your support, we can continue to expand our mission, touch more lives, and spread the light 
+                    of spiritual awakening across the globe. <strong>Every contribution, no matter the size, makes a difference.</strong>
+                </p>
+                <a href="#donate" class="cta-button">
+                    <i class="fas fa-heart mr-2"></i>
+                    Donate Now to Empower Our Work
+                </a>
+                
+                <!-- Admin-Only Financial Information -->
+                <div class="admin-only" data-auth-required="true" style="display: none; margin-top: 2rem;">
+                    <div style="background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.3); padding: 1.5rem; border-radius: 10px;">
+                        <h4 style="color: #fca5a5; margin-bottom: 1rem; display: flex; align-items: center;">
+                            <i class="fas fa-lock mr-2"></i>
+                            Admin Financial Dashboard
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; color: rgba(248, 248, 255, 0.9);">
+                            <div>
+                                <strong>Monthly Goal:</strong> $5,000<br>
+                                <strong>Current:</strong> $3,247 (65%)
+                            </div>
+                            <div>
+                                <strong>Total Donors:</strong> 89<br>
+                                <strong>Avg Donation:</strong> $36.48
+                            </div>
+                            <div>
+                                <strong>Recurring:</strong> $1,890/month<br>
+                                <strong>One-time:</strong> $1,357
+                            </div>
+                        </div>
+                        <button class="action-btn" style="margin-top: 1rem; font-size: 0.9rem; padding: 0.6rem 1rem;"
+                                onclick="perAnkhAuth.requireAuth(() => alert('Financial management panel would open here'))">
+                            Manage Donations
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Navigation -->
+        <section class="content-section">
+            <h2 class="section-title">Explore Our Sacred Knowledge</h2>
+            <div class="grid-container">
+                <div class="feature-card">
+                    <div class="feature-icon">🍄</div>
+                    <h3 class="feature-title">Sacred Protocols</h3>
+                    <p class="feature-description mb-4">
+                        Complete psilocybin protocols system with graduated dosing from 5-50+ grams
+                    </p>
+                    <a href="protocols.html" class="cta-button" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">
+                        Explore Protocols
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3 class="feature-title">Crystal Technology</h3>
+                    <p class="feature-description mb-4">
+                        Advanced teachings on extreme-dose experiences and interdimensional exploration
+                    </p>
+                    <a href="crystaltech.html" class="cta-button" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">
+                        Learn Crystal Tech
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌸</div>
+                    <h3 class="feature-title">Women's Empowerment</h3>
+                    <p class="feature-description mb-4">
+                        Sacred womb healing, ancestral trauma release, and feminine empowerment
+                    </p>
+                    <a href="women'sempowerment.html" class="cta-button" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">
+                        Sacred Healing
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title">Community Partnership</h3>
+                    <p class="feature-description mb-4">
+                        Join our spiritual community and partnership frameworks
+                    </p>
+                    <a href="communitypartnership.html" class="cta-button" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">
+                        Join Community
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Urban Outreach</h3>
+                    <p class="feature-description mb-4">
+                        Comprehensive Black male and urban youth outreach strategy
+                    </p>
+                    <a href="urbanyouthoutreach.html" class="cta-button" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">
+                        Urban Mission
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">NFT Ecosystem</h3>
+                    <p class="feature-description mb-4">
+                        Revolutionary spiritual NFT marketplace with 10,000+ tokens
+                    </p>
+                    <a href="nft.html" class="cta-button" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">
+                        Explore NFTs
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logo Section -->
+        <section class="content-section text-center">
+            <img src="https://perankh1.org/wp-content/uploads/2024/09/PER-ANKH_ENTHEOGENIC_CHURCH__6_-removebg-preview.png" 
+                 alt="Per Ankh Entheogenic Church Logo" 
+                 class="mx-auto max-w-md opacity-80 hover:opacity-100 transition-opacity duration-300"
+                 style="filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));">
+        </section>
+    </div>
+
+    <script>
+        // Particle System
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Navigation scroll effect
+        function handleNavigation() {
+            const nav = document.querySelector('.navigation');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                } else {
+                    nav.style.background = 'rgba(10, 10, 10, 0.8)';
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        function enableSmoothScrolling() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+
+        // Parallax effect for hero elements
+        function initParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.hero-background, .temple-silhouette, .pyramid-left, .pyramid-right');
+                
+                parallaxElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        }
+
+        // Intersection Observer for animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        }
+
+        // Mobile menu toggle functionality
+        function initMobileMenu() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileMenuToggle && navLinks) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        }
+
+        // Initialize all effects
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            handleNavigation();
+            enableSmoothScrolling();
+            initParallax();
+            initScrollAnimations();
+            initMobileMenu();
+        });
+
+        // Dynamic color shifting for sacred geometry
+        setInterval(() => {
+            const geometryElements = document.querySelectorAll('.geometry-element');
+            geometryElements.forEach(element => {
+                const hue = Math.random() * 60 + 30; // Gold to orange range
+                element.style.borderColor = `hsl(${hue}, 70%, 60%)`;
+            });
+        }, 5000);
+    </script>
+</body>
+</html>

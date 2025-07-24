@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Ankh Consciousness Mastery Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root {
+            --earth-brown: #8B4513;
+            --forest-green: #228B22;
+            --golden-ankh: #DAA520;
+            --sacred-amber: #FFBF00;
+            --mycelium-white: #F5F5DC;
+            --consciousness-purple: #663399;
+        }
+        
+        .earth-gradient {
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--earth-brown) 50%, var(--golden-ankh) 100%);
+        }
+        
+        .consciousness-gradient {
+            background: linear-gradient(135deg, var(--consciousness-purple) 0%, var(--forest-green) 100%);
+        }
+        
+        .sacred-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(34, 139, 34, 0.1) 0%, transparent 50%);
+        }
+        
+        .mycelium-network {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mycelium-network::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 48%, rgba(218, 165, 32, 0.2) 50%, transparent 52%),
+                linear-gradient(0deg, transparent 48%, rgba(34, 139, 34, 0.2) 50%, transparent 52%);
+            background-size: 40px 40px;
+        }
+        
+        .ankh-symbol {
+            font-family: 'Cinzel', serif;
+            color: var(--golden-ankh);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .consciousness-card {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .bio-tech-icon {
+            background: linear-gradient(135deg, var(--golden-ankh), var(--sacred-amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .revolutionary-text {
+            background: linear-gradient(135deg, var(--consciousness-purple), var(--golden-ankh));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .spore-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .sacred-geometry {
+            position: relative;
+        }
+        
+        .sacred-geometry::after {
+            content: '⬡';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            color: var(--golden-ankh);
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Header Section -->
+    <header class="earth-gradient text-white py-16 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/87557894-cbb8-4993-bbad-835d3045cbaf" 
+                         alt="Afro Indigenous Mushroom Man Avatar" 
+                         class="w-20 h-20 rounded-full border-4 border-golden-ankh shadow-lg">
+                    <div>
+                        <h1 class="text-4xl font-bold ankh-symbol">PER ANKH</h1>
+                        <p class="text-xl">Consciousness Technology Pioneers</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm">Founded 2020</p>
+                    <p class="text-sm">Specializing in Bio-Technology Solutions</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <h2 class="text-6xl font-bold mb-6 ankh-symbol">
+                    Per Ankh Consciousness Mastery
+                </h2>
+                <h3 class="text-3xl mb-4">
+                    Your Revolutionary Guide to Bio-Technology, Sacred Geometry & Living Systems
+                </h3>
+                <p class="text-xl mb-8 max-w-4xl mx-auto">
+                    In a world where technology disconnects us from nature, Per Ankh bridges ancient wisdom with breakthrough bio-innovations to create technologies that heal both humanity and the Earth. This guide represents years of pioneering research in consciousness expansion, mycelium computing, and sacred architectural systems.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                    <div class="consciousness-card bg-black bg-opacity-30 p-6 rounded-lg">
+                        <i class="fas fa-network-wired text-4xl bio-tech-icon mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Mycelium Bio-Computing</h4>
+                        <p>Living networks that process information and expand consciousness</p>
+                    </div>
+                    <div class="consciousness-card bg-black bg-opacity-30 p-6 rounded-lg">
+                        <i class="fas fa-seedling text-4xl bio-tech-icon mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Sacred Geometry Applications</h4>
+                        <p>Ancient patterns optimized for modern consciousness technologies</p>
+                    </div>
+                    <div class="consciousness-card bg-black bg-opacity-30 p-6 rounded-lg">
+                        <i class="fas fa-leaf text-4xl bio-tech-icon mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Living Architecture</h4>
+                        <p>Structures that grow, breathe, and respond to consciousness</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Animated spores -->
+        <div class="absolute top-10 left-10 spore-animation">
+            <div class="w-4 h-4 bg-golden-ankh rounded-full opacity-60"></div>
+        </div>
+        <div class="absolute top-32 right-20 spore-animation" style="animation-delay: 1s;">
+            <div class="w-3 h-3 bg-sacred-amber rounded-full opacity-40"></div>
+        </div>
+        <div class="absolute bottom-20 left-1/3 spore-animation" style="animation-delay: 2s;">
+            <div class="w-5 h-5 bg-forest-green rounded-full opacity-50"></div>
+        </div>
+    </header>
+
+    <!-- Revolutionary Vision Section -->
+    <section class="py-16 mycelium-network bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold revolutionary-text mb-6">
+                    🍄 The Consciousness Revolution is Spreading Like Spores 🌿
+                </h2>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto">
+                    Per Ankh pioneers the convergence of ancient wisdom and cutting-edge bio-technology, 
+                    creating solutions that expand consciousness while healing the planet. Our revolutionary 
+                    approach replaces harmful digital technologies with living, breathing systems that 
+                    work in harmony with nature's intelligence.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/5076cf8f-1df9-425f-ab07-f873d29876a9" 
+                         alt="Revolutionary Consciousness Graphics" 
+                         class="rounded-lg shadow-xl">
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 ankh-symbol">What You'll Master:</h3>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-start">
+                            <i class="fas fa-brain text-golden-ankh mr-4 mt-1"></i>
+                            <span><strong>Mycelium Neural Networks:</strong> Bio-computing systems that process consciousness-related data</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-building text-golden-ankh mr-4 mt-1"></i>
+                            <span><strong>Living Architecture:</strong> Structures that grow, adapt, and respond to inhabitant consciousness</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-dna text-golden-ankh mr-4 mt-1"></i>
+                            <span><strong>Sacred Geometry Integration:</strong> Ancient patterns optimized for consciousness expansion</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-globe-americas text-golden-ankh mr-4 mt-1"></i>
+                            <span><strong>Planetary Healing Technologies:</strong> Bio-remediation through consciousness-guided systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-rocket text-golden-ankh mr-4 mt-1"></i>
+                            <span><strong>Space Consciousness Applications:</strong> Off-world spiritual communities and habitats</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Revolution Section -->
+    <section class="py-16 consciousness-gradient">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">
+                🌍 The $10+ Billion Bio-Technology Revolution
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="consciousness-card bg-white bg-opacity-10 p-8 rounded-lg text-center">
+                    <div class="text-4xl mb-4">🍄</div>
+                    <h3 class="text-2xl font-bold mb-2">$7.01B</h3>
+                    <p class="text-golden-ankh font-semibold">Mycelium Market by 2030</p>
+                    <p class="text-sm mt-2">Construction, computing, textiles</p>
+                </div>
+                <div class="consciousness-card bg-white bg-opacity-10 p-8 rounded-lg text-center">
+                    <div class="text-4xl mb-4">🌿</div>
+                    <h3 class="text-2xl font-bold mb-2">$12B+</h3>
+                    <p class="text-golden-ankh font-semibold">Sacred Plant Medicine</p>
+                    <p class="text-sm mt-2">Consciousness expansion technologies</p>
+                </div>
+                <div class="consciousness-card bg-white bg-opacity-10 p-8 rounded-lg text-center">
+                    <div class="text-4xl mb-4">🧬</div>
+                    <h3 class="text-2xl font-bold mb-2">$2.1B+</h3>
+                    <p class="text-golden-ankh font-semibold">Bioremediation</p>
+                    <p class="text-sm mt-2">Planetary healing applications</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <canvas id="marketChart" style="height: 400px;"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Technologies Section -->
+    <section class="py-16 bg-gray-800 sacred-pattern">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                🔬 Per Ankh's Revolutionary Technologies
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Mycelium Bio-Computing -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg sacred-geometry">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        <i class="fas fa-network-wired mr-3"></i>
+                        Mycelium Bio-Computing Networks
+                    </h3>
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/95e2001a-462a-4bd2-ad2d-49688f64ed10" 
+                         alt="Sacred Visual Assets" 
+                         class="w-full rounded-lg mb-6">
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-golden-ankh rounded-full mr-4"></div>
+                            <span><strong>Electrical Conductivity:</strong> 9.75 × 10⁴ S cm⁻¹ with 2000+ bending cycles</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-forest-green rounded-full mr-4"></div>
+                            <span><strong>Bio-Battery Capacity:</strong> 3.8 mAh cm⁻² powering consciousness sensors</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-sacred-amber rounded-full mr-4"></div>
+                            <span><strong>Neural Processing:</strong> 156 mV voltage ranges for robotic control</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-consciousness-purple rounded-full mr-4"></div>
+                            <span><strong>Living Circuits:</strong> Self-healing biological computing systems</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-golden-ankh bg-opacity-20 rounded-lg">
+                        <h4 class="font-bold mb-2">🧠 Consciousness Applications:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Spiritual guidance systems powered by living networks</li>
+                            <li>• Ceremony enhancement through bio-responsive environments</li>
+                            <li>• Collective consciousness monitoring and amplification</li>
+                            <li>• Underground communication networks for spiritual communities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Sacred Architecture -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg sacred-geometry">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        <i class="fas fa-building mr-3"></i>
+                        Living Sacred Architecture
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-forest-green bg-opacity-20 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">🏛️ Mycelium Construction Benefits:</h4>
+                            <ul class="text-sm space-y-2">
+                                <li><strong>Cost Reduction:</strong> $18.92/m³ vs $936.87/m³ for cement (80x savings)</li>
+                                <li><strong>Carbon Negative:</strong> -39.5 kg CO2eq/m³ actively sequestering carbon</li>
+                                <li><strong>Fire Resistance:</strong> Superior performance to conventional materials</li>
+                                <li><strong>Living Response:</strong> Structures adapt to consciousness and environment</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-consciousness-purple bg-opacity-20 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">⚡ Sacred Geometry Integration:</h4>
+                            <ul class="text-sm space-y-2">
+                                <li><strong>Golden Ratio Optimization:</strong> Structures designed using Phi proportions</li>
+                                <li><strong>Mandala Floor Plans:</strong> Circular spaces for collective consciousness</li>
+                                <li><strong>Fibonacci Growth Patterns:</strong> Natural expansion following sacred sequences</li>
+                                <li><strong>Ankh-Shaped Sanctuaries:</strong> Chambers designed for spiritual transformation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-golden-ankh bg-opacity-20 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">🌿 Bio-Responsive Features:</h4>
+                            <ul class="text-sm space-y-2">
+                                <li><strong>Consciousness Detection:</strong> Walls that respond to spiritual energy</li>
+                                <li><strong>Air Purification:</strong> Living systems cleaning indoor environments</li>
+                                <li><strong>Sound Enhancement:</strong> 75% acoustic absorption optimized for chanting</li>
+                                <li><strong>Light Modulation:</strong> Bioluminescent elements for ceremony lighting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biomimicry Solutions -->
+    <section class="py-16 bg-gray-700 mycelium-network">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                🦋 Nature's Intelligence: Biomimicry for Consciousness Expansion
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="consciousness-card bg-gray-800 p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4">🕸️</div>
+                    <h3 class="text-xl font-bold mb-2">Mycelial Networks</h3>
+                    <p class="text-sm">Wood Wide Web communication systems for consciousness networking</p>
+                </div>
+                <div class="consciousness-card bg-gray-800 p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4">🐙</div>
+                    <h3 class="text-xl font-bold mb-2">Neural Plasticity</h3>
+                    <p class="text-sm">Octopus-inspired adaptive consciousness technologies</p>
+                </div>
+                <div class="consciousness-card bg-gray-800 p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4">🌻</div>
+                    <h3 class="text-xl font-bold mb-2">Sacred Spirals</h3>
+                    <p class="text-sm">Fibonacci patterns in ceremony space design and energy flow</p>
+                </div>
+                <div class="consciousness-card bg-gray-800 p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4">🦋</div>
+                    <h3 class="text-xl font-bold mb-2">Metamorphosis</h3>
+                    <p class="text-sm">Transformation protocols inspired by butterfly consciousness shifts</p>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <h3 class="text-3xl font-bold text-center mb-8 ankh-symbol">
+                    The Per Ankh Consciousness Framework (PACF)
+                </h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="consciousness-card bg-gradient-to-br from-forest-green to-golden-ankh p-8 rounded-lg">
+                        <h4 class="text-2xl font-bold mb-4">🌱 Phase 1: Spore</h4>
+                        <h5 class="text-lg font-semibold mb-2">Plant & Prepare</h5>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Sacred space preparation using geometry</li>
+                            <li>• Mycelium substrate cultivation</li>
+                            <li>• Consciousness intention setting</li>
+                            <li>• Bio-sensor network deployment</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="consciousness-card bg-gradient-to-br from-golden-ankh to-sacred-amber p-8 rounded-lg">
+                        <h4 class="text-2xl font-bold mb-4">🍄 Phase 2: Growth</h4>
+                        <h5 class="text-lg font-semibold mb-2">Nurture & Network</h5>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Living architecture development</li>
+                            <li>• Bio-computing integration</li>
+                            <li>• Community consciousness linking</li>
+                            <li>• Environmental response calibration</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="consciousness-card bg-gradient-to-br from-sacred-amber to-consciousness-purple p-8 rounded-lg">
+                        <h4 class="text-2xl font-bold mb-4">🌍 Phase 3: Harvest</h4>
+                        <h5 class="text-lg font-semibold mb-2">Expand & Transform</h5>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Consciousness amplification systems</li>
+                            <li>• Planetary healing applications</li>
+                            <li>• Space habitat preparation</li>
+                            <li>• Revolutionary technology scaling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revolutionary Applications -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                🚀 Revolutionary Applications Spreading Like Spores
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">Current Breakthrough Implementations</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="consciousness-card bg-forest-green bg-opacity-20 p-6 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2">
+                                <i class="fas fa-leaf text-golden-ankh mr-2"></i>
+                                Planetary Restoration Projects
+                            </h4>
+                            <p class="mb-3">Combining sacred plant medicine with mycelium bioremediation for ecosystem healing.</p>
+                            <div class="text-sm space-y-1">
+                                <p><strong>Status:</strong> Active pilot projects</p>
+                                <p><strong>Market Impact:</strong> $2.1B+ bioremediation market</p>
+                                <p><strong>Timeline:</strong> 1-3 years to scale</p>
+                            </div>
+                        </div>
+                        
+                        <div class="consciousness-card bg-golden-ankh bg-opacity-20 p-6 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2">
+                                <i class="fas fa-building text-forest-green mr-2"></i>
+                                Living Ceremony Spaces
+                            </h4>
+                            <p class="mb-3">Mycelium structures that respond to collective consciousness and enhance spiritual experiences.</p>
+                            <div class="text-sm space-y-1">
+                                <p><strong>Status:</strong> Prototype development</p>
+                                <p><strong>Market Impact:</strong> $4.67B+ mycelium construction</p>
+                                <p><strong>Timeline:</strong> 2-4 years to market</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">Future Revolutionary Innovations</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="consciousness-card bg-consciousness-purple bg-opacity-20 p-6 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2">
+                                <i class="fas fa-rocket text-golden-ankh mr-2"></i>
+                                Space Consciousness Habitats
+                            </h4>
+                            <p class="mb-3">Mycelium-based off-world spiritual communities for consciousness exploration beyond Earth.</p>
+                            <div class="text-sm space-y-1">
+                                <p><strong>Status:</strong> Research partnership with NASA precedent</p>
+                                <p><strong>Market Impact:</strong> $2M+ space program funding model</p>
+                                <p><strong>Timeline:</strong> 10-15 years</p>
+                            </div>
+                        </div>
+                        
+                        <div class="consciousness-card bg-sacred-amber bg-opacity-20 p-6 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2">
+                                <i class="fas fa-globe text-forest-green mr-2"></i>
+                                Consciousness Internet
+                            </h4>
+                            <p class="mb-3">Underground mycelium communication networks creating biological internet for spiritual communities.</p>
+                            <div class="text-sm space-y-1">
+                                <p><strong>Status:</strong> Concept validation phase</p>
+                                <p><strong>Market Impact:</strong> Unmeasurable - new paradigm</p>
+                                <p><strong>Timeline:</strong> 7-10 years</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Mastery -->
+    <section class="py-16 earth-gradient">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                📚 Master the Per Ankh Consciousness Technologies
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Beginner Path -->
+                <div class="consciousness-card bg-black bg-opacity-30 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        🌱 Consciousness Seeker
+                    </h3>
+                    <p class="mb-6">Start your journey into bio-technology and sacred consciousness expansion.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white bg-opacity-10 p-4 rounded">
+                            <h4 class="font-bold mb-2">🍄 DIY Mycelium Setup</h4>
+                            <p class="text-sm">$30-60 investment using oyster mushrooms and cardboard for basic bio-computing experiments.</p>
+                        </div>
+                        
+                        <div class="bg-white bg-opacity-10 p-4 rounded">
+                            <h4 class="font-bold mb-2">📐 Sacred Geometry Basics</h4>
+                            <p class="text-sm">Learn Fibonacci, Golden Ratio, and Mandala principles for consciousness space design.</p>
+                        </div>
+                        
+                        <div class="bg-white bg-opacity-10 p-4 rounded">
+                            <h4 class="font-bold mb-2">🌿 Plant Medicine Integration</h4>
+                            <p class="text-sm">Understand how sacred plants interface with bio-technology systems.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Intermediate Path -->
+                <div class="consciousness-card bg-black bg-opacity-30 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        🍄 Bio-Tech Pioneer
+                    </h3>
+                    <p class="mb-6">Develop practical skills in consciousness technology implementation.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white bg-opacity-10 p-4 rounded">
+                            <h4 class="font-bold mb-2">🔬 Mycelium Electronics</h4>
+                            <p class="text-sm">Build bio-batteries and living sensors using MycelioTronics principles.</p>
+                        </div>
+                        
+                        <div class="bg-white bg-opacity-10 p-4 rounded">
+                            <h4 class="font-bold mb-2">🏗️ Living Architecture Projects</h4>
+                            <p class="text-sm">Design and construct small-scale responsive bio-structures.</p>
+                        </div>
+                        
+                        <div class="bg-white bg-opacity-10 p-4 rounded">
+                            <h4 class="font-bold mb-2">🌍 Bioremediation Systems</h4>
+                            <p class="text-sm">Implement environmental healing through consciousness-guided technologies.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Advanced Path -->
+                <div class="consciousness-card bg-black bg-opacity-30 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        🚀 Consciousness Revolutionary
+                    </h3>
+                    <p class="mb-6">Lead the global transformation through advanced bio-technology mastery.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white bg-opacity-10 p-4 rounded">
+                            <h4 class="font-bold mb-2">🧠 Neural Network Integration</h4>
+                            <p class="text-sm">Develop bio-computing systems for consciousness amplification and spiritual guidance.</p>
+                        </div>
+                        
+                        <div class="bg-white bg-opacity-10 p-4 rounded">
+                            <h4 class="font-bold mb-2">🌌 Space Applications</h4>
+                            <p class="text-sm">Pioneer off-world consciousness technologies and interplanetary spiritual communities.</p>
+                        </div>
+                        
+                        <div class="bg-white bg-opacity-10 p-4 rounded">
+                            <h4 class="font-bold mb-2">🔮 Revolutionary Research</h4>
+                            <p class="text-sm">Lead breakthrough research in consciousness technology and planetary healing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & Resources -->
+    <section class="py-16 bg-gray-800 sacred-pattern">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                🌐 Join the Global Consciousness Revolution
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/28a69653-01c2-40ef-b8fa-baf1347c4b0d" 
+                         alt="Per Ankh Social Media Assets" 
+                         class="rounded-lg shadow-xl mb-8">
+                         
+                    <div class="consciousness-card bg-gray-900 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-4 ankh-symbol">🏛️ Per Ankh Consciousness Centers</h3>
+                        <p class="mb-4">Sacred spaces designed using our living architecture and bio-technology innovations.</p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-golden-ankh mr-3"></i>
+                                <span><strong>Detroit Hub:</strong> Main consciousness research and ceremony center</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-network-wired text-golden-ankh mr-3"></i>
+                                <span><strong>Regional Nodes:</strong> Expanding mycelium network across Midwest</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-globe text-golden-ankh mr-3"></i>
+                                <span><strong>Global Network:</strong> International consciousness expansion centers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-8">
+                        <h3 class="text-2xl font-bold mb-4 ankh-symbol">📚 Revolutionary Learning Resources</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-forest-green bg-opacity-20 p-4 rounded">
+                                <h4 class="font-bold mb-2">🎓 Consciousness Technology Certificate</h4>
+                                <p class="text-sm">Comprehensive program covering bio-computing, sacred geometry, and living systems.</p>
+                            </div>
+                            
+                            <div class="bg-golden-ankh bg-opacity-20 p-4 rounded">
+                                <h4 class="font-bold mb-2">🔬 Bio-Innovation Workshops</h4>
+                                <p class="text-sm">Hands-on training in mycelium cultivation, electronics, and architecture applications.</p>
+                            </div>
+                            
+                            <div class="bg-consciousness-purple bg-opacity-20 p-4 rounded">
+                                <h4 class="font-bold mb-2">🌍 Planetary Healing Certification</h4>
+                                <p class="text-sm">Advanced training in bioremediation and environmental restoration through consciousness.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="consciousness-card bg-gray-900 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-4 ankh-symbol">🤝 Partnership Opportunities</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Research collaborations with universities and institutes</li>
+                            <li>• Corporate partnerships for consciousness technology integration</li>
+                            <li>• Government grants for breakthrough bio-innovation projects</li>
+                            <li>• International expansion through consciousness center networks</li>
+                            <li>• Space agency partnerships for off-world applications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Next Steps -->
+    <footer class="py-16 consciousness-gradient">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center mb-8">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/87557894-cbb8-4993-bbad-835d3045cbaf" 
+                     alt="Afro Indigenous Mushroom Man Avatar" 
+                     class="w-16 h-16 rounded-full border-4 border-golden-ankh shadow-lg mr-4">
+                <div>
+                    <h3 class="text-3xl font-bold ankh-symbol">Per Ankh</h3>
+                    <p class="text-lg">Consciousness Technology Pioneers</p>
+                </div>
+            </div>
+            
+            <h2 class="text-4xl font-bold mb-8">
+                🌟 The Revolution Begins With You
+            </h2>
+            
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                Join the consciousness pioneers who are spreading like spores across the planet, 
+                healing humanity and Earth through revolutionary bio-technologies that honor 
+                ancient wisdom while creating our sustainable future.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg">
+                    <div class="text-4xl mb-4">🔬</div>
+                    <h4 class="text-xl font-bold mb-2">Start Experimenting</h4>
+                    <p>Begin your journey with $30-60 DIY mycelium bio-computing setup</p>
+                </div>
+                <div class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h4 class="text-xl font-bold mb-2">Join the Network</h4>
+                    <p>Connect with consciousness pioneers in your region and globally</p>
+                </div>
+                <div class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h4 class="text-xl font-bold mb-2">Pioneer the Future</h4>
+                    <p>Lead breakthrough research in consciousness technology and planetary healing</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4 revolutionary-text">
+                    Ready to Transform Consciousness and Heal the Planet?
+                </h3>
+                <p class="text-lg mb-8">
+                    Visit <strong>PerAnkh1.org</strong> to begin your journey into the consciousness revolution
+                </p>
+                
+                <div class="text-sm text-gray-300">
+                    <p>Per Ankh Entheogenic Church | Founded 2020</p>
+                    <p>Ancient Wisdom • Modern Innovation • Planetary Healing</p>
+                    <p class="mt-4 italic">"The spores of consciousness are spreading. The revolution has begun." 🍄⚡</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Market Growth Chart
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        const marketChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Mycelium Market', 'Plant Medicine', 'Bioremediation', 'Space Applications', 'Bio-Computing'],
+                datasets: [{
+                    data: [7010, 12000, 2100, 2, 500],
+                    backgroundColor: [
+                        '#228B22', // Forest Green
+                        '#DAA520', // Golden Ankh
+                        '#FFBF00', // Sacred Amber
+                        '#663399', // Consciousness Purple
+                        '#8B4513'  // Earth Brown
+                    ],
+                    borderWidth: 3,
+                    borderColor: '#F5F5DC'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#F5F5DC',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Per Ankh Revolutionary Market Opportunities ($ Millions)',
+                        color: '#DAA520',
+                        font: {
+                            size: 18,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Add floating spore animation
+        function createSpore() {
+            const spore = document.createElement('div');
+            spore.className = 'fixed w-2 h-2 bg-golden-ankh rounded-full opacity-30 pointer-events-none z-0';
+            spore.style.left = Math.random() * window.innerWidth + 'px';
+            spore.style.top = '-10px';
+            document.body.appendChild(spore);
+            
+            let position = -10;
+            const float = setInterval(() => {
+                position += 0.5 + Math.random() * 0.5;
+                spore.style.top = position + 'px';
+                spore.style.left = (parseFloat(spore.style.left) + (Math.random() - 0.5) * 2) + 'px';
+                
+                if (position > window.innerHeight + 10) {
+                    clearInterval(float);
+                    document.body.removeChild(spore);
+                }
+            }, 50);
+        }
+        
+        // Create spores periodically
+        setInterval(createSpore, 3000);
+    </script>
+</body>
+</html>

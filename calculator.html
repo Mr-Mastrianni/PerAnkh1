@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Ankh Sacred Psilocybin Dosage Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap');
+        
+        :root {
+            --gold: #D4AF37;
+            --amber: #FFBF00;
+            --deep-green: #2D5016;
+            --dark-green: #1A3D0A;
+            --bronze: #CD7F32;
+            --papyrus: #F4E4BC;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--deep-green) 50%, #1a1a1a 100%);
+            min-height: 100vh;
+            color: var(--papyrus);
+            overflow-x: hidden;
+        }
+        
+        .sacred-geometry {
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 191, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(45, 80, 22, 0.2) 0%, transparent 50%);
+            position: relative;
+        }
+        
+        .sacred-geometry::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(45deg, transparent 48%, rgba(212, 175, 55, 0.1) 49%, rgba(212, 175, 55, 0.1) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(212, 175, 55, 0.1) 49%, rgba(212, 175, 55, 0.1) 51%, transparent 52%);
+            background-size: 60px 60px;
+            animation: geometryPulse 20s ease-in-out infinite;
+        }
+        
+        @keyframes geometryPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        .ankh-symbol {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            animation: ankh-glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes ankh-glow {
+            0% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.4); }
+        }
+        
+        .consciousness-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(45, 80, 22, 0.2) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .consciousness-card:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(45, 80, 22, 0.3) 100%);
+            transform: translateY(-2px);
+        }
+        
+        .input-field {
+            background: rgba(244, 228, 188, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            color: var(--papyrus);
+            transition: all 0.3s ease;
+        }
+        
+        .input-field:focus {
+            border-color: var(--gold);
+            background: rgba(244, 228, 188, 0.2);
+            outline: none;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-sacred {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
+            color: var(--dark-green);
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .btn-sacred:hover {
+            background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .dose-level {
+            border-left: 4px solid var(--gold);
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, rgba(45, 80, 22, 0.1) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .dose-level:hover {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.2) 0%, rgba(45, 80, 22, 0.2) 100%);
+        }
+        
+        .microdose { border-left-color: #4ADE80; }
+        .perceivable { border-left-color: #22D3EE; }
+        .intense { border-left-color: #FBBF24; }
+        .profound { border-left-color: #F97316; }
+        .breakthrough { border-left-color: #EF4444; }
+        
+        .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--deep-green) 0%, var(--gold) 100%);
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            border: 2px solid var(--amber);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            border: 2px solid var(--amber);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.2) 100%);
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            animation: pulse-warning 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-warning {
+            0%, 100% { border-color: rgba(239, 68, 68, 0.3); }
+            50% { border-color: rgba(239, 68, 68, 0.6); }
+        }
+        
+        .quote-text {
+            font-family: 'Cinzel', serif;
+            font-style: italic;
+            color: var(--gold);
+            position: relative;
+        }
+        
+        .quote-text::before {
+            content: '"';
+            font-size: 3rem;
+            position: absolute;
+            left: -20px;
+            top: -10px;
+            color: var(--amber);
+            opacity: 0.5;
+        }
+        
+        .hieroglyph {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        @media print {
+            body { background: white !important; color: black !important; }
+            .sacred-geometry::before { display: none; }
+        }
+    </style>
+</head>
+<body class="sacred-geometry">
+    <!-- Header -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-12">
+            <div class="flex items-center justify-center mb-6">
+                <span class="ankh-symbol text-6xl mr-4">☥</span>
+                <h1 class="text-4xl font-bold text-center" style="font-family: 'Cinzel', serif; color: var(--gold);">
+                    PER ANKH
+                </h1>
+                <span class="ankh-symbol text-6xl ml-4">☥</span>
+            </div>
+            <h2 class="text-2xl mb-4" style="font-family: 'Cinzel', serif; color: var(--amber);">
+                Sacred Psilocybin Dosage Calculator
+            </h2>
+            <p class="text-lg opacity-90 max-w-3xl mx-auto">
+                A consciousness expansion tool guided by the ancient principles of Ma'at, 
+                bridging timeless wisdom with modern safety protocols for sacred mushroom ceremonies.
+            </p>
+        </div>
+
+        <!-- Sacred Quote -->
+        <div class="max-w-4xl mx-auto mb-12 p-6 text-center">
+            <p class="quote-text text-xl mb-2">
+                Know thyself and heal thyself through the sacred gifts of the earth
+            </p>
+            <p class="text-sm opacity-75">- Principles of Ma'at</p>
+        </div>
+
+        <!-- Calculator Section -->
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Input Panel -->
+            <div class="consciousness-card rounded-lg p-6">
+                <h3 class="text-2xl font-bold mb-6 text-center hieroglyph">
+                    <i class="fas fa-balance-scale mr-2"></i>
+                    Sacred Measurements
+                </h3>
+                
+                <!-- Body Weight Input -->
+                <div class="mb-6">
+                    <label class="block text-lg font-semibold mb-2 text-gold">
+                        <i class="fas fa-user mr-2"></i>Body Weight
+                    </label>
+                    <div class="flex items-center space-x-4">
+                        <input type="number" id="weight" class="input-field rounded-lg px-4 py-3 w-full" 
+                               placeholder="Enter weight" value="150" min="80" max="400">
+                        <select id="weightUnit" class="input-field rounded-lg px-4 py-3">
+                            <option value="lbs">lbs</option>
+                            <option value="kg">kg</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Mushroom Type -->
+                <div class="mb-6">
+                    <label class="block text-lg font-semibold mb-2 text-gold">
+                        <i class="fas fa-seedling mr-2"></i>Mushroom Type
+                    </label>
+                    <select id="mushroomType" class="input-field rounded-lg px-4 py-3 w-full">
+                        <option value="lab-tested">Lab Tested (Precise Psilocybin Content)</option>
+                        <option value="traditional">Traditional/Untested</option>
+                    </select>
+                </div>
+
+                <!-- Sensitivity Adjustment -->
+                <div class="mb-6">
+                    <label class="block text-lg font-semibold mb-2 text-gold">
+                        <i class="fas fa-adjust mr-2"></i>Sensitivity Level: <span id="sensitivityValue">100%</span>
+                    </label>
+                    <input type="range" id="sensitivity" class="slider w-full" 
+                           min="50" max="150" value="100" step="5">
+                    <div class="flex justify-between text-sm mt-2 opacity-75">
+                        <span>More Sensitive (50%)</span>
+                        <span>Normal (100%)</span>
+                        <span>Less Sensitive (150%)</span>
+                    </div>
+                </div>
+
+                <!-- Tolerance Level -->
+                <div class="mb-6">
+                    <label class="block text-lg font-semibold mb-2 text-gold">
+                        <i class="fas fa-clock mr-2"></i>Tolerance Level
+                    </label>
+                    <select id="tolerance" class="input-field rounded-lg px-4 py-3 w-full">
+                        <option value="none">No tolerance (3+ weeks since last use)</option>
+                        <option value="low">Low tolerance (1-2 weeks)</option>
+                        <option value="medium">Medium tolerance (3-7 days)</option>
+                        <option value="high">High tolerance (1-2 days)</option>
+                    </select>
+                </div>
+
+                <!-- Attribution -->
+                <div class="mt-8 p-4 bg-opacity-10 bg-gold rounded-lg">
+                    <p class="text-sm opacity-75 text-center">
+                        <i class="fas fa-heart mr-1"></i>
+                        Methodology inspired by the pioneering research of the Church of Ambrosia
+                    </p>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="consciousness-card rounded-lg p-6">
+                <h3 class="text-2xl font-bold mb-6 text-center hieroglyph">
+                    <i class="fas fa-eye mr-2"></i>
+                    Consciousness Levels
+                </h3>
+                
+                <div id="dosageResults" class="space-y-4">
+                    <!-- Results will be dynamically generated here -->
+                </div>
+
+                <!-- Sacred Reminder -->
+                <div class="mt-8 p-4 bg-opacity-10 bg-amber rounded-lg">
+                    <p class="text-center text-sm italic">
+                        <span class="ankh-symbol text-lg">☥</span>
+                        "Set sacred intention before your journey"
+                        <span class="ankh-symbol text-lg">☥</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consciousness Level Definitions -->
+        <div class="max-w-6xl mx-auto mb-12">
+            <h3 class="text-3xl font-bold mb-8 text-center hieroglyph">
+                <i class="fas fa-lotus mr-2"></i>
+                Sacred Consciousness Levels
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="dose-level microdose rounded-lg p-6">
+                    <h4 class="text-xl font-bold mb-3 text-green-400">
+                        <i class="fas fa-seed mr-2"></i>Microdose
+                    </h4>
+                    <p class="mb-3">A sub-perceptual dose that gently enhances one's state of being without noticeable alterations. Perfect for daily spiritual enhancement and connection with nature.</p>
+                    <p class="text-sm opacity-75 italic">"The whisper of the mushroom spirit"</p>
+                </div>
+
+                <div class="dose-level perceivable rounded-lg p-6">
+                    <h4 class="text-xl font-bold mb-3 text-cyan-400">
+                        <i class="fas fa-eye-dropper mr-2"></i>Perceivable
+                    </h4>
+                    <p class="mb-3">The gateway to conscious exploration. Visual and perceptual enhancements that complement spiritual, meditative, and creative practices. Enhances connection with others and nature.</p>
+                    <p class="text-sm opacity-75 italic">"Opening the doors of perception"</p>
+                </div>
+
+                <div class="dose-level intense rounded-lg p-6">
+                    <h4 class="text-xl font-bold mb-3 text-yellow-400">
+                        <i class="fas fa-fire mr-2"></i>Intense
+                    </h4>
+                    <p class="mb-3">Profound changes in visual, physical, and emotional perceptions. Colors become vivid, emotions surface, and deep introspection begins. Ideal for yogic and meditative practices.</p>
+                    <p class="text-sm opacity-75 italic">"The spirit speaks more clearly"</p>
+                </div>
+
+                <div class="dose-level profound rounded-lg p-6">
+                    <h4 class="text-xl font-bold mb-3 text-orange-400">
+                        <i class="fas fa-om mr-2"></i>Profound
+                    </h4>
+                    <p class="mb-3">Intense introspective experiences with deep self-inquiry. Like examining your psyche with a sacred lens. Profound insights into reality and your place within it emerge.</p>
+                    <p class="text-sm opacity-75 italic">"The soul reveals its mysteries"</p>
+                </div>
+
+                <div class="dose-level breakthrough rounded-lg p-6 md:col-span-2 lg:col-span-1">
+                    <h4 class="text-xl font-bold mb-3 text-red-400">
+                        <i class="fas fa-infinity mr-2"></i>Breakthrough
+                    </h4>
+                    <p class="mb-3">The heroic dose - a profoundly intense spiritual experience. May include out-of-body experiences and divine encounters. Complete surrender and 24-hour fasting recommended.</p>
+                    <p class="text-sm opacity-75 italic">"Union with the infinite consciousness"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Safety Information -->
+        <div class="max-w-6xl mx-auto mb-12">
+            <div class="warning-box rounded-lg p-8 mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-center text-red-400">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    Sacred Safety Protocols
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-bold mb-3 text-red-300">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>Critical Warnings
+                        </h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• <strong>NEVER</strong> use with psychiatric medications</li>
+                            <li>• Heart transplant recipients must avoid completely</li>
+                            <li>• Consult physician if you have heart conditions</li>
+                            <li>• Do not combine with alcohol or other substances</li>
+                            <li>• SSRI medications reduce psilocybin effects</li>
+                            <li>• MAOI medications increase psilocybin effects</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold mb-3 text-orange-300">
+                            <i class="fas fa-hands-helping mr-2"></i>Preparation Guidelines
+                        </h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Set clear intentions before your ceremony</li>
+                            <li>• Ensure a safe, comfortable environment</li>
+                            <li>• Have a trusted guide or sitter present</li>
+                            <li>• Fast 24 hours before breakthrough doses</li>
+                            <li>• Stay hydrated and have light snacks available</li>
+                            <li>• Allow 6-8 hours for the complete experience</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-red-900 bg-opacity-30 rounded-lg">
+                    <p class="text-center font-bold">
+                        <i class="fas fa-balance-scale mr-2"></i>
+                        This calculator follows the principles of Ma'at - Truth, Justice, and Divine Order. 
+                        Use this sacred knowledge responsibly and with reverence for the plant spirits.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Methodology -->
+        <div class="max-w-6xl mx-auto mb-12">
+            <div class="consciousness-card rounded-lg p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center hieroglyph">
+                    <i class="fas fa-scroll mr-2"></i>
+                    Sacred Methodology
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-bold mb-3 text-gold">Ancient Wisdom Meets Modern Science</h4>
+                        <p class="mb-4">Our dosage calculations honor the pioneering work of indigenous medicine carriers like María Sabina, who first introduced Western researchers to sacred psilocybin ceremonies in 1955.</p>
+                        <p class="mb-4">Combined with Johns Hopkins research on mystical experiences, we've developed body-weight adjusted protocols that respect both traditional wisdom and scientific rigor.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold mb-3 text-gold">Ma'at Principles in Practice</h4>
+                        <p class="mb-4">Following the ancient Egyptian principles of Ma'at - Truth, Justice, and Divine Order - our calculator provides honest, safe guidance for consciousness exploration.</p>
+                        <p class="mb-4">Each dose level is calibrated to your unique physiology while honoring the sacred nature of these plant allies.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-4 bg-opacity-10 bg-gold rounded-lg">
+                    <p class="text-center italic">
+                        "The spirit of the mushroom guides us toward truth, healing, and cosmic consciousness" 
+                        - Per Ankh Teachings
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal Disclaimer -->
+        <div class="max-w-6xl mx-auto mb-8">
+            <div class="bg-opacity-20 bg-gray-800 rounded-lg p-6 text-center">
+                <h4 class="text-lg font-bold mb-3 text-amber-300">
+                    <i class="fas fa-gavel mr-2"></i>Spiritual & Educational Purposes Only
+                </h4>
+                <p class="text-sm opacity-75 mb-4">
+                    This calculator is provided for educational and spiritual purposes within the context of Per Ankh's 
+                    religious practices. We are not responsible for your use of this information. Individual experiences 
+                    may vary significantly based on physiology, set, setting, and spiritual preparation.
+                </p>
+                <p class="text-sm opacity-75">
+                    Please consult with qualified healthcare providers, especially if you have medical conditions or 
+                    take medications. Always prioritize safety and approach these sacred plants with reverence and respect.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center py-6">
+            <div class="flex items-center justify-center mb-4">
+                <span class="ankh-symbol text-3xl mx-4">☥</span>
+                <p class="text-lg hieroglyph">Per Ankh - Sacred Consciousness Research</p>
+                <span class="ankh-symbol text-3xl mx-4">☥</span>
+            </div>
+            <p class="text-sm opacity-75">
+                Non-denominational • Interfaith • Supporting Safe Access to Sacred Plants
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Dosage calculation engine
+        class SacredDosageCalculator {
+            constructor() {
+                this.baselineWeight = 100; // 100 lbs baseline
+                this.initializeEventListeners();
+                this.calculateDosages();
+            }
+
+            initializeEventListeners() {
+                document.getElementById('weight').addEventListener('input', () => this.calculateDosages());
+                document.getElementById('weightUnit').addEventListener('change', () => this.calculateDosages());
+                document.getElementById('mushroomType').addEventListener('change', () => this.calculateDosages());
+                document.getElementById('sensitivity').addEventListener('input', () => {
+                    document.getElementById('sensitivityValue').textContent = 
+                        document.getElementById('sensitivity').value + '%';
+                    this.calculateDosages();
+                });
+                document.getElementById('tolerance').addEventListener('change', () => this.calculateDosages());
+            }
+
+            getAdjustedWeight() {
+                let weight = parseFloat(document.getElementById('weight').value) || 150;
+                const unit = document.getElementById('weightUnit').value;
+                
+                if (unit === 'kg') {
+                    weight = weight * 2.20462; // Convert kg to lbs
+                }
+                
+                return weight;
+            }
+
+            getWeightMultiplier() {
+                const weight = this.getAdjustedWeight();
+                return weight / this.baselineWeight;
+            }
+
+            getSensitivityMultiplier() {
+                const sensitivity = parseInt(document.getElementById('sensitivity').value);
+                return sensitivity / 100;
+            }
+
+            getToleranceMultiplier() {
+                const tolerance = document.getElementById('tolerance').value;
+                const multipliers = {
+                    'none': 1.0,
+                    'low': 1.2,
+                    'medium': 1.5,
+                    'high': 2.0
+                };
+                return multipliers[tolerance] || 1.0;
+            }
+
+            calculateBaseDosage(baseMcg) {
+                const weightMultiplier = this.getWeightMultiplier();
+                const sensitivityMultiplier = this.getSensitivityMultiplier();
+                const toleranceMultiplier = this.getToleranceMultiplier();
+                
+                return Math.round(baseMcg * weightMultiplier * sensitivityMultiplier * toleranceMultiplier);
+            }
+
+            mcgToGrams(mcg, isLabTested = true) {
+                // Average psilocybin content in dried mushrooms: 0.5-2% (we use 1% for traditional)
+                // Lab tested allows for precise calculation
+                if (isLabTested) {
+                    return (mcg / 1000000 * 100).toFixed(3); // Assuming 1% psilocybin content for display
+                } else {
+                    // Traditional estimates based on typical potency ranges
+                    return (mcg / 5000).toFixed(2); // Rough estimate for traditional mushrooms
+                }
+            }
+
+            formatDosageRange(lowMcg, highMcg, isLabTested) {
+                const lowGrams = this.mcgToGrams(lowMcg, isLabTested);
+                const highGrams = this.mcgToGrams(highMcg, isLabTested);
+                
+                return {
+                    mcg: `${lowMcg.toLocaleString()} - ${highMcg.toLocaleString()} mcg`,
+                    grams: `${lowGrams} - ${highGrams} g`
+                };
+            }
+
+            calculateDosages() {
+                const isLabTested = document.getElementById('mushroomType').value === 'lab-tested';
+                const weight = this.getAdjustedWeight();
+                
+                // Base dosage ranges per 100 lbs (Church of Ambrosia methodology)
+                const doseLevels = [
+                    {
+                        name: 'Microdose',
+                        icon: 'fas fa-seed',
+                        color: 'text-green-400',
+                        borderColor: 'border-green-400',
+                        baseLow: 25,
+                        baseHigh: 999,
+                        description: 'Sub-perceptual enhancement'
+                    },
+                    {
+                        name: 'Perceivable',
+                        icon: 'fas fa-eye-dropper', 
+                        color: 'text-cyan-400',
+                        borderColor: 'border-cyan-400',
+                        baseLow: 1000,
+                        baseHigh: 4999,
+                        description: 'Gentle perceptual shifts'
+                    },
+                    {
+                        name: 'Intense',
+                        icon: 'fas fa-fire',
+                        color: 'text-yellow-400', 
+                        borderColor: 'border-yellow-400',
+                        baseLow: 5000,
+                        baseHigh: 9999,
+                        description: 'Significant consciousness expansion'
+                    },
+                    {
+                        name: 'Profound',
+                        icon: 'fas fa-om',
+                        color: 'text-orange-400',
+                        borderColor: 'border-orange-400', 
+                        baseLow: 10000,
+                        baseHigh: 17999,
+                        description: 'Deep introspective journey'
+                    },
+                    {
+                        name: 'Breakthrough',
+                        icon: 'fas fa-infinity',
+                        color: 'text-red-400',
+                        borderColor: 'border-red-400',
+                        baseLow: 18000,
+                        baseHigh: 25000,
+                        description: 'Transcendent spiritual experience'
+                    }
+                ];
+
+                const resultsContainer = document.getElementById('dosageResults');
+                resultsContainer.innerHTML = '';
+
+                doseLevels.forEach(level => {
+                    const lowDose = this.calculateBaseDosage(level.baseLow);
+                    const highDose = this.calculateBaseDosage(level.baseHigh);
+                    const dosageRange = this.formatDosageRange(lowDose, highDose, isLabTested);
+
+                    const doseCard = document.createElement('div');
+                    doseCard.className = `dose-level ${level.name.toLowerCase()} rounded-lg p-4 border-l-4 ${level.borderColor}`;
+                    
+                    doseCard.innerHTML = `
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-lg font-bold ${level.color}">
+                                <i class="${level.icon} mr-2"></i>${level.name}
+                            </h4>
+                            <span class="ankh-symbol text-sm">☥</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+                            <div class="text-sm">
+                                <strong>Pure Psilocybin:</strong><br>
+                                ${dosageRange.mcg}
+                            </div>
+                            <div class="text-sm">
+                                <strong>${isLabTested ? 'Lab-Tested' : 'Traditional'} Mushrooms:</strong><br>
+                                ${dosageRange.grams}
+                                ${!isLabTested ? '<br><small class="opacity-75">(Estimate only)</small>' : ''}
+                            </div>
+                        </div>
+                        <p class="text-xs opacity-75 italic">${level.description}</p>
+                    `;
+
+                    resultsContainer.appendChild(doseCard);
+                });
+
+                // Add weight-specific note
+                const noteDiv = document.createElement('div');
+                noteDiv.className = 'mt-6 p-4 bg-opacity-10 bg-gold rounded-lg text-center';
+                noteDiv.innerHTML = `
+                    <p class="text-sm">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Calculations based on ${weight.toFixed(1)} lbs body weight
+                        ${document.getElementById('sensitivity').value !== '100' ? 
+                            ` with ${document.getElementById('sensitivity').value}% sensitivity adjustment` : ''}
+                        ${document.getElementById('tolerance').value !== 'none' ? 
+                            ` and ${document.getElementById('tolerance').value} tolerance` : ''}
+                    </p>
+                `;
+                resultsContainer.appendChild(noteDiv);
+            }
+        }
+
+        // Initialize calculator when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new SacredDosageCalculator();
+        });
+
+        // Add some interactive animations
+        document.querySelectorAll('.consciousness-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.boxShadow = '0 10px 25px rgba(212, 175, 55, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

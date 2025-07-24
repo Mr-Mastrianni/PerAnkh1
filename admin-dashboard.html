@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Per Ankh Entheogenic Church</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-gold: #B8860B;
+            --dark-purple: #2D1B69;
+            --cosmic-blue: #0F0F23;
+            --matte-black: #0A0A0A;
+            --steel-gray: #1C1C1C;
+            --ethereal-white: #F8F8FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-logo .ankh {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .admin-logo h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .admin-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(45, 27, 105, 0.3);
+            border-radius: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--matte-black);
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-card {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
+            transition: left 0.6s ease;
+        }
+
+        .dashboard-card:hover::before {
+            left: 100%;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            width: 50px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+
+        .card-description {
+            color: rgba(248, 248, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: rgba(45, 27, 105, 0.6);
+            color: var(--ethereal-white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(45, 27, 105, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(248, 248, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .recent-activity {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-text {
+            color: var(--ethereal-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-time {
+            color: rgba(248, 248, 255, 0.5);
+            font-size: 0.8rem;
+        }
+
+        .quick-actions {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+        }
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            border: none;
+            border-radius: 50%;
+            color: var(--matte-black);
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 1rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .admin-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .protected-content {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .protected-label {
+            color: #fca5a5;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="admin-logo">
+                <div class="ankh">☥</div>
+                <h1>Per Ankh Admin</h1>
+            </div>
+            <nav class="admin-nav">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">A</div>
+                    <span id="userName">Admin</span>
+                    <span id="userRole" class="text-sm opacity-70">(Super Admin)</span>
+                </div>
+                <button class="logout-btn" onclick="adminAuth.logout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">24</div>
+                <div class="stat-label">Active Pages</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">156</div>
+                <div class="stat-label">Site Visitors Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Admin Sessions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Content Updates</div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Content Management -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-edit"></i></div>
+                    <div class="card-title">Content Management</div>
+                </div>
+                <div class="card-description">
+                    Manage all website content, pages, and sacred teachings. Edit text, update images, and maintain the spiritual knowledge base.
+                </div>
+                <div class="protected-content">
+                    <div class="protected-label">Admin Only Content</div>
+                    <p>This section contains sensitive content management tools that are only accessible to authenticated administrators.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="website.html" class="action-btn">Edit Main Site</a>
+                    <button class="action-btn secondary" onclick="showContentEditor()">Content Editor</button>
+                </div>
+            </div>
+
+            <!-- User Management -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <div class="card-title">User Management</div>
+                </div>
+                <div class="card-description">
+                    Manage admin users, roles, and permissions. Control access to different sections of the sacred portal.
+                </div>
+                <div class="protected-content">
+                    <div class="protected-label">Restricted Access</div>
+                    <p>User management functions are restricted to super administrators only.</p>
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn" onclick="showUserManager()">Manage Users</button>
+                    <button class="action-btn secondary" onclick="showPermissions()">Permissions</button>
+                </div>
+            </div>
+
+            <!-- Sacred Teachings -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-book-open"></i></div>
+                    <div class="card-title">Sacred Teachings</div>
+                </div>
+                <div class="card-description">
+                    Manage protocols, crystal technology teachings, and women's empowerment content. Update spiritual guidance materials.
+                </div>
+                <div class="card-actions">
+                    <a href="protocols.html" class="action-btn">Edit Protocols</a>
+                    <a href="crystaltech.html" class="action-btn secondary">Crystal Tech</a>
+                    <a href="women'sempowerment.html" class="action-btn secondary">Women's Circle</a>
+                </div>
+            </div>
+
+            <!-- Community Management -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
+                    <div class="card-title">Community Management</div>
+                </div>
+                <div class="card-description">
+                    Oversee community partnerships, outreach programs, and member relationships within the sacred community.
+                </div>
+                <div class="card-actions">
+                    <a href="communitypartnership.html" class="action-btn">Partnerships</a>
+                    <a href="urbanyouthoutreach.html" class="action-btn secondary">Youth Outreach</a>
+                </div>
+            </div>
+
+            <!-- Digital Assets -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-coins"></i></div>
+                    <div class="card-title">Digital Assets</div>
+                </div>
+                <div class="card-description">
+                    Manage NFT ecosystem, digital tools, and blockchain-based spiritual assets for the community.
+                </div>
+                <div class="card-actions">
+                    <a href="nft.html" class="action-btn">NFT Management</a>
+                    <a href="calculator.html" class="action-btn secondary">Tools</a>
+                </div>
+            </div>
+
+            <!-- Analytics & Reports -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="card-title">Analytics & Reports</div>
+                </div>
+                <div class="card-description">
+                    View site analytics, user engagement metrics, and generate reports on community growth and content performance.
+                </div>
+                <div class="protected-content">
+                    <div class="protected-label">Sensitive Data</div>
+                    <p>Analytics data contains sensitive user information and site metrics.</p>
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn" onclick="showAnalytics()">View Analytics</button>
+                    <button class="action-btn secondary" onclick="generateReport()">Generate Report</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="recent-activity">
+            <div class="activity-header">
+                <div class="card-icon"><i class="fas fa-history"></i></div>
+                <div class="card-title">Recent Activity</div>
+            </div>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="activity-icon"><i class="fas fa-edit"></i></div>
+                    <div class="activity-content">
+                        <div class="activity-text">Updated Women's Empowerment content</div>
+                        <div class="activity-time">2 hours ago</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="activity-content">
+                        <div class="activity-text">New admin user 'temple_keeper' created</div>
+                        <div class="activity-time">5 hours ago</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon"><i class="fas fa-upload"></i></div>
+                    <div class="activity-content">
+                        <div class="activity-text">Crystal Technology protocols updated</div>
+                        <div class="activity-time">1 day ago</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="activity-content">
+                        <div class="activity-text">Security settings updated</div>
+                        <div class="activity-time">2 days ago</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Quick Actions FAB -->
+    <div class="quick-actions">
+        <button class="fab" onclick="showQuickActions()" title="Quick Actions">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <script>
+        // Admin Authentication and Dashboard Management
+        class AdminDashboard {
+            constructor() {
+                this.initializeDashboard();
+                this.loadUserInfo();
+            }
+
+            initializeDashboard() {
+                // Check authentication
+                if (!this.isAuthenticated()) {
+                    window.location.href = 'admin-login.html';
+                    return;
+                }
+
+                // Initialize dashboard features
+                this.updateStats();
+                this.loadRecentActivity();
+            }
+
+            isAuthenticated() {
+                const session = localStorage.getItem('perankh_admin_session');
+                const active = sessionStorage.getItem('perankh_admin_active');
+                
+                if (!session || !active) return false;
+
+                try {
+                    const sessionData = JSON.parse(session);
+                    const loginTime = new Date(sessionData.loginTime);
+                    const now = new Date();
+                    const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+
+                    return hoursDiff < 8; // 8-hour session timeout
+                } catch (error) {
+                    return false;
+                }
+            }
+
+            loadUserInfo() {
+                try {
+                    const session = localStorage.getItem('perankh_admin_session');
+                    if (session) {
+                        const sessionData = JSON.parse(session);
+                        document.getElementById('userName').textContent = sessionData.username;
+                        document.getElementById('userRole').textContent = `(${this.formatRole(sessionData.role)})`;
+                        document.getElementById('userAvatar').textContent = sessionData.username.charAt(0).toUpperCase();
+                    }
+                } catch (error) {
+                    console.error('Error loading user info:', error);
+                }
+            }
+
+            formatRole(role) {
+                const roleMap = {
+                    'super_admin': 'Super Admin',
+                    'admin': 'Admin',
+                    'moderator': 'Moderator',
+                    'content_manager': 'Content Manager'
+                };
+                return roleMap[role] || 'Admin';
+            }
+
+            updateStats() {
+                // Simulate real-time stats updates
+                setInterval(() => {
+                    const visitorCount = document.querySelector('.stat-card:nth-child(2) .stat-number');
+                    if (visitorCount) {
+                        const current = parseInt(visitorCount.textContent);
+                        visitorCount.textContent = current + Math.floor(Math.random() * 3);
+                    }
+                }, 30000); // Update every 30 seconds
+            }
+
+            loadRecentActivity() {
+                // This would typically load from a server
+                console.log('Recent activity loaded');
+            }
+
+            logout() {
+                // Clear session data
+                localStorage.removeItem('perankh_admin_session');
+                sessionStorage.removeItem('perankh_admin_active');
+                
+                // Redirect to login
+                window.location.href = 'admin-login.html';
+            }
+        }
+
+        // Dashboard Functions
+        function showContentEditor() {
+            alert('Content Editor would open here. This would be a rich text editor for managing site content.');
+        }
+
+        function showUserManager() {
+            alert('User Management panel would open here. This would allow creating/editing admin users.');
+        }
+
+        function showPermissions() {
+            alert('Permissions panel would open here. This would manage role-based access control.');
+        }
+
+        function showAnalytics() {
+            alert('Analytics dashboard would open here. This would show detailed site metrics and user behavior.');
+        }
+
+        function generateReport() {
+            alert('Report generator would open here. This would create downloadable reports.');
+        }
+
+        function showQuickActions() {
+            const actions = [
+                'Create New Page',
+                'Upload Media',
+                'Send Notification',
+                'Backup Site',
+                'View Logs'
+            ];
+            
+            const action = prompt('Quick Actions:\n' + actions.map((a, i) => `${i + 1}. ${a}`).join('\n') + '\n\nEnter number:');
+            
+            if (action && action >= 1 && action <= actions.length) {
+                alert(`${actions[action - 1]} would be executed here.`);
+            }
+        }
+
+        // Initialize dashboard
+        const adminAuth = new AdminDashboard();
+
+        // Auto-logout on tab close/refresh
+        window.addEventListener('beforeunload', () => {
+            // Keep session but mark as inactive
+            sessionStorage.removeItem('perankh_admin_active');
+        });
+
+        // Re-activate session when tab becomes visible
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && adminAuth.isAuthenticated()) {
+                sessionStorage.setItem('perankh_admin_active', 'true');
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key) {
+                    case 'l':
+                        e.preventDefault();
+                        adminAuth.logout();
+                        break;
+                    case 'h':
+                        e.preventDefault();
+                        window.location.href = 'website.html';
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

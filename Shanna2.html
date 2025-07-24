@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanna Ciera Marie - Psychedelic Consciousness Therapist & Sacred Healer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --per-ankh-gold: #DAA520;
+            --per-ankh-green: #2D5016;
+            --per-ankh-amber: #FFBF00;
+            --shanna-orange: #FF6B35;
+            --shanna-pink: #F72585;
+            --shanna-purple: #7209B7;
+            --psychedelic-cyan: #00F5FF;
+            --psychedelic-magenta: #FF00FF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(45deg, #000428, #004e92, #7209B7, #F72585, #FF6B35);
+            background-size: 400% 400%;
+            animation: psychedelicFlow 20s ease-in-out infinite;
+            overflow-x: hidden;
+        }
+
+        @keyframes psychedelicFlow {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-section {
+            background: radial-gradient(circle at 30% 70%, rgba(114, 9, 183, 0.8) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(247, 37, 133, 0.6) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.4) 0%, transparent 70%);
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); filter: blur(0px); }
+            50% { transform: scale(1.02); filter: blur(1px); }
+        }
+
+        .sacred-geometry {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--per-ankh-gold);
+            border-radius: 50%;
+            animation: rotate360 15s linear infinite, pulse 4s ease-in-out infinite;
+        }
+
+        .sacred-geometry:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            border-color: var(--shanna-pink);
+            animation-duration: 20s, 6s;
+            animation-delay: 2s;
+        }
+
+        .sacred-geometry:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            border-color: var(--psychedelic-cyan);
+            animation-duration: 10s, 3s;
+            animation-delay: 4s;
+        }
+
+        @keyframes rotate360 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(even) {
+            animation-direction: reverse;
+            animation-duration: 8s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(90deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+            75% { transform: translateY(-30px) rotate(270deg); }
+        }
+
+        .mandala-breathing {
+            animation: mandalaBreath 12s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px var(--per-ankh-gold));
+        }
+
+        @keyframes mandalaBreath {
+            0%, 100% { transform: scale(1) rotate(0deg); filter: hue-rotate(0deg) drop-shadow(0 0 20px var(--per-ankh-gold)); }
+            25% { transform: scale(1.1) rotate(90deg); filter: hue-rotate(90deg) drop-shadow(0 0 30px var(--shanna-pink)); }
+            50% { transform: scale(1.2) rotate(180deg); filter: hue-rotate(180deg) drop-shadow(0 0 40px var(--psychedelic-cyan)); }
+            75% { transform: scale(1.1) rotate(270deg); filter: hue-rotate(270deg) drop-shadow(0 0 30px var(--shanna-purple)); }
+        }
+
+        .consciousness-card {
+            background: linear-gradient(135deg, rgba(114, 9, 183, 0.1), rgba(247, 37, 133, 0.1), rgba(255, 107, 53, 0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+            animation: cardPulse 8s ease-in-out infinite;
+        }
+
+        .consciousness-card:hover {
+            transform: scale(1.05) rotateY(10deg);
+            box-shadow: 0 20px 40px rgba(247, 37, 133, 0.3);
+        }
+
+        @keyframes cardPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(114, 9, 183, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(247, 37, 133, 0.5); }
+        }
+
+        .psychedelic-text {
+            background: linear-gradient(45deg, var(--shanna-orange), var(--shanna-pink), var(--shanna-purple), var(--psychedelic-cyan));
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textFlow 6s ease-in-out infinite;
+        }
+
+        @keyframes textFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .ankh-symbol {
+            font-size: 3rem;
+            color: var(--per-ankh-gold);
+            text-shadow: 0 0 20px var(--per-ankh-gold);
+            animation: ankh-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes ankh-glow {
+            0%, 100% { text-shadow: 0 0 20px var(--per-ankh-gold); transform: scale(1); }
+            50% { text-shadow: 0 0 40px var(--per-ankh-gold), 0 0 60px var(--per-ankh-amber); transform: scale(1.1); }
+        }
+
+        .consciousness-orb {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--psychedelic-cyan), var(--shanna-purple));
+            position: absolute;
+            animation: orb-drift 15s linear infinite;
+            box-shadow: 0 0 30px var(--psychedelic-cyan);
+        }
+
+        @keyframes orb-drift {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(100px) translateY(-50px); }
+            50% { transform: translateX(200px) translateY(0); }
+            75% { transform: translateX(100px) translateY(50px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        .service-mandala {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--shanna-orange), var(--shanna-pink), var(--shanna-purple), var(--psychedelic-cyan), var(--per-ankh-gold), var(--shanna-orange));
+            animation: mandala-spin 20s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes mandala-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .inner-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .morphing-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            background: 
+                radial-gradient(circle at 20% 20%, var(--shanna-pink) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--shanna-purple) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, var(--psychedelic-cyan) 0%, transparent 50%);
+            animation: morphing 25s ease-in-out infinite;
+        }
+
+        @keyframes morphing {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            33% { transform: scale(1.2) rotate(120deg); }
+            66% { transform: scale(0.8) rotate(240deg); }
+        }
+
+        .neural-network {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, var(--per-ankh-gold) 1px, transparent 1px),
+                linear-gradient(180deg, var(--per-ankh-gold) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            animation: neural-pulse 10s ease-in-out infinite;
+        }
+
+        @keyframes neural-pulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(114, 9, 183, 0.3);
+        }
+
+        .contact-glow {
+            background: linear-gradient(45deg, var(--shanna-orange), var(--shanna-pink));
+            animation: contact-pulse 3s ease-in-out infinite;
+            box-shadow: 0 0 30px var(--shanna-pink);
+        }
+
+        @keyframes contact-pulse {
+            0%, 100% { box-shadow: 0 0 30px var(--shanna-pink); }
+            50% { box-shadow: 0 0 50px var(--shanna-orange), 0 0 70px var(--shanna-pink); }
+        }
+
+        .consciousness-flow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .consciousness-flow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: flow 3s ease-in-out infinite;
+        }
+
+        @keyframes flow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Morphing Background -->
+    <div class="morphing-bg"></div>
+    
+    <!-- Neural Network Overlay -->
+    <div class="neural-network"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center justify-center relative py-20">
+        <!-- Sacred Geometry Elements -->
+        <div class="sacred-geometry" style="top: 10%; left: 10%;"></div>
+        <div class="sacred-geometry" style="top: 20%; right: 15%;"></div>
+        <div class="sacred-geometry" style="bottom: 15%; left: 20%;"></div>
+        
+        <!-- Consciousness Orbs -->
+        <div class="consciousness-orb" style="top: 30%; left: 5%;"></div>
+        <div class="consciousness-orb" style="top: 60%; right: 10%;" style="animation-delay: 3s;"></div>
+        
+        <!-- Floating Mystical Elements -->
+        <div class="floating-element ankh-symbol" style="top: 40%; left: 8%;">☥</div>
+        <div class="floating-element text-4xl" style="top: 70%; right: 12%; color: var(--psychedelic-cyan);">🍄</div>
+        <div class="floating-element text-3xl" style="top: 25%; right: 25%; color: var(--per-ankh-gold);">🌿</div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <!-- Hero Image -->
+            <div class="mandala-breathing mb-12">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/fae74681-435f-4e4d-8349-8685fe54f2cb" 
+                     alt="Shanna Ciera Marie - Consciousness Guide" 
+                     class="w-96 h-64 object-cover rounded-3xl mx-auto shadow-2xl">
+            </div>
+
+            <div class="consciousness-flow">
+                <h1 class="text-7xl md:text-8xl font-bold mb-6 psychedelic-text font-serif">
+                    Shanna Ciera Marie
+                </h1>
+            </div>
+            
+            <div class="ankh-symbol mb-8">☥</div>
+            
+            <h2 class="text-3xl md:text-4xl mb-8 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600">
+                Licensed Psychedelic Therapist & Consciousness Guide
+            </h2>
+            
+            <p class="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed">
+                🍄 Holistic Mental Health Therapy • 🧠 Ketamine-Assisted Psychotherapy • ⚡ Trauma-Informed Healing
+                <br>
+                <span class="psychedelic-text font-semibold">12+ Years Experience • Per Ankh Consciousness Technology Pioneer</span>
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-6 mb-16">
+                <button class="contact-glow px-8 py-4 rounded-full text-white font-bold text-lg hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-calendar-alt mr-2"></i>Book Session
+                </button>
+                <button class="border-2 border-white px-8 py-4 rounded-full text-white font-bold text-lg hover:bg-white hover:text-purple-900 transition-all duration-300">
+                    <i class="fas fa-phone mr-2"></i>(313) 409-8073
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 consciousness-flow">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 psychedelic-text">
+                    Sacred Healing Services
+                </h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Integrating ancient wisdom with modern psychedelic therapy for profound consciousness expansion and healing
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ketamine-Assisted Therapy -->
+                <div class="consciousness-card p-8 rounded-3xl">
+                    <div class="service-mandala">
+                        <div class="inner-circle">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 psychedelic-text">Ketamine-Assisted Therapy</h3>
+                    <p class="text-gray-200 mb-6">Clinical psychedelic therapy combining medical ketamine with sacred ceremony protocols for profound healing and transformation.</p>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Licensed LPC with 4+ years psychedelic specialization</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Mind-body-spirit holistic approach</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Sacred integration protocols</li>
+                    </ul>
+                </div>
+
+                <!-- Trauma-Informed Healing -->
+                <div class="consciousness-card p-8 rounded-3xl">
+                    <div class="service-mandala">
+                        <div class="inner-circle">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 psychedelic-text">Trauma-Informed Healing</h3>
+                    <p class="text-gray-200 mb-6">Culturally grounded trauma healing specializing in Black healing & holistic wellness through consciousness expansion.</p>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>12+ years mental health experience</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>BIPOC-focused healing practices</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Culturally conscious therapy</li>
+                    </ul>
+                </div>
+
+                <!-- Integration Support -->
+                <div class="consciousness-card p-8 rounded-3xl">
+                    <div class="service-mandala">
+                        <div class="inner-circle">
+                            <i class="fas fa-yin-yang"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 psychedelic-text">Integration Support</h3>
+                    <p class="text-gray-200 mb-6">Professional clinical support for Per Ankh ceremony participants with individual and group integration sessions.</p>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Post-ceremony consciousness stabilization</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Clinical safety oversight</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Sacred wisdom integration</li>
+                    </ul>
+                </div>
+
+                <!-- Women's Healing Circles -->
+                <div class="consciousness-card p-8 rounded-3xl">
+                    <div class="service-mandala">
+                        <div class="inner-circle">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 psychedelic-text">Women's Healing Circles</h3>
+                    <p class="text-gray-200 mb-6">Sacred sisterhood circles combining group therapy with consciousness expansion for collective healing and empowerment.</p>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Women-focused healing spaces</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Sacred community building</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Collective consciousness expansion</li>
+                    </ul>
+                </div>
+
+                <!-- Mobile Retreat Services -->
+                <div class="consciousness-card p-8 rounded-3xl">
+                    <div class="service-mandala">
+                        <div class="inner-circle">
+                            <i class="fas fa-campground"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 psychedelic-text">Mobile Retreat Services</h3>
+                    <p class="text-gray-200 mb-6">Pop-up therapeutic psychedelic retreats bringing consciousness healing directly to communities in comfortable, sacred settings.</p>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Flexible, personalized delivery</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Outdoor healing experiences</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Community consciousness expansion</li>
+                    </ul>
+                </div>
+
+                <!-- Training & Education -->
+                <div class="consciousness-card p-8 rounded-3xl">
+                    <div class="service-mandala">
+                        <div class="inner-circle">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 psychedelic-text">Training & Education</h3>
+                    <p class="text-gray-200 mb-6">Trauma-informed guide training and professional education for consciousness facilitators and psychedelic therapists.</p>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Professional certification programs</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Sitter & guide training</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Trauma-informed protocols</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Per Ankh Integration Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="consciousness-card p-12 rounded-3xl text-center">
+                <div class="flex justify-center mb-8">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/87557894-cbb8-4993-bbad-835d3045cbaf" 
+                         alt="Per Ankh Consciousness Technology" 
+                         class="w-32 h-32 object-cover rounded-full mandala-breathing">
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 psychedelic-text">
+                    Per Ankh Consciousness Technology Pioneer
+                </h2>
+                
+                <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    As Per Ankh's resident licensed psychedelic therapist, Shanna bridges clinical excellence with sacred consciousness expansion. She represents the revolutionary integration of medical psychedelic therapy within an entheogenic church, pioneering the future of consciousness healing.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mt-12">
+                    <div class="consciousness-flow">
+                        <h3 class="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500">
+                            🔮 Consciousness Technology Integration
+                        </h3>
+                        <ul class="text-left space-y-3 text-gray-200">
+                            <li><i class="fas fa-leaf text-green-400 mr-2"></i>Sacred plant medicine ceremony support</li>
+                            <li><i class="fas fa-brain text-purple-400 mr-2"></i>Bio-neural consciousness enhancement</li>
+                            <li><i class="fas fa-dna text-cyan-400 mr-2"></i>Ancient wisdom meets modern therapy</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="consciousness-flow">
+                        <h3 class="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+                            ⚡ Revolutionary Healing Approach
+                        </h3>
+                        <ul class="text-left space-y-3 text-gray-200">
+                            <li><i class="fas fa-ankh text-yellow-400 mr-2"></i>First licensed therapist in consciousness church</li>
+                            <li><i class="fas fa-heart text-pink-400 mr-2"></i>Clinical safety with sacred transformation</li>
+                            <li><i class="fas fa-users text-green-400 mr-2"></i>Community consciousness expansion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials & Experience -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="consciousness-flow text-center mb-16">
+                <h2 class="text-5xl font-bold mb-6 psychedelic-text">Professional Excellence</h2>
+                <p class="text-xl text-gray-200">Licensed expertise meets consciousness innovation</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="consciousness-card p-6 rounded-3xl text-center">
+                    <div class="text-4xl mb-4 psychedelic-text">🎓</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Licensed LPC</h3>
+                    <p class="text-gray-300">Michigan License #6401013761</p>
+                </div>
+                
+                <div class="consciousness-card p-6 rounded-3xl text-center">
+                    <div class="text-4xl mb-4 psychedelic-text">🧠</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">12+ Years</h3>
+                    <p class="text-gray-300">Mental Health Experience</p>
+                </div>
+                
+                <div class="consciousness-card p-6 rounded-3xl text-center">
+                    <div class="text-4xl mb-4 psychedelic-text">🍄</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">4+ Years</h3>
+                    <p class="text-gray-300">Psychedelic Specialization</p>
+                </div>
+                
+                <div class="consciousness-card p-6 rounded-3xl text-center">
+                    <div class="text-4xl mb-4 psychedelic-text">🌍</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">BIPOC Focus</h3>
+                    <p class="text-gray-300">Culturally Conscious Healing</p>
+                </div>
+            </div>
+
+            <div class="mt-16 consciousness-card p-8 rounded-3xl">
+                <h3 class="text-3xl font-bold mb-6 psychedelic-text text-center">Education & Training</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <i class="fas fa-university text-4xl text-yellow-400 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2 text-white">Walden University</h4>
+                        <p class="text-gray-300">Mental Health Counseling</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-graduation-cap text-4xl text-pink-400 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2 text-white">University of Michigan</h4>
+                        <p class="text-gray-300">Psychology Studies</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-certificate text-4xl text-purple-400 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2 text-white">Psychedelic Training</h4>
+                        <p class="text-gray-300">Integrative Psychiatry Institute</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="consciousness-flow text-center mb-16">
+                <h2 class="text-5xl font-bold mb-6 psychedelic-text">Transformation Stories</h2>
+                <p class="text-xl text-gray-200">Real healing, real consciousness expansion</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card p-8 rounded-3xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            M
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Maria S.</h4>
+                            <p class="text-gray-300 text-sm">Trauma Survivor</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-200 italic">"Shanna's approach to healing trauma through consciousness work changed my life. Her integration of clinical therapy with sacred practices helped me find peace I never thought possible."</p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card p-8 rounded-3xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            J
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Jennifer R.</h4>
+                            <p class="text-gray-300 text-sm">Women's Circle Participant</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-200 italic">"The women's healing circles created such a powerful space for growth. Shanna holds space with incredible wisdom and compassion, allowing deep healing to unfold naturally."</p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card p-8 rounded-3xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-green-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            D
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">David L.</h4>
+                            <p class="text-gray-300 text-sm">Ketamine Therapy Client</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-200 italic">"The ketamine-assisted therapy sessions with Shanna were transformative. Her ability to blend medical expertise with spiritual wisdom created the perfect container for my healing journey."</p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Booking -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="consciousness-card p-12 rounded-3xl text-center max-w-4xl mx-auto">
+                <div class="ankh-symbol mb-8">☥</div>
+                
+                <h2 class="text-5xl font-bold mb-6 psychedelic-text">
+                    Begin Your Consciousness Journey
+                </h2>
+                
+                <p class="text-xl text-gray-200 mb-12 max-w-2xl mx-auto">
+                    Ready to experience profound healing through the integration of clinical excellence and consciousness expansion? Let's explore how psychedelic therapy can transform your life.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="consciousness-flow">
+                        <h3 class="text-2xl font-bold mb-4 psychedelic-text">
+                            <i class="fas fa-phone mr-2"></i>Contact Information
+                        </h3>
+                        <div class="space-y-4 text-gray-200">
+                            <p><strong>Phone:</strong> (313) 409-8073</p>
+                            <p><strong>Email:</strong> thesourcecmc@gmail.com</p>
+                            <p><strong>Website:</strong> thesourcecounselingcmc.com</p>
+                            <p><strong>Location:</strong> Detroit, MI (In-person & Teletherapy)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="consciousness-flow">
+                        <h3 class="text-2xl font-bold mb-4 psychedelic-text">
+                            <i class="fas fa-heart mr-2"></i>Services Available
+                        </h3>
+                        <div class="space-y-2 text-gray-200">
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Ketamine-Assisted Psychotherapy</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Individual Therapy Sessions</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Integration Support</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Women's Healing Circles</p>
+                            <p><i class="fas fa-check text-green-400 mr-2"></i>Mobile Retreat Services</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-6">
+                    <button class="contact-glow px-8 py-4 rounded-full text-white font-bold text-xl hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-calendar-alt mr-2"></i>Schedule Consultation
+                    </button>
+                    <button class="border-2 border-white px-8 py-4 rounded-full text-white font-bold text-xl hover:bg-white hover:text-purple-900 transition-all duration-300">
+                        <i class="fas fa-envelope mr-2"></i>Send Message
+                    </button>
+                </div>
+
+                <div class="mt-12 p-6 bg-gradient-to-r from-purple-800 to-pink-800 rounded-3xl">
+                    <h4 class="text-2xl font-bold mb-4 text-white">Insurance & Payment</h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-gray-200">
+                        <div>
+                            <p><strong>Accepted Insurance:</strong></p>
+                            <p>Aetna, Blue Cross, United, Anthem, Humana</p>
+                        </div>
+                        <div>
+                            <p><strong>Payment Options:</strong></p>
+                            <p>Cash, Credit Card, HSA/FSA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white border-opacity-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="ankh-symbol mb-6">☥</div>
+            
+            <h3 class="text-2xl font-bold mb-4 psychedelic-text">
+                Shanna Ciera Marie, LPC
+            </h3>
+            
+            <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+                Licensed Psychedelic Therapist & Consciousness Guide • Per Ankh Entheogenic Church
+                <br>
+                Bridging clinical excellence with sacred consciousness expansion
+            </p>
+            
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="tel:313-409-8073" class="text-white hover:text-pink-400 transition-colors">
+                    <i class="fas fa-phone text-2xl"></i>
+                </a>
+                <a href="mailto:thesourcecmc@gmail.com" class="text-white hover:text-purple-400 transition-colors">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </a>
+                <a href="https://thesourcecounselingcmc.com" class="text-white hover:text-cyan-400 transition-colors">
+                    <i class="fas fa-globe text-2xl"></i>
+                </a>
+                <a href="https://perankh1.org" class="text-white hover:text-yellow-400 transition-colors">
+                    <i class="fas fa-ankh text-2xl"></i>
+                </a>
+            </div>
+            
+            <p class="text-gray-400 text-sm">
+                © 2025 Shanna Ciera Marie, LPC. Licensed in Michigan #6401013761<br>
+                Culturally grounded. Spiritually centered. Clinically informed.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive consciousness orbs
+        document.addEventListener('DOMContentLoaded', function() {
+            const orbs = document.querySelectorAll('.consciousness-orb');
+            
+            orbs.forEach(orb => {
+                orb.addEventListener('mouseover', function() {
+                    this.style.animation = 'orb-drift 3s linear infinite, pulse 2s ease-in-out infinite';
+                    this.style.transform = 'scale(1.5)';
+                    this.style.boxShadow = '0 0 50px var(--psychedelic-cyan), 0 0 80px var(--shanna-pink)';
+                });
+                
+                orb.addEventListener('mouseout', function() {
+                    this.style.animation = 'orb-drift 15s linear infinite';
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = '0 0 30px var(--psychedelic-cyan)';
+                });
+            });
+        });
+
+        // Sacred geometry interaction
+        const geometryElements = document.querySelectorAll('.sacred-geometry');
+        geometryElements.forEach(element => {
+            element.addEventListener('click', function() {
+                this.style.animation = 'rotate360 2s ease-in-out, pulse 1s ease-in-out 3';
+                setTimeout(() => {
+                    this.style.animation = 'rotate360 15s linear infinite, pulse 4s ease-in-out infinite';
+                }, 3000);
+            });
+        });
+
+        // Consciousness flow effect on scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.consciousness-flow');
+            
+            parallax.forEach(element => {
+                const speed = 0.1;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Dynamic background morphing based on time
+        setInterval(function() {
+            const body = document.body;
+            const time = new Date().getSeconds();
+            const hue = (time * 6) % 360;
+            
+            body.style.filter = `hue-rotate(${hue}deg)`;
+        }, 1000);
+
+        // Contact button interactions
+        const contactButtons = document.querySelectorAll('.contact-glow');
+        contactButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Add consciousness expansion effect
+                this.style.animation = 'contact-pulse 0.5s ease-in-out';
+                
+                // Simulate booking action
+                alert('🔮 Consciousness journey initiated! Shanna will connect with you soon for your transformational healing experience. 🍄✨');
+            });
+        });
+    </script>
+</body>
+</html>

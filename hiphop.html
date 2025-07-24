@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Ankh Hip-Hop Healing Sessions | Urban Spiritual Content Framework</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --per-ankh-gold: #D4AF37;
+            --per-ankh-purple: #6B46C1;
+            --urban-neon: #00FFFF;
+            --urban-orange: #FF6B35;
+            --urban-pink: #FF10F0;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16213e;
+        }
+        
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+            color: #ffffff;
+        }
+        
+        .graffiti-header {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0px var(--per-ankh-gold), 6px 6px 10px rgba(0,0,0,0.8);
+            background: linear-gradient(45deg, var(--urban-neon), var(--urban-pink), var(--per-ankh-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .vinyl-bg {
+            background: radial-gradient(circle, #2a2a2a 30%, #1a1a1a 35%, #2a2a2a 40%, #1a1a1a 45%, #000 50%);
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .vinyl-bg::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--per-ankh-gold);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .neon-border {
+            border: 2px solid var(--urban-neon);
+            box-shadow: 0 0 10px var(--urban-neon), inset 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+        
+        .sacred-geometry {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(107, 70, 193, 0.1) 0%, transparent 50%);
+        }
+        
+        .beat-pulse {
+            animation: beatPulse 2s infinite ease-in-out;
+        }
+        
+        @keyframes beatPulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        
+        .ankh-symbol {
+            filter: drop-shadow(0 0 10px var(--per-ankh-gold));
+        }
+        
+        .session-card {
+            background: linear-gradient(135deg, rgba(107, 70, 193, 0.2) 0%, rgba(26, 26, 46, 0.8) 100%);
+            border-left: 4px solid var(--per-ankh-gold);
+            transition: all 0.3s ease;
+        }
+        
+        .session-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .playlist-item {
+            background: rgba(0, 255, 255, 0.1);
+            border-left: 3px solid var(--urban-neon);
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, rgba(255, 16, 240, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .mic-icon {
+            color: var(--per-ankh-gold);
+            filter: drop-shadow(0 0 8px var(--per-ankh-gold));
+        }
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent, var(--per-ankh-gold), var(--urban-neon), var(--per-ankh-purple), transparent);
+            height: 2px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto px-6 py-8 max-w-6xl">
+        
+        <!-- Header -->
+        <header class="text-center mb-16 sacred-geometry p-8 rounded-xl">
+            <div class="flex justify-center items-center mb-6">
+                <div class="vinyl-bg w-24 h-24 mr-6"></div>
+                <div class="ankh-symbol text-6xl">𓋹</div>
+                <div class="vinyl-bg w-24 h-24 ml-6"></div>
+            </div>
+            <h1 class="graffiti-header text-5xl md:text-7xl mb-4">HIP-HOP HEALING</h1>
+            <h2 class="graffiti-header text-3xl md:text-4xl mb-6">SESSIONS</h2>
+            <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                🎤 Revolutionary approach combining <span class="text-yellow-400">hip-hop culture</span>, 
+                <span class="text-purple-400">conscious rap</span>, and 
+                <span class="text-cyan-400">sacred plant medicine</span> for urban spiritual transformation 🔱
+            </p>
+            <div class="flex justify-center items-center mt-8 space-x-8">
+                <i class="fas fa-microphone mic-icon text-4xl beat-pulse"></i>
+                <span class="text-4xl">🍄</span>
+                <i class="fas fa-headphones text-4xl text-purple-400 beat-pulse"></i>
+                <span class="text-4xl">𓋹</span>
+                <i class="fas fa-music text-4xl text-cyan-400 beat-pulse"></i>
+            </div>
+        </header>
+
+        <div class="section-divider mb-12"></div>
+
+        <!-- Section 1: Hip-Hop Healing Philosophy -->
+        <section class="mb-16">
+            <h2 class="graffiti-header text-4xl mb-8 flex items-center">
+                <i class="fas fa-brain mr-4 text-purple-400"></i>
+                HIP-HOP HEALING PHILOSOPHY
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">
+                        🌍 Ancient Roots, Modern Beats
+                    </h3>
+                    <p class="mb-4 leading-relaxed">
+                        Hip-hop culture emerges from the same African spiritual traditions that gave birth to call-and-response worship, rhythmic trance states, and communal healing ceremonies. The cipher mirrors the sacred circle, the freestyle channels divine flow, and the beat connects us to ancestral drum rhythms.
+                    </p>
+                    <div class="quote-box p-4 rounded-lg">
+                        <p class="italic text-cyan-300">"When you're in the booth, you're in a temple. When you're spitting bars, you're speaking in tongues. Hip-hop is our modern griots carrying forward ancient wisdom."</p>
+                        <p class="text-right text-sm text-gray-400 mt-2">- Mama Ayana Iyi Adaptation</p>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-400">
+                        🎵 Rhythm as Sacred Technology
+                    </h3>
+                    <p class="mb-4 leading-relaxed">
+                        Scientific research reveals that hip-hop beats (typically 70-140 BPM) align with optimal brainwave states for meditation, creativity, and healing. The repetitive nature of loops creates trance-like states similar to traditional drumming ceremonies.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><span class="text-yellow-400 mr-2">🎯</span> <strong>70-90 BPM:</strong> Deep meditation, introspection</li>
+                        <li class="flex items-center"><span class="text-purple-400 mr-2">🎯</span> <strong>90-120 BPM:</strong> Flow state, creative expression</li>
+                        <li class="flex items-center"><span class="text-cyan-400 mr-2">🎯</span> <strong>120-140 BPM:</strong> Energy work, community healing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 session-card p-6 rounded-xl">
+                <h3 class="text-2xl font-bold mb-4 text-pink-400">
+                    🎤 Spiritual Hip-Hop Lineage
+                </h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <h4 class="text-xl font-bold text-yellow-400 mb-2">Wu-Tang Clan</h4>
+                        <p class="text-sm">Pioneered Eastern philosophy integration, chess as metaphor for life strategy, martial arts wisdom</p>
+                        <div class="quote-box p-3 rounded-lg mt-3">
+                            <p class="italic text-xs">"Cash Rules Everything Around Me" → Understanding material vs. spiritual wealth</p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xl font-bold text-purple-400 mb-2">Kendrick Lamar</h4>
+                        <p class="text-sm">DAMN. and To Pimp A Butterfly as spiritual journeys, addressing collective trauma and consciousness</p>
+                        <div class="quote-box p-3 rounded-lg mt-3">
+                            <p class="italic text-xs">"I went to war last night / With peace of mind" - The intersection of inner and outer battles</p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xl font-bold text-cyan-400 mb-2">J. Cole</h4>
+                        <p class="text-sm">KOD exploring addiction as spiritual disconnection, meditation retreats, mindful lifestyle choices</p>
+                        <div class="quote-box p-3 rounded-lg mt-3">
+                            <p class="italic text-xs">"Choose wisely" - Every decision as spiritual practice</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 session-card p-6 rounded-xl neon-border">
+                <h3 class="text-2xl font-bold mb-4 text-yellow-400">
+                    🍄 Psilocybin + Music Integration Protocol
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-bold mb-3 text-cyan-400">Microdose Guidelines (0.1-0.3g)</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center"><span class="text-yellow-400 mr-2">🎧</span> Enhanced audio perception and rhythm sensitivity</li>
+                            <li class="flex items-center"><span class="text-purple-400 mr-2">🎵</span> Improved flow state access during freestyle</li>
+                            <li class="flex items-center"><span class="text-cyan-400 mr-2">🎤</span> Reduced self-consciousness in vocal expression</li>
+                            <li class="flex items-center"><span class="text-pink-400 mr-2">💭</span> Increased lyrical creativity and metaphor generation</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-3 text-pink-400">Safety Protocols</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center"><span class="text-red-400 mr-2">⚠️</span> Always have experienced sitter present</li>
+                            <li class="flex items-center"><span class="text-yellow-400 mr-2">🏠</span> Controlled environment with prepared playlists</li>
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> Pre-session intention setting and post-session integration</li>
+                            <li class="flex items-center"><span class="text-blue-400 mr-2">🔒</span> Confidentiality agreements for all participants</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider mb-12"></div>
+
+        <!-- Section 2: Session Formats -->
+        <section class="mb-16">
+            <h2 class="graffiti-header text-4xl mb-8 flex items-center">
+                <i class="fas fa-compact-disc mr-4 text-cyan-400"></i>
+                SESSION FORMATS
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="session-card p-6 rounded-xl">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-users text-4xl text-yellow-400 mb-2"></i>
+                        <h3 class="text-xl font-bold text-yellow-400">Cipher Ceremonies</h3>
+                    </div>
+                    <p class="mb-4 text-sm leading-relaxed">Group healing sessions where participants form a circle, pass the mic, and share freestyle expressions while supported by live beats and plant medicine guidance.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center"><span class="text-green-400 mr-2">Duration:</span> 2-4 hours</div>
+                        <div class="flex items-center"><span class="text-blue-400 mr-2">Participants:</span> 6-12 people</div>
+                        <div class="flex items-center"><span class="text-purple-400 mr-2">Focus:</span> Community healing, collective expression</div>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-recording-vinyl text-4xl text-purple-400 mb-2"></i>
+                        <h3 class="text-xl font-bold text-purple-400">Studio Sanctuaries</h3>
+                    </div>
+                    <p class="mb-4 text-sm leading-relaxed">Recording sessions transformed into spiritual practice, where the booth becomes a confessional and the track becomes a healing testimony.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center"><span class="text-green-400 mr-2">Duration:</span> 4-8 hours</div>
+                        <div class="flex items-center"><span class="text-blue-400 mr-2">Participants:</span> 1-4 artists + producer</div>
+                        <div class="flex items-center"><span class="text-cyan-400 mr-2">Focus:</span> Individual healing, artistic therapy</div>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-water text-4xl text-cyan-400 mb-2"></i>
+                        <h3 class="text-xl font-bold text-cyan-400">Freestyle Flow States</h3>
+                    </div>
+                    <p class="mb-4 text-sm leading-relaxed">Improvisation sessions where participants tap into stream of consciousness, allowing subconscious wisdom to emerge through spontaneous lyrical expression.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center"><span class="text-green-400 mr-2">Duration:</span> 1-3 hours</div>
+                        <div class="flex items-center"><span class="text-blue-400 mr-2">Participants:</span> 3-8 people</div>
+                        <div class="flex items-center"><span class="text-pink-400 mr-2">Focus:</span> Consciousness expansion, creative breakthrough</div>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-om text-4xl text-pink-400 mb-2"></i>
+                        <h3 class="text-xl font-bold text-pink-400">Beat Meditation</h3>
+                    </div>
+                    <p class="mb-4 text-sm leading-relaxed">Mindfulness practice using instrumental hip-hop tracks as meditation anchors, focusing breath and consciousness on rhythmic patterns and basslines.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center"><span class="text-green-400 mr-2">Duration:</span> 30-90 minutes</div>
+                        <div class="flex items-center"><span class="text-blue-400 mr-2">Participants:</span> 5-20 people</div>
+                        <div class="flex items-center"><span class="text-yellow-400 mr-2">Focus:</span> Mindfulness, stress relief, inner peace</div>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-pen-fancy text-4xl text-yellow-400 mb-2"></i>
+                        <h3 class="text-xl font-bold text-yellow-400">Lyric Therapy</h3>
+                    </div>
+                    <p class="mb-4 text-sm leading-relaxed">Structured writing sessions where participants process trauma, set intentions, and explore emotions through bar construction and wordplay as therapeutic tools.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center"><span class="text-green-400 mr-2">Duration:</span> 2-4 hours</div>
+                        <div class="flex items-center"><span class="text-blue-400 mr-2">Participants:</span> 4-10 people</div>
+                        <div class="flex items-center"><span class="text-purple-400 mr-2">Focus:</span> Emotional processing, trauma healing</div>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl neon-border">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-star text-4xl text-cyan-400 mb-2"></i>
+                        <h3 class="text-xl font-bold text-cyan-400">All-Format Integration</h3>
+                    </div>
+                    <p class="mb-4 text-sm leading-relaxed">Comprehensive healing retreats combining all session types over multiple days, creating complete transformation experiences.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center"><span class="text-green-400 mr-2">Duration:</span> 3-7 days</div>
+                        <div class="flex items-center"><span class="text-blue-400 mr-2">Participants:</span> 8-15 people</div>
+                        <div class="flex items-center"><span class="text-gold mr-2" style="color: var(--per-ankh-gold);">Focus:</span> Complete spiritual overhaul</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider mb-12"></div>
+
+        <!-- Section 3: Practical Implementation -->
+        <section class="mb-16">
+            <h2 class="graffiti-header text-4xl mb-8 flex items-center">
+                <i class="fas fa-tools mr-4 text-yellow-400"></i>
+                PRACTICAL IMPLEMENTATION
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-400">
+                        🎛️ Equipment & Space Setup
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-yellow-400 mb-2">Audio Equipment</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Professional DJ controller (Pioneer DDJ-SX3 or similar)</li>
+                                <li>• Studio monitors (KRK Rokit 8 G4 recommended)</li>
+                                <li>• High-quality microphones (Shure SM7B for vocals)</li>
+                                <li>• Audio interface (Focusrite Scarlett series)</li>
+                                <li>• Comfortable headphones for each participant</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-purple-400 mb-2">Sacred Space Elements</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Comfortable floor cushions arranged in circle</li>
+                                <li>• Adjustable lighting (warm, dim-able LEDs)</li>
+                                <li>• Altar space with crystals and Per Ankh symbols</li>
+                                <li>• Sound-proofed or private location</li>
+                                <li>• Emergency supplies and safety protocols visible</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-pink-400">
+                        🤝 Collaboration Network
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-cyan-400 mb-2">Local Artist Partnerships</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Identify conscious rappers in community</li>
+                                <li>• Partner with beat producers and DJs</li>
+                                <li>• Connect with spoken word artists</li>
+                                <li>• Collaborate with music therapists</li>
+                                <li>• Engage community elders as wisdom keepers</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-yellow-400 mb-2">Community Outreach</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Barbershop and beauty salon partnerships</li>
+                                <li>• Community center collaborations</li>
+                                <li>• Church and spiritual center relationships</li>
+                                <li>• Youth organization connections</li>
+                                <li>• Social media influencer engagement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 session-card p-6 rounded-xl neon-border">
+                <h3 class="text-2xl font-bold mb-6 text-yellow-400">
+                    🛡️ Safety Protocols for Music + Medicine
+                </h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-bold text-purple-400 mb-3">Pre-Session</h4>
+                        <ul class="text-sm space-y-2">
+                            <li class="flex items-start"><span class="text-cyan-400 mr-2">✓</span> Medical screening questionnaire</li>
+                            <li class="flex items-start"><span class="text-cyan-400 mr-2">✓</span> Intention setting circle</li>
+                            <li class="flex items-start"><span class="text-cyan-400 mr-2">✓</span> Informed consent documentation</li>
+                            <li class="flex items-start"><span class="text-cyan-400 mr-2">✓</span> Emergency contact collection</li>
+                            <li class="flex items-start"><span class="text-cyan-400 mr-2">✓</span> Playlist preparation and approval</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-cyan-400 mb-3">During Session</h4>
+                        <ul class="text-sm space-y-2">
+                            <li class="flex items-start"><span class="text-purple-400 mr-2">✓</span> Trained trip sitter always present</li>
+                            <li class="flex items-start"><span class="text-purple-400 mr-2">✓</span> Volume levels monitored for safety</li>
+                            <li class="flex items-start"><span class="text-purple-400 mr-2">✓</span> Hydration stations and healthy snacks</li>
+                            <li class="flex items-start"><span class="text-purple-400 mr-2">✓</span> Safe space for anyone needing quiet</li>
+                            <li class="flex items-start"><span class="text-purple-400 mr-2">✓</span> Regular check-ins with participants</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-pink-400 mb-3">Post-Session</h4>
+                        <ul class="text-sm space-y-2">
+                            <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span> Integration discussion circle</li>
+                            <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span> Recording and journaling time</li>
+                            <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span> Follow-up session scheduling</li>
+                            <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span> Community connection facilitation</li>
+                            <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span> Resource sharing and support planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider mb-12"></div>
+
+        <!-- Section 4: Content Creation Templates -->
+        <section class="mb-16">
+            <h2 class="graffiti-header text-4xl mb-8 flex items-center">
+                <i class="fas fa-video mr-4 text-purple-400"></i>
+                CONTENT CREATION TEMPLATES
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-400">
+                        📱 TikTok/Instagram Framework
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="playlist-item p-3 rounded">
+                            <h4 class="font-bold text-yellow-400">15-Second Spiritual Bars</h4>
+                            <p class="text-sm">Quick freestyle clips with profound spiritual messaging, trending beats, Per Ankh branding overlay</p>
+                        </div>
+                        <div class="playlist-item p-3 rounded">
+                            <h4 class="font-bold text-purple-400">Beat Meditation Previews</h4>
+                            <p class="text-sm">Short guided meditation clips using hip-hop instrumentals, calming visuals, breathing cues</p>
+                        </div>
+                        <div class="playlist-item p-3 rounded">
+                            <h4 class="font-bold text-pink-400">Transformation Stories</h4>
+                            <p class="text-sm">Before/after testimonials, visual storytelling, emotional authenticity, community celebration</p>
+                        </div>
+                        <div class="playlist-item p-3 rounded">
+                            <h4 class="font-bold text-cyan-400">Behind-the-Scenes</h4>
+                            <p class="text-sm">Session setup, artist preparation, sacred space creation, community building moments</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-pink-400">
+                        🎬 Video Production Guides
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-yellow-400 mb-2">Documentary Style Sessions</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Multiple camera angles: wide, medium, close-up</li>
+                                <li>• Audio recording: clean rap vocals + ambient sound</li>
+                                <li>• Lighting: warm, spiritual, not overly bright</li>
+                                <li>• B-roll: hands, instruments, sacred objects, faces</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-purple-400 mb-2">Music Video Aesthetics</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Urban meets ancient: graffiti + hieroglyphs</li>
+                                <li>• Color grading: gold, purple, cyan highlights</li>
+                                <li>• Visual effects: subtle light rays, sacred geometry</li>
+                                <li>• Performance shots: authentic, not over-produced</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 grid md:grid-cols-2 gap-8">
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">
+                        🎙️ Podcast Templates
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="quote-box p-3 rounded">
+                            <h4 class="font-bold text-cyan-400">Artist Journey Series</h4>
+                            <p class="text-sm">30-45 min interviews covering: childhood trauma, spiritual awakening, creative process, community impact</p>
+                        </div>
+                        <div class="quote-box p-3 rounded">
+                            <h4 class="font-bold text-purple-400">Session Deconstructions</h4>
+                            <p class="text-sm">Analysis of powerful healing moments, techniques used, breakthroughs achieved, lessons learned</p>
+                        </div>
+                        <div class="quote-box p-3 rounded">
+                            <h4 class="font-bold text-pink-400">Community Conversations</h4>
+                            <p class="text-sm">Group discussions on current events through spiritual lens, hip-hop culture evolution, healing approaches</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-400">
+                        👕 Merchandise Concepts
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="quote-box p-3 rounded">
+                            <h4 class="font-bold text-yellow-400">Streetwear + Spirituality</h4>
+                            <p class="text-sm">Hoodies with ankh symbols integrated into urban graffiti designs, "Conscious Bars" branded apparel</p>
+                        </div>
+                        <div class="quote-box p-3 rounded">
+                            <h4 class="font-bold text-cyan-400">Healing Session Gear</h4>
+                            <p class="text-sm">Meditation cushions with beat visualizations, branded headphones, spiritual journals with rap templates</p>
+                        </div>
+                        <div class="quote-box p-3 rounded">
+                            <h4 class="font-bold text-pink-400">Community Identity</h4>
+                            <p class="text-sm">Patches, pins, stickers representing different session types, spiritual levels, community milestones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider mb-12"></div>
+
+        <!-- Section 5: Partnership Strategies -->
+        <section class="mb-16">
+            <h2 class="graffiti-header text-4xl mb-8 flex items-center">
+                <i class="fas fa-handshake mr-4 text-cyan-400"></i>
+                PARTNERSHIP STRATEGIES
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 text-yellow-400">
+                        🎵 Music Industry
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-cyan-400 mr-2">🎤</span>
+                            <div>
+                                <strong>Artist Collaborations</strong><br>
+                                Partner with conscious rappers for healing sessions and content creation
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-400 mr-2">🎛️</span>
+                            <div>
+                                <strong>Producer Networks</strong><br>
+                                Connect with beat makers who understand spiritual themes
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-pink-400 mr-2">🏢</span>
+                            <div>
+                                <strong>Label Outreach</strong><br>
+                                Approach independent labels focused on conscious hip-hop
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 text-cyan-400">
+                        📻 Media Platforms
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-yellow-400 mr-2">📱</span>
+                            <div>
+                                <strong>Streaming Services</strong><br>
+                                Curate healing playlists on Spotify, Apple Music, Tidal
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-400 mr-2">📻</span>
+                            <div>
+                                <strong>Community Radio</strong><br>
+                                Weekly shows discussing hip-hop spirituality and healing
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-pink-400 mr-2">🎧</span>
+                            <div>
+                                <strong>Podcast Networks</strong><br>
+                                Guest appearances and crossover content opportunities
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 text-pink-400">
+                        🎪 Event Integration
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-cyan-400 mr-2">🎤</span>
+                            <div>
+                                <strong>Music Festivals</strong><br>
+                                Healing tents at hip-hop and consciousness festivals
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-400 mr-2">🏛️</span>
+                            <div>
+                                <strong>Cultural Events</strong><br>
+                                Black History Month, Juneteenth celebrations integration
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-400 mr-2">🎭</span>
+                            <div>
+                                <strong>Arts Organizations</strong><br>
+                                Partner with galleries, theaters, community arts centers
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider mb-12"></div>
+
+        <!-- Sample Content Examples -->
+        <section class="mb-16">
+            <h2 class="graffiti-header text-4xl mb-8 flex items-center">
+                <i class="fas fa-playlist mr-4 text-pink-400"></i>
+                SAMPLE CONTENT & PLAYLISTS
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">
+                        🎵 Healing Session Playlists
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold text-cyan-400 mb-3">Deep Introspection (70-90 BPM)</h4>
+                        <div class="space-y-2">
+                            <div class="playlist-item p-2 rounded text-sm">
+                                <strong>"Samurai" Instrumental - J. Cole</strong> - Self-reflection and inner warrior energy
+                            </div>
+                            <div class="playlist-item p-2 rounded text-sm">
+                                <strong>"Swimming Pools" Instrumental - Kendrick Lamar</strong> - Addiction and spiritual awakening
+                            </div>
+                            <div class="playlist-item p-2 rounded text-sm">
+                                <strong>"Breathe Me In" - J. Cole</strong> - Connection to higher consciousness
+                            </div>
+                            <div class="playlist-item p-2 rounded text-sm">
+                                <strong>"The Heart" Instrumentals - Kendrick Lamar</strong> - Raw emotional processing
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold text-purple-400 mb-3">Creative Flow State (90-120 BPM)</h4>
+                        <div class="space-y-2">
+                            <div class="playlist-item p-2 rounded text-sm">
+                                <strong>Lo-Fi Hip Hop Instrumentals</strong> - Smooth creativity enhancement
+                            </div>
+                            <div class="playlist-item p-2 rounded text-sm">
+                                <strong>"C.R.E.A.M." Instrumental - Wu-Tang</strong> - Motivational energy for expression
+                            </div>
+                            <div class="playlist-item p-2 rounded text-sm">
+                                <strong>"Tribe" Instrumentals - Bas</strong> - Community and belonging themes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-400">
+                        📝 Lyrical Analysis Examples
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="quote-box p-4 rounded">
+                            <h4 class="font-bold text-yellow-400 mb-2">Kendrick Lamar - "Mortal Man"</h4>
+                            <p class="italic text-sm mb-2">"The ghost of Mandela, hope my flows they propel it / Let these words be your earth and moon, you consume every message"</p>
+                            <p class="text-xs text-gray-300">
+                                <strong>Spiritual Theme:</strong> Ancestral wisdom transmission, words as spiritual nourishment, cosmic responsibility of the artist
+                            </p>
+                        </div>
+
+                        <div class="quote-box p-4 rounded">
+                            <h4 class="font-bold text-purple-400 mb-2">J. Cole - "Love Yourz"</h4>
+                            <p class="italic text-sm mb-2">"No such thing as a life that's better than yours"</p>
+                            <p class="text-xs text-gray-300">
+                                <strong>Spiritual Theme:</strong> Contentment practice, gratitude cultivation, releasing comparison and envy
+                            </p>
+                        </div>
+
+                        <div class="quote-box p-4 rounded">
+                            <h4 class="font-bold text-pink-400 mb-2">Wu-Tang - "Teardropz"</h4>
+                            <p class="italic text-sm mb-2">"I'm the God of the righteous man / Writing plans in the land of the broken"</p>
+                            <p class="text-xs text-gray-300">
+                                <strong>Spiritual Theme:</strong> Divine masculine energy, healing purpose in broken communities, sacred responsibility
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider mb-12"></div>
+
+        <!-- Integration with Mama Ayana's Teachings -->
+        <section class="mb-16">
+            <h2 class="graffiti-header text-4xl mb-8 flex items-center">
+                <span class="mr-4 text-4xl">👑</span>
+                MAMA AYANA'S WISDOM INTEGRATION
+            </h2>
+
+            <div class="session-card p-8 rounded-xl neon-border">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-yellow-400">Hip-Hop as Sacred Expression</h3>
+                        <div class="quote-box p-4 rounded-lg mb-4">
+                            <p class="italic text-cyan-300 mb-2">"When you take these mushrooms, you understand that there's so much more than the average world out here... Hip-hop becomes your prayer, your freestyle becomes prophecy."</p>
+                            <p class="text-sm text-gray-400">- Mama Ayana Teaching Adaptation</p>
+                        </div>
+                        <p class="text-sm leading-relaxed">
+                            Mama Ayana's teachings about consciousness expansion through psilocybin align perfectly with hip-hop's tradition of truth-telling and social consciousness. The cipher becomes our sacred circle, the booth becomes our meditation space, and the beat becomes our ceremonial drum.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-purple-400">Community Healing Through Rhythm</h3>
+                        <div class="quote-box p-4 rounded-lg mb-4">
+                            <p class="italic text-pink-300 mb-2">"Brothers, I want you to speak love into that area... understanding that this is sacred energy, that is magic that is happening."</p>
+                            <p class="text-sm text-gray-400">- Mama Ayana on Sacred Connection</p>
+                        </div>
+                        <p class="text-sm leading-relaxed">
+                            Hip-hop sessions become spaces for Black men to speak love into each other's wounds, to create sacred energy through shared vulnerability and artistic expression. The music becomes the container for healing that Mama Ayana describes in her womb healing work.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-400">The Cipher as Sacred Circle</h3>
+                    <p class="text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                        Just as Mama Ayana creates healing circles for women in nature, we create healing ciphers for Black men in urban spaces. The microphone becomes the talking stick, the beat becomes the heartbeat of our ancestors, and the bars become our prayers and testimonies. Through conscious hip-hop and sacred plant medicine, we reclaim our voices, process our trauma, and step into our power as healers and leaders in our communities.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider mb-12"></div>
+
+        <!-- Call to Action -->
+        <footer class="text-center sacred-geometry p-8 rounded-xl">
+            <h2 class="graffiti-header text-4xl mb-6">JOIN THE REVOLUTION</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                🎤 Ready to transform urban communities through the power of conscious hip-hop and sacred plant medicine? Let's build healing spaces where Black men can find their voice, process their pain, and step into their divine purpose. 🔱
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mt-12">
+                <div class="session-card p-6 rounded-xl">
+                    <i class="fas fa-microphone text-4xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-yellow-400 mb-2">Artists & Producers</h3>
+                    <p class="text-sm">Bring your beats, bring your bars, bring your healing energy to create transformative experiences</p>
+                </div>
+                <div class="session-card p-6 rounded-xl">
+                    <i class="fas fa-users text-4xl text-purple-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-purple-400 mb-2">Community Leaders</h3>
+                    <p class="text-sm">Help us reach the brothers who need healing most through authentic cultural connection</p>
+                </div>
+                <div class="session-card p-6 rounded-xl">
+                    <i class="fas fa-heart text-4xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-cyan-400 mb-2">Healing Practitioners</h3>
+                    <p class="text-sm">Integrate your wisdom with urban culture to create accessible pathways to spiritual growth</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center mt-12 space-x-8">
+                <div class="vinyl-bg w-16 h-16"></div>
+                <span class="text-6xl ankh-symbol">𓋹</span>
+                <div class="vinyl-bg w-16 h-16"></div>
+            </div>
+            
+            <p class="mt-8 text-lg">
+                <span class="text-yellow-400">Per Ankh Entheogenic Church</span> | 
+                <span class="text-purple-400">Hip-Hop Healing Sessions</span> | 
+                <span class="text-cyan-400">Ancient Wisdom, Modern Beats</span>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

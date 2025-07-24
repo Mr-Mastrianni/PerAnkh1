@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Ankh NFT Ecosystem | Spiritual Co-Ownership & Community Assets</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --cosmic-purple: #2D1B69;
+            --electric-gold: #FFD700;
+            --neon-blue: #00FFFF;
+            --ethereal-blue: #4F46E5;
+            --dark-space: #0A0A0A;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0A0A0A 0%, #2D1B69 50%, #1a202c 100%);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .orbitron {
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* Cosmic Background Animation */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--electric-gold);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1); }
+        }
+
+        /* Holographic Effect */
+        .holographic {
+            background: linear-gradient(45deg, #FFD700, #00FFFF, #4F46E5, #FFD700);
+            background-size: 400% 400%;
+            animation: gradient 3s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glowing Effects */
+        .glow-gold {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .glow-purple {
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.5), 0 0 40px rgba(79, 70, 229, 0.3);
+        }
+
+        /* 3D Card Effects */
+        .card-3d {
+            perspective: 1000px;
+            transition: all 0.3s ease;
+        }
+
+        .card-3d:hover .card-inner {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+
+        .card-inner {
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+        }
+
+        /* Sacred Geometry Animation */
+        .sacred-geometry {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Ankh Symbol Animation */
+        .ankh-symbol {
+            font-size: 3rem;
+            color: var(--electric-gold);
+            animation: pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        /* Tier Cards */
+        .tier-card {
+            background: rgba(45, 27, 105, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--electric-gold);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Interactive Buttons */
+        .btn-cosmic {
+            background: linear-gradient(45deg, var(--cosmic-purple), var(--ethereal-blue));
+            border: 2px solid var(--electric-gold);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cosmic:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-cosmic:hover:before {
+            left: 100%;
+        }
+
+        .btn-cosmic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Progress Bars */
+        .progress-bar {
+            background: rgba(45, 27, 105, 0.5);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--electric-gold), var(--neon-blue));
+            height: 100%;
+            animation: progress 2s ease-out;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+        }
+
+        /* Floating NFT Cards */
+        .nft-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .nft-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            border-color: var(--electric-gold);
+            box-shadow: 
+                0 25px 50px rgba(255, 215, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Tokenomics Chart Container */
+        .chart-container {
+            background: rgba(45, 27, 105, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Roadmap Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--electric-gold), var(--neon-blue));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: calc(50% + 30px);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: calc(50% + 30px);
+            margin-right: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--electric-gold);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Utility Icons */
+        .utility-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--cosmic-purple), var(--ethereal-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--electric-gold);
+            margin: 0 auto 15px;
+            animation: float-icon 3s ease-in-out infinite;
+        }
+
+        @keyframes float-icon {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .timeline:before { left: 30px; }
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+            }
+            .timeline-marker { left: 30px; }
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--electric-gold), transparent);
+            margin: 60px auto;
+            width: 60%;
+            animation: glow-line 3s ease-in-out infinite;
+        }
+
+        @keyframes glow-line {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header Section -->
+    <header class="relative z-10 py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <div class="ankh-symbol mb-4">𓋹</div>
+                <h1 class="text-5xl font-bold orbitron holographic mb-4">PER ANKH NFT ECOSYSTEM</h1>
+                <p class="text-xl text-gray-300 mb-8">Spiritual Co-Ownership & Community Assets</p>
+                <div class="sacred-geometry">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient1)" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="35" fill="none" stroke="url(#gradient2)" stroke-width="1.5"/>
+                        <circle cx="50" cy="50" r="25" fill="none" stroke="url(#gradient3)" stroke-width="1"/>
+                        <defs>
+                            <linearGradient id="gradient1">
+                                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="gradient2">
+                                <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="gradient3">
+                                <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#2D1B69;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron text-white mb-6">Revolutionary Fractionalized Ownership</h2>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto">
+                    Per Ankh introduces the world's first spiritual NFT ecosystem combining ancient wisdom with cutting-edge blockchain technology. 
+                    Own fractional shares in sacred assets, participate in community governance, and build generational wealth together.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="tier-card rounded-2xl p-8 text-center">
+                    <div class="utility-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">10,000+ NFTs</h3>
+                    <p class="text-gray-300">Comprehensive collection across 10 spiritual utility categories</p>
+                </div>
+                <div class="tier-card rounded-2xl p-8 text-center">
+                    <div class="utility-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">$ANKH Token</h3>
+                    <p class="text-gray-300">Community governance and staking rewards ecosystem</p>
+                </div>
+                <div class="tier-card rounded-2xl p-8 text-center">
+                    <div class="utility-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Revenue Sharing</h3>
+                    <p class="text-gray-300">Fractional ownership in community assets and investments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 1: Fractionalized Spiritual Assets -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">🏛️ Fractionalized Spiritual Assets</h2>
+                <p class="text-xl text-gray-300">Own shares in sacred spaces and community properties</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="nft-card rounded-2xl p-6 card-3d">
+                    <div class="card-inner">
+                        <div class="utility-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Virtual Temple Spaces</h3>
+                        <p class="text-gray-300 mb-4">Metaverse ceremony halls with shared ownership rights</p>
+                        <div class="progress-bar mb-3">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-400">
+                            <span>Fractions Available: 1,000</span>
+                            <span>Price: 0.1 ETH</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-6 card-3d">
+                    <div class="card-inner">
+                        <div class="utility-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Sacred Land Acquisitions</h3>
+                        <p class="text-gray-300 mb-4">Real estate investments with stewardship rights</p>
+                        <div class="progress-bar mb-3">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-400">
+                            <span>Fractions Available: 500</span>
+                            <span>Price: 0.5 ETH</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-6 card-3d">
+                    <div class="card-inner">
+                        <div class="utility-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Recording Studios</h3>
+                        <p class="text-gray-300 mb-4">Conscious music production facility ownership</p>
+                        <div class="progress-bar mb-3">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-400">
+                            <span>Fractions Available: 200</span>
+                            <span>Price: 0.25 ETH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 2: Membership & Access NFTs -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">🎯 Tiered Membership System</h2>
+                <p class="text-xl text-gray-300">Progressive access levels with increasing benefits</p>
+            </div>
+            
+            <div class="grid md:grid-cols-5 gap-6">
+                <div class="tier-card rounded-2xl p-6 text-center glow-gold">
+                    <div class="text-4xl mb-4">🥉</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Seeker Level</h3>
+                    <div class="text-2xl font-bold text-yellow-400 mb-3">Bronze</div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>Basic ceremony access</li>
+                        <li>Educational content</li>
+                        <li>Community chat</li>
+                    </ul>
+                    <div class="mt-4">
+                        <span class="text-xs text-gray-400">0.05 ETH</span>
+                    </div>
+                </div>
+                
+                <div class="tier-card rounded-2xl p-6 text-center glow-blue">
+                    <div class="text-4xl mb-4">🥈</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Member Level</h3>
+                    <div class="text-2xl font-bold text-gray-400 mb-3">Silver</div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>Advanced workshops</li>
+                        <li>Voting rights</li>
+                        <li>Discount benefits</li>
+                    </ul>
+                    <div class="mt-4">
+                        <span class="text-xs text-gray-400">0.1 ETH</span>
+                    </div>
+                </div>
+                
+                <div class="tier-card rounded-2xl p-6 text-center glow-gold">
+                    <div class="text-4xl mb-4">🥇</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Initiate Level</h3>
+                    <div class="text-2xl font-bold text-yellow-400 mb-3">Gold</div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>High-dose sessions</li>
+                        <li>Mentorship programs</li>
+                        <li>Revenue sharing</li>
+                    </ul>
+                    <div class="mt-4">
+                        <span class="text-xs text-gray-400">0.25 ETH</span>
+                    </div>
+                </div>
+                
+                <div class="tier-card rounded-2xl p-6 text-center glow-purple">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Elder Level</h3>
+                    <div class="text-2xl font-bold text-purple-400 mb-3">Platinum</div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>Governance participation</li>
+                        <li>Profit sharing</li>
+                        <li>Exclusive retreats</li>
+                    </ul>
+                    <div class="mt-4">
+                        <span class="text-xs text-gray-400">0.5 ETH</span>
+                    </div>
+                </div>
+                
+                <div class="tier-card rounded-2xl p-6 text-center glow-blue">
+                    <div class="text-4xl mb-4">💎</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Wisdom Keeper</h3>
+                    <div class="text-2xl font-bold text-blue-400 mb-3">Diamond</div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>Full DAO participation</li>
+                        <li>Legacy asset creation</li>
+                        <li>Maximum rewards</li>
+                    </ul>
+                    <div class="mt-4">
+                        <span class="text-xs text-gray-400">1.0 ETH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 3: Mama Ayana's Wisdom Collection -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">👑 Mama Ayana's Wisdom Collection</h2>
+                <p class="text-xl text-gray-300">Limited edition teachings from the High Crone Warrior Priestess</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="nft-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sacred Audio Recordings</h3>
+                    <p class="text-gray-300 mb-4">Exclusive private session recordings with healing frequencies</p>
+                    <div class="text-sm text-gray-400 mb-3">🎵 Duration: 2-4 hours each</div>
+                    <div class="text-sm text-gray-400">📅 Limited to 100 NFTs</div>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-draw-polygon"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sacred Geometry Diagrams</h3>
+                    <p class="text-gray-300 mb-4">Hand-drawn spiritual blueprints and ritual instructions</p>
+                    <div class="text-sm text-gray-400 mb-3">✍️ Original artwork collection</div>
+                    <div class="text-sm text-gray-400">📅 Limited to 50 NFTs</div>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Early Per Ankh Footage</h3>
+                    <p class="text-gray-300 mb-4">Rare recordings from the founding ceremonies and gatherings</p>
+                    <div class="text-sm text-gray-400 mb-3">🎬 Historical documentation</div>
+                    <div class="text-sm text-gray-400">📅 Limited to 25 NFTs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 4: Kilindi Iyi Legacy Series -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">🌌 Kilindi Iyi Legacy Series</h2>
+                <p class="text-xl text-gray-300">Commemorating the legendary high-dose pioneer and martial arts master</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="nft-card rounded-2xl p-8">
+                    <div class="utility-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">40-50 Gram Journey Art</h3>
+                    <p class="text-gray-300 mb-6">Artistic interpretations of his legendary interdimensional experiences</p>
+                    <div class="space-y-3 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i class="fas fa-cube mr-2 text-yellow-400"></i>
+                            <span>3D visualizations of reported experiences</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-palette mr-2 text-blue-400"></i>
+                            <span>Collaborative artist interpretations</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-infinity mr-2 text-purple-400"></i>
+                            <span>Interdimensional entity encounters</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-8">
+                    <div class="utility-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Crystal Technology Blueprints</h3>
+                    <p class="text-gray-300 mb-6">Technical diagrams of trans-dimensional gateway designs</p>
+                    <div class="space-y-3 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i class="fas fa-drafting-compass mr-2 text-yellow-400"></i>
+                            <span>Sacred geometry construction guides</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-cog mr-2 text-blue-400"></i>
+                            <span>Crystal resonance frequency maps</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-portal mr-2 text-purple-400"></i>
+                            <span>Portal activation instructions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 5: Community Healing Utilities -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">💚 Community Healing Utilities</h2>
+                <p class="text-xl text-gray-300">Therapeutic support and crisis intervention access tokens</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="nft-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">24/7 Crisis Hotline</h3>
+                    <p class="text-gray-300 mb-4">Unlimited access to trained spiritual crisis counselors</p>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Mentor Matching</h3>
+                    <p class="text-gray-300 mb-4">AI-powered connection with experienced spiritual guides</p>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-circle-nodes"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Healing Circles</h3>
+                    <p class="text-gray-300 mb-4">Group therapy session participation rights and access</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 6: Plant Medicine Education Series -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">🍄 Plant Medicine Education Series</h2>
+                <p class="text-xl text-gray-300">Safety protocols and wisdom preservation NFTs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="nft-card rounded-2xl p-8">
+                    <div class="utility-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Interactive Dosage Calculator</h3>
+                    <p class="text-gray-300 mb-4">Personalized safety assessments based on experience and body metrics</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div>• Body weight and metabolism factors</div>
+                        <div>• Experience level integration</div>
+                        <div>• Drug interaction warnings</div>
+                        <div>• Set and setting recommendations</div>
+                    </div>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-8">
+                    <div class="utility-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">VR Ceremony Simulation</h3>
+                    <p class="text-gray-300 mb-4">Virtual reality preparation experiences for first-time participants</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div>• 360° ceremony environment</div>
+                        <div>• Guided meditation sequences</div>
+                        <div>• Integration exercise simulations</div>
+                        <div>• Safety protocol training</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 7: Urban Youth Empowerment -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">🎤 Urban Youth Empowerment Collection</h2>
+                <p class="text-xl text-gray-300">Hip-hop healing and street outreach NFTs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="nft-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Conscious Beats</h3>
+                    <p class="text-gray-300 mb-4">Exclusive tracks from spiritual hip-hop collaborations</p>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Street Art Murals</h3>
+                    <p class="text-gray-300 mb-4">Digital graffiti featuring Per Ankh spiritual themes</p>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Binaural Hip-Hop</h3>
+                    <p class="text-gray-300 mb-4">Meditation tracks combining beats with healing frequencies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 8: Women's Sacred Circle Assets -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">🌸 Women's Sacred Circle Assets</h2>
+                <p class="text-xl text-gray-300">Feminine healing and empowerment NFT utilities</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="nft-card rounded-2xl p-8">
+                    <div class="utility-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Moon Ceremony Guides</h3>
+                    <p class="text-gray-300 mb-4">Lunar calendar integration with ritual instructions</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>🌑 New moon intention setting</li>
+                        <li>🌕 Full moon release ceremonies</li>
+                        <li>🔮 Crystal activation protocols</li>
+                        <li>🌙 Menstrual cycle synchronization</li>
+                    </ul>
+                </div>
+                
+                <div class="nft-card rounded-2xl p-8">
+                    <div class="utility-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Womb Healing Meditations</h3>
+                    <p class="text-gray-300 mb-4">Guided visualizations for feminine energy restoration</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>🌺 Ancestral trauma healing</li>
+                        <li>💎 Carnelian crystal work</li>
+                        <li>🌊 Emotional release techniques</li>
+                        <li>✨ Sacred sexuality education</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 9: DAO Governance -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">🗳️ DAO Governance & Voting Tokens</h2>
+                <p class="text-xl text-gray-300">Community decision-making and treasury management</p>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="text-2xl font-bold text-white mb-6">Governance Structure</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold text-white mb-4">Voting Power Distribution</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Diamond Members</span>
+                                    <span class="text-yellow-400">40%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Platinum Members</span>
+                                    <span class="text-blue-400">30%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 30%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Gold Members</span>
+                                    <span class="text-purple-400">20%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Silver & Bronze</span>
+                                    <span class="text-green-400">10%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 10%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-white mb-4">Decision Categories</h4>
+                        <div class="space-y-4 text-gray-300">
+                            <div class="flex items-center">
+                                <i class="fas fa-building text-yellow-400 mr-3"></i>
+                                <span>Real estate investments</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-handshake text-blue-400 mr-3"></i>
+                                <span>Partnership approvals</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-wallet text-purple-400 mr-3"></i>
+                                <span>Treasury allocations</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-user-plus text-green-400 mr-3"></i>
+                                <span>Member admissions</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-exclamation-triangle text-red-400 mr-3"></i>
+                                <span>Emergency decisions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 10: Revenue Sharing & Investment NFTs -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">💰 Revenue Sharing & Investment NFTs</h2>
+                <p class="text-xl text-gray-300">Community wealth building through fractional ownership</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="tier-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Real Estate Portfolio</h3>
+                    <p class="text-gray-300 mb-4">Fractional ownership in retreat centers and healing properties</p>
+                    <div class="text-sm text-gray-400">Expected APY: 8-12%</div>
+                </div>
+                
+                <div class="tier-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Merchandise Sales</h3>
+                    <p class="text-gray-300 mb-4">Revenue sharing from Per Ankh branded products and events</p>
+                    <div class="text-sm text-gray-400">Expected APY: 5-8%</div>
+                </div>
+                
+                <div class="tier-card rounded-2xl p-6">
+                    <div class="utility-icon">
+                        <i class="fas fa-bitcoin"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Crypto Mining</h3>
+                    <p class="text-gray-300 mb-4">Sustainable mining operations powered by renewable energy</p>
+                    <div class="text-sm text-gray-400">Expected APY: 10-15%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Advanced Features Section -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">⚡ Advanced Features & Mechanics</h2>
+                <p class="text-xl text-gray-300">Cutting-edge blockchain utilities and gamification</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="chart-container">
+                    <h3 class="text-2xl font-bold text-white mb-6">$ANKH Staking Rewards</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300">30 Days</span>
+                                <span class="text-yellow-400">5% APY</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300">90 Days</span>
+                                <span class="text-blue-400">8% APY</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300">180 Days</span>
+                                <span class="text-purple-400">12% APY</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300">365 Days</span>
+                                <span class="text-green-400">18% APY</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <h3 class="text-2xl font-bold text-white mb-6">Cross-Chain Integration</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fab fa-ethereum text-3xl text-blue-400 mr-4"></i>
+                                <div>
+                                    <div class="text-white font-semibold">Ethereum</div>
+                                    <div class="text-gray-400 text-sm">High-value assets</div>
+                                </div>
+                            </div>
+                            <div class="text-green-400">✓ Active</div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-polygon text-3xl text-purple-400 mr-4"></i>
+                                <div>
+                                    <div class="text-white font-semibold">Polygon</div>
+                                    <div class="text-gray-400 text-sm">Daily utilities</div>
+                                </div>
+                            </div>
+                            <div class="text-green-400">✓ Active</div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-sun text-3xl text-yellow-400 mr-4"></i>
+                                <div>
+                                    <div class="text-white font-semibold">Solana</div>
+                                    <div class="text-gray-400 text-sm">Fast interactions</div>
+                                </div>
+                            </div>
+                            <div class="text-yellow-400">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Roadmap Section -->
+    <section class="relative z-10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">🛣️ Development Roadmap</h2>
+                <p class="text-xl text-gray-300">Our journey to revolutionize spiritual community ownership</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content chart-container">
+                        <h3 class="text-xl font-bold text-white mb-3">Q1 2024 - Foundation Launch</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li>• Release core membership NFT tiers</li>
+                            <li>• Launch $ANKH governance token</li>
+                            <li>• Deploy staking smart contracts</li>
+                            <li>• Community DAO establishment</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content chart-container">
+                        <h3 class="text-xl font-bold text-white mb-3">Q2 2024 - Utility Expansion</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li>• Mama Ayana's Wisdom Collection drop</li>
+                            <li>• Virtual temple spaces in metaverse</li>
+                            <li>• Crisis support system activation</li>
+                            <li>• Mobile app beta release</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content chart-container">
+                        <h3 class="text-xl font-bold text-white mb-3">Q3 2024 - Community Assets</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li>• First real estate investment tokenization</li>
+                            <li>• Hip-hop healing collection launch</li>
+                            <li>• Women's sacred circle platform</li>
+                            <li>• Cross-chain bridge implementation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content chart-container">
+                        <h3 class="text-xl font-bold text-white mb-3">Q4 2024 - Global Expansion</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li>• International community chapters</li>
+                            <li>• Advanced VR ceremony experiences</li>
+                            <li>• Revenue sharing program launch</li>
+                            <li>• Partnership with major platforms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Call to Action Section -->
+    <section class="relative z-10 py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="chart-container">
+                <div class="ankh-symbol mb-8">𓋹</div>
+                <h2 class="text-4xl font-bold orbitron holographic mb-6">Join the Spiritual Revolution</h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Be part of the first community-owned spiritual ecosystem where ancient wisdom meets cutting-edge technology. 
+                    Own, govern, and profit together as we build the future of conscious community.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-6 mb-12">
+                    <button class="btn-cosmic">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Pre-Sale Access
+                    </button>
+                    <button class="btn-cosmic">
+                        <i class="fas fa-book mr-2"></i>
+                        Read Whitepaper
+                    </button>
+                    <button class="btn-cosmic">
+                        <i class="fas fa-users mr-2"></i>
+                        Join Community
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-yellow-400 mb-2">10,000+</div>
+                        <div class="text-gray-300">Total NFTs</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-blue-400 mb-2">$5M+</div>
+                        <div class="text-gray-300">Asset Pool Target</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-purple-400 mb-2">50+</div>
+                        <div class="text-gray-300">Utility Categories</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <div class="sacred-geometry mb-6" style="width: 60px; height: 60px;">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient1)" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="25" fill="none" stroke="url(#gradient2)" stroke-width="1"/>
+                    </svg>
+                </div>
+                <p class="text-gray-400 mb-4">© 2024 Per Ankh Entheogenic Church. All rights reserved.</p>
+                <p class="text-sm text-gray-500">
+                    Ancient Wisdom • Modern Technology • Community Ownership • Spiritual Growth
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Add hover effects to NFT cards
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            const cards = document.querySelectorAll('.nft-card, .tier-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Animate progress bars on scroll
+            const observerOptions = {
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressFills = entry.target.querySelectorAll('.progress-fill');
+                        progressFills.forEach(fill => {
+                            fill.style.animation = 'progress 2s ease-out forwards';
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.chart-container, .tier-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Add click animations to buttons
+            document.querySelectorAll('.btn-cosmic').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 215, 0, 0.6)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = (e.clientX - e.target.offsetLeft) + 'px';
+                    ripple.style.top = (e.clientY - e.target.offsetTop) + 'px';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

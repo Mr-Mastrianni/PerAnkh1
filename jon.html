@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍄 Jon Page - Forest Consciousness Guide & Mycologist | Per Ankh</title>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cinzel:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02, #8bc34a, #4caf50);
+            --secondary-gradient: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+            --consciousness-gradient: linear-gradient(135deg, #1e3c72, #2a5298, #764ba2, #667eea);
+            --forest-gradient: linear-gradient(135deg, #134e5e, #71b280, #8bc34a, #cddc39);
+            --mycelium-glow: 0 0 20px rgba(139, 195, 74, 0.6);
+            --ankh-gold: #ffd700;
+            --sacred-purple: #7b1fa2;
+            --forest-green: #2e7d32;
+            --consciousness-blue: #1976d2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: none;
+        }
+
+        /* Animated Background Elements */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .floating-mycelium {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10 50 Q 30 30, 50 50 Q 70 70, 90 50" stroke="rgba(139,195,74,0.3)" stroke-width="0.5" fill="none"><animate attributeName="d" values="M10 50 Q 30 30, 50 50 Q 70 70, 90 50;M10 50 Q 30 70, 50 50 Q 70 30, 90 50;M10 50 Q 30 30, 50 50 Q 70 70, 90 50" dur="8s" repeatCount="indefinite"/></path></svg>');
+            animation: myceliumFlow 15s infinite linear;
+        }
+
+        @keyframes myceliumFlow {
+            0% { transform: translateY(100%); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+
+        /* Header Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://replicate.delivery/yhqm/QdmQWCO9tHYqEr6pPyMgX2L1oqYlTPqeFOvqzaV7CKEsMojRA/out-0.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 2rem;
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            background: rgba(0,0,0,0.4);
+            border: 2px solid rgba(139,195,74,0.3);
+            box-shadow: var(--mycelium-glow);
+            animation: heroGlow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% { box-shadow: 0 0 20px rgba(139,195,74,0.6), 0 0 40px rgba(139,195,74,0.4); }
+            100% { box-shadow: 0 0 40px rgba(139,195,74,0.8), 0 0 80px rgba(139,195,74,0.6); }
+        }
+
+        .main-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            background: var(--primary-gradient);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease-in-out infinite;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(139,195,74,0.8);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            color: var(--ankh-gold);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(255,215,0,0.8);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.8); }
+            50% { text-shadow: 0 0 40px rgba(255,215,0,1); }
+        }
+
+        .description {
+            font-size: 1.3rem;
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(139,195,74,0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(139,195,74,0.2);
+            color: var(--ankh-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--forest-gradient);
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(139,195,74,0.4);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .service-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            color: var(--ankh-gold);
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(255,215,0,0.6);
+        }
+
+        .service-description {
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .service-features {
+            list-style: none;
+            color: #c0c0c0;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '🍄';
+            position: absolute;
+            left: 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--consciousness-gradient);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease-in-out infinite;
+        }
+
+        /* Enhanced 3D Guide Styles */
+        .advanced-guide {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 30px;
+            margin: 4rem 2rem;
+            padding: 3rem;
+            border: 2px solid rgba(139,195,74,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advanced-guide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139,195,74, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .advanced-guide:hover::before {
+            left: 100%;
+        }
+
+        .guide-header {
+            text-align: center;
+            padding: 2rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(139,195,74, 0.3);
+            border-radius: 20px 20px 0 0;
+            margin: -3rem -3rem 3rem -3rem;
+        }
+
+        .guide-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .guide-subtitle {
+            font-size: 1.2rem;
+            color: #b8b8b8;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .credit-section {
+            background: rgba(139,195,74, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(139,195,74, 0.3);
+            text-align: center;
+        }
+
+        .expert-credit {
+            font-size: 1.5rem;
+            color: var(--ankh-gold);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .credit-text {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .mushroom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mushroom-card {
+            background: rgba(0,0,0,0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(139,195,74, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mushroom-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(139,195,74, 0.4);
+            border-color: rgba(139,195,74, 0.6);
+        }
+
+        .mushroom-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .mushroom-icon {
+            font-size: 3rem;
+            margin-right: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        .mushroom-type {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ankh-gold);
+            text-shadow: 0 0 10px rgba(255,215,0, 0.5);
+        }
+
+        .mushroom-class {
+            background: var(--forest-gradient);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mushroom-details {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .detail-item {
+            background: rgba(139,195,74, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--forest-green);
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            background: rgba(139,195,74, 0.1);
+            border-left-color: var(--ankh-gold);
+            transform: translateX(5px);
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: var(--forest-green);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .latin-name {
+            font-style: italic;
+            color: #feca57;
+            font-weight: 300;
+        }
+
+        .educational-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .edu-card {
+            background: rgba(139,195,74, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(139,195,74, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .edu-card:hover {
+            background: rgba(139,195,74, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .edu-title {
+            font-size: 1.2rem;
+            color: var(--ankh-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .edu-content {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #feca57;
+            font-weight: 500;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, rgba(139,195,74, 0.1), rgba(255,215,0, 0.1));
+            border: 1px solid rgba(139,195,74, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: var(--ankh-gold);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, var(--forest-green), transparent);
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .controls {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: rgba(0,0,0, 0.8);
+            border: 1px solid rgba(139,195,74, 0.4);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+        }
+
+        .control-btn:hover {
+            background: rgba(139,195,74, 0.2);
+            transform: scale(1.05);
+            border-color: var(--ankh-gold);
+        }
+
+        /* CTA Buttons */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--forest-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(139,195,74,0.4);
+            border-color: var(--ankh-gold);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(26,26,46,0.9));
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-top: 2px solid rgba(139,195,74,0.3);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .per-ankh-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--ankh-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255,215,0,0.8);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--ankh-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .mushroom-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .educational-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                top: 80px;
+                right: 10px;
+            }
+
+            .nav-container {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                margin: 2rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .guide-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation Delays */
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <!-- Background Animations -->
+    <canvas class="three-canvas" id="threeCanvas"></canvas>
+    <div class="bg-animation">
+        <div class="floating-mycelium"></div>
+    </div>
+    <div class="floating-particles" id="particles"></div>
+
+    <!-- 3D Guide Controls -->
+    <div class="controls">
+        <button class="control-btn" onclick="toggleAnimation()"><i class="fas fa-play-pause"></i> Animation</button>
+        <button class="control-btn" onclick="resetView()"><i class="fas fa-redo"></i> Reset</button>
+        <button class="control-btn" onclick="toggleParticles()"><i class="fas fa-sparkles"></i> Particles</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-links">
+            <a href="#home" class="nav-link">🏠 Home</a>
+            <a href="#services" class="nav-link">🍄 Services</a>
+            <a href="#guide" class="nav-link">📚 3D Guide</a>
+            <a href="#about" class="nav-link">🌲 About</a>
+            <a href="#contact" class="nav-link">📞 Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="main-title">JON PAGE</h1>
+                <h2 class="subtitle">Forest Consciousness Guide & Mycologist</h2>
+                <p class="description">
+                    Where ancient forest wisdom meets modern consciousness expansion. Join me in exploring the sacred 
+                    networks beneath our feet through expert mushroom identification, ecosystem reading, and 
+                    consciousness-expanding forest experiences.
+                </p>
+                <a href="#services" class="cta-button">
+                    🍄 Explore the Forest Portal
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <h2 class="section-title">Sacred Forest Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🟡</span>
+                    <h3 class="service-title">Chanterelle Hunting Mastery</h3>
+                    <p class="service-description">
+                        Expert-led foraging expeditions for golden chanterelles with systematic habitat identification 
+                        and consciousness connection through forest ecosystems.
+                    </p>
+                    <ul class="service-features">
+                        <li>Sacred mandala search patterns</li>
+                        <li>Tree species identification mastery</li>
+                        <li>Seasonal timing precision</li>
+                        <li>Excel habitat guide integration</li>
+                        <li>Two-day immersive experiences</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🐔</span>
+                    <h3 class="service-title">Chicken of the Woods Expertise</h3>
+                    <p class="service-description">
+                        Specialized training in identifying and harvesting bracket fungi with rainbow consciousness 
+                        patterns and tree energy reading techniques.
+                    </p>
+                    <ul class="service-features">
+                        <li>Bracket fungi identification</li>
+                        <li>Tree health assessment</li>
+                        <li>Sustainable harvesting methods</li>
+                        <li>Consciousness expansion through nature</li>
+                        <li>Forest ecosystem mapping</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🌲</span>
+                    <h3 class="service-title">Forest Ecosystem Reading</h3>
+                    <p class="service-description">
+                        Deep forest consciousness training combining scientific terrain analysis with spiritual 
+                        connection to mycelium networks and tree wisdom.
+                    </p>
+                    <ul class="service-features">
+                        <li>Terrain and slope analysis</li>
+                        <li>Drip line hunting techniques</li>
+                        <li>Moisture pattern recognition</li>
+                        <li>Sacred geometry in nature</li>
+                        <li>Consciousness network awareness</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🎓</span>
+                    <h3 class="service-title">Mycological Education</h3>
+                    <p class="service-description">
+                        Systematic mushroom identification workshops combining Excel documentation with consciousness 
+                        expansion and Per Ankh sacred plant wisdom.
+                    </p>
+                    <ul class="service-features">
+                        <li>Scientific identification methods</li>
+                        <li>Safety and look-alike awareness</li>
+                        <li>Consciousness technology integration</li>
+                        <li>Community building through nature</li>
+                        <li>Detroit Psychedelic Society partnership</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🏕️</span>
+                    <h3 class="service-title">Sacred Foraging Retreats</h3>
+                    <p class="service-description">
+                        Multi-day consciousness expansion experiences combining practical foraging skills with 
+                        spiritual forest connection and mycelium network exploration.
+                    </p>
+                    <ul class="service-features">
+                        <li>Immersive forest camping</li>
+                        <li>Consciousness ceremony integration</li>
+                        <li>Group forest consciousness building</li>
+                        <li>Seasonal cycle alignment</li>
+                        <li>Per Ankh wisdom sharing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced 3D Mushroom Foraging Guide -->
+        <section id="guide" class="advanced-guide">
+            <header class="guide-header">
+                <h1 class="guide-title">🍄 ADVANCED MUSHROOM FORAGING GUIDE</h1>
+                <p class="guide-subtitle">Interactive 3D Educational Experience</p>
+            </header>
+            
+            <div class="credit-section">
+                <div class="expert-credit">
+                    <i class="fas fa-user-graduate"></i> Expert Insights by Jon Page
+                </div>
+                <div class="credit-text">
+                    Educational content and foraging wisdom contributed by mycologist Jon Page, 
+                    expert in forest ecosystems and mushroom identification techniques through Per Ankh consciousness expansion.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-tree" style="color: var(--forest-green); margin-right: 1rem;"></i>
+                    Forest Ecosystem Understanding
+                </h2>
+                <div class="educational-content">
+                    <div class="edu-card">
+                        <div class="edu-title">
+                            <i class="fas fa-tree"></i>
+                            Tree Species Identification
+                        </div>
+                        <div class="edu-content">
+                            Understanding <span class="highlight">key tree species</span> is crucial for successful mushroom foraging. Different fungi form symbiotic relationships with specific trees:
+                            <ul style="margin-top: 1rem; padding-left: 2rem;">
+                                <li>American Elm, Ash, Pin Oak - favored by Yellow Morels</li>
+                                <li>Big Tooth Aspen, Poplar - home to Brown/Black Morels</li>
+                                <li>Hardwood forests - ideal for Chanterelles</li>
+                                <li>Birch trees - essential for Chaga growth</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <div class="edu-title">
+                            <i class="fas fa-map-marked-alt"></i>
+                            Terrain Reading
+                        </div>
+                        <div class="edu-content">
+                            <span class="highlight">Reading terrain and forest ecosystems</span> helps predict mushroom locations:
+                            <ul style="margin-top: 1rem; padding-left: 2rem;">
+                                <li>South-facing slopes warm up first in spring</li>
+                                <li>North-facing slopes follow, then hilltops</li>
+                                <li>Look for filtered light and walk drip lines</li>
+                                <li>Edge habitats where different ecosystems meet</li>
+                                <li>Lower wet areas for Lions Mane on fallen hardwoods</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <div class="edu-title">
+                            <i class="fas fa-cloud-rain"></i>
+                            Timing & Weather Patterns
+                        </div>
+                        <div class="edu-content">
+                            <span class="highlight">Matching rainfall, timing, and tree types</span> is essential:
+                            <ul style="margin-top: 1rem; padding-left: 2rem;">
+                                <li>Morels: Start late February in Georgia, move 100 miles north every 2 weeks</li>
+                                <li>Sufficient moisture triggers mushroom flushes</li>
+                                <li>Temperature and "angle of the sun" affect timing</li>
+                                <li>Multiple flushes every 4-5 days in good conditions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">
+                        <i class="fas fa-lightbulb"></i>
+                        Pro Tip from Jon Page
+                    </div>
+                    <div class="edu-content">
+                        <strong>Four-Leaf Clover Pattern:</strong> Hunt around trees in a 4-leaf clover pattern to change your viewing angle - this makes mushrooms easier to spot by varying your perspective and lighting angle.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-search" style="color: var(--ankh-gold); margin-right: 1rem;"></i>
+                    Mushroom Identification Guide
+                </h2>
+                <div class="mushroom-grid" id="mushroomGrid">
+                    <!-- Mushroom cards will be generated here -->
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-bullseye" style="color: var(--consciousness-blue); margin-right: 1rem;"></i>
+                    Advanced Foraging Techniques
+                </h2>
+                <div class="educational-content">
+                    <div class="edu-card">
+                        <div class="edu-title">
+                            <i class="fas fa-search"></i>
+                            Systematic Search Methods
+                        </div>
+                        <div class="edu-content">
+                            <span class="highlight">Precision foraging techniques</span> for better results:
+                            <ul style="margin-top: 1rem; padding-left: 2rem;">
+                                <li>Hunt the drip line and work inward</li>
+                                <li>Return to productive spots every 4-5 days</li>
+                                <li>Journal locations and add to them yearly</li>
+                                <li>Look for moss-prevalent areas along trail edges</li>
+                                <li>Search leaf blow-in areas for Blewits</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <div class="edu-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Safety & Identification
+                        </div>
+                        <div class="edu-content">
+                            <span class="highlight">Critical safety considerations</span>:
+                            <ul style="margin-top: 1rem; padding-left: 2rem;">
+                                <li>Never eat unidentified mushrooms</li>
+                                <li>Puffballs should be solid white when cut</li>
+                                <li>Avoid Cortinarius species (can damage organs)</li>
+                                <li>Learn look-alikes for each edible species</li>
+                                <li>When in doubt, don't consume</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <div class="edu-title">
+                            <i class="fas fa-tools"></i>
+                            Essential Equipment
+                        </div>
+                        <div class="edu-content">
+                            <span class="highlight">Recommended foraging kit</span>:
+                            <ul style="margin-top: 1rem; padding-left: 2rem;">
+                                <li>Good boots for varied terrain</li>
+                                <li>Mesh bag or basket for spore dispersal</li>
+                                <li>Sharp knife for clean cuts</li>
+                                <li>Notebook for recording locations</li>
+                                <li>Camera for identification verification</li>
+                                <li>Field guide or custom Excel habitat guide</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">
+                        <i class="fas fa-compass"></i>
+                        Jon Page's Golden Rules
+                    </div>
+                    <div class="edu-content">
+                        <strong>Three Key Factors:</strong> Enough moisture + proper timing + correct angle of sun exposure. 
+                        Master these fundamentals and you'll develop the intuition to find edible fungi with precision in any forest ecosystem.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">The Forest Consciousness Guide</h2>
+            <div class="educational-content">
+                <div class="edu-card">
+                    <div class="edu-title">
+                        <i class="fas fa-leaf"></i>
+                        Mycological Expertise
+                    </div>
+                    <div class="edu-content">
+                        With deep knowledge of forest ecosystems and systematic mushroom identification, I bridge 
+                        <span class="highlight">scientific mycology with consciousness expansion</span>. My approach 
+                        combines practical foraging skills with sacred plant wisdom and Per Ankh consciousness technology.
+                    </div>
+                </div>
+                
+                <div class="edu-card">
+                    <div class="edu-title">
+                        <i class="fas fa-users"></i>
+                        Community Connection
+                    </div>
+                    <div class="edu-content">
+                        Through partnerships with <span class="highlight">Detroit Psychedelic Society</span> and Per Ankh, 
+                        I facilitate consciousness expansion experiences that honor both the scientific understanding 
+                        and spiritual wisdom of forest ecosystems and fungal networks.
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="cta-button">
+                    🌲 Connect with Forest Consciousness
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Join the Forest Network</h2>
+            <div class="educational-content">
+                <div class="edu-card">
+                    <div class="edu-title">
+                        <i class="fas fa-calendar"></i>
+                        Book Forest Experiences
+                    </div>
+                    <div class="edu-content">
+                        Schedule mushroom hunting expeditions, forest consciousness walks, and mycological education 
+                        sessions. Available year-round with seasonal specializations.
+                    </div>
+                </div>
+                
+                <div class="edu-card">
+                    <div class="edu-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        Educational Workshops
+                    </div>
+                    <div class="edu-content">
+                        Learn systematic mushroom identification, forest ecosystem reading, and consciousness expansion 
+                        techniques through hands-on educational experiences.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="per-ankh-logo">⚱️ PER ANKH ⚱️</div>
+                <p style="color: #c0c0c0; margin-bottom: 2rem;">
+                    Consciousness Technology • Bio-Innovation • Sacred Plant Wisdom
+                </p>
+                <div class="footer-links">
+                    <a href="#services" class="footer-link">Services</a>
+                    <a href="#guide" class="footer-link">3D Guide</a>
+                    <a href="#about" class="footer-link">About Jon</a>
+                    <a href="https://www.facebook.com/Jonpage636" class="footer-link">Facebook</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+                <p style="color: #888; font-size: 0.9rem;">
+                    © 2025 Jon Page • Per Ankh Consciousness Technology • Forest Wisdom & Mycological Education
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mushroom data
+        const mushroomData = [
+            {
+                "type": "MORELS",
+                "class": "MYCORRHIZAL",
+                "latin_name": "M. AMERICANA",
+                "typical_name": "YELLOW",
+                "trees": "AMERICAN ELM, ASH, PIN OAK, SHAGBARK HICKORY, SUGAR MAPLE, WHITE PINE",
+                "season": "STARTS IN LATE FEBRUARY IN GEORGIA, MOVES 100 MILES NORTH EVERY 2 WEEKS",
+                "flushes": "2-3 DEPENDING ON WEATHER AND TIME OF YEAR",
+                "tidbits": "REMEMBER THE SPOT! JOURNAL AND ADD EVERY YEAR TO BUILD SPOTS"
+            },
+            {
+                "type": "MORELS",
+                "class": "MYCORRHIZAL/Saprotropic",
+                "latin_name": "M. ANGUSTICEPS",
+                "typical_name": "BROWN/BLACK",
+                "trees": "BIG TOOTH ASPEN (BTA, POPLAR, ASPEN), BLACK WALNUT, SYCAMORE",
+                "season": "BLACKS ARE FIRST",
+                "flushes": "SAME, KEEP HUNTING SAME SPOTS EVERY 4-5 DAYS",
+                "tidbits": "LOOK FOR FILTERED LIGHT, WALK THE DRIP LINE AND IN"
+            },
+            {
+                "type": "CHAGA",
+                "class": "PARASITIC",
+                "latin_name": "I. OBLIQUUS",
+                "typical_name": "CHAGA",
+                "trees": "BIRCH TREES",
+                "season": "YEAR ROUND",
+                "flushes": "SLOW GROWING, HARVEST SUSTAINABLY",
+                "tidbits": "LOOKS LIKE BURNT CHARCOAL ON BIRCH BARK"
+            },
+            {
+                "type": "MAITAKE/HEN OF THE WOODS",
+                "class": "SAPROPHTIC",
+                "latin_name": "G. FRONDOSA",
+                "typical_name": "MAITAKE",
+                "trees": "BASE OF OAKS",
+                "season": "FALL",
+                "flushes": "SAME SPOTS YEARLY",
+                "tidbits": "REMEMBER THE SPOT! COMES UP SAME TREE"
+            },
+            {
+                "type": "LOBSTER",
+                "class": "PARASITIC",
+                "latin_name": "H. LACTIFLUORUM",
+                "typical_name": "LOBSTER",
+                "trees": "HARDWOODS",
+                "season": "LATE SUMMER TO FALL",
+                "flushes": "RANDOM",
+                "tidbits": "PARASITIC ON LACTARIUS MUSHROOMS"
+            },
+            {
+                "type": "OYSTER",
+                "class": "SAPROPHTIC",
+                "latin_name": "P. OSTREATUS",
+                "typical_name": "OYSTER",
+                "trees": "DEAD HARDWOODS",
+                "season": "FALL TO SPRING",
+                "flushes": "CLUSTERS ON DEAD TREES",
+                "tidbits": "GREAT FOR BEGINNERS, EASY TO IDENTIFY"
+            },
+            {
+                "type": "CHICKEN OF THE WOODS",
+                "class": "SAPROPHTIC",
+                "latin_name": "L. SULPHUREUS",
+                "typical_name": "CHICKEN",
+                "trees": "OAKS AND OTHER HARDWOODS",
+                "season": "LATE SPRING TO FALL",
+                "flushes": "SHELVING BRACKETS",
+                "tidbits": "BRIGHT ORANGE/YELLOW SHELVES"
+            },
+            {
+                "type": "LIONS MANE",
+                "class": "SAPROPHTIC",
+                "latin_name": "H. ERINACEUS",
+                "typical_name": "LIONS MANE",
+                "trees": "HARDWOODS",
+                "season": "LATE SUMMER TO FALL",
+                "flushes": "RANDOM AND RARE",
+                "tidbits": "FALLEN HARDWOODS IN LOWER WET AREAS"
+            },
+            {
+                "type": "CHANTERELLES",
+                "class": "MYCORRHIZAL",
+                "latin_name": "C. CIBARIUS",
+                "typical_name": "CHANTERELLES",
+                "trees": "HARDWOODS",
+                "season": "SUMMER TO FALL",
+                "flushes": "SCATTERED IN HARDWOOD FORESTS",
+                "tidbits": "GOLDEN TRUMPETS, FORKED GILLS"
+            }
+        ];
+        
+        // Mushroom icons mapping
+        const mushroomIcons = {
+            'MORELS': '🍄',
+            'CHAGA': '🌰',
+            'MAITAKE/HEN OF THE WOODS': '🦃',
+            'LOBSTER': '🦞',
+            'OYSTER': '🦪',
+            'CHICKEN OF THE WOODS': '🐔',
+            'LIONS MANE': '🦁',
+            'LACTARIUS': '🥛',
+            'CHANTERELLES': '🌟',
+            'A. MUSCARIA': '🔴',
+            'GHOST PIPE': '👻'
+        };
+        
+        // Three.js setup
+        let scene, camera, renderer, particles = [];
+        let animationEnabled = true;
+        let particlesEnabled = true;
+        
+        function initThreeJS() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ 
+                canvas: document.getElementById('threeCanvas'),
+                alpha: true,
+                antialias: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            
+            // Create floating 3D mushroom models
+            createFloatingMushrooms();
+            
+            // Create particle system
+            createParticleSystem();
+            
+            camera.position.z = 5;
+            
+            animate3D();
+        }
+        
+        function createFloatingMushrooms() {
+            const mushroomGeometry = new THREE.ConeGeometry(0.1, 0.3, 8);
+            const stemGeometry = new THREE.CylinderGeometry(0.02, 0.02, 0.2);
+            
+            for (let i = 0; i < 20; i++) {
+                // Mushroom cap
+                const capMaterial = new THREE.MeshBasicMaterial({ 
+                    color: new THREE.Color().setHSL(Math.random(), 0.7, 0.6),
+                    transparent: true,
+                    opacity: 0.7
+                });
+                const cap = new THREE.Mesh(mushroomGeometry, capMaterial);
+                
+                // Mushroom stem
+                const stemMaterial = new THREE.MeshBasicMaterial({ 
+                    color: 0xf0f0f0,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const stem = new THREE.Mesh(stemGeometry, stemMaterial);
+                stem.position.y = -0.2;
+                
+                // Group mushroom parts
+                const mushroom = new THREE.Group();
+                mushroom.add(cap);
+                mushroom.add(stem);
+                
+                // Random position
+                mushroom.position.set(
+                    (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 10
+                );
+                
+                // Random rotation
+                mushroom.rotation.set(
+                    Math.random() * Math.PI,
+                    Math.random() * Math.PI,
+                    Math.random() * Math.PI
+                );
+                
+                mushroom.userData = {
+                    rotationSpeed: {
+                        x: (Math.random() - 0.5) * 0.02,
+                        y: (Math.random() - 0.5) * 0.02,
+                        z: (Math.random() - 0.5) * 0.02
+                    },
+                    floatSpeed: Math.random() * 0.01 + 0.005
+                };
+                
+                scene.add(mushroom);
+                particles.push(mushroom);
+            }
+        }
+        
+        function createParticleSystem() {
+            const particleGeometry = new THREE.BufferGeometry();
+            const particleCount = 1000;
+            const positions = new Float32Array(particleCount * 3);
+            
+            for (let i = 0; i < particleCount * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 50;
+            }
+            
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0x8bc34a,
+                size: 0.05,
+                transparent: true,
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending
+            });
+            
+            const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+            scene.add(particleSystem);
+        }
+        
+        function animate3D() {
+            requestAnimationFrame(animate3D);
+            
+            if (animationEnabled) {
+                particles.forEach(mushroom => {
+                    mushroom.rotation.x += mushroom.userData.rotationSpeed.x;
+                    mushroom.rotation.y += mushroom.userData.rotationSpeed.y;
+                    mushroom.rotation.z += mushroom.userData.rotationSpeed.z;
+                    
+                    mushroom.position.y += Math.sin(Date.now() * mushroom.userData.floatSpeed) * 0.001;
+                });
+            }
+            
+            renderer.render(scene, camera);
+        }
+        
+        // Generate mushroom cards
+        function generateMushroomCards() {
+            const grid = document.getElementById('mushroomGrid');
+            
+            mushroomData.forEach((mushroom, index) => {
+                const card = document.createElement('div');
+                card.className = 'mushroom-card';
+                card.setAttribute('data-mushroom', mushroom.type.toLowerCase());
+                
+                const icon = mushroomIcons[mushroom.type] || '🍄';
+                
+                card.innerHTML = `
+                    <div class="mushroom-header">
+                        <div class="mushroom-icon">${icon}</div>
+                        <div class="mushroom-type">${mushroom.type}</div>
+                        <div class="mushroom-class">${mushroom.class}</div>
+                    </div>
+                    <div class="mushroom-details">
+                        ${mushroom.latin_name ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Latin Name</div>
+                                <div class="detail-value latin-name">${mushroom.latin_name}</div>
+                            </div>
+                        ` : ''}
+                        ${mushroom.typical_name ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Common Name</div>
+                                <div class="detail-value">${mushroom.typical_name}</div>
+                            </div>
+                        ` : ''}
+                        ${mushroom.trees ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Associated Trees</div>
+                                <div class="detail-value">${mushroom.trees}</div>
+                            </div>
+                        ` : ''}
+                        ${mushroom.season ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Season</div>
+                                <div class="detail-value">${mushroom.season}</div>
+                            </div>
+                        ` : ''}
+                        ${mushroom.flushes ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Flushes</div>
+                                <div class="detail-value">${mushroom.flushes}</div>
+                            </div>
+                        ` : ''}
+                        ${mushroom.tidbits ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Tips & Notes</div>
+                                <div class="detail-value">${mushroom.tidbits}</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+                
+                // Animate card entrance
+                setTimeout(() => {
+                    anime({
+                        targets: card,
+                        translateY: [50, 0],
+                        opacity: [0, 1],
+                        duration: 800,
+                        delay: index * 100,
+                        easing: 'easeOutCubic'
+                    });
+                }, 100);
+            });
+        }
+        
+        // Create floating particles
+        function createFloatingParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            setInterval(() => {
+                if (!particlesEnabled) return;
+                
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 6000);
+            }, 300);
+        }
+        
+        // Control functions
+        function toggleAnimation() {
+            animationEnabled = !animationEnabled;
+        }
+        
+        function resetView() {
+            camera.position.set(0, 0, 5);
+            camera.rotation.set(0, 0, 0);
+        }
+        
+        function toggleParticles() {
+            particlesEnabled = !particlesEnabled;
+            const particlesContainer = document.getElementById('particles');
+            particlesContainer.style.display = particlesEnabled ? 'block' : 'none';
+        }
+        
+        // Handle window resize
+        function handleResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initThreeJS();
+            generateMushroomCards();
+            createFloatingParticles();
+            
+            window.addEventListener('resize', handleResize);
+            
+            // Add mouse interaction
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+                
+                camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+                camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
+            });
+            
+            // Animate service cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all service cards
+            document.querySelectorAll('.service-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = `all 0.8s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Community & Relationship Dynamics | Per Ankh Knowledge Base</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --per-ankh-gold: #D4AF37;
+            --per-ankh-purple: #6B46C1;
+            --per-ankh-deep-blue: #1E3A8A;
+            --per-ankh-earth: #8B4513;
+            --per-ankh-rose: #C2185B;
+        }
+
+        body {
+            font-family: 'Philosopher', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #f8f9fa;
+            line-height: 1.7;
+        }
+
+        .cinzel { font-family: 'Cinzel', serif; }
+
+        .sacred-gradient {
+            background: linear-gradient(135deg, var(--per-ankh-purple) 0%, var(--per-ankh-gold) 100%);
+        }
+
+        .earth-gradient {
+            background: linear-gradient(135deg, var(--per-ankh-earth) 0%, var(--per-ankh-rose) 100%);
+        }
+
+        .ankh-symbol {
+            width: 60px;
+            height: 60px;
+            background: var(--per-ankh-gold);
+            border-radius: 50% 50% 0 0;
+            position: relative;
+            margin: 0 auto 20px;
+        }
+
+        .ankh-symbol::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 8px;
+            background: var(--per-ankh-gold);
+            top: 25px;
+            left: 10px;
+            border-radius: 4px;
+        }
+
+        .ankh-symbol::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 40px;
+            background: var(--per-ankh-gold);
+            top: 35px;
+            left: 26px;
+            border-radius: 4px;
+        }
+
+        .sacred-quote {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(107, 70, 193, 0.2) 100%);
+            border-left: 4px solid var(--per-ankh-gold);
+            backdrop-filter: blur(10px);
+        }
+
+        .lotus-decoration {
+            background: radial-gradient(circle, var(--per-ankh-gold) 0%, transparent 70%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            opacity: 0.1;
+            position: absolute;
+        }
+
+        .community-circle {
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--per-ankh-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .heart-connection {
+            color: var(--per-ankh-rose);
+            font-size: 2rem;
+            margin: 0 15px;
+        }
+
+        .sacred-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .egyptian-border {
+            border-image: linear-gradient(90deg, var(--per-ankh-gold), var(--per-ankh-purple), var(--per-ankh-gold)) 1;
+            border-top: 3px solid;
+        }
+
+        .goddess-symbol {
+            font-size: 3rem;
+            color: var(--per-ankh-gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .relationship-icon {
+            background: linear-gradient(135deg, var(--per-ankh-rose) 0%, var(--per-ankh-purple) 100%);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+        }
+
+        .mushroom-baby {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .ancestral-honoring {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3) 0%, rgba(30, 58, 138, 0.3) 100%);
+            border: 2px solid var(--per-ankh-gold);
+        }
+
+        @media print {
+            body { background: white !important; color: black !important; }
+            .sacred-gradient, .earth-gradient { background: #f8f9fa !important; }
+            .sacred-quote { background: #f0f0f0 !important; border-left: 4px solid #666 !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="text-center py-16 relative">
+        <div class="lotus-decoration" style="top: 20px; left: 10%;"></div>
+        <div class="lotus-decoration" style="top: 50px; right: 15%;"></div>
+        
+        <div class="ankh-symbol"></div>
+        <h1 class="cinzel text-6xl font-bold mb-4 text-transparent bg-clip-text sacred-gradient">
+            <i class="fas fa-heart text-pink-400"></i> Sacred Community & Relationships <i class="fas fa-heart text-pink-400"></i>
+        </h1>
+        <h2 class="text-2xl mb-8" style="color: var(--per-ankh-gold);">
+            Building Conscious Communities Through Love, Honor & Sacred Partnership
+        </h2>
+        <div class="cinzel text-lg text-gray-300">
+            <i class="fas fa-users text-purple-400"></i> Per Ankh Entheogenic Church Knowledge Base <i class="fas fa-users text-purple-400"></i>
+        </div>
+        <div class="mt-8">
+            <div class="community-circle">
+                <i class="fas fa-infinity goddess-symbol"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="max-w-6xl mx-auto px-8 py-12">
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="text-center mb-12">
+                <h2 class="cinzel text-5xl font-bold mb-6 egyptian-border pb-4" style="color: var(--per-ankh-gold);">
+                    <i class="fas fa-hands-helping"></i> Sacred Community Teaching
+                </h2>
+                <div class="text-xl leading-relaxed">
+                    <p class="mb-6">From the wisdom of <strong>Mama Ayana Iyi</strong>, High Crone Warrior Priestess, wife of the late great Kilindi Iyi, comes these profound teachings on building conscious communities rooted in sacred partnership, authentic love, and spiritual growth.</p>
+                    <p>Through 22 years of sacred partnership and decades of community building, these teachings illuminate the path to creating relationships and communities that honor both individual spiritual development and collective healing.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kilindi & Ayana's Sacred Partnership -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon">
+                <i class="fas fa-yin-yang"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                The Sacred Union: Kilindi & Ayana
+            </h3>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h4 class="text-2xl font-bold mb-6" style="color: var(--per-ankh-purple);">
+                        <i class="fas fa-heart"></i> Divine Destiny Partnership
+                    </h4>
+                    <div class="space-y-4 text-lg">
+                        <p>"I met Kilindi when we were 19 years old at a martial arts school. I see this beautiful young boy doing amazing movements, so beautiful, and with me coming from a dance background I wanted to know what it was he was doing."</p>
+                        <p>"He has been a part of my divine destiny and I knew that back then, but it just wasn't our time so let's move forward to the beginning of our relationship which lasted 22 years."</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold mb-6" style="color: var(--per-ankh-rose);">
+                        <i class="fas fa-seedling"></i> The First Sacred Journey
+                    </h4>
+                    <div class="space-y-4 text-lg">
+                        <p>"He said here take this and I said well what is that he said his mushrooms. I had no idea what I was getting ready to do. I just ate these five grams of dried mushrooms and baby it just changed the entire trajectory of my life."</p>
+                        <p>"The love that I felt from this man in that space - if you ever felt love and you know that it's love, but then you take mushrooms and you're absolutely sure what love really feels like."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sacred Quote -->
+        <div class="sacred-quote rounded-2xl p-8 mb-12 text-center">
+            <div class="text-3xl mb-4" style="color: var(--per-ankh-gold);">
+                <i class="fas fa-quote-left"></i>
+            </div>
+            <p class="text-2xl cinzel font-semibold mb-4">
+                "What I did at home with Baba Kilindi was allow Kilindi to be that person at home. You come in and you close the door to that world out there. We can watch Everybody Loves Raymond, I'm going to make you an egg sandwich, we're going to sit on the couch and just relax."
+            </p>
+            <div class="text-lg" style="color: var(--per-ankh-purple);">
+                - Creating Sacred Space at Home
+            </div>
+        </div>
+
+        <!-- Alternative Relationship Models -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon">
+                <i class="fas fa-female"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                Sacred Polygamous Partnership
+            </h3>
+            <div class="space-y-8">
+                <div class="ancestral-honoring rounded-2xl p-8">
+                    <h4 class="text-2xl font-bold mb-4" style="color: var(--per-ankh-gold);">
+                        <i class="fas fa-crown"></i> Power & Conscious Choice
+                    </h4>
+                    <div class="sacred-quote rounded-xl p-6 mb-6">
+                        <p class="text-xl leading-relaxed">
+                            "I understand that a man of power needs more than one woman and a man of power will have more than one woman and they know about each other, but a man who does not have power will have those more than one women but they lie to the women. Baba didn't lie he's like baby this high roll you want to roll with me."
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div class="bg-purple-900 bg-opacity-30 rounded-xl p-6">
+                            <i class="fas fa-handshake text-3xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                            <h5 class="font-bold mb-2">Honesty & Transparency</h5>
+                            <p>Open communication about all relationships</p>
+                        </div>
+                        <div class="bg-purple-900 bg-opacity-30 rounded-xl p-6">
+                            <i class="fas fa-balance-scale text-3xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                            <h5 class="font-bold mb-2">Conscious Consent</h5>
+                            <p>All parties choose with full awareness</p>
+                        </div>
+                        <div class="bg-purple-900 bg-opacity-30 rounded-xl p-6">
+                            <i class="fas fa-heart-circle text-3xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                            <h5 class="font-bold mb-2">Sacred Respect</h5>
+                            <p>Honoring all partners equally</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Non-Toxic Masculine Energy -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon" style="background: linear-gradient(135deg, var(--per-ankh-deep-blue) 0%, var(--per-ankh-gold) 100%);">
+                <i class="fas fa-male"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                Non-Toxic Masculine Energy
+            </h3>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h4 class="text-2xl font-bold mb-6" style="color: var(--per-ankh-purple);">
+                        <i class="fas fa-gem"></i> Qualities of Non-Toxic Men
+                    </h4>
+                    <ul class="space-y-4 text-lg">
+                        <li><i class="fas fa-check-circle mr-3" style="color: var(--per-ankh-gold);"></i>A man who thinks better of himself</li>
+                        <li><i class="fas fa-check-circle mr-3" style="color: var(--per-ankh-gold);"></i>Who speaks well over himself and others</li>
+                        <li><i class="fas fa-check-circle mr-3" style="color: var(--per-ankh-gold);"></i>Who has elevated his diet</li>
+                        <li><i class="fas fa-check-circle mr-3" style="color: var(--per-ankh-gold);"></i>Not dependent on alcohol</li>
+                        <li><i class="fas fa-check-circle mr-3" style="color: var(--per-ankh-gold);"></i>Who respects the woman's womb space</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="sacred-quote rounded-xl p-6">
+                        <h4 class="text-xl font-bold mb-4" style="color: var(--per-ankh-rose);">Sacred Energetic Exchange</h4>
+                        <p class="text-lg leading-relaxed">
+                            "Taking in a man who is non-toxic, you're taking in the semen of a man that is offering you protection with that semen, he is offering you guidance with that semen, information comes from a man's semen when it's non-toxic."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sacred Sexuality & 7-Gram Protocol -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon" style="background: linear-gradient(135deg, var(--per-ankh-rose) 0%, var(--per-ankh-purple) 100%);">
+                <i class="fas fa-infinity"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                Sacred Sexuality & Hypnosis
+            </h3>
+            <div class="space-y-8">
+                <div class="text-center">
+                    <h4 class="text-3xl font-bold mb-4" style="color: var(--per-ankh-purple);">
+                        The 7-Gram Sacred Union Protocol
+                    </h4>
+                    <div class="sacred-quote rounded-xl p-8">
+                        <p class="text-xl leading-relaxed mb-4">
+                            "I say to you those who are psychedelic adventurers, take those seven grams you take them he takes them and then that is when you will have your sexual interaction on those seven grams. That is when you will start to make this movement of hypnosis - becoming one flesh."
+                        </p>
+                        <div class="text-lg" style="color: var(--per-ankh-gold);">
+                            <strong>Hypnosis:</strong> H-E-N-O-I-S - Becoming One Flesh
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-pink-900 bg-opacity-30 rounded-xl p-6 text-center">
+                        <i class="fas fa-eye text-4xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold mb-2">Enhanced Perception</h5>
+                        <p>Seeing the magical tool that it truly is</p>
+                    </div>
+                    <div class="bg-pink-900 bg-opacity-30 rounded-xl p-6 text-center">
+                        <i class="fas fa-heart-pulse text-4xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold mb-2">Sacred Energy Exchange</h5>
+                        <p>Movement, breathing, blood flow, essence</p>
+                    </div>
+                    <div class="bg-pink-900 bg-opacity-30 rounded-xl p-6 text-center">
+                        <i class="fas fa-comments text-4xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold mb-2">Divine Communication</h5>
+                        <p>Speaking in a language only you understand</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sacred Quote on Intimacy -->
+        <div class="sacred-quote rounded-2xl p-8 mb-12 text-center">
+            <div class="text-3xl mb-4" style="color: var(--per-ankh-rose);">
+                <i class="fas fa-quote-left"></i>
+            </div>
+            <p class="text-2xl cinzel font-semibold mb-4">
+                "When you go home and you make love to your woman, place your hand deep on that womb and send that energy in before you enter her, before you love on her, place your hand on that woman, give an offer a prayer to that space as you open her up and love on her."
+            </p>
+            <div class="text-lg" style="color: var(--per-ankh-purple);">
+                - Sacred Intimacy Practice
+            </div>
+        </div>
+
+        <!-- Mushroom Babies -->
+        <div class="mushroom-baby rounded-3xl mb-12">
+            <h3 class="cinzel text-4xl font-bold mb-8">
+                <i class="fas fa-seedling"></i> Mushroom Babies: Conscious Conception
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-2xl font-bold mb-4">Conception on Seven Grams</h4>
+                    <p class="text-lg leading-relaxed mb-4">
+                        "We bring forth these babies through this energy and they've already got a real good start. These children become extremely aware when they're in the womb, they know when you're around, they stop, they listen, they talk to you, they introduce themselves to you in utero."
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold mb-4">Pregnancy Protocols</h4>
+                    <p class="text-lg leading-relaxed">
+                        "Once you conceived start taking your micro dosing maybe a gram or two throughout your pregnancy. These children that we are bringing forth are going to be the ones... they're going to be doing this at 12 and 13 because this is what time it is."
+                    </p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <div class="inline-flex items-center space-x-4 text-2xl">
+                    <i class="fas fa-baby"></i>
+                    <span>Amore - The Living Example</span>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="mt-4 text-lg">Six-year-old Amore, a mushroom baby: "Baba Kilindi is still teaching, he whispers in everybody's ear."</p>
+            </div>
+        </div>
+
+        <!-- Women's Circles & Community Healing -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon" style="background: linear-gradient(135deg, var(--per-ankh-earth) 0%, var(--per-ankh-rose) 100%);">
+                <i class="fas fa-venus"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                Women's Circles & Healing Community
+            </h3>
+            <div class="space-y-8">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--per-ankh-purple);">
+                            <i class="fas fa-tree"></i> Nature-Based Gathering
+                        </h4>
+                        <div class="space-y-4 text-lg">
+                            <p>"We go up into the woods, I teach the women how to pitch tents, build fires, we pee all over the place, blood is released. Women that haven't bled in a while will bleed because the earth commands that sacrifice from them."</p>
+                            <p>"When we connect in a circle which is very ancient, when women come together in nature in a circle, we connect through psychedelics through the womb."</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--per-ankh-rose);">
+                            <i class="fas fa-circle-nodes"></i> Collective Healing
+                        </h4>
+                        <div class="space-y-4 text-lg">
+                            <p>"I had one woman who took the mushrooms in a circle and she called up a boyfriend she said I need you to be out of there by the time I get back. She realized in that space that there was no use for him."</p>
+                            <p>"Spreading this energy through the women as we circle in the woods."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sacred-quote rounded-xl p-6">
+                    <h4 class="text-xl font-bold mb-4" style="color: var(--per-ankh-gold);">Earth Connection Teaching</h4>
+                    <p class="text-lg leading-relaxed">
+                        "What you're doing is absorbing the electromagnetic energy from the earth. They made panties and pants for a reason to block this power. That's power - inverted pyramid - that's where everybody got to come through and they want to shut that power down as best they can. So take the draws off when you have to, understand that that's energy."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grief & Loss Support -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon" style="background: linear-gradient(135deg, var(--per-ankh-deep-blue) 0%, var(--per-ankh-purple) 100%);">
+                <i class="fas fa-dove"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                Community Support Through Grief & Loss
+            </h3>
+            <div class="space-y-8">
+                <div class="ancestral-honoring rounded-2xl p-8">
+                    <h4 class="text-2xl font-bold mb-6" style="color: var(--per-ankh-gold);">
+                        <i class="fas fa-heart-crack"></i> Supporting Each Other
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-lg leading-relaxed mb-4">
+                                "When he left here, he moved through my body after passing. He said 'Ayana don't be angry, I got this' and Baba has had this for the past two years of guiding me where I needed to go, how to do it, providing for me."
+                            </p>
+                            <p class="text-lg leading-relaxed">
+                                "Kilindi belonged to the world to everybody out there, now he belongs to the multiverse. We're going to continue the work in a way that we will keep it sacred."
+                            </p>
+                        </div>
+                        <div>
+                            <div class="bg-blue-900 bg-opacity-30 rounded-xl p-6">
+                                <h5 class="font-bold mb-4" style="color: var(--per-ankh-gold);">
+                                    <i class="fas fa-hands-helping"></i> Community Practices
+                                </h5>
+                                <ul class="space-y-2">
+                                    <li>• Honoring those who transition</li>
+                                    <li>• Continuing their sacred work</li>
+                                    <li>• Supporting surviving partners</li>
+                                    <li>• Maintaining spiritual connections</li>
+                                    <li>• Preserving teachings and wisdom</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ancestral Honoring -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon" style="background: linear-gradient(135deg, var(--per-ankh-earth) 0%, var(--per-ankh-gold) 100%);">
+                <i class="fas fa-users-line"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                Honoring Ancestors & Spiritual Lineage
+            </h3>
+            <div class="space-y-8">
+                <div class="text-center">
+                    <div class="sacred-quote rounded-xl p-6 mb-8">
+                        <p class="text-xl leading-relaxed">
+                            "Egum - Ashay means ancestor, Mo juba means greetings and Ibaye means respect. I give respect to his spirit because he has been with us this entire time. The veil between worlds has been thin for a long time but it's even thinner now."
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="ancestral-honoring rounded-xl p-6 text-center">
+                        <i class="fas fa-wine-glass text-4xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold mb-2">Libation Rituals</h5>
+                        <p>Pouring water to invite ancestor spirits to drink and be present</p>
+                    </div>
+                    <div class="ancestral-honoring rounded-xl p-6 text-center">
+                        <i class="fas fa-eye text-4xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold mb-2">Spirit Communication</h5>
+                        <p>Using mushrooms to connect directly with ancestors for guidance</p>
+                    </div>
+                    <div class="ancestral-honoring rounded-xl p-6 text-center">
+                        <i class="fas fa-scroll text-4xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold mb-2">Preserving Wisdom</h5>
+                        <p>Continuing the teachings and work of those who came before</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Creating Sacred Home Spaces -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                Creating Sacred Spaces at Home
+            </h3>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h4 class="text-2xl font-bold mb-6" style="color: var(--per-ankh-purple);">
+                        <i class="fas fa-peace"></i> The Art of Sacred Domesticity
+                    </h4>
+                    <div class="space-y-4 text-lg">
+                        <p>"Baba's favorite program was Everybody Loves Raymond. What I did at home was allow Kilindi to be that person at home. You close the door to that world out there."</p>
+                        <p>"I'm not going to ask you a whole lot of questions, we don't have to look over some deep books. You can watch Everybody Loves Raymond, I'm going to make you an egg sandwich."</p>
+                        <p>"I didn't press him, I let him just relax when he came home."</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-purple-900 bg-opacity-30 rounded-xl p-6">
+                        <h4 class="text-xl font-bold mb-4" style="color: var(--per-ankh-gold);">
+                            <i class="fas fa-heart"></i> Sacred Home Principles
+                        </h4>
+                        <ul class="space-y-3">
+                            <li><i class="fas fa-check mr-3" style="color: var(--per-ankh-rose);"></i>Create a sanctuary from the outside world</li>
+                            <li><i class="fas fa-check mr-3" style="color: var(--per-ankh-rose);"></i>Allow partners to be fully human</li>
+                            <li><i class="fas fa-check mr-3" style="color: var(--per-ankh-rose);"></i>Provide comfort without interrogation</li>
+                            <li><i class="fas fa-check mr-3" style="color: var(--per-ankh-rose);"></i>Honor simple pleasures and rest</li>
+                            <li><i class="fas fa-check mr-3" style="color: var(--per-ankh-rose);"></i>Balance spiritual work with ordinary life</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Building Community Support Systems -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon" style="background: linear-gradient(135deg, #4ade80 0%, var(--per-ankh-gold) 100%);">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                Building Community Support Systems
+            </h3>
+            <div class="space-y-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--per-ankh-purple);">
+                            <i class="fas fa-phone"></i> 24/7 Spiritual Support
+                        </h4>
+                        <p class="text-lg leading-relaxed mb-4">
+                            "He would get those calls all the time at three o'clock in the morning and he would answer those calls all the time because he knew out there somebody needed something - a voice, a tone, an energy, an encouraging word to just keep doing the work."
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--per-ankh-rose);">
+                            <i class="fas fa-share-nodes"></i> Collective Responsibility
+                        </h4>
+                        <p class="text-lg leading-relaxed">
+                            "Each and every one of you are going to go forth and you're going to reach out to that next person and you're going to give your energy over to them and you're going to let them know what it is that you understand."
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="bg-green-900 bg-opacity-30 rounded-xl p-4 text-center">
+                        <i class="fas fa-graduation-cap text-2xl mb-2" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold">Education</h5>
+                        <p class="text-sm">Teaching protocols and safety</p>
+                    </div>
+                    <div class="bg-green-900 bg-opacity-30 rounded-xl p-4 text-center">
+                        <i class="fas fa-shield-alt text-2xl mb-2" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold">Protection</h5>
+                        <p class="text-sm">Sitting for journeyers</p>
+                    </div>
+                    <div class="bg-green-900 bg-opacity-30 rounded-xl p-4 text-center">
+                        <i class="fas fa-heart-pulse text-2xl mb-2" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold">Healing</h5>
+                        <p class="text-sm">Supporting trauma recovery</p>
+                    </div>
+                    <div class="bg-green-900 bg-opacity-30 rounded-xl p-4 text-center">
+                        <i class="fas fa-hands-praying text-2xl mb-2" style="color: var(--per-ankh-gold);"></i>
+                        <h5 class="font-bold">Spiritual</h5>
+                        <p class="text-sm">Honoring the sacred work</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Continuing the Legacy -->
+        <div class="sacred-section rounded-3xl p-12 mb-12">
+            <div class="relationship-icon" style="background: linear-gradient(135deg, var(--per-ankh-gold) 0%, var(--per-ankh-purple) 100%);">
+                <i class="fas fa-infinity"></i>
+            </div>
+            <h3 class="cinzel text-4xl font-bold text-center mb-8" style="color: var(--per-ankh-gold);">
+                Continuing Kilindi's Legacy Through Community
+            </h3>
+            <div class="space-y-8">
+                <div class="text-center">
+                    <div class="sacred-quote rounded-xl p-8 mb-8">
+                        <p class="text-2xl cinzel font-semibold mb-4">
+                            "My heart is just so full at listening to these young people and what they're doing. Some of Kilindi's last words to me were 'Continue the work, Ayana' and they are continuing the work and I will continue this work until I join him."
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-yellow-900 to-purple-900 bg-opacity-30 rounded-xl p-6">
+                        <i class="fas fa-seedling text-3xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                        <h4 class="font-bold mb-3">Teaching the Next Generation</h4>
+                        <p>Young people stepping up at 12 and 13, understanding the urgency of the work</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-900 to-purple-900 bg-opacity-30 rounded-xl p-6">
+                        <i class="fas fa-gem text-3xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                        <h4 class="font-bold mb-3">Keeping It Sacred</h4>
+                        <p>Maintaining honor, integrity, and reverence in all psychedelic work</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-900 to-purple-900 bg-opacity-30 rounded-xl p-6">
+                        <i class="fas fa-globe text-3xl mb-4" style="color: var(--per-ankh-gold);"></i>
+                        <h4 class="font-bold mb-3">Global Healing</h4>
+                        <p>Using community and sacred relationships to heal the planet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Sacred Quote -->
+        <div class="sacred-quote rounded-2xl p-8 mb-12 text-center">
+            <div class="text-4xl mb-6" style="color: var(--per-ankh-gold);">
+                <i class="fas fa-heart"></i>
+            </div>
+            <p class="text-3xl cinzel font-bold mb-6">
+                "We possess the power as women to rule this world, not in the sense that we're trying to take over but in the sense that it needs us to rule now. It has fallen into our laps - it's a huge responsibility that we're getting ready to take on."
+            </p>
+            <div class="text-xl" style="color: var(--per-ankh-purple);">
+                - The Sacred Feminine Rising
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-12 border-t border-yellow-600">
+        <div class="ankh-symbol mb-6"></div>
+        <div class="cinzel text-2xl font-bold mb-4" style="color: var(--per-ankh-gold);">
+            Per Ankh Entheogenic Church
+        </div>
+        <div class="text-lg mb-4">
+            <i class="fas fa-heart text-pink-400"></i> Sacred Community Knowledge Base <i class="fas fa-heart text-pink-400"></i>
+        </div>
+        <div class="text-gray-300">
+            <p class="mb-2">These teachings are shared with deep reverence for Mama Ayana Iyi and the late great Kilindi Iyi</p>
+            <p>May their wisdom continue to guide conscious communities toward healing and awakening</p>
+        </div>
+        <div class="mt-6 flex justify-center space-x-8 text-2xl">
+            <i class="fas fa-ankh" style="color: var(--per-ankh-gold);"></i>
+            <i class="fas fa-lotus" style="color: var(--per-ankh-purple);"></i>
+            <i class="fas fa-eye" style="color: var(--per-ankh-gold);"></i>
+        </div>
+    </footer>
+</body>
+</html>
