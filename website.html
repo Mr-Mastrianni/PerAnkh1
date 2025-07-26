@@ -696,6 +696,72 @@
             color: var(--ethereal-white);
             font-weight: 600;
         }
+        
+        /* Hero Login Styles */
+        .hero-login {
+            background: rgba(45, 27, 105, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            max-width: 500px;
+            margin: 2rem auto 0;
+        }
+        
+        .hero-login p {
+            margin-bottom: 1.5rem;
+            color: var(--ethereal-white);
+            font-size: 1.1rem;
+        }
+        
+        .login-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-login {
+                width: 90%;
+                padding: 1rem;
+            }
+            
+            .login-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .login-buttons a {
+                width: 80%;
+                margin: 0.5rem 0 !important;
+            }
+        }
+        
+        /* Admin Login Styles */
+        #adminInfo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .admin-welcome {
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+        
+        .admin-role {
+            color: var(--ethereal-white);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            #adminInfo {
+                margin: 1rem 0;
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -709,6 +775,7 @@
                 </button>
                 <div class="nav-links" id="navLinks">
                     <a href="#home" class="nav-link">Home</a>
+                    <a href="login.html" class="nav-link">Login</a>
                     
                     <!-- Core Teachings -->
                     <div class="nav-dropdown">
@@ -727,8 +794,7 @@
                         <div class="dropdown-menu">
                             <a href="communitypartnership.html" class="dropdown-link">Community Partnership</a>
                             <a href="sacredcommunityrelationships.html" class="dropdown-link">Sacred Relationships</a>
-                            <a href="urbanyouthoutreach.html" class="dropdown-link">Urban Youth Outreach</a>
-                            <a href="targetaudiencepersonaprofiles.html" class="dropdown-link">Audience Profiles</a>
+                            <a href="community.html" class="dropdown-link">Community Portal</a>
                         </div>
                     </div>
                     
@@ -736,7 +802,6 @@
                     <div class="nav-dropdown">
                         <a href="#digital" class="nav-link dropdown-toggle">Digital Assets <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="nft.html" class="dropdown-link">NFT Ecosystem</a>
                             <a href="calculator.html" class="dropdown-link">Calculator</a>
                         </div>
                     </div>
@@ -745,18 +810,7 @@
                     <div class="nav-dropdown">
                         <a href="#content" class="nav-link dropdown-toggle">Content <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="contentcalendar.html" class="dropdown-link">Content Calendar</a>
-                            <a href="contentcalendar2.html" class="dropdown-link">Content Calendar 2</a>
-                            <a href="hiphop.html" class="dropdown-link">Hip-Hop Culture</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Brand & Identity -->
-                    <div class="nav-dropdown">
-                        <a href="#brand" class="nav-link dropdown-toggle">Brand <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="BrandIdentity.html" class="dropdown-link">Brand Identity</a>
-                            <a href="BrandIdentity2.html" class="dropdown-link">Brand Identity 2</a>
+                            <a href="admin_pages/hiphop.html" class="dropdown-link">Hip-Hop Culture</a>
                         </div>
                     </div>
                     
@@ -767,19 +821,7 @@
                             <a href="mamayana.html" class="dropdown-link">Mama Ayana</a>
                             <a href="jon.html" class="dropdown-link">Jon</a>
                             <a href="Shanna1.html" class="dropdown-link">Shanna 1</a>
-                            <a href="Shanna2.html" class="dropdown-link">Shanna 2</a>
                             <a href="moudoubaqui.html" class="dropdown-link">Moudoubaqui</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Tools & Resources -->
-                    <div class="nav-dropdown">
-                        <a href="#tools" class="nav-link dropdown-toggle">Tools <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="prompts1.html" class="dropdown-link">Prompts 1</a>
-                            <a href="prompts2.html" class="dropdown-link">Prompts 2</a>
-                            <a href="prompts3.html" class="dropdown-link">Prompts 3</a>
-                            <a href="PER-ANKH-CONSCIOUSNESS-TECHNOLOGY-DOCUMENTATION.md" class="dropdown-link">Documentation</a>
                         </div>
                     </div>
                 </div>
@@ -810,6 +852,19 @@
                     ENTHEOGENIC CHURCH<br>
                     <em>Ancient Wisdom • Modern Renaissance</em>
                 </p>
+            </div>
+            
+            <!-- Community Login/Signup -->
+            <div class="hero-login" style="margin-top: 2rem; text-align: center;">
+                <p class="text-lg mb-4">Join our sacred community</p>
+                <div class="login-buttons">
+                    <a href="community.html#login" class="cta-button" style="margin: 0 0.5rem;">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </a>
+                    <a href="community.html#signup" class="cta-button" style="margin: 0 0.5rem;">
+                        <i class="fas fa-user-plus mr-2"></i>Sign Up
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -957,11 +1012,83 @@
                     <div class="feature-icon">🧘‍♀️</div>
                     <h3 class="feature-title">Spiritual Tools Integration</h3>
                     <p class="feature-description">
-                        Virtual meditation spaces with customizable ambient environments. 
-                        Breath work guides with visual pacing indicators, crystal healing 
-                        selector, and astrology integration for optimal ceremony timing.
+                        Sacred geometry visualizer with personalized mandala generator. 
+                        Chakra alignment tool with binaural beats and crystal bowl harmonics.
                     </p>
+                    <div class="card-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-calendar-plus mr-2"></i>Save Event
+                        </button>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="cta-button inline-flex items-center">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    View Full Calendar
+                </a>
+            </div>
+        </section>
+
+        <!-- Upcoming Sacred Gatherings -->
+        <section class="content-section" id="events">
+            <h2 class="section-title">Upcoming Sacred Gatherings</h2>
+            <div class="grid-container">
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3 class="feature-title">New Moon Integration Circle</h3>
+                    <p class="feature-description">
+                        <strong>Date:</strong> June 15, 2023 | 7:00 PM PST<br>
+                        <strong>Location:</strong> Digital Temple (Zoom)<br>
+                        Join us for guided meditation, intention setting, and community sharing 
+                        as we harness the energy of the new moon.
+                    </p>
+                    <div class="card-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-calendar-plus mr-2"></i>Save Event
+                        </button>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🍄</div>
+                    <h3 class="feature-title">Sacred Mushroom Workshop</h3>
+                    <p class="feature-description">
+                        <strong>Date:</strong> July 3, 2023 | 6:00 PM PST<br>
+                        <strong>Location:</strong> Physical Temple (Sacred Grove)<br>
+                        Explore the ancient wisdom of entheogenic plants with our experienced 
+                        guides in a safe and reverent environment.
+                    </p>
+                    <div class="card-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-calendar-plus mr-2"></i>Save Event
+                        </button>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">♀️</div>
+                    <h3 class="feature-title">Women's Womb Wisdom Circle</h3>
+                    <p class="feature-description">
+                        <strong>Date:</strong> July 22, 2023 | 5:30 PM PST<br>
+                        <strong>Location:</strong> Digital Temple (Zoom)<br>
+                        A sacred space for women to connect with their divine feminine energy 
+                        through ritual, storytelling, and sisterhood.
+                    </p>
+                    <div class="card-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-calendar-plus mr-2"></i>Save Event
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="cta-button inline-flex items-center">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    View Full Calendar
+                </a>
             </div>
         </section>
 
@@ -1226,6 +1353,35 @@
                 element.style.borderColor = `hsl(${hue}, 70%, 60%)`;
             });
         }, 5000);
+        
+        // Admin login/logout functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginBtn = document.getElementById('adminLoginBtn');
+            const logoutBtn = document.getElementById('adminLogoutBtn');
+            const adminInfo = document.getElementById('adminInfo');
+            
+            // Check initial auth status
+            if (typeof perAnkhAuth !== 'undefined') {
+                perAnkhAuth.checkAuthStatus();
+            }
+            
+            // Login button click handler
+            if (loginBtn) {
+                loginBtn.addEventListener('click', () => {
+                    window.location.href = 'admin-login.html';
+                });
+            }
+            
+            // Logout button click handler
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    if (typeof perAnkhAuth !== 'undefined') {
+                        perAnkhAuth.logout();
+                    }
+                });
+            }
+        });
     </script>
+    <script src="admin-auth.js"></script>
 </body>
 </html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Portal - Per Ankh Entheogenic Church</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-gold: #B8860B;
+            --dark-purple: #2D1B69;
+            --cosmic-blue: #0F0F23;
+            --matte-black: #0A0A0A;
+            --steel-gray: #1C1C1C;
+            --ethereal-white: #F8F8FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            overflow-x: hidden;
+        }
+
+        .community-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, rgba(45, 27, 105, 0.4) 0%, rgba(28, 28, 28, 0.8) 100%);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .card {
+            background: rgba(28, 28, 28, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: var(--ethereal-white);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .post {
+            background: rgba(28, 28, 28, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .post-content {
+            margin-bottom: 1rem;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--ethereal-white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .action-btn:hover {
+            color: var(--primary-gold);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .tab {
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            font-weight: 600;
+        }
+
+        .tab:not(.active):hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .community-container {
+                padding: 1rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="community-container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="section-title">Community Portal</h1>
+            <p class="text-xl text-gray-300">Connect with fellow members of the Per Ankh Entheogenic Church</p>
+        </div>
+
+        <!-- Login/Signup Section -->
+        <div id="auth-section" class="card">
+            <h2 class="section-title text-2xl mb-4">Welcome to the Community</h2>
+            <p class="mb-6 text-gray-300">Join our sacred community to connect with like-minded individuals on their spiritual journey.</p>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="login">Login</div>
+                <div class="tab" data-tab="signup">Sign Up</div>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="login-form" class="tab-content" data-tab-content="login">
+                <div class="form-group">
+                    <label class="form-label">Email or Username</label>
+                    <input type="text" class="form-input" id="login-username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="login-password">
+                </div>
+                <button class="btn" id="login-btn">Login</button>
+                <p class="mt-4 text-gray-400">Don't have an account? <a href="#" class="text-primary-gold" id="switch-to-signup">Sign up here</a></p>
+                <p class="mt-4 text-gray-400">Admin access? <a href="admin-login.html" class="text-primary-gold">Admin Login</a></p>
+            </div>
+            
+            <!-- Signup Form -->
+            <div id="signup-form" class="tab-content hidden" data-tab-content="signup">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" id="signup-name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" id="signup-username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="signup-email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="signup-password">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" class="form-input" id="signup-confirm-password">
+                </div>
+                <button class="btn" id="signup-btn">Create Account</button>
+                <p class="mt-4 text-gray-400">Already have an account? <a href="#" class="text-primary-gold" id="switch-to-login">Login here</a></p>
+            </div>
+        </div>
+
+        <!-- Onboarding Section (Hidden by default) -->
+        <div id="onboarding-section" class="card hidden">
+            <h2 class="section-title text-2xl mb-4">Personalize Your Profile</h2>
+            <p class="mb-6 text-gray-300">Help us tailor your experience by answering a few questions.</p>
+            
+            <div class="form-group">
+                <label class="form-label">What draws you to the Per Ankh Entheogenic Church?</label>
+                <textarea class="form-input" rows="3" id="onboarding-draw"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">What are your spiritual interests?</label>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2" value="meditation"> Meditation
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2" value="plant-medicine"> Plant Medicine
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2" value="energy-work"> Energy Work
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2" value="sacred-geometry"> Sacred Geometry
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2" value="women-empowerment"> Women's Empowerment
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2" value="community-service"> Community Service
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">What are you hoping to gain from our community?</label>
+                <textarea class="form-input" rows="3" id="onboarding-hopes"></textarea>
+            </div>
+            
+            <button class="btn" id="complete-onboarding">Complete Profile</button>
+        </div>
+
+        <!-- Community Dashboard (Hidden by default) -->
+        <div id="community-dashboard" class="hidden">
+            <!-- Profile Section -->
+            <div class="card mb-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="avatar text-2xl">U</div>
+                        <div class="ml-4">
+                            <h2 class="text-2xl font-bold" id="user-name">User Name</h2>
+                            <p class="text-gray-400" id="user-title">Member</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-edit mr-2"></i> Edit Profile
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    <div class="text-center p-4 bg-gray-900 rounded-lg">
+                        <div class="text-2xl font-bold text-primary-gold" id="post-count">0</div>
+                        <div class="text-gray-400">Posts</div>
+                    </div>
+                    <div class="text-center p-4 bg-gray-900 rounded-lg">
+                        <div class="text-2xl font-bold text-primary-gold" id="follower-count">0</div>
+                        <div class="text-gray-400">Followers</div>
+                    </div>
+                    <div class="text-center p-4 bg-gray-900 rounded-lg">
+                        <div class="text-2xl font-bold text-primary-gold" id="following-count">0</div>
+                        <div class="text-gray-400">Following</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Post Section -->
+            <div class="card mb-6">
+                <h3 class="text-xl font-bold mb-4">Share with the Community</h3>
+                <div class="form-group">
+                    <textarea class="form-input" rows="4" placeholder="What's on your mind?" id="post-content"></textarea>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex gap-2">
+                        <button class="action-btn text-gray-400">
+                            <i class="fas fa-image"></i> Photo
+                        </button>
+                        <button class="action-btn text-gray-400">
+                            <i class="fas fa-calendar"></i> Event
+                        </button>
+                    </div>
+                    <button class="btn" id="submit-post">Post</button>
+                </div>
+            </div>
+
+            <!-- Community Feed -->
+            <div class="card">
+                <h3 class="text-xl font-bold mb-4">Community Feed</h3>
+                
+                <!-- Sample Posts -->
+                <div class="post">
+                    <div class="post-header">
+                        <div class="avatar text-xl">M</div>
+                        <div>
+                            <h4 class="font-bold">Mama Ayana</h4>
+                            <p class="text-sm text-gray-400">Posted 2 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Just completed a beautiful ceremony with our community. The energy was incredible! Grateful for the connections we're building together. 🙏✨</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> Like
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> Comment
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-share-square"></i> Share
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="post">
+                    <div class="post-header">
+                        <div class="avatar text-xl">J</div>
+                        <div>
+                            <h4 class="font-bold">Jon</h4>
+                            <p class="text-sm text-gray-400">Posted yesterday</p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Working on some new crystal technology designs. Would love to hear your thoughts on how we can integrate more sacred geometry principles. 🧘‍♂️🔮</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i> Like
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i> Comment
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-share-square"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.hash = tab.dataset.tab;
+            });
+        });
+        
+        // Switch between login and signup
+        document.getElementById('switch-to-signup').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.hash = 'signup';
+        });
+        
+        document.getElementById('switch-to-login').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.hash = 'login';
+        });
+        
+        // Login functionality
+        document.getElementById('login-btn').addEventListener('click', () => {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Simple validation
+            if (username && password) {
+                // Hide auth section and show community dashboard
+                document.getElementById('auth-section').classList.add('hidden');
+                document.getElementById('community-dashboard').classList.remove('hidden');
+                
+                // Set user name
+                document.getElementById('user-name').textContent = username;
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+        
+        // Signup functionality
+        document.getElementById('signup-btn').addEventListener('click', () => {
+            const name = document.getElementById('signup-name').value;
+            const username = document.getElementById('signup-username').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+            
+            // Simple validation
+            if (name && username && email && password && confirmPassword) {
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                // Hide auth section and show onboarding
+                document.getElementById('auth-section').classList.add('hidden');
+                document.getElementById('onboarding-section').classList.remove('hidden');
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+        
+        // Complete onboarding
+        document.getElementById('complete-onboarding').addEventListener('click', () => {
+            // Hide onboarding and show community dashboard
+            document.getElementById('onboarding-section').classList.add('hidden');
+            document.getElementById('community-dashboard').classList.remove('hidden');
+        });
+        
+        // Post submission
+        document.getElementById('submit-post').addEventListener('click', () => {
+            const content = document.getElementById('post-content').value;
+            
+            if (content.trim()) {
+                alert('Post submitted successfully!');
+                document.getElementById('post-content').value = '';
+                
+                // In a real app, this would add the post to the feed
+            } else {
+                alert('Please enter some content for your post');
+            }
+        });
+        
+        // Handle URL hash for tab navigation
+        function handleHashChange() {
+            const hash = window.location.hash;
+            
+            if (hash === '#login' || hash === '#signup') {
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show the appropriate tab content
+                if (hash === '#login') {
+                    document.querySelector('[data-tab-content="login"]').classList.remove('hidden');
+                    document.querySelector('[data-tab="login"]').classList.add('active');
+                } else if (hash === '#signup') {
+                    document.querySelector('[data-tab-content="signup"]').classList.remove('hidden');
+                    document.querySelector('[data-tab="signup"]').classList.add('active');
+                }
+            }
+        }
+        
+        // Handle hash change events
+        window.addEventListener('hashchange', handleHashChange);
+        
+        // Handle initial hash on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            handleHashChange();
+        });
+    </script>
+</body>
+</html>

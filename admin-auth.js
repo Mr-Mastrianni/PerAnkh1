@@ -342,22 +342,32 @@ class PerAnkhAuth {
     }
 
     /**
-     * Logout user
+     * Show admin content (used in admin pages)
      */
-    logout() {
-        // Clear session data
-        localStorage.removeItem(this.sessionKey);
-        sessionStorage.removeItem(this.activeKey);
+    showAdminContent() {
+        // Update admin info in navigation if present
+        const adminInfo = document.getElementById('adminInfo');
+        const loginBtn = document.getElementById('adminLoginBtn');
+        const logoutBtn = document.getElementById('adminLogoutBtn');
         
-        // Show confirmation
-        const confirmed = confirm('Are you sure you want to logout?');
-        if (confirmed) {
-            // Refresh page to update UI
-            window.location.reload();
-        } else {
-            // Restore session if user cancels
-            // Note: This is a simple implementation, in production you'd want more robust session management
-            this.checkAuthStatus();
+        if (adminInfo) {
+            const sessionData = JSON.parse(localStorage.getItem(this.sessionKey));
+            if (sessionData) {
+                const welcomeSpan = adminInfo.querySelector('.admin-welcome');
+                const roleSpan = adminInfo.querySelector('.admin-role');
+                
+                if (welcomeSpan) {
+                    welcomeSpan.textContent = `Welcome, ${sessionData.username}`;
+                }
+                
+                if (roleSpan) {
+                    roleSpan.textContent = `(${this.formatRole(sessionData.role)})`;
+                }
+                
+                adminInfo.style.display = 'flex';
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (logoutBtn) logoutBtn.style.display = 'inline-block';
+            }
         }
     }
 
