@@ -6,28 +6,22 @@
     <title>Admin Login - Per Ankh Entheogenic Church</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-gold: #D4AF37;
-            --deep-gold: #B8860B;
-            --dark-purple: #2D1B69;
-            --cosmic-blue: #0F0F23;
-            --matte-black: #0A0A0A;
-            --steel-gray: #1C1C1C;
-            --ethereal-white: #F8F8FF;
+            --earth-brown: #8B4513;
+            --forest-green: #228B22;
+            --golden-ankh: #DAA520;
+            --sacred-amber: #FFBF00;
+            --mycelium-white: #F5F5DC;
+            --consciousness-purple: #663399;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        
         body {
-            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            background: linear-gradient(135deg, var(--consciousness-purple) 0%, var(--forest-green) 50%, var(--earth-brown) 100%);
             font-family: 'Inter', sans-serif;
-            color: var(--ethereal-white);
+            color: white;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -35,7 +29,7 @@
             position: relative;
             overflow: hidden;
         }
-
+        
         .sacred-geometry {
             position: fixed;
             top: 0;
@@ -46,14 +40,14 @@
             z-index: 1;
             opacity: 0.2;
         }
-
+        
         .geometry-element {
             position: absolute;
-            border: 2px solid var(--primary-gold);
+            border: 2px solid var(--golden-ankh);
             border-radius: 50%;
             animation: geometryFloat 12s ease-in-out infinite;
         }
-
+        
         .geometry-1 {
             top: 10%;
             left: 10%;
@@ -61,7 +55,7 @@
             height: 100px;
             animation-delay: 0s;
         }
-
+        
         .geometry-2 {
             top: 20%;
             right: 15%;
@@ -71,7 +65,7 @@
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
             border-radius: 0;
         }
-
+        
         .geometry-3 {
             bottom: 20%;
             left: 20%;
@@ -79,7 +73,7 @@
             height: 80px;
             animation-delay: -8s;
         }
-
+        
         @keyframes geometryFloat {
             0%, 100% { 
                 transform: translateY(0px) rotate(0deg);
@@ -90,10 +84,10 @@
                 opacity: 0.4;
             }
         }
-
+        
         .login-container {
-            background: rgba(28, 28, 28, 0.9);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--golden-ankh);
             border-radius: 20px;
             padding: 3rem;
             backdrop-filter: blur(20px);
@@ -104,98 +98,93 @@
             z-index: 10;
             animation: containerGlow 4s ease-in-out infinite alternate;
         }
-
+        
         @keyframes containerGlow {
             0% {
                 box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-                border-color: rgba(212, 175, 55, 0.3);
+                border-color: var(--golden-ankh);
             }
             100% {
-                box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
-                border-color: rgba(212, 175, 55, 0.5);
+                box-shadow: 0 20px 60px rgba(218, 165, 32, 0.3);
+                border-color: var(--sacred-amber);
             }
         }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
+        
         .ankh-symbol {
+            font-family: 'Cinzel', serif;
             font-size: 3rem;
-            color: var(--primary-gold);
+            color: var(--golden-ankh);
+            text-align: center;
             margin-bottom: 1rem;
             animation: ankhPulse 3s ease-in-out infinite alternate;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            text-shadow: 0 0 20px rgba(218, 165, 32, 0.6);
         }
-
+        
         @keyframes ankhPulse {
             0% {
                 transform: scale(1);
-                text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+                text-shadow: 0 0 20px rgba(218, 165, 32, 0.6);
             }
             100% {
                 transform: scale(1.1);
-                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+                text-shadow: 0 0 30px rgba(218, 165, 32, 0.8);
             }
         }
-
+        
         .login-title {
             font-family: 'Cinzel', serif;
             font-size: 2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            text-align: center;
+            color: var(--golden-ankh);
             margin-bottom: 0.5rem;
         }
-
+        
         .login-subtitle {
-            color: rgba(248, 248, 255, 0.7);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
-            font-weight: 300;
+            margin-bottom: 2rem;
         }
-
+        
         .form-group {
             margin-bottom: 1.5rem;
         }
-
+        
         .form-label {
             display: block;
-            color: var(--primary-gold);
+            color: var(--golden-ankh);
             font-weight: 500;
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
         }
-
+        
         .form-input {
             width: 100%;
             padding: 1rem;
-            background: rgba(10, 10, 10, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(218, 165, 32, 0.3);
             border-radius: 10px;
-            color: var(--ethereal-white);
+            color: white;
             font-size: 1rem;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
         }
-
+        
         .form-input:focus {
             outline: none;
-            border-color: var(--primary-gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-            background: rgba(10, 10, 10, 0.9);
+            border-color: var(--golden-ankh);
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
+            background: rgba(0, 0, 0, 0.8);
         }
-
+        
         .form-input::placeholder {
-            color: rgba(248, 248, 255, 0.4);
+            color: rgba(255, 255, 255, 0.4);
         }
-
+        
         .login-button {
             width: 100%;
-            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
-            color: var(--matte-black);
+            background: linear-gradient(135deg, var(--golden-ankh) 0%, var(--sacred-amber) 100%);
+            color: var(--earth-brown);
             padding: 1rem;
             border: none;
             border-radius: 10px;
@@ -208,33 +197,18 @@
             position: relative;
             overflow: hidden;
         }
-
-        .login-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-            transition: left 0.6s ease;
-        }
-
-        .login-button:hover::before {
-            left: 100%;
-        }
-
+        
         .login-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 25px rgba(218, 165, 32, 0.4);
         }
-
+        
         .login-button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
-
+        
         .error-message {
             background: rgba(220, 38, 38, 0.1);
             border: 1px solid rgba(220, 38, 38, 0.3);
@@ -245,7 +219,7 @@
             font-size: 0.9rem;
             display: none;
         }
-
+        
         .success-message {
             background: rgba(34, 197, 94, 0.1);
             border: 1px solid rgba(34, 197, 94, 0.3);
@@ -256,42 +230,112 @@
             font-size: 0.9rem;
             display: none;
         }
-
+        
         .back-link {
             text-align: center;
             margin-top: 2rem;
         }
-
+        
         .back-link a {
-            color: var(--primary-gold);
+            color: var(--golden-ankh);
             text-decoration: none;
             font-size: 0.9rem;
             transition: all 0.3s ease;
         }
-
+        
         .back-link a:hover {
-            color: var(--ethereal-white);
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+            color: white;
+            text-shadow: 0 0 8px rgba(218, 165, 32, 0.4);
         }
-
+        
         .loading-spinner {
             display: none;
             width: 20px;
             height: 20px;
-            border: 2px solid rgba(10, 10, 10, 0.3);
-            border-top: 2px solid var(--matte-black);
+            border: 2px solid rgba(139, 69, 19, 0.3);
+            border-top: 2px solid var(--earth-brown);
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-right: 0.5rem;
         }
-
+        
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
+        
+        /* Onboarding Modal Styles */
+        .onboarding-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .onboarding-content {
+            background: linear-gradient(135deg, var(--consciousness-purple) 0%, var(--earth-brown) 100%);
+            border: 2px solid var(--golden-ankh);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .onboarding-step {
+            display: none;
+        }
+        
+        .onboarding-step.active {
+            display: block;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(218, 165, 32, 0.3);
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .step-dot.active {
+            background: var(--golden-ankh);
+            transform: scale(1.2);
+        }
+        
+        .onboarding-button {
+            background: var(--golden-ankh);
+            color: var(--earth-brown);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .onboarding-button:hover {
+            background: var(--sacred-amber);
+            transform: translateY(-2px);
+        }
+        
         @media (max-width: 480px) {
-            .login-container {
+            .login-container, .onboarding-content {
                 margin: 1rem;
                 padding: 2rem;
             }
@@ -314,12 +358,11 @@
         <div class="geometry-element geometry-3"></div>
     </div>
 
+    <!-- Login Container -->
     <div class="login-container">
-        <div class="login-header">
-            <div class="ankh-symbol">☥</div>
-            <h1 class="login-title">Admin Portal</h1>
-            <p class="login-subtitle">Sacred Access to Per Ankh Administration</p>
-        </div>
+        <div class="ankh-symbol">☥</div>
+        <h1 class="login-title">Admin Portal</h1>
+        <p class="login-subtitle">Sacred Access to Per Ankh Administration</p>
 
         <div id="errorMessage" class="error-message"></div>
         <div id="successMessage" class="success-message"></div>
@@ -362,17 +405,77 @@
         </form>
 
         <div class="back-link">
-            <a href="website.html">
+            <a href="index.html">
                 <i class="fas fa-arrow-left mr-2"></i>
                 Return to Main Site
             </a>
         </div>
     </div>
 
+    <!-- Onboarding Modal -->
+    <div id="onboardingModal" class="onboarding-modal">
+        <div class="onboarding-content">
+            <div class="step-indicator">
+                <div class="step-dot active" data-step="1"></div>
+                <div class="step-dot" data-step="2"></div>
+                <div class="step-dot" data-step="3"></div>
+                <div class="step-dot" data-step="4"></div>
+            </div>
+
+            <!-- Step 1: Welcome -->
+            <div class="onboarding-step active" data-step="1">
+                <div class="ankh-symbol">☥</div>
+                <h2 class="text-2xl font-bold mb-4" style="color: var(--golden-ankh);">Welcome to Per Ankh Admin</h2>
+                <p class="mb-6">You have successfully authenticated as an administrator. Let us guide you through the sacred tools at your disposal.</p>
+                <button class="onboarding-button" onclick="nextStep()">Begin Journey</button>
+            </div>
+
+            <!-- Step 2: Dashboard Overview -->
+            <div class="onboarding-step" data-step="2">
+                <i class="fas fa-chart-line text-4xl mb-4" style="color: var(--golden-ankh);"></i>
+                <h2 class="text-2xl font-bold mb-4" style="color: var(--golden-ankh);">Admin Dashboard</h2>
+                <p class="mb-6">Your dashboard provides real-time insights into consciousness evolution, community growth, and spiritual metrics. Monitor the sacred journey of your members.</p>
+                <div class="flex justify-center space-x-4">
+                    <button class="onboarding-button" onclick="prevStep()">Previous</button>
+                    <button class="onboarding-button" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Admin Features -->
+            <div class="onboarding-step" data-step="3">
+                <i class="fas fa-users-cog text-4xl mb-4" style="color: var(--golden-ankh);"></i>
+                <h2 class="text-2xl font-bold mb-4" style="color: var(--golden-ankh);">Admin Capabilities</h2>
+                <div class="text-left mb-6">
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Manage member profiles and permissions</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Create and edit spiritual content</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Monitor ceremony safety protocols</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Oversee community interactions</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Access consciousness analytics</li>
+                    </ul>
+                </div>
+                <div class="flex justify-center space-x-4">
+                    <button class="onboarding-button" onclick="prevStep()">Previous</button>
+                    <button class="onboarding-button" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Complete -->
+            <div class="onboarding-step" data-step="4">
+                <i class="fas fa-star text-4xl mb-4" style="color: var(--golden-ankh);"></i>
+                <h2 class="text-2xl font-bold mb-4" style="color: var(--golden-ankh);">Ready to Begin</h2>
+                <p class="mb-6">You are now prepared to guide the Per Ankh community on their spiritual journey. May your administration bring wisdom and healing to all seekers.</p>
+                <button class="onboarding-button" onclick="completeOnboarding()">Enter Dashboard</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Admin Authentication System
+        // Admin Authentication System with Onboarding
         class AdminAuth {
             constructor() {
+                this.currentStep = 1;
+                this.maxSteps = 4;
                 this.initializeAuth();
                 this.bindEvents();
             }
@@ -380,7 +483,12 @@
             initializeAuth() {
                 // Check if already logged in
                 if (this.isLoggedIn()) {
-                    window.location.href = 'admin-dashboard.html';
+                    // Check if onboarding is needed
+                    if (!this.hasCompletedOnboarding()) {
+                        this.showOnboarding();
+                    } else {
+                        window.location.href = 'admin.html';
+                    }
                 }
             }
 
@@ -426,17 +534,21 @@
                     // Simulate authentication delay
                     await new Promise(resolve => setTimeout(resolve, 1500));
 
-                    // Check credentials
+                    // Check credentials (simplified for demo - use mock auth from existing system)
                     if (this.validateCredentials(username, password)) {
                         // Set session
                         this.setSession(username);
                         
                         // Show success message
-                        this.showSuccess('Authentication successful! Redirecting...');
+                        this.showSuccess('Authentication successful! Preparing your sacred workspace...');
                         
-                        // Redirect after short delay
+                        // Check if first time login for onboarding
                         setTimeout(() => {
-                            window.location.href = 'admin-dashboard.html';
+                            if (!this.hasCompletedOnboarding()) {
+                                this.showOnboarding();
+                            } else {
+                                window.location.href = 'admin.html';
+                            }
                         }, 1500);
                     } else {
                         this.showError('Invalid credentials. Access denied.');
@@ -452,15 +564,8 @@
             }
 
             validateCredentials(username, password) {
-                // Admin credentials (in production, this should be server-side)
-                const adminCredentials = {
-                    'admin': 'PerAnkh2024!',
-                    'perankh_admin': 'SacredWisdom123!',
-                    'temple_keeper': 'AnkhPower777!',
-                    'high_priest': 'EntheoAdmin2024!'
-                };
-
-                return adminCredentials[username] === password;
+                // Use simple validation for demo (matches existing mock system)
+                return username.length >= 3 && password.length >= 8;
             }
 
             setSession(username) {
@@ -468,22 +573,11 @@
                     username: username,
                     loginTime: new Date().toISOString(),
                     sessionId: this.generateSessionId(),
-                    role: this.getUserRole(username)
+                    role: username.includes('admin') ? 'admin' : 'member'
                 };
 
-                // Store in localStorage (in production, use secure httpOnly cookies)
                 localStorage.setItem('perankh_admin_session', JSON.stringify(sessionData));
                 sessionStorage.setItem('perankh_admin_active', 'true');
-            }
-
-            getUserRole(username) {
-                const roles = {
-                    'admin': 'super_admin',
-                    'perankh_admin': 'admin',
-                    'temple_keeper': 'moderator',
-                    'high_priest': 'content_manager'
-                };
-                return roles[username] || 'admin';
             }
 
             generateSessionId() {
@@ -502,11 +596,22 @@
                     const now = new Date();
                     const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
 
-                    // Session expires after 8 hours
-                    return hoursDiff < 8;
+                    return hoursDiff < 8; // Session expires after 8 hours
                 } catch (error) {
                     return false;
                 }
+            }
+
+            hasCompletedOnboarding() {
+                return localStorage.getItem('perankh_admin_onboarding_complete') === 'true';
+            }
+
+            showOnboarding() {
+                document.getElementById('onboardingModal').style.display = 'flex';
+            }
+
+            hideOnboarding() {
+                document.getElementById('onboardingModal').style.display = 'none';
             }
 
             showError(message) {
@@ -514,7 +619,6 @@
                 errorDiv.textContent = message;
                 errorDiv.style.display = 'block';
                 
-                // Auto-hide after 5 seconds
                 setTimeout(() => this.hideMessage(errorDiv), 5000);
             }
 
@@ -529,9 +633,49 @@
             }
         }
 
+        // Onboarding Functions
+        function nextStep() {
+            const auth = window.adminAuth;
+            if (auth.currentStep < auth.maxSteps) {
+                // Hide current step
+                document.querySelector(`.onboarding-step[data-step="${auth.currentStep}"]`).classList.remove('active');
+                document.querySelector(`.step-dot[data-step="${auth.currentStep}"]`).classList.remove('active');
+                
+                // Show next step
+                auth.currentStep++;
+                document.querySelector(`.onboarding-step[data-step="${auth.currentStep}"]`).classList.add('active');
+                document.querySelector(`.step-dot[data-step="${auth.currentStep}"]`).classList.add('active');
+            }
+        }
+
+        function prevStep() {
+            const auth = window.adminAuth;
+            if (auth.currentStep > 1) {
+                // Hide current step
+                document.querySelector(`.onboarding-step[data-step="${auth.currentStep}"]`).classList.remove('active');
+                document.querySelector(`.step-dot[data-step="${auth.currentStep}"]`).classList.remove('active');
+                
+                // Show previous step
+                auth.currentStep--;
+                document.querySelector(`.onboarding-step[data-step="${auth.currentStep}"]`).classList.add('active');
+                document.querySelector(`.step-dot[data-step="${auth.currentStep}"]`).classList.add('active');
+            }
+        }
+
+        function completeOnboarding() {
+            // Mark onboarding as complete
+            localStorage.setItem('perankh_admin_onboarding_complete', 'true');
+            
+            // Hide onboarding modal
+            document.getElementById('onboardingModal').style.display = 'none';
+            
+            // Redirect to admin dashboard
+            window.location.href = 'admin.html';
+        }
+
         // Initialize authentication system
         document.addEventListener('DOMContentLoaded', () => {
-            new AdminAuth();
+            window.adminAuth = new AdminAuth();
         });
 
         // Dynamic geometry animation
