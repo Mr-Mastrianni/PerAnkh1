@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Ankh Ethos & Structure</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --earth-brown: #8B4513;
+            --forest-green: #228B22;
+            --golden-ankh: #DAA520;
+            --sacred-amber: #FFBF00;
+            --mycelium-white: #F5F5DC;
+            --consciousness-purple: #663399;
+        }
+        
+        .earth-gradient {
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--earth-brown) 50%, var(--golden-ankh) 100%);
+        }
+        
+        .consciousness-gradient {
+            background: linear-gradient(135deg, var(--consciousness-purple) 0%, var(--forest-green) 100%);
+        }
+        
+        .ankh-symbol {
+            font-family: 'Cinzel', serif;
+            color: var(--golden-ankh);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .consciousness-card {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .bio-tech-icon {
+            background: linear-gradient(135deg, var(--golden-ankh), var(--sacred-amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .revolutionary-text {
+            background: linear-gradient(135deg, var(--consciousness-purple), var(--golden-ankh));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .spore-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .sacred-geometry {
+            position: relative;
+        }
+        
+        .sacred-geometry::after {
+            content: '⬡';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            color: var(--golden-ankh);
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+        
+        /* Logo Animation Styles */
+        .logo-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .animated-logo {
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.5));
+            animation: logoGlow 3s ease-in-out infinite alternate;
+        }
+        
+        .animated-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.8));
+        }
+        
+        @keyframes logoGlow {
+            0% {
+                filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.5));
+            }
+            100% {
+                filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.9)) drop-shadow(0 0 30px rgba(34, 139, 34, 0.3));
+            }
+        }
+        
+        .logo-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Sacred geometry animation around logo */
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 2px solid var(--golden-ankh);
+            border-radius: 50%;
+            animation: rotate 8s linear infinite;
+            opacity: 0.6;
+            box-shadow: 0 0 10px var(--forest-green);
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Navigation Styles */
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+        }
+        
+        .nav-link {
+            color: var(--mycelium-white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            background: rgba(218, 165, 32, 0.2);
+            color: var(--golden-ankh);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            background: var(--golden-ankh);
+            color: var(--earth-brown);
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Header Section -->
+    <header class="earth-gradient text-white py-16 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <div class="logo-container">
+                        <img src="PerAnkhLogo.png" 
+                             alt="Per Ankh Logo" 
+                             class="w-20 h-20 rounded-full border-4 border-golden-ankh shadow-lg animated-logo">
+                    </div>
+                    <div>
+                        <h1 class="text-4xl font-bold ankh-symbol">PER ANKH</h1>
+                        <p class="text-xl">Consciousness Technology Pioneers</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm">Founded 2020</p>
+                    <p class="text-sm">Specializing in Bio-Technology Solutions</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <h2 class="text-5xl font-bold mb-6 ankh-symbol">
+                    Ethos & Structure
+                </h2>
+                <p class="text-xl mb-8 max-w-4xl mx-auto">
+                    Organizational framework and spiritual principles of the Per-Ankh Temple and Entheogenic Church
+                </p>
+            </div>
+        </div>
+        
+        <!-- Animated spores -->
+        <div class="absolute top-10 left-10 spore-animation">
+            <div class="w-4 h-4 bg-golden-ankh rounded-full opacity-60"></div>
+        </div>
+        <div class="absolute top-32 right-20 spore-animation" style="animation-delay: 1s;">
+            <div class="w-3 h-3 bg-sacred-amber rounded-full opacity-40"></div>
+        </div>
+        <div class="absolute bottom-20 left-1/3 spore-animation" style="animation-delay: 2s;">
+            <div class="w-5 h-5 bg-forest-green rounded-full opacity-50"></div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between py-3">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl">🏺</span>
+                    <span class="text-xl font-bold ankh-symbol">PER ANKH</span>
+                    <span class="text-2xl">🏺</span>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="PerAnkhTech.html" class="nav-link">
+                        Home
+                    </a>
+                    <a href="per-ankh.html" class="nav-link active">
+                        Ethos & Structure
+                    </a>
+                    <a href="#" class="nav-link">
+                        Events
+                    </a>
+                    <a href="#" class="nav-link">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Section -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12">
+                <h2 class="text-3xl font-bold mb-6 ankh-symbol text-center">
+                    <i class="fas fa-landmark mr-3"></i>
+                    Purpose of the Temple
+                </h2>
+                <p class="text-lg mb-6">
+                    Per-Ankh Temple and Entheogenic church is a private humanitarian and charitable spiritual society, 
+                    committed to furthering the development, uplifting, enlightenment and spiritual realization through 
+                    education and spiritual practices, left to us by the ancient teachings of our forefathers. 
+                    The Per-Ankh temple is concerned with the general welfare and spiritual enlightenment of all indigenous 
+                    people and all people throughout the world and the betterment of life on planet earth.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- Founding Members -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg sacred-geometry">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        <i class="fas fa-users mr-3"></i>
+                        Founding Members
+                    </h3>
+                    <p class="text-lg mb-6">
+                        KILINDI IYI is the founding member of the Per-Ankh temple and Entheogenic Church alongside 
+                        BABA MOUDOU BAQUI and AYANA IYI. They bring their collective wisdom, knowledge, talents, 
+                        information and insights to rebuild, restore and resurrect ancient teachings of spiritual 
+                        cultivation that enhances the truest Identity and awakens the God presence within every neophyte.
+                    </p>
+                </div>
+
+                <!-- Seat of Elders -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg sacred-geometry">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        <i class="fas fa-crown mr-3"></i>
+                        Seat of Elders
+                    </h3>
+                    <p class="text-lg mb-6">
+                        The seat of elders is the place of honor for 12 community elders seasoned in significant aspects 
+                        of the development of the self, family and community. The seat of the elders is comprised of 6 men 
+                        and 6 women who will gently guide and advice the founding members in the spirit of wisdom and Love.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Study Group -->
+            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                    <i class="fas fa-book-open mr-3"></i>
+                    Study Group
+                </h3>
+                <p class="text-lg mb-6">
+                    The study group is designed to provide the neophyte with structure and the basic tools by which 
+                    to build an appreciation for and knowledge "the self". Further, the study group is designed to 
+                    encourage the seeking and fulfillment of each neophyte's life purpose. The core knowledge base 
+                    of the neophyte is founded on the principles of Ma'at (Justice, Order, Reciprocity, Harmony, 
+                    Balance, Truth and Propriety) and includes but is not limited to:
+                </p>
+                <ul class="list-disc list-inside text-lg space-y-2 ml-4">
+                    <li>Organizational skills through (Roberts Rules of Order)</li>
+                    <li>Truth (History and Culture of Black people from the continent America and the Diaspora)</li>
+                    <li>Justice (Knowledge of the Law, public and private)</li>
+                    <li>Propriety (Proper Conduct, Etiquette, Protocol)</li>
+                    <li>Reciprocity (Give and Take, Exchange of Energy)</li>
+                    <li>Balance (Equilibrium, Harmony, Moderation)</li>
+                    <li>Order (Structure, Organization, Sequence)</li>
+                    <li>Harmony (Unity, Agreement, Concord)</li>
+                </ul>
+            </div>
+
+            <!-- Initiation Process -->
+            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                    <i class="fas fa-dharmachakra mr-3"></i>
+                    Initiation Process
+                </h3>
+                <p class="text-lg mb-6">
+                    The process of initiation is the systematic process by which the neophyte is transformed from a 
+                    state of limited awareness to one of expanded consciousness. The process of initiation is designed 
+                    to awaken the neophyte to his/her highest potential and to prepare him/her for service to humanity 
+                    and the planet. The process of initiation involves the study of Alchemy/High Science to access or 
+                    awaken the inner light that will allow him/her to unify with the cosmic forces as well as the 
+                    harnessing cosmic energy to manifest the desired reality.
+                </p>
+                <p class="text-lg">
+                    Upon completion of the initiation process the Djedhi will re-enter the community with vigor and purpose.
+                </p>
+            </div>
+
+            <!-- Healing Center -->
+            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                    <i class="fas fa-spa mr-3"></i>
+                    Healing Center
+                </h3>
+                <p class="text-lg mb-6">
+                    Health and wellbeing, affecting our physical, mental, emotional and spiritual aspects, 
+                    (Holistic Approach) The Healing center is the purification process where initiates learn 
+                    to heal themselves with the Self-Help Technology for emotional Health as well as herbal 
+                    healing modalities. The expectation for each initiate is "Man/Woman Know and heal Thyself". 
+                    The commitment and intention for self-healing is paramount for each initiate to progress 
+                    through the levels of initiation. Without this vital process, the initiate remains burdened 
+                    by the emotional "Physical Scars" that weigh on the heart.
+                </p>
+            </div>
+
+            <!-- Benefits of Fasting -->
+            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                    <i class="fas fa-apple-alt mr-3"></i>
+                    The Benefits of Fasting
+                </h3>
+                <p class="text-lg mb-6">
+                    Fasting has been called the "Miracle Cure" because the list of physical conditions improved 
+                    by fasting is long and varied. Cited most often are allergies, arthritis, digestive disorders 
+                    of all kinds, skin conditions, cardiovascular disease and asthma. Because fasting initiates 
+                    the body's own healing mechanisms, any ailment may show improvement.
+                </p>
+                <p class="text-lg mb-6">
+                    Affecting our physical, mental, emotional and spiritual aspects. Can the benefits of fasting 
+                    really be so broad? Yes, they can and they are. We are so much more than a physical body and 
+                    fasting affects every part of our being. When we cease the over-indulgence that has become so 
+                    common in our modern world, even for a short while, our lives and our priorities become clearer.
+                </p>
+                <p class="text-lg">
+                    Fasting will: Rest the digestive system and allow for the cleansing and detoxification of the body, 
+                    create a break in eating patterns, while shining a spotlight on the
+                </p>
+            </div>
+
+            <!-- Benefits of Meditation -->
+            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                    <i class="fas fa-pray mr-3"></i>
+                    The Benefits of Meditation
+                </h3>
+                <ul class="list-disc list-inside text-lg space-y-2 ml-4 mb-6">
+                    <li>Emotional steadiness and harmony</li>
+                    <li>It cleanses and nourishes you from within and calms you whenever you feel overwhelmed, unstable or emotionally shut down</li>
+                    <li>It brings harmony in creation</li>
+                    <li>When you meditate you are in the space of vastness, calmness and joy and this is what you emit into the environment bringing harmony to the creation/planet</li>
+                    <li>Personal Transformation: Meditation can bring about a true personal transformation. As you learn more about yourself, you'll naturally start discovering more about yourself.</li>
+                </ul>
+                
+                <h4 class="text-xl font-bold mb-4">Tools to Enhance Meditation Results</h4>
+                <ul class="list-disc list-inside text-lg space-y-2 ml-4">
+                    <li>Frequency vibration/Music</li>
+                    <li>Chants/Mantra</li>
+                    <li>Candles</li>
+                    <li>Salt Burning</li>
+                    <li>Visualization</li>
+                </ul>
+            </div>
+
+            <!-- Physical Activity -->
+            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                    <i class="fas fa-dumbbell mr-3"></i>
+                    Physical Activity
+                </h3>
+                <ul class="list-disc list-inside text-lg space-y-2 ml-4">
+                    <li>Self Defense</li>
+                    <li>Survival Training</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 consciousness-gradient">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8 ankh-symbol">Connect With Us</h2>
+            <div class="consciousness-card bg-white bg-opacity-10 p-8 rounded-lg max-w-2xl mx-auto mb-12">
+                <h3 class="text-2xl font-bold mb-4">PER ANKH ENTHEOGENIC CHURCH</h3>
+                <p class="text-xl mb-6">15705 Woodrow Wilson, Detroit, Michigan</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                    <a href="#" class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform">
+                        <i class="fab fa-instagram text-2xl mb-2"></i>
+                        <p>Instagram</p>
+                    </a>
+                    <a href="#" class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform">
+                        <i class="fab fa-facebook text-2xl mb-2"></i>
+                        <p>Facebook</p>
+                    </a>
+                    <a href="#" class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform">
+                        <i class="fab fa-youtube text-2xl mb-2"></i>
+                        <p>YouTube</p>
+                    </a>
+                    <a href="#" class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform">
+                        <i class="fab fa-twitter text-2xl mb-2"></i>
+                        <p>Twitter</p>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <a href="#" class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg hover:scale-105 transition-transform">
+                    <i class="fas fa-user-plus text-3xl mb-4 bio-tech-icon"></i>
+                    <h4 class="text-xl font-bold mb-2">Become A Member</h4>
+                </a>
+                <a href="#" class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg hover:scale-105 transition-transform">
+                    <i class="fas fa-donate text-3xl mb-4 bio-tech-icon"></i>
+                    <h4 class="text-xl font-bold mb-2">Donate</h4>
+                </a>
+                <a href="#" class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg hover:scale-105 transition-transform">
+                    <i class="fas fa-clipboard-list text-3xl mb-4 bio-tech-icon"></i>
+                    <h4 class="text-xl font-bold mb-2">Vendor Registration</h4>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12 border-t border-golden-ankh">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-8 mb-6">
+                <a href="#" class="hover:text-golden-ankh transition-colors">Terms of Use</a>
+                <a href="#" class="hover:text-golden-ankh transition-colors">Privacy Policy</a>
+            </div>
+            <p class="text-gray-400">&copy; 2025 Per Ankh Entheogenic Church. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

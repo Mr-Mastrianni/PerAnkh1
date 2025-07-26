@@ -5,8 +5,10 @@
 
 class PerAnkhAuth {
     constructor() {
-        this.sessionKey = 'perankh_admin_session';
-        this.activeKey = 'perankh_admin_active';
+        this.adminSessionKey = 'perankh_admin_session';
+        this.adminActiveKey = 'perankh_admin_active';
+        this.memberSessionKey = 'perankh_member_session';
+        this.memberActiveKey = 'perankh_member_active';
         this.protectedElements = [];
         this.init();
     }
@@ -22,11 +24,18 @@ class PerAnkhAuth {
     }
 
     /**
-     * Check if user is authenticated
+     * Check if user is authenticated (admin or member)
      */
     isAuthenticated() {
-        const session = localStorage.getItem(this.sessionKey);
-        const active = sessionStorage.getItem(this.activeKey);
+        return this.isAdminAuthenticated() || this.isMemberAuthenticated();
+    }
+
+    /**
+     * Check if user is authenticated as admin
+     */
+    isAdminAuthenticated() {
+        const session = localStorage.getItem(this.adminSessionKey);
+        const active = sessionStorage.getItem(this.adminActiveKey);
         
         if (!session || !active) return false;
 
@@ -38,15 +47,52 @@ class PerAnkhAuth {
 
             // Session expires after 8 hours
             if (hoursDiff >= 8) {
-                this.logout();
+                this.adminLogout();
                 return false;
             }
 
             return true;
         } catch (error) {
-            console.error('Auth check error:', error);
+            console.error('Admin auth check error:', error);
             return false;
         }
+    }
+
+    /**
+     * Check if user is authenticated as member
+     */
+    isMemberAuthenticated() {
+        const session = localStorage.getItem(this.memberSessionKey);
+        const active = sessionStorage.getItem(this.memberActiveKey);
+        
+        if (!session || !active) return false;
+
+        try {
+            const sessionData = JSON.parse(session);
+            const loginTime = new Date(sessionData.loginTime);
+            const now = new Date();
+            const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+
+            // Session expires after 8 hours
+            if (hoursDiff >= 8) {
+                this.memberLogout();
+                return false;
+            }
+
+            return true;
+        } catch (error) {
+            console.error('Member auth check error:', error);
+            return false;
+        }
+    }
+
+    /**
+     * Get user type (guest, member, admin)
+     */
+    getUserType() {
+        if (this.isAdminAuthenticated()) return 'admin';
+        if (this.isMemberAuthenticated()) return 'member';
+        return 'guest';
     }
 
     /**
@@ -54,7 +100,14 @@ class PerAnkhAuth {
      */
     getSession() {
         try {
-            const session = localStorage.getItem(this.sessionKey);
+            // Check admin session first
+            let session = localStorage.getItem(this.adminSessionKey);
+            if (session) {
+                return JSON.parse(session);
+            }
+            
+            // Check member session
+            session = localStorage.getItem(this.memberSessionKey);
             return session ? JSON.parse(session) : null;
         } catch (error) {
             return null;
@@ -66,11 +119,9 @@ class PerAnkhAuth {
      */
     checkAuthStatus() {
         const isAuth = this.isAuthenticated();
+        const userType = this.getUserType();
         const authElements = document.querySelectorAll('[data-auth-required]');
         const adminElements = document.querySelectorAll('.admin-only');
-        const loginBtn = document.getElementById('adminLoginBtn');
-        const logoutBtn = document.getElementById('adminLogoutBtn');
-        const adminInfo = document.getElementById('adminInfo');
 
         // Show/hide protected content
         authElements.forEach(element => {
@@ -88,20 +139,17 @@ class PerAnkhAuth {
             element.style.display = isAuth ? 'block' : 'none';
         });
 
-        // Update navigation buttons
-        if (loginBtn) loginBtn.style.display = isAuth ? 'none' : 'inline-block';
-        if (logoutBtn) logoutBtn.style.display = isAuth ? 'inline-block' : 'none';
-        
-        // Update admin info
-        if (adminInfo && isAuth) {
-            const session = this.getSession();
-            adminInfo.innerHTML = `
-                <span class="admin-welcome">Welcome, ${session.username}</span>
-                <span class="admin-role">(${this.formatRole(session.role)})</span>
-            `;
-            adminInfo.style.display = 'inline-block';
-        } else if (adminInfo) {
-            adminInfo.style.display = 'none';
+        // Update navigation based on user type
+        this.updateNavigationForUserType(userType);
+    }
+
+    /**
+     * Update navigation based on user type
+     */
+    updateNavigationForUserType(userType) {
+        // This will be implemented in website.html
+        if (typeof window.updateNavigationForUserType === 'function') {
+            window.updateNavigationForUserType(userType);
         }
     }
 
@@ -351,7 +399,7 @@ class PerAnkhAuth {
         const logoutBtn = document.getElementById('adminLogoutBtn');
         
         if (adminInfo) {
-            const sessionData = JSON.parse(localStorage.getItem(this.sessionKey));
+            const sessionData = this.getSession();
             if (sessionData) {
                 const welcomeSpan = adminInfo.querySelector('.admin-welcome');
                 const roleSpan = adminInfo.querySelector('.admin-role');
@@ -374,8 +422,8 @@ class PerAnkhAuth {
     /**
      * Show admin-only content
      */
-    showAdminContent() {
-        if (!this.isAuthenticated()) {
+    showAdminOnlyContent() {
+        if (!this.isAdminAuthenticated()) {
             alert('Admin access required. Please login first.');
             this.redirectToLogin();
             return false;

@@ -1,0 +1,387 @@
+/**
+ * Per Ankh Header Component Styles
+ * Modern CSS with design system integration
+ */
+
+.per-ankh-header {
+  position: relative;
+  padding: var(--space-16) 0;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-primary);
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-earth);
+  z-index: -1;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+/* Brand Section */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-container.animated {
+  cursor: pointer;
+}
+
+.animated-logo {
+  transition: var(--transition-base);
+  filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.5));
+  border-radius: var(--radius-lg);
+}
+
+.logo-container.animated .animated-logo {
+  animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+.logo-container.animated:hover .animated-logo {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.8));
+}
+
+.animated-logo.logo-pulse {
+  animation: logoPulse 1s ease-out;
+}
+
+@keyframes logoPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Sacred geometry animation around logo */
+.logo-container.animated::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 2px solid var(--color-golden-ankh);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sacredPulse 4s ease-in-out infinite;
+}
+
+@keyframes sacredPulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.brand-title {
+  font-size: var(--font-size-3xl);
+  font-family: var(--font-family-display);
+  color: var(--color-golden-ankh);
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.brand-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Header Info */
+.header-info {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.founded-year,
+.specialization {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Main Content */
+.header-main {
+  width: 100%;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: var(--font-size-5xl);
+  font-family: var(--font-family-display);
+  color: var(--color-golden-ankh);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: var(--space-6);
+  line-height: var(--line-height-tight);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-4);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.hero-description {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-12);
+  color: var(--color-text-secondary);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Feature Cards */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-12);
+}
+
+.consciousness-card {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.consciousness-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--pattern-sacred-radial);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.consciousness-card:hover,
+.consciousness-card.card-hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(218, 165, 32, 0.6);
+}
+
+.consciousness-card::after {
+  content: '⬡';
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  color: var(--color-golden-ankh);
+  font-size: var(--font-size-xl);
+  opacity: 0.6;
+}
+
+.bio-tech-icon {
+  font-size: var(--font-size-4xl);
+  background: var(--gradient-sacred);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.feature-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+}
+
+.feature-description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Spore Animations */
+.spore-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spore {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 3s ease-in-out infinite;
+}
+
+.spore-1 {
+  top: 10%;
+  left: 10%;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-golden-ankh);
+  animation-delay: 0s;
+}
+
+.spore-2 {
+  top: 20%;
+  right: 15%;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-forest-green);
+  animation-delay: 1s;
+}
+
+.spore-3 {
+  bottom: 20%;
+  left: 33%;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-forest-green);
+  opacity: 0.5;
+  animation-delay: 2s;
+}
+
+.spore-4 {
+  bottom: 30%;
+  right: 20%;
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-consciousness-purple);
+  animation-delay: 1.5s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .per-ankh-header {
+    padding: var(--space-12) 0;
+    min-height: auto;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-4);
+  }
+
+  .header-info {
+    text-align: center;
+  }
+
+  .header-brand {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .consciousness-card {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-base);
+  }
+
+  .brand-title {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .consciousness-card {
+    border: 2px solid var(--color-golden-ankh);
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .bio-tech-icon {
+    color: var(--color-golden-ankh);
+    -webkit-text-fill-color: var(--color-golden-ankh);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animated-logo,
+  .logo-container.animated::before,
+  .spore {
+    animation: none;
+  }
+
+  .consciousness-card:hover {
+    transform: none;
+  }
+}

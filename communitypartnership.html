@@ -4,10 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Per Ankh Sacred Community & Partnership Materials</title>
+    <script src="admin-auth.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        .admin-protected {
+            display: none;
+        }
+        
+        .auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .auth-message {
+            background: linear-gradient(135deg, var(--earth-green), var(--deep-amber));
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            color: white;
+        }
         :root {
             --sacred-gold: #D4AF37;
             --earth-green: #2D5016;
@@ -74,6 +100,19 @@
         }
     </style>
 </head>
+<body onload="checkAdminAccess()">
+    <div id="authOverlay" class="auth-overlay" style="display: none;">
+        <div class="auth-message">
+            <h2>🔒 Admin Access Required</h2>
+            <p>This page contains sensitive community partnership materials and is restricted to authorized administrators only.</p>
+            <button onclick="window.location.href='admin-login.html'" class="mt-4 px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700">
+                Login as Admin
+            </button>
+            <button onclick="window.location.href='website.html'" class="mt-2 px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">
+                Return to Home
+            </button>
+        </div>
+    </div>
 <body class="bg-gray-900 text-white modern-text">
     
     <!-- Header Navigation -->
@@ -769,6 +808,37 @@
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
+        });
+    </script>
+    
+    <script>
+        function checkAdminAccess() {
+            // Check if user is authenticated as admin
+            if (typeof perAnkhAuth !== 'undefined') {
+                if (!perAnkhAuth.isAuthenticated()) {
+                    // Show authentication overlay
+                    document.getElementById('authOverlay').style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Hide main content
+                    const mainContent = document.querySelector('main, .main-content, body > *:not(#authOverlay)');
+                    if (mainContent) {
+                        mainContent.style.display = 'none';
+                    }
+                } else {
+                    // User is authenticated, show content
+                    document.getElementById('authOverlay').style.display = 'none';
+                }
+            } else {
+                // Fallback if auth system isn't loaded
+                console.error('Authentication system not loaded');
+                document.getElementById('authOverlay').style.display = 'flex';
+            }
+        }
+        
+        // Check authentication on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkAdminAccess, 100); // Small delay to ensure auth system is loaded
         });
     </script>
 </body>

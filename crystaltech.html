@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="admin-auth.js"></script>
     <style>
         body {
             font-family: 'Crimson Text', serif;
@@ -47,7 +48,54 @@
         }
     </style>
 </head>
-<body class="cosmic-bg">
+<body class="cosmic-bg" onload="checkAdminAccess()">
+    <!-- Admin Access Overlay -->
+    <div id="adminOverlay" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(12, 10, 31, 0.95), rgba(45, 27, 105, 0.9));
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        backdrop-filter: blur(10px);
+    ">
+        <div style="
+            background: rgba(107, 70, 193, 0.2);
+            border: 2px solid #D4AF37;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            margin: 2rem;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        ">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🔒</div>
+            <h2 style="
+                font-family: 'Cinzel', serif;
+                color: #D4AF37;
+                margin-bottom: 1rem;
+                font-size: 1.8rem;
+            ">Admin Access Required</h2>
+            <p style="margin-bottom: 2rem; line-height: 1.6; color: #f8f9fa;">
+                This interdimensional crystal technology content contains advanced consciousness practices and is restricted to authenticated administrators only.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="admin-login.html" class="cta-button" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login as Admin
+                </a>
+                <a href="website.html" class="cta-button" style="padding: 0.8rem 1.5rem; font-size: 0.9rem; background: rgba(107, 70, 193, 0.3);">
+                    <i class="fas fa-home mr-2"></i>Return Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="pageContent" style="display: none;">
 
     <!-- Header Section -->
     <header class="relative py-12 px-4">
@@ -423,5 +471,28 @@
         </div>
     </footer>
 
-</body>
+    </div>
+    
+    <script>
+        function checkAdminAccess() {
+            if (typeof perAnkhAuth === 'undefined') {
+                console.error('Authentication system not loaded');
+                return;
+            }
+            
+            if (perAnkhAuth.isAuthenticated()) {
+                document.getElementById('adminOverlay').style.display = 'none';
+                document.getElementById('pageContent').style.display = 'block';
+            } else {
+                document.getElementById('adminOverlay').style.display = 'flex';
+                document.getElementById('pageContent').style.display = 'none';
+            }
+        }
+        
+        // Check authentication status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminAccess();
+        });
+    </script>
+    </body>
 </html>

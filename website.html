@@ -774,56 +774,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="nav-links" id="navLinks">
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="login.html" class="nav-link">Login</a>
-                    
-                    <!-- Core Teachings -->
-                    <div class="nav-dropdown">
-                        <a href="#teachings" class="nav-link dropdown-toggle">Teachings <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="protocols.html" class="dropdown-link">Sacred Protocols</a>
-                            <a href="crystaltech.html" class="dropdown-link">Crystal Technology</a>
-                            <a href="PerAnkhTech.html" class="dropdown-link">Per Ankh Technology</a>
-                            <a href="women'sempowerment.html" class="dropdown-link">Women's Empowerment</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Community -->
-                    <div class="nav-dropdown">
-                        <a href="#community" class="nav-link dropdown-toggle">Community <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="communitypartnership.html" class="dropdown-link">Community Partnership</a>
-                            <a href="sacredcommunityrelationships.html" class="dropdown-link">Sacred Relationships</a>
-                            <a href="community.html" class="dropdown-link">Community Portal</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Digital Assets -->
-                    <div class="nav-dropdown">
-                        <a href="#digital" class="nav-link dropdown-toggle">Digital Assets <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="calculator.html" class="dropdown-link">Calculator</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Content & Media -->
-                    <div class="nav-dropdown">
-                        <a href="#content" class="nav-link dropdown-toggle">Content <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="admin_pages/hiphop.html" class="dropdown-link">Hip-Hop Culture</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Profiles & People -->
-                    <div class="nav-dropdown">
-                        <a href="#profiles" class="nav-link dropdown-toggle">Profiles <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="mamayana.html" class="dropdown-link">Mama Ayana</a>
-                            <a href="jon.html" class="dropdown-link">Jon</a>
-                            <a href="Shanna1.html" class="dropdown-link">Shanna 1</a>
-                            <a href="moudoubaqui.html" class="dropdown-link">Moudoubaqui</a>
-                        </div>
-                    </div>
+                    <!-- Navigation will be dynamically populated based on user type -->
                 </div>
             </div>
         </nav>
@@ -988,7 +939,7 @@
                     </p>
                 </div>
 
-                <div class="feature-card" id="community">
+                <div class="feature-card" id="community" data-auth-required="true">
                     <div class="feature-icon">🤝</div>
                     <h3 class="feature-title">Community Constellation</h3>
                     <p class="feature-description">
@@ -1177,7 +1128,7 @@
                     </a>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card" data-auth-required="true">
                     <div class="feature-icon">🤝</div>
                     <h3 class="feature-title">Community Partnership</h3>
                     <p class="feature-description mb-4">
@@ -1381,7 +1332,217 @@
                 });
             }
         });
+        
+        // Function to update navigation based on user type
+        function updateNavigationForUserType(userType) {
+            const navLinks = document.getElementById('navLinks');
+            if (!navLinks) return;
+            
+            // Clear existing navigation
+            navLinks.innerHTML = '';
+            
+            // Generate navigation based on user type
+            switch(userType) {
+                case 'admin':
+                    navLinks.innerHTML = getAdminNavigation();
+                    break;
+                case 'member':
+                    navLinks.innerHTML = getMemberNavigation();
+                    break;
+                case 'guest':
+                default:
+                    navLinks.innerHTML = getGuestNavigation();
+                    break;
+            }
+            
+            // Re-initialize mobile menu functionality
+            initMobileMenu();
+        }
+        
+        // Guest navigation (matches perankh1.org)
+        function getGuestNavigation() {
+            return `
+                <a href="#home" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <div class="nav-dropdown">
+                    <a href="#teachings" class="nav-link dropdown-toggle">Teachings <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="community.html" class="dropdown-link">Community Portal</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#community" class="nav-link dropdown-toggle">Community <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="community.html" class="dropdown-link">Community Portal</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#profiles" class="nav-link dropdown-toggle">Profiles <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="mamayana.html" class="dropdown-link">Mama Ayana</a>
+                        <a href="jon.html" class="dropdown-link">Jon</a>
+                        <a href="Shanna1.html" class="dropdown-link">Shanna 1</a>
+                        <a href="moudoubaqui.html" class="dropdown-link">Moudoubaqui</a>
+                    </div>
+                </div>
+                <a href="member-login.html" class="nav-link">Member Login</a>
+                <button id="adminLoginBtn" class="nav-link admin-login-btn" onclick="window.location.href='admin-login.html'">
+                    <i class="fas fa-user-shield mr-2"></i>Admin Login
+                </button>
+            `;
+        }
+        
+        // Member navigation
+        function getMemberNavigation() {
+            return `
+                <a href="#home" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <div class="nav-dropdown">
+                    <a href="#teachings" class="nav-link dropdown-toggle">Teachings <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="protocols.html" class="dropdown-link">Sacred Protocols</a>
+                        <a href="crystaltech.html" class="dropdown-link">Crystal Technology</a>
+                        <a href="PerAnkhTech.html" class="dropdown-link">Per Ankh Technology</a>
+                        <a href="women'sempowerment.html" class="dropdown-link">Women's Empowerment</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#community" class="nav-link dropdown-toggle">Community <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="communitypartnership.html" class="dropdown-link">Community Partnership</a>
+                        <a href="sacredcommunityrelationships.html" class="dropdown-link">Sacred Relationships</a>
+                        <a href="community.html" class="dropdown-link">Community Portal</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#digital" class="nav-link dropdown-toggle">Digital Assets <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="calculator.html" class="dropdown-link">Calculator</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#profiles" class="nav-link dropdown-toggle">Profiles <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="mamayana.html" class="dropdown-link">Mama Ayana</a>
+                        <a href="jon.html" class="dropdown-link">Jon</a>
+                        <a href="Shanna1.html" class="dropdown-link">Shanna 1</a>
+                        <a href="moudoubaqui.html" class="dropdown-link">Moudoubaqui</a>
+                    </div>
+                </div>
+                <div id="adminInfo" class="admin-info" style="display: none;"></div>
+                <div id="adminLogoutBtn" class="admin-logout-section" style="display: none;">
+                    <button class="nav-link admin-logout-btn" onclick="perAnkhAuth.logout()">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            `;
+        }
+        
+        // Admin navigation
+        function getAdminNavigation() {
+            return `
+                <a href="#home" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <div class="nav-dropdown">
+                    <a href="#teachings" class="nav-link dropdown-toggle">Teachings <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="protocols.html" class="dropdown-link">Sacred Protocols</a>
+                        <a href="crystaltech.html" class="dropdown-link">Crystal Technology</a>
+                        <a href="PerAnkhTech.html" class="dropdown-link">Per Ankh Technology</a>
+                        <a href="women'sempowerment.html" class="dropdown-link">Women's Empowerment</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#community" class="nav-link dropdown-toggle">Community <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="communitypartnership.html" class="dropdown-link">Community Partnership</a>
+                        <a href="sacredcommunityrelationships.html" class="dropdown-link">Sacred Relationships</a>
+                        <a href="community.html" class="dropdown-link">Community Portal</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#digital" class="nav-link dropdown-toggle">Digital Assets <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="calculator.html" class="dropdown-link">Calculator</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#content" class="nav-link dropdown-toggle">Content <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="admin_pages/hiphop.html" class="dropdown-link">Hip-Hop Culture</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#profiles" class="nav-link dropdown-toggle">Profiles <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="mamayana.html" class="dropdown-link">Mama Ayana</a>
+                        <a href="jon.html" class="dropdown-link">Jon</a>
+                        <a href="Shanna1.html" class="dropdown-link">Shanna 1</a>
+                        <a href="moudoubaqui.html" class="dropdown-link">Moudoubaqui</a>
+                    </div>
+                </div>
+                <div id="adminInfo" class="admin-info" style="display: none;"></div>
+                <div id="adminLogoutBtn" class="admin-logout-section" style="display: none;">
+                    <a href="admin-dashboard.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <button class="nav-link admin-logout-btn" onclick="perAnkhAuth.logout()">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            `;
+        }
+        
+        // Initialize mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileMenuToggle && navLinks) {
+                // Remove existing event listeners to avoid duplicates
+                const newToggle = mobileMenuToggle.cloneNode(true);
+                mobileMenuToggle.parentNode.replaceChild(newToggle, mobileMenuToggle);
+                
+                newToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = newToggle.querySelector('i');
+                    
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        const icon = newToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    });
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navLinks.contains(e.target) && !newToggle.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                        const icon = newToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+        }
     </script>
     <script src="admin-auth.js"></script>
+    <script src="member-auth.js"></script>
 </body>
 </html>

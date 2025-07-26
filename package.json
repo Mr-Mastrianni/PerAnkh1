@@ -1,0 +1,57 @@
+{
+  "name": "per-ankh-consciousness-platform",
+  "version": "1.0.0",
+  "description": "Per Ankh Consciousness Technology Platform - Ancient wisdom meets modern bio-technology",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "lint": "eslint src --ext .js,.ts,.vue --fix",
+    "format": "prettier --write src/**/*.{js,ts,vue,css,html}",
+    "type-check": "tsc --noEmit",
+    "security-audit": "npm audit",
+    "start": "npm run dev"
+  },
+  "keywords": [
+    "consciousness",
+    "spirituality",
+    "bio-technology",
+    "entheogenic",
+    "african-spirituality",
+    "per-ankh",
+    "web-platform"
+  ],
+  "author": "Per Ankh Entheogenic Church",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-security": "^1.7.1",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "jwt-simple": "^0.5.6",
+    "validator": "^13.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
