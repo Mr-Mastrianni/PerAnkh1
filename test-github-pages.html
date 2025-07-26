@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Test - Per Ankh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #663399, #228B22);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.8);
+            padding: 40px;
+            border-radius: 15px;
+        }
+        h1 {
+            color: #DAA520;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .success {
+            background: #228B22;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .links {
+            margin-top: 30px;
+        }
+        a {
+            color: #DAA520;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 GitHub Pages is Working!</h1>
+        
+        <div class="success">
+            <h2>✅ Success!</h2>
+            <p>If you can see this page, GitHub Pages is properly configured for your Per Ankh repository.</p>
+        </div>
+        
+        <p><strong>Repository:</strong> Mr-Mastrianni/Per-Ankh</p>
+        <p><strong>Test Time:</strong> <span id="currentTime"></span></p>
+        
+        <div class="links">
+            <h3>Test Navigation:</h3>
+            <a href="index.html">Homepage</a>
+            <a href="become-a-member.html">Become a Member</a>
+            <a href="admin.html">Admin</a>
+        </div>
+        
+        <div style="margin-top: 40px; font-size: 0.9rem; opacity: 0.8;">
+            <p>Once you verify GitHub Pages is working, you can delete this test file.</p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('currentTime').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
