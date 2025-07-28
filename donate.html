@@ -10,30 +10,353 @@
     
     <style>
         :root {
-            --earth-brown: #8B4513;
-            --forest-green: #228B22;
-            --golden-ankh: #DAA520;
-            --sacred-amber: #FFBF00;
-            --mycelium-white: #F5F5DC;
-            --consciousness-purple: #663399;
+            --primary-gold: #d4af37;
+            --deep-gold: #b8941f;
+            --cosmic-blue: #2d1b69;
+            --matte-black: #1a1a1a;
+            --ethereal-white: #f8f9fa;
+            --sacred-purple: #4a148c;
+            --temple-bronze: #cd7f32;
         }
         
-        .earth-gradient {
-            background: linear-gradient(135deg, var(--forest-green) 0%, var(--earth-brown) 50%, var(--golden-ankh) 100%);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .consciousness-gradient {
-            background: linear-gradient(135deg, var(--consciousness-purple) 0%, var(--forest-green) 100%);
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--matte-black);
+            color: var(--ethereal-white);
+            overflow-x: hidden;
+            animation: cosmicFlow 20s ease-in-out infinite alternate;
         }
         
-        .ankh-symbol {
+        /* Sacred Geometry Background */
+        .sacred-geometry {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .geometry-element {
+            position: absolute;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            animation: geometryFloat 15s ease-in-out infinite;
+        }
+        
+        .geometry-1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            transform: rotate(45deg);
+            animation-delay: 0s;
+        }
+        
+        .geometry-2 {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            border-radius: 50%;
+            animation-delay: 5s;
+        }
+        
+        .geometry-3 {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            left: 20%;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation-delay: 10s;
+        }
+        
+        /* Cinematic Container */
+        .cinematic-container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.5) 0%, transparent 50%),
+                linear-gradient(45deg, var(--matte-black) 0%, rgba(45, 27, 105, 0.3) 50%, var(--matte-black) 100%);
+            animation: cosmicFlow 25s ease-in-out infinite alternate;
+        }
+        
+        .temple-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(to top, rgba(212, 175, 55, 0.3) 0%, transparent 100%);
+            clip-path: polygon(10% 100%, 20% 60%, 30% 70%, 40% 40%, 50% 50%, 60% 40%, 70% 70%, 80% 60%, 90% 100%);
+            animation: templeGlow 4s ease-in-out infinite alternate;
+        }
+        
+        .floating-ankh {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            font-size: 4rem;
+            color: var(--primary-gold);
             font-family: 'Cinzel', serif;
-            color: var(--golden-ankh);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: ankh3DRotation 12s linear infinite;
+            perspective: 1000px;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 20;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(45deg, var(--primary-gold), var(--deep-gold), var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            animation: titlePulse 3s ease-in-out infinite alternate;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--ethereal-white);
+            max-width: 600px;
+            margin: 0 auto;
+            animation: subtitleGlow 4s ease-in-out infinite alternate;
+        }
+        
+        /* Sacred Cards */
+        .sacred-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            animation: containerGlow 6s ease-in-out infinite alternate;
+        }
+        
+        .sacred-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(45deg, var(--primary-gold), var(--deep-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Donation Button */
+        .sacred-button {
+            background: linear-gradient(45deg, var(--primary-gold), var(--deep-gold));
+            color: var(--matte-black);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sacred-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .sacred-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .sacred-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Warning Box */
+        .warning-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--primary-gold);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .warning-text {
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+        
+        /* Mystical Animations */
+        @keyframes cosmicFlow {
+            0% {
+                background: 
+                    radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
+                    linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            }
+            100% {
+                background: 
+                    radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.4) 0%, transparent 60%),
+                    radial-gradient(circle at 30% 80%, rgba(45, 27, 105, 0.5) 0%, transparent 60%),
+                    linear-gradient(135deg, transparent 20%, rgba(212, 175, 55, 0.15) 60%, transparent 80%);
+            }
+        }
+        
+        @keyframes templeGlow {
+            0% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+                filter: brightness(1);
+            }
+            100% {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+                filter: brightness(1.2);
+            }
+        }
+        
+        @keyframes ankh3DRotation {
+            0% {
+                transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            }
+            25% {
+                transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
+                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+            }
+            50% {
+                transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
+                text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+            }
+            75% {
+                transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
+                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+            }
+            100% {
+                transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            }
+        }
+        
+        @keyframes titlePulse {
+            0% {
+                filter: brightness(1) saturate(1);
+                transform: scale(1);
+            }
+            100% {
+                filter: brightness(1.2) saturate(1.3);
+                transform: scale(1.02);
+            }
+        }
+        
+        @keyframes subtitleGlow {
+            0% {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+                opacity: 0.9;
+            }
+            100% {
+                text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.3);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes geometryFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+        
+        @keyframes containerGlow {
+            0% {
+                box-shadow: 
+                    0 20px 60px rgba(212, 175, 55, 0.2),
+                    0 0 40px rgba(45, 27, 105, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                border-color: var(--primary-gold);
+            }
+            100% {
+                box-shadow: 
+                    0 25px 80px rgba(212, 175, 55, 0.3),
+                    0 0 60px rgba(45, 27, 105, 0.15),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                border-color: var(--deep-gold);
+            }
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body>
+    <!-- Sacred Geometry Background -->
+    <div class="sacred-geometry">
+        <div class="geometry-element geometry-1"></div>
+        <div class="geometry-element geometry-2"></div>
+        <div class="geometry-element geometry-3"></div>
+    </div>
+    
     <!-- Navigation -->
     <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
         <div class="container mx-auto px-6">
@@ -49,64 +372,182 @@
                     <a href="/ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
                     <a href="/donate.html" class="text-yellow-400 hover:text-yellow-300 transition-colors">Donate</a>
                     <a href="/contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
-                    <a href="/admin.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
+                    <a href="admin-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="pt-20">
-        <!-- Hero Section -->
-        <section class="consciousness-gradient py-20 text-center text-white">
-            <div class="container mx-auto px-6">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6 ankh-symbol">Support Per-Ankh</h1>
-                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+    <main class="cinematic-container">
+        <!-- Mystical Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            <div class="temple-silhouette"></div>
+            <div class="floating-ankh">☥</div>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">Support Per-Ankh</h1>
+                <p class="hero-subtitle">
                     Help Us Cultivate Consciousness & Freedom
                 </p>
             </div>
         </section>
 
-        <!-- Donation Section -->
-        <section class="py-16 bg-gray-100">
+        <!-- Sacred Donation Section -->
+        <section class="py-16" style="position: relative; z-index: 10;">
             <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center" style="color: var(--earth-brown);">
-                    <p class="text-lg mb-6 leading-relaxed">
-                        PerAnkh is more than an organization—it's a movement dedicated to spiritual awakening, healing, and the decriminalization of entheogens. Based in Detroit, we are committed to advocating for the sacred use of plant medicines while providing education, community support, and safe spaces for exploration.
-                    </p>
+                <div class="max-w-4xl mx-auto">
+                    <div class="sacred-card mb-8">
+                        <p class="text-lg mb-6 leading-relaxed" style="color: var(--ethereal-white);">
+                            PerAnkh is more than an organization—it's a movement dedicated to spiritual awakening, healing, and the decriminalization of entheogens. Based in Detroit, we are committed to advocating for the sacred use of plant medicines while providing education, community support, and safe spaces for exploration.
+                        </p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
-                            <h3 class="text-2xl font-bold mb-4 ankh-symbol" style="color: var(--consciousness-purple);">Our Mission</h3>
-                            <ul class="text-left space-y-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                            <div class="sacred-card">
+                                <h3 class="section-title text-2xl mb-4">Our Mission</h3>
+                                <ul class="text-left space-y-2" style="color: var(--ethereal-white);">
+                                    <li>🌱 Advocate for entheogen decriminalization</li>
+                                    <li>🌱 Host educational and spiritual gatherings</li>
+                                    <li>🌱 Provide access to sacred plant medicine practices</li>
+                                    <li>🌱 Build a thriving community rooted in healing and transformation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="sacred-card">
+                                <h3 class="section-title text-2xl mb-4">Your Impact</h3>
+                                <p class="text-left" style="color: var(--ethereal-white);">
+                                    Every contribution, big or small, fuels the vision of a world where natural medicines are recognized, respected, and accessible to those seeking spiritual and personal growth.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="text-center mb-8">
+                            <p class="text-lg mb-4" style="color: var(--ethereal-white);">
+                                To keep this mission going, we need your support. Your donations and love offerings directly fund our efforts to:
+                            </p>
+                            <ul class="text-left max-w-2xl mx-auto space-y-2 mb-6" style="color: var(--primary-gold);">
                                 <li>🌱 Advocate for entheogen decriminalization</li>
                                 <li>🌱 Host educational and spiritual gatherings</li>
                                 <li>🌱 Provide access to sacred plant medicine practices</li>
                                 <li>🌱 Build a thriving community rooted in healing and transformation</li>
                             </ul>
-                        </div>
-                        
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
-                            <h3 class="text-2xl font-bold mb-4 ankh-symbol" style="color: var(--consciousness-purple);">Your Impact</h3>
-                            <p class="text-left">
+                            <p class="text-lg mb-6" style="color: var(--ethereal-white);">
                                 Every contribution, big or small, fuels the vision of a world where natural medicines are recognized, respected, and accessible to those seeking spiritual and personal growth.
                             </p>
+                            <p class="text-xl font-bold mb-8" style="color: var(--primary-gold);">
+                                💜 Donate today & be a part of the movement!
+                            </p>
                         </div>
-                    </div>
-
-                    <div class="text-center">
-                        <a href="/contact.html" class="inline-block bg-yellow-500 text-gray-900 px-10 py-4 rounded-full text-xl font-bold hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-lg">
-                            Donate Today
-                        </a>
-                        <p class="mt-4 text-sm">
-                            Contact us for donation information and ways to support our mission
-                        </p>
-                        <p class="mt-2 text-lg font-semibold">
-                            With gratitude, The PerAnkh Family 💜🍄
-                        </p>
-                        <p class="mt-2 text-sm">
-                            #SupportPerAnkh #DecriminalizeNature #EntheogenicFreedom
-                        </p>
+                        
+                        <!-- Sacred Donation Form -->
+                        <div class="sacred-card max-w-2xl mx-auto">
+                            <h3 class="section-title text-2xl mb-6 text-center">Sacred Donation Form</h3>
+                            
+                            <form id="donationForm" class="space-y-6">
+                                <!-- Name Fields -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">First Name *</label>
+                                        <input type="text" name="firstName" required class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Last Name *</label>
+                                        <input type="text" name="lastName" required class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                    </div>
+                                </div>
+                                
+                                <!-- Email -->
+                                <div>
+                                    <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Email *</label>
+                                    <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                </div>
+                                
+                                <!-- Donation Amount -->
+                                <div>
+                                    <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Donation Amount *</label>
+                                    <input type="number" name="amount" min="20" step="0.01" required class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="Minimum Price: $20.00" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                </div>
+                                
+                                <!-- Donor Message -->
+                                <div>
+                                    <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Donor Message</label>
+                                    <textarea name="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="Share your thoughts or intentions..." style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);"></textarea>
+                                </div>
+                                
+                                <!-- Card Details Section -->
+                                <div class="border-t border-primary-gold pt-6" style="border-color: var(--primary-gold);">
+                                    <h4 class="text-lg font-semibold mb-4" style="color: var(--primary-gold);">Card Details</h4>
+                                    
+                                    <!-- Email for Card -->
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Email</label>
+                                        <input type="email" name="cardEmail" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="youremail@example.com" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                    </div>
+                                    
+                                    <!-- Card Number -->
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Card Number</label>
+                                        <div class="relative">
+                                            <input type="text" name="cardNumber" maxlength="19" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="1234 1234 1234 1234" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                            <div class="absolute right-3 top-3 flex space-x-1">
+                                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iIzAwNTFBNSIvPgo8cGF0aCBkPSJNMTMuNSA3VjEzSDE1VjdIMTMuNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNy41IDdWMTNIMTlWN0gxNy41WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="Visa" class="h-5">
+                                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI0VCMDAxQiIvPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjEwIiByPSI2IiBmaWxsPSIjRkY1RjAwIi8+CjxjaXJjbGUgY3g9IjIwIiBjeT0iMTAiIHI9IjYiIGZpbGw9IiNGRkY1RjAiLz4KPC9zdmc+" alt="Mastercard" class="h-5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Expiry and CVC -->
+                                    <div class="grid grid-cols-2 gap-4 mb-4">
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Expiration Date</label>
+                                            <input type="text" name="expiry" maxlength="5" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="MM / YY" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Security Code</label>
+                                            <input type="text" name="cvc" maxlength="4" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="CVC" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Country and ZIP -->
+                                    <div class="grid grid-cols-2 gap-4 mb-6">
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Country</label>
+                                            <select name="country" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                                <option value="US">United States</option>
+                                                <option value="CA">Canada</option>
+                                                <option value="UK">United Kingdom</option>
+                                                <option value="AU">Australia</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">ZIP Code</label>
+                                            <input type="text" name="zipCode" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="12345" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Submit Button -->
+                                <div class="text-center">
+                                    <button type="submit" class="sacred-button w-full md:w-auto">
+                                        🌱 Donate Now 🌱
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Gratitude Message -->
+                        <div class="text-center mt-8">
+                            <p class="text-lg font-semibold mb-2" style="color: var(--primary-gold);">
+                                With gratitude,
+                            </p>
+                            <p class="text-xl font-bold mb-4" style="color: var(--primary-gold);">
+                                The PerAnkh Family 💜 🍄
+                            </p>
+                            <p class="text-sm" style="color: var(--ethereal-white);">
+                                #SupportPerAnkh #DecriminalizeNature #EntheogenicFreedom
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

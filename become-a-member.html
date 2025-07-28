@@ -35,10 +35,21 @@
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
     <title>Become a Member - Per Ankh Entheogenic Church</title>
 
     <style>
         :root {
+            --primary-gold: #D4AF37;
+            --deep-gold: #B8860B;
+            --dark-purple: #2D1B69;
+            --cosmic-blue: #0F0F23;
+            --matte-black: #0A0A0A;
+            --steel-gray: #1C1C1C;
+            --ethereal-white: #F8F8FF;
+            /* Legacy compatibility */
             --earth-brown: #8B4513;
             --forest-green: #228B22;
             --golden-ankh: #DAA520;
@@ -47,30 +58,344 @@
             --consciousness-purple: #663399;
         }
         
-        .earth-gradient {
-            background: linear-gradient(135deg, var(--forest-green) 0%, var(--earth-brown) 50%, var(--golden-ankh) 100%);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .consciousness-gradient {
-            background: linear-gradient(135deg, var(--consciousness-purple) 0%, var(--forest-green) 100%);
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         
-        .ankh-symbol {
+        .cinematic-container {
+            position: relative;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, rgba(45, 27, 105, 0.2) 50%, rgba(10, 10, 10, 0.9) 100%);
+        }
+        
+        /* Hero Section with Ancient Egyptian Temple */
+        .hero-section {
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(135deg, 
+                rgba(10, 10, 10, 0.8) 0%,
+                rgba(45, 27, 105, 0.6) 30%,
+                rgba(184, 134, 11, 0.4) 70%,
+                rgba(212, 175, 55, 0.2) 100%
+            );
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            animation: cosmicFlow 20s ease-in-out infinite alternate;
+        }
+        
+        .temple-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 60%;
+            background: linear-gradient(to top,
+                rgba(10, 10, 10, 0.9) 0%,
+                rgba(28, 28, 28, 0.7) 30%,
+                rgba(45, 27, 105, 0.5) 60%,
+                transparent 100%
+            );
+            clip-path: polygon(
+                0% 100%, 15% 80%, 20% 75%, 25% 70%, 30% 60%, 35% 55%, 
+                40% 45%, 45% 40%, 50% 35%, 55% 40%, 60% 45%, 65% 55%, 
+                70% 60%, 75% 70%, 80% 75%, 85% 80%, 100% 100%
+            );
+            animation: templeGlow 8s ease-in-out infinite alternate;
+        }
+        
+        .floating-ankh {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            color: var(--primary-gold);
+            animation: ankh3DRotation 8s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            filter: drop-shadow(0 10px 20px rgba(212, 175, 55, 0.4));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1000px;
+            padding: 2rem;
+        }
+        
+        .hero-title {
             font-family: 'Cinzel', serif;
-            color: var(--golden-ankh);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 50%, var(--primary-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: titlePulse 4s ease-in-out infinite alternate;
         }
         
-        .consciousness-card {
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--ethereal-white);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            animation: subtitleGlow 6s ease-in-out infinite alternate;
+        }
+        
+        .sacred-geometry {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
+        }
+        
+        .geometry-element {
+            position: absolute;
+            border: 2px solid var(--primary-gold);
+            border-radius: 50%;
+            animation: geometryFloat 12s ease-in-out infinite;
+        }
+        
+        .geometry-1 {
+            top: 10%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            animation-delay: 0s;
+        }
+        
+        .geometry-2 {
+            top: 20%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            animation-delay: -4s;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-radius: 0;
+        }
+        
+        .geometry-3 {
+            bottom: 20%;
+            left: 20%;
+            width: 80px;
+            height: 80px;
+            animation-delay: -8s;
+        }
+        
+        /* Mystical Form Styling */
+        .sacred-form {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--primary-gold);
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 60px rgba(212, 175, 55, 0.2),
+                0 0 40px rgba(45, 27, 105, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: containerGlow 6s ease-in-out infinite alternate;
+        }
+        
+        .form-section {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-section h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .form-input {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: var(--ethereal-white);
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            outline: none;
+        }
+        
+        .form-label {
+            color: var(--ethereal-white);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            border: none;
+            border-radius: 10px;
+            color: var(--matte-black);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+        
+        /* Mystical Animations */
+        @keyframes cosmicFlow {
+            0% {
+                background: 
+                    radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
+                    linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            }
+            100% {
+                background: 
+                    radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.4) 0%, transparent 60%),
+                    radial-gradient(circle at 30% 80%, rgba(45, 27, 105, 0.5) 0%, transparent 60%),
+                    linear-gradient(135deg, transparent 20%, rgba(212, 175, 55, 0.15) 60%, transparent 80%);
+            }
+        }
+        
+        @keyframes templeGlow {
+            0% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+                filter: brightness(1);
+            }
+            100% {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+                filter: brightness(1.2);
+            }
+        }
+        
+        @keyframes ankh3DRotation {
+            0% {
+                transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            }
+            25% {
+                transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
+                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+            }
+            50% {
+                transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
+                text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+            }
+            75% {
+                transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
+                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+            }
+            100% {
+                transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            }
+        }
+        
+        @keyframes titlePulse {
+            0% {
+                filter: brightness(1) saturate(1);
+                transform: scale(1);
+            }
+            100% {
+                filter: brightness(1.2) saturate(1.3);
+                transform: scale(1.02);
+            }
+        }
+        
+        @keyframes subtitleGlow {
+            0% {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+                opacity: 0.9;
+            }
+            100% {
+                text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.3);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes geometryFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+        
+        @keyframes containerGlow {
+            0% {
+                box-shadow: 
+                    0 20px 60px rgba(212, 175, 55, 0.2),
+                    0 0 40px rgba(45, 27, 105, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                border-color: var(--primary-gold);
+            }
+            100% {
+                box-shadow: 
+                    0 25px 80px rgba(212, 175, 55, 0.3),
+                    0 0 60px rgba(45, 27, 105, 0.15),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                border-color: var(--deep-gold);
+            }
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body>
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip to main content</a>
+    
+    <!-- Sacred Geometry Background -->
+    <div class="sacred-geometry">
+        <div class="geometry-element geometry-1"></div>
+        <div class="geometry-element geometry-2"></div>
+        <div class="geometry-element geometry-3"></div>
+    </div>
     
     <!-- Navigation -->
     <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
@@ -81,73 +406,295 @@
                     <a href="/" class="text-2xl font-bold" style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
                 </div>
                 <div class="hidden md:flex space-x-6">
-                    <a href="/become-a-member.html" class="text-yellow-400 hover:text-yellow-300 transition-colors">Become a Member</a>
-                    <a href="/events.html" class="text-white hover:text-yellow-400 transition-colors">Events</a>
-                    <a href="/per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos & Structure</a>
-                    <a href="/ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
-                    <a href="/donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
-                    <a href="/contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
-                    <a href="/admin.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
+                    <a href="index.html" class="text-white hover:text-yellow-400 transition-colors">Home</a>
+                    <a href="become-a-member.html" class="text-yellow-400 hover:text-yellow-300 transition-colors">Become a Member</a>
+                    <a href="events.html" class="text-white hover:text-yellow-400 transition-colors">Events</a>
+                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos & Structure</a>
+                    <a href="ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
+                    <a href="donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
+                    <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
+                    <a href="admin-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main id="main-content" role="main" class="pt-20">
-        <!-- Hero Section -->
-        <section class="earth-gradient py-20 text-center text-white">
-            <div class="container mx-auto px-6">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6 ankh-symbol">Become a Member</h1>
-                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                    Join our sacred community of visionaries exploring consciousness through ancient wisdom and sacred plant medicines
+    <main id="main-content" role="main" class="cinematic-container">
+        <!-- Mystical Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            <div class="temple-silhouette"></div>
+            <div class="floating-ankh">☥</div>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">Join Our Sacred Community</h1>
+                <p class="hero-subtitle">
+                    Begin Your Journey into Ancient Wisdom and Sacred Plant Medicines
                 </p>
             </div>
         </section>
 
-        <!-- Membership Section -->
-        <section class="py-16 bg-gray-100">
+        <!-- Sacred Membership Form Section -->
+        <section class="py-16" style="position: relative; z-index: 10;">
             <div class="container mx-auto px-6">
                 <div class="max-w-4xl mx-auto">
-                    <div class="consciousness-card bg-white p-8 rounded-lg text-center" style="background-color: var(--mycelium-white); color: var(--earth-brown);">
-                        <h2 class="text-4xl font-bold mb-8 ankh-symbol" style="color: var(--consciousness-purple);">Apply to Join The Church</h2>
-                        
-                        <div class="mb-8">
-                            <p class="text-lg mb-6 leading-relaxed">
-                                Per Ankh Entheogenic Church welcomes all seekers who are called to explore the sacred mysteries of consciousness through traditional plant medicines and ancient African wisdom.
-                            </p>
-                            <p class="text-lg mb-6 leading-relaxed">
-                                As a member, you'll join a community dedicated to spiritual growth, healing, and the preservation of indigenous plant medicine traditions.
+                    <div class="sacred-form p-8">
+                        <div class="form-section text-center">
+                            <h2 class="text-3xl font-bold mb-4" style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">Sacred Membership Application</h2>
+                            <p class="text-lg mb-6" style="color: var(--ethereal-white);">
+                                Complete this application to join the Per Ankh Entheogenic Church community. All information will be kept confidential and used only for membership processing.
                             </p>
                         </div>
 
-                        <!-- Membership Benefits -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                            <div class="consciousness-card p-6 rounded-lg" style="background-color: var(--consciousness-purple); color: var(--mycelium-white);">
-                                <h3 class="text-xl font-bold mb-3 ankh-symbol">Sacred Ceremonies</h3>
-                                <p>Participate in guided psilocybin and cannabis ceremonies in a safe, sacred environment</p>
-                            </div>
-                            <div class="consciousness-card p-6 rounded-lg" style="background-color: var(--forest-green); color: var(--mycelium-white);">
-                                <h3 class="text-xl font-bold mb-3 ankh-symbol">Educational Workshops</h3>
-                                <p>Learn about plant medicine safety, dosage, and spiritual preparation</p>
-                            </div>
-                            <div class="consciousness-card p-6 rounded-lg" style="background-color: var(--earth-brown); color: var(--mycelium-white);">
-                                <h3 class="text-xl font-bold mb-3 ankh-symbol">Community Support</h3>
-                                <p>Connect with like-minded individuals on the path of consciousness exploration</p>
-                            </div>
-                            <div class="consciousness-card p-6 rounded-lg" style="background-color: var(--golden-ankh); color: var(--earth-brown);">
-                                <h3 class="text-xl font-bold mb-3 ankh-symbol">Ancient Wisdom</h3>
-                                <p>Study traditional African spiritual practices and Ma'at principles</p>
-                            </div>
-                        </div>
+                        <!-- Sacred Membership Application Form -->
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            <form id="membershipForm" class="space-y-6">
+                                <!-- Name Fields -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="firstName" class="form-label">Name *</label>
+                                        <input type="text" id="firstName" name="firstName" required 
+                                               class="form-input w-full"
+                                               placeholder="First">
+                                    </div>
+                                    <div class="flex items-end">
+                                        <input type="text" id="lastName" name="lastName" required 
+                                               class="form-input w-full"
+                                               placeholder="Last">
+                                    </div>
+                                </div>
 
-                        <div class="text-center">
-                            <a href="/contact.html" class="inline-block bg-yellow-500 text-gray-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-lg">
-                                Apply for Membership
-                            </a>
-                            <p class="mt-4 text-sm text-gray-600">
-                                Contact us to begin your application process
-                            </p>
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                            </div>
+
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                                <div class="flex">
+                                    <span class="inline-flex items-center px-3 py-2 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm rounded-l-md">
+                                        Ex: (201) 555-0123
+                                    </span>
+                                    <input type="tel" id="phone" name="phone" 
+                                           class="flex-1 px-3 py-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                                <div class="space-y-3">
+                                    <input type="text" id="addressLine1" name="addressLine1" 
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                                           placeholder="Address Line 1">
+                                    <input type="text" id="addressLine2" name="addressLine2" 
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                                           placeholder="Address Line 2">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                        <input type="text" id="city" name="city" 
+                                               class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                                               placeholder="City">
+                                        <select id="state" name="state" 
+                                                class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                                            <option value="">-- Select state --</option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="HI">Hawaii</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WA">Washington</option>
+                                            <option value="WV">West Virginia</option>
+                                            <option value="WI">Wisconsin</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select>
+                                        <input type="text" id="zipCode" name="zipCode" 
+                                               class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                                               placeholder="Zip Code">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div>
+                                <label for="dateOfBirth" class="block text-sm font-medium text-gray-700 mb-2">Date Of Birth</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" 
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                            </div>
+
+                            <!-- Employment Question -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-3">ARE YOU AN EMPLOYEE OR CONTRACTOR WITH ANY STATE OR FEDERAL ENFORCEMENT AGENCY? *</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="lawEnforcement" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>Yes</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="lawEnforcement" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Mushroom Question -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU SEE MUSHROOMS AS PART OF YOUR SPIRITUAL PRACTICE? *</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="mushroomSpiritual" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>Yes</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="mushroomSpiritual" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Rules Agreement -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU AGREE TO FOLLOW THE RULES AND REGULATIONS OF THE CHURCH? *</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="rulesAgreement" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>Yes</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="rulesAgreement" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Cannabis Question -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU SMOKE, CONSUME, OR USE CANNABIS IN ANY WAY? *</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="cannabisUse" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>Yes</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="cannabisUse" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Entheogenic Plants Question -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU SUPPORT THE PRIVATE ADULT USE OF ENTHEOGENIC PLANTS? *</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="entheogenicSupport" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>Yes</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="entheogenicSupport" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Safe Place Question -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU THINK ADULTS SHOULD HAVE A SAFE PLACE TO USE AND/OR ACQUIRE ENTHEOGENIC PLANTS? *</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="safePlace" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>Yes</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="safePlace" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- ID Upload -->
+                            <div>
+                                <label for="idUpload" class="block text-sm font-medium text-gray-700 mb-2">Upload your ID *</label>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-yellow-500 transition-colors">
+                                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                                    <p class="text-gray-600 mb-2">Click or drag files to this area to upload.</p>
+                                    <p class="text-sm text-gray-500">You can upload 1 file. 2 MB max</p>
+                                    <input type="file" id="idUpload" name="idUpload" accept="image/*,.pdf" required class="hidden">
+                                    <button type="button" onclick="document.getElementById('idUpload').click()" 
+                                            class="mt-4 bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors">
+                                        Choose File
+                                    </button>
+                                    <p class="mt-2 text-sm text-gray-600">Upload a Valid ID both Front and Back</p>
+                                </div>
+                            </div>
+
+                            <!-- Referral -->
+                            <div>
+                                <label for="referral" class="block text-sm font-medium text-gray-700 mb-2">WHO WERE YOU REFERRED BY (NAME & MEMBER NUMBER)? OR WHERE DID YOU HEAR ABOUT PER ANKH CHURCH? *</label>
+                                <textarea id="referral" name="referral" rows="3" required
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"></textarea>
+                            </div>
+
+                            <!-- Why Join -->
+                            <div>
+                                <label for="whyJoin" class="block text-sm font-medium text-gray-700 mb-2">WHY DO YOU WANT TO JOIN THIS CHURCH? *</label>
+                                <textarea id="whyJoin" name="whyJoin" rows="4" required
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"></textarea>
+                            </div>
+
+                            <!-- Sacred Submit Button -->
+                            <div class="text-center pt-6">
+                                <button type="submit" class="submit-button">
+                                    <span class="submit-text">Submit Sacred Application</span>
+                                    <div class="button-glow"></div>
+                                </button>
+                            </div>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -204,10 +751,287 @@
     </footer>
 
     <script>
+        // Initialize EmailJS
+        emailjs.init('YOUR_PUBLIC_KEY'); // You'll need to replace this with your actual EmailJS public key
+        
         // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Per Ankh - Become a Member Page Loaded');
+            initializeMembershipForm();
         });
+
+        function initializeMembershipForm() {
+            const form = document.getElementById('membershipForm');
+            const fileInput = document.getElementById('idUpload');
+            const uploadArea = fileInput.parentElement;
+
+            // File upload handling
+            fileInput.addEventListener('change', handleFileUpload);
+            
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('border-yellow-500');
+            });
+            
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('border-yellow-500');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('border-yellow-500');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    handleFileUpload({ target: fileInput });
+                }
+            });
+
+            // Form submission
+            form.addEventListener('submit', handleFormSubmission);
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            const uploadArea = event.target.parentElement;
+            const statusText = uploadArea.querySelector('p');
+            
+            if (file) {
+                if (file.size > 2 * 1024 * 1024) { // 2MB limit
+                    alert('File size must be less than 2MB');
+                    event.target.value = '';
+                    return;
+                }
+                
+                statusText.textContent = `Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+                statusText.className = 'text-green-600 mb-2';
+            }
+        }
+
+        async function handleFormSubmission(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            
+            // Disable submit button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+            
+            try {
+                // Collect form data
+                const formData = new FormData(form);
+                const membershipData = {
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    addressLine1: formData.get('addressLine1'),
+                    addressLine2: formData.get('addressLine2'),
+                    city: formData.get('city'),
+                    state: formData.get('state'),
+                    zipCode: formData.get('zipCode'),
+                    dateOfBirth: formData.get('dateOfBirth'),
+                    lawEnforcement: formData.get('lawEnforcement'),
+                    mushroomSpiritual: formData.get('mushroomSpiritual'),
+                    rulesAgreement: formData.get('rulesAgreement'),
+                    cannabisUse: formData.get('cannabisUse'),
+                    entheogenicSupport: formData.get('entheogenicSupport'),
+                    safePlace: formData.get('safePlace'),
+                    referral: formData.get('referral'),
+                    whyJoin: formData.get('whyJoin'),
+                    submissionDate: new Date().toISOString()
+                };
+
+                // Handle file upload
+                const idFile = formData.get('idUpload');
+                let fileData = null;
+                if (idFile && idFile.size > 0) {
+                    fileData = {
+                        name: idFile.name,
+                        size: idFile.size,
+                        type: idFile.type
+                    };
+                }
+
+                // Create email content
+                const emailContent = createEmailContent(membershipData, fileData);
+                
+                // Send email using EmailJS or similar service
+                await sendMembershipEmail(emailContent, membershipData, idFile);
+                
+                // Show success message
+                showSuccessMessage();
+                
+                // Reset form
+                form.reset();
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showErrorMessage('There was an error submitting your application. Please try again or contact us directly.');
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+                submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        function createEmailContent(data, fileData) {
+            return `
+                <h2>New Membership Application - Per Ankh Entheogenic Church</h2>
+                
+                <h3>Personal Information:</h3>
+                <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Phone:</strong> ${data.phone || 'Not provided'}</p>
+                <p><strong>Date of Birth:</strong> ${data.dateOfBirth || 'Not provided'}</p>
+                
+                <h3>Address:</h3>
+                <p><strong>Address Line 1:</strong> ${data.addressLine1 || 'Not provided'}</p>
+                <p><strong>Address Line 2:</strong> ${data.addressLine2 || 'Not provided'}</p>
+                <p><strong>City:</strong> ${data.city || 'Not provided'}</p>
+                <p><strong>State:</strong> ${data.state || 'Not provided'}</p>
+                <p><strong>Zip Code:</strong> ${data.zipCode || 'Not provided'}</p>
+                
+                <h3>Application Questions:</h3>
+                <p><strong>Law Enforcement Employee/Contractor:</strong> ${data.lawEnforcement}</p>
+                <p><strong>Mushrooms as Spiritual Practice:</strong> ${data.mushroomSpiritual}</p>
+                <p><strong>Agrees to Church Rules:</strong> ${data.rulesAgreement}</p>
+                <p><strong>Cannabis Use:</strong> ${data.cannabisUse}</p>
+                <p><strong>Supports Entheogenic Plant Use:</strong> ${data.entheogenicSupport}</p>
+                <p><strong>Supports Safe Place for Entheogenic Plants:</strong> ${data.safePlace}</p>
+                
+                <h3>Referral Information:</h3>
+                <p>${data.referral}</p>
+                
+                <h3>Why Join the Church:</h3>
+                <p>${data.whyJoin}</p>
+                
+                <h3>ID Upload:</h3>
+                <p><strong>File:</strong> ${fileData ? `${fileData.name} (${(fileData.size / 1024 / 1024).toFixed(2)} MB)` : 'No file uploaded'}</p>
+                
+                <p><strong>Submission Date:</strong> ${new Date(data.submissionDate).toLocaleString()}</p>
+            `;
+        }
+
+        async function sendMembershipEmail(emailContent, membershipData, idFile) {
+            const subject = `New Membership Application - ${membershipData.firstName} ${membershipData.lastName}`;
+            
+            // Store application data in localStorage for backup
+            localStorage.setItem('lastMembershipApplication', JSON.stringify({
+                ...membershipData,
+                fileName: idFile ? idFile.name : null
+            }));
+            
+            // Try EmailJS first (requires setup)
+            try {
+                // EmailJS template parameters
+                const templateParams = {
+                    to_email: 'contactperankh@gmail.com',
+                    subject: subject,
+                    applicant_name: `${membershipData.firstName} ${membershipData.lastName}`,
+                    applicant_email: membershipData.email,
+                    applicant_phone: membershipData.phone || 'Not provided',
+                    date_of_birth: membershipData.dateOfBirth || 'Not provided',
+                    address_line1: membershipData.addressLine1 || 'Not provided',
+                    address_line2: membershipData.addressLine2 || '',
+                    city: membershipData.city || 'Not provided',
+                    state: membershipData.state || 'Not provided',
+                    zip_code: membershipData.zipCode || 'Not provided',
+                    law_enforcement: membershipData.lawEnforcement,
+                    mushroom_spiritual: membershipData.mushroomSpiritual,
+                    rules_agreement: membershipData.rulesAgreement,
+                    cannabis_use: membershipData.cannabisUse,
+                    entheogenic_support: membershipData.entheogenicSupport,
+                    safe_place: membershipData.safePlace,
+                    referral_info: membershipData.referral,
+                    why_join: membershipData.whyJoin,
+                    id_file_name: idFile && idFile.name ? idFile.name : 'No file uploaded',
+                    submission_date: new Date().toLocaleString()
+                };
+                
+                // Replace with your actual EmailJS service ID and template ID
+                await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+                console.log('Email sent successfully via EmailJS');
+                return;
+                
+            } catch (error) {
+                console.log('EmailJS failed, falling back to mailto:', error);
+            }
+            
+            // Fallback to mailto if EmailJS fails or isn't configured
+            const body = `New membership application received:\n\n` +
+                `Name: ${membershipData.firstName} ${membershipData.lastName}\n` +
+                `Email: ${membershipData.email}\n` +
+                `Phone: ${membershipData.phone || 'Not provided'}\n` +
+                `Date of Birth: ${membershipData.dateOfBirth || 'Not provided'}\n\n` +
+                `Address:\n` +
+                `${membershipData.addressLine1 || 'Not provided'}\n` +
+                `${membershipData.addressLine2 || ''}\n` +
+                `${membershipData.city || 'Not provided'}, ${membershipData.state || 'Not provided'} ${membershipData.zipCode || 'Not provided'}\n\n` +
+                `Application Responses:\n` +
+                `Law Enforcement: ${membershipData.lawEnforcement}\n` +
+                `Mushrooms as Spiritual Practice: ${membershipData.mushroomSpiritual}\n` +
+                `Agrees to Church Rules: ${membershipData.rulesAgreement}\n` +
+                `Cannabis Use: ${membershipData.cannabisUse}\n` +
+                `Supports Entheogenic Plants: ${membershipData.entheogenicSupport}\n` +
+                `Supports Safe Place: ${membershipData.safePlace}\n\n` +
+                `Referral Information:\n${membershipData.referral}\n\n` +
+                `Why Join:\n${membershipData.whyJoin}\n\n` +
+                `ID File: ${idFile && idFile.name ? idFile.name : 'No file uploaded'}\n` +
+                `Submitted: ${new Date().toLocaleString()}`;
+            
+            // Create mailto link as fallback
+            const mailtoLink = `mailto:contactperankh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+        }
+
+        function showSuccessMessage() {
+            const message = document.createElement('div');
+            message.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50';
+            message.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-3"></i>
+                    <div>
+                        <h4 class="font-bold">Application Submitted!</h4>
+                        <p class="text-sm">Your membership application has been sent. We'll contact you soon.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                message.remove();
+            }, 5000);
+        }
+
+        function showErrorMessage(errorText) {
+            const message = document.createElement('div');
+            message.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg z-50';
+            message.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-exclamation-triangle mr-3"></i>
+                    <div>
+                        <h4 class="font-bold">Submission Error</h4>
+                        <p class="text-sm">${errorText}</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Remove message after 7 seconds
+            setTimeout(() => {
+                message.remove();
+            }, 7000);
+        }
     </script>
 </body>
 </html>
