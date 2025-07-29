@@ -1,0 +1,105 @@
+<!-- Sacred Card Component Template - Per Ankh -->
+<!-- Reusable mystical card component following BEM methodology -->
+
+<!-- Basic Sacred Card -->
+<article class="c-sacred-card" role="article">
+    <header class="c-sacred-card__header">
+        <div class="c-sacred-card__icon">
+            <i class="fas fa-ankh" aria-hidden="true"></i>
+        </div>
+        <h3 class="c-sacred-card__title">Sacred Wisdom</h3>
+        <p class="c-sacred-card__subtitle">Ancient knowledge for modern consciousness</p>
+    </header>
+    
+    <div class="c-sacred-card__body">
+        <div class="c-sacred-card__content">
+            <p>Experience the profound connection between ancient African wisdom and cutting-edge consciousness technology.</p>
+        </div>
+    </div>
+    
+    <footer class="c-sacred-card__footer">
+        <div class="c-sacred-card__actions c-sacred-card__actions--centered">
+            <a href="#learn-more" class="c-sacred-card__button">
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                <span>Learn More</span>
+            </a>
+        </div>
+    </footer>
+</article>
+
+<!-- Interactive Sacred Card with Stats -->
+<article class="c-sacred-card c-sacred-card--interactive c-sacred-card--glowing" role="article">
+    <header class="c-sacred-card__header c-sacred-card__header--centered">
+        <div class="c-sacred-card__icon">
+            <i class="fas fa-users" aria-hidden="true"></i>
+        </div>
+        <h3 class="c-sacred-card__title">Community Growth</h3>
+        <p class="c-sacred-card__subtitle">Expanding consciousness together</p>
+    </header>
+    
+    <div class="c-sacred-card__stats">
+        <div class="c-sacred-card__stat">
+            <span class="c-sacred-card__stat-value" data-stat="members">1,247</span>
+            <span class="c-sacred-card__stat-label">Active Members</span>
+        </div>
+        <div class="c-sacred-card__stat">
+            <span class="c-sacred-card__stat-value" data-stat="ceremonies">89</span>
+            <span class="c-sacred-card__stat-label">Ceremonies</span>
+        </div>
+        <div class="c-sacred-card__stat">
+            <span class="c-sacred-card__stat-value" data-stat="facilitators">23</span>
+            <span class="c-sacred-card__stat-label">Facilitators</span>
+        </div>
+    </div>
+    
+    <footer class="c-sacred-card__footer">
+        <div class="c-sacred-card__actions c-sacred-card__actions--spaced">
+            <button class="c-sacred-card__button c-sacred-card__button--secondary">
+                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                <span>View Analytics</span>
+            </button>
+            <button class="c-sacred-card__button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>Add Member</span>
+            </button>
+        </div>
+    </footer>
+</article>
+
+<!-- Compact Sacred Card -->
+<article class="c-sacred-card c-sacred-card--geometry" role="article">
+    <div class="c-sacred-card__body c-sacred-card__body--compact">
+        <div class="c-sacred-card__content">
+            <h4 class="c-sacred-card__title">Ceremony Schedule</h4>
+            <p>Next gathering: Full Moon Ceremony<br>
+            <small class="c-sacred-card__subtitle">Saturday, 8:00 PM EST</small></p>
+        </div>
+    </div>
+    
+    <footer class="c-sacred-card__footer">
+        <div class="c-sacred-card__actions">
+            <button class="c-sacred-card__button c-sacred-card__button--ghost">
+                <i class="fas fa-calendar" aria-hidden="true"></i>
+                <span>View Schedule</span>
+            </button>
+        </div>
+    </footer>
+</article>
+
+<!-- Dashboard Metric Card -->
+<article class="c-sacred-card c-sacred-card--elevated" role="article">
+    <div class="c-sacred-card__body">
+        <div class="c-sacred-card__content">
+            <div class="c-sacred-card__stat">
+                <span class="c-sacred-card__stat-value" data-metric="revenue">$12,847</span>
+                <span class="c-sacred-card__stat-label">Monthly Donations</span>
+            </div>
+            <div style="margin-top: var(--space-md);">
+                <div style="display: flex; align-items: center; gap: var(--space-sm); color: var(--forest-green);">
+                    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                    <span style="font-size: var(--text-sm);">+23% from last month</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

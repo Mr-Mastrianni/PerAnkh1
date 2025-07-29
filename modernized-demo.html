@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Per Ankh Modernized Components Demo - Showcasing 2025 best practices">
+    <title>Per Ankh - Modernized Component Architecture Demo</title>
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./PerAnkhLogo.png">
+    
+    <!-- Main Stylesheet - Modern Component Architecture -->
+    <link rel="stylesheet" href="./src/styles/main.css">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+</head>
+<body>
+    <!-- Sacred Geometry Background -->
+    <div class="sacred-geometry-bg">
+        <div class="geometry-element"></div>
+        <div class="geometry-element"></div>
+        <div class="geometry-element"></div>
+        <div class="geometry-element"></div>
+    </div>
+
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="u-sr-only">Skip to main content</a>
+
+    <!-- Modern Navigation Component -->
+    <nav class="c-navigation" role="navigation" aria-label="Main navigation">
+        <div class="c-navigation__container">
+            <!-- Logo and Brand -->
+            <a href="/" class="c-navigation__brand">
+                <div class="c-navigation__ankh-symbol">☥</div>
+                <span class="c-navigation__brand-text" data-nav-title="Per Ankh Demo">Per Ankh Demo</span>
+            </a>
+            
+            <!-- Main Navigation Menu -->
+            <div class="c-navigation__menu" data-nav-type="main">
+                <!-- Dashboard Dropdown -->
+                <div class="c-navigation__item">
+                    <button class="c-navigation__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                        <span>Dashboard</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="c-navigation__dropdown-menu" role="menu">
+                        <a href="#overview" class="c-navigation__dropdown-item" role="menuitem">Overview</a>
+                        <a href="#analytics" class="c-navigation__dropdown-item" role="menuitem">Analytics</a>
+                        <a href="#reports" class="c-navigation__dropdown-item" role="menuitem">Reports</a>
+                    </div>
+                </div>
+                
+                <!-- Components Dropdown -->
+                <div class="c-navigation__item">
+                    <button class="c-navigation__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-cube" aria-hidden="true"></i>
+                        <span>Components</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="c-navigation__dropdown-menu" role="menu">
+                        <a href="#navigation" class="c-navigation__dropdown-item" role="menuitem">Navigation</a>
+                        <a href="#cards" class="c-navigation__dropdown-item" role="menuitem">Sacred Cards</a>
+                        <a href="#forms" class="c-navigation__dropdown-item" role="menuitem">Forms</a>
+                        <a href="#utilities" class="c-navigation__dropdown-item" role="menuitem">Utilities</a>
+                    </div>
+                </div>
+                
+                <!-- Architecture Dropdown -->
+                <div class="c-navigation__item">
+                    <button class="c-navigation__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-sitemap" aria-hidden="true"></i>
+                        <span>Architecture</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="c-navigation__dropdown-menu" role="menu">
+                        <a href="#bem-methodology" class="c-navigation__dropdown-item" role="menuitem">BEM Methodology</a>
+                        <a href="#design-system" class="c-navigation__dropdown-item" role="menuitem">Design System</a>
+                        <a href="#file-structure" class="c-navigation__dropdown-item" role="menuitem">File Structure</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- User Menu -->
+            <div class="c-navigation__user">
+                <button class="c-navigation__user-toggle" aria-expanded="false" aria-haspopup="true">
+                    <div class="c-navigation__user-avatar">👤</div>
+                    <span class="c-navigation__user-name" data-user-name="Developer">Developer</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="c-navigation__user-menu" role="menu">
+                    <a href="#profile" class="c-navigation__user-menu-item" role="menuitem">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                        <span>Profile</span>
+                    </a>
+                    <a href="#settings" class="c-navigation__user-menu-item" role="menuitem">
+                        <i class="fas fa-cog" aria-hidden="true"></i>
+                        <span>Settings</span>
+                    </a>
+                    <hr class="c-navigation__user-menu-divider">
+                    <button class="c-navigation__user-menu-item" data-action="logout" role="menuitem">
+                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="l-container" style="padding-top: var(--space-2xl);">
+        
+        <!-- Hero Section -->
+        <section class="u-text-center u-margin-lg">
+            <h1 class="u-font-heading u-text-3xl u-text-golden u-margin-md">
+                ✨ Per Ankh Modernized Architecture ✨
+            </h1>
+            <p class="u-text-lg u-text-secondary u-margin-lg">
+                Showcasing 2025 best practices with component-based design, BEM methodology, and modern CSS architecture
+            </p>
+        </section>
+
+        <!-- Architecture Overview -->
+        <section id="overview" class="u-margin-2xl">
+            <div class="c-sacred-card c-sacred-card--glowing">
+                <header class="c-sacred-card__header c-sacred-card__header--centered">
+                    <div class="c-sacred-card__icon">
+                        <i class="fas fa-rocket" aria-hidden="true"></i>
+                    </div>
+                    <h2 class="c-sacred-card__title">Modernization Complete</h2>
+                    <p class="c-sacred-card__subtitle">From monolithic to modular architecture</p>
+                </header>
+                
+                <div class="c-sacred-card__body">
+                    <div class="c-sacred-card__content">
+                        <h3 class="u-text-golden u-font-heading u-text-lg">Key Improvements:</h3>
+                        <ul style="color: var(--text-primary); margin: var(--space-md) 0;">
+                            <li>✅ <strong>Component-Based Architecture</strong> - Reusable, modular UI components</li>
+                            <li>✅ <strong>BEM Methodology</strong> - Consistent naming with c-, l-, u-, is-, has- prefixes</li>
+                            <li>✅ <strong>Separation of Concerns</strong> - CSS, HTML, and JS in organized files</li>
+                            <li>✅ <strong>Design System</strong> - Centralized variables and tokens</li>
+                            <li>✅ <strong>Modern File Structure</strong> - /src, /components, /styles organization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Component Showcase -->
+        <section id="cards" class="u-margin-2xl">
+            <h2 class="u-font-heading u-text-2xl u-text-golden u-text-center u-margin-lg">
+                Sacred Card Components
+            </h2>
+            
+            <div class="l-grid l-grid--3">
+                <!-- Interactive Card -->
+                <article class="c-sacred-card c-sacred-card--interactive c-sacred-card--glowing">
+                    <header class="c-sacred-card__header c-sacred-card__header--centered">
+                        <div class="c-sacred-card__icon">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="c-sacred-card__title">Community Growth</h3>
+                        <p class="c-sacred-card__subtitle">Expanding consciousness together</p>
+                    </header>
+                    
+                    <div class="c-sacred-card__stats">
+                        <div class="c-sacred-card__stat">
+                            <span class="c-sacred-card__stat-value">1,247</span>
+                            <span class="c-sacred-card__stat-label">Members</span>
+                        </div>
+                        <div class="c-sacred-card__stat">
+                            <span class="c-sacred-card__stat-value">89</span>
+                            <span class="c-sacred-card__stat-label">Ceremonies</span>
+                        </div>
+                    </div>
+                    
+                    <footer class="c-sacred-card__footer">
+                        <div class="c-sacred-card__actions c-sacred-card__actions--centered">
+                            <button class="c-sacred-card__button">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                <span>View Analytics</span>
+                            </button>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Geometry Card -->
+                <article class="c-sacred-card c-sacred-card--geometry">
+                    <header class="c-sacred-card__header">
+                        <div class="c-sacred-card__icon">
+                            <i class="fas fa-calendar" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="c-sacred-card__title">Next Ceremony</h3>
+                        <p class="c-sacred-card__subtitle">Full Moon Gathering</p>
+                    </header>
+                    
+                    <div class="c-sacred-card__body">
+                        <div class="c-sacred-card__content">
+                            <p><strong>Date:</strong> Saturday, July 29th</p>
+                            <p><strong>Time:</strong> 8:00 PM EST</p>
+                            <p><strong>Location:</strong> Sacred Grove</p>
+                        </div>
+                    </div>
+                    
+                    <footer class="c-sacred-card__footer">
+                        <div class="c-sacred-card__actions">
+                            <button class="c-sacred-card__button c-sacred-card__button--secondary">
+                                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                                <span>Details</span>
+                            </button>
+                            <button class="c-sacred-card__button">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>RSVP</span>
+                            </button>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Metric Card -->
+                <article class="c-sacred-card c-sacred-card--elevated">
+                    <div class="c-sacred-card__body">
+                        <div class="c-sacred-card__content">
+                            <div class="c-sacred-card__stat">
+                                <span class="c-sacred-card__stat-value">$12,847</span>
+                                <span class="c-sacred-card__stat-label">Monthly Donations</span>
+                            </div>
+                            <div style="margin-top: var(--space-md);">
+                                <div class="l-flex" style="align-items: center; color: var(--forest-green);">
+                                    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                                    <span class="u-text-sm">+23% from last month</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Technical Details -->
+        <section id="architecture" class="u-margin-2xl">
+            <div class="l-grid l-grid--2">
+                <div class="c-sacred-card">
+                    <header class="c-sacred-card__header">
+                        <div class="c-sacred-card__icon">
+                            <i class="fas fa-folder-tree" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="c-sacred-card__title">File Structure</h3>
+                    </header>
+                    <div class="c-sacred-card__body">
+                        <div class="c-sacred-card__content">
+                            <pre class="u-text-sm" style="color: var(--text-secondary); overflow-x: auto;">
+├── src/
+│   ├── components/
+│   │   ├── navigation/
+│   │   ├── cards/
+│   │   └── forms/
+│   ├── styles/
+│   │   ├── base/
+│   │   ├── components/
+│   │   └── utilities/
+│   └── scripts/
+├── assets/
+└── public/
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="c-sacred-card">
+                    <header class="c-sacred-card__header">
+                        <div class="c-sacred-card__icon">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="c-sacred-card__title">BEM Methodology</h3>
+                    </header>
+                    <div class="c-sacred-card__body">
+                        <div class="c-sacred-card__content">
+                            <ul class="u-text-sm" style="color: var(--text-secondary);">
+                                <li><code>c-</code> Components (c-navigation, c-sacred-card)</li>
+                                <li><code>l-</code> Layout (l-container, l-grid)</li>
+                                <li><code>u-</code> Utilities (u-text-center, u-margin-lg)</li>
+                                <li><code>is-</code> States (is-active, is-loading)</li>
+                                <li><code>has-</code> Conditions (has-error, has-success)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="u-text-center u-margin-2xl u-padding-lg">
+            <p class="u-text-secondary">
+                ✨ Per Ankh Consciousness Technology Platform - Modernized Architecture Demo ✨
+            </p>
+            <p class="u-text-sm u-text-muted">
+                Built with 2025 best practices: Component architecture, BEM methodology, and modern CSS
+            </p>
+        </footer>
+    </main>
+
+    <!-- Component JavaScript -->
+    <script src="./src/components/navigation/c-navigation.js"></script>
+    
+    <!-- Demo Enhancement Script -->
+    <script>
+        // Enhance the demo with interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers to card buttons
+            const cardButtons = document.querySelectorAll('.c-sacred-card__button');
+            cardButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const action = this.textContent.trim();
+                    console.log(`Demo: ${action} button clicked`);
+                    
+                    // Visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // Smooth scroll for navigation links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            console.log('Per Ankh Modernized Demo initialized successfully! 🚀');
+        });
+    </script>
+</body>
+</html>
