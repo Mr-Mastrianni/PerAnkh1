@@ -1,0 +1,256 @@
+/* Per Ankh Main Stylesheet - Modern Component Architecture */
+/* Centralized CSS following 2025 best practices with proper import order */
+
+/* 1. Base Styles - Variables and Reset */
+@import url('./base/variables.css');
+
+/* 2. External Dependencies */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css');
+
+/* 3. Base Styles */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg-primary);
+    font-family: var(--font-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 4. Layout Utilities */
+.l-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.l-grid {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+.l-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.l-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.l-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+.l-flex {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.l-flex--center {
+    align-items: center;
+    justify-content: center;
+}
+
+.l-flex--between {
+    justify-content: space-between;
+}
+
+.l-flex--column {
+    flex-direction: column;
+}
+
+/* 5. Utility Classes */
+.u-text-center { text-align: center; }
+.u-text-left { text-align: left; }
+.u-text-right { text-align: right; }
+
+.u-margin-none { margin: 0; }
+.u-margin-sm { margin: var(--space-sm); }
+.u-margin-md { margin: var(--space-md); }
+.u-margin-lg { margin: var(--space-lg); }
+
+.u-padding-none { padding: 0; }
+.u-padding-sm { padding: var(--space-sm); }
+.u-padding-md { padding: var(--space-md); }
+.u-padding-lg { padding: var(--space-lg); }
+
+.u-hidden { display: none; }
+.u-visible { display: block; }
+
+.u-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.u-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* 6. Typography Utilities */
+.u-text-golden { color: var(--golden-ankh); }
+.u-text-amber { color: var(--sacred-amber); }
+.u-text-earth { color: var(--earth-brown); }
+.u-text-forest { color: var(--forest-green); }
+.u-text-purple { color: var(--consciousness-purple); }
+
+.u-font-heading { font-family: var(--font-heading); }
+.u-font-mono { font-family: var(--font-mono); }
+
+.u-text-xs { font-size: var(--text-xs); }
+.u-text-sm { font-size: var(--text-sm); }
+.u-text-base { font-size: var(--text-base); }
+.u-text-lg { font-size: var(--text-lg); }
+.u-text-xl { font-size: var(--text-xl); }
+.u-text-2xl { font-size: var(--text-2xl); }
+.u-text-3xl { font-size: var(--text-3xl); }
+
+.u-font-light { font-weight: var(--font-light); }
+.u-font-normal { font-weight: var(--font-normal); }
+.u-font-medium { font-weight: var(--font-medium); }
+.u-font-semibold { font-weight: var(--font-semibold); }
+.u-font-bold { font-weight: var(--font-bold); }
+
+/* 7. Background Utilities */
+.u-bg-card { background: var(--bg-card); }
+.u-bg-overlay { background: var(--bg-overlay); }
+.u-bg-glass { background: var(--bg-glass); }
+
+/* 8. State Classes */
+.is-active { /* Applied via JavaScript */ }
+.is-loading { /* Applied via JavaScript */ }
+.is-disabled { 
+    opacity: 0.6;
+    pointer-events: none;
+}
+.is-hidden { display: none !important; }
+.is-visible { display: block !important; }
+
+.has-error {
+    border-color: var(--color-error) !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.has-success {
+    border-color: var(--color-success) !important;
+    box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
+}
+
+/* 9. Component Imports */
+@import url('./components/c-navigation.css');
+@import url('./components/c-sacred-card.css');
+
+/* 10. Sacred Geometry Background */
+.sacred-geometry-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.geometry-element {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(218, 165, 32, 0.1);
+    border-radius: 50%;
+    animation: geometryFloat 8s ease-in-out infinite;
+}
+
+.geometry-element:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.geometry-element:nth-child(2) {
+    top: 20%;
+    right: 15%;
+    animation-delay: 2s;
+    transform: rotate(45deg);
+}
+
+.geometry-element:nth-child(3) {
+    bottom: 30%;
+    left: 20%;
+    animation-delay: 4s;
+    border-radius: 0;
+}
+
+.geometry-element:nth-child(4) {
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 6s;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+@keyframes geometryFloat {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.1;
+    }
+    50% { 
+        transform: translateY(-30px) rotate(180deg);
+        opacity: 0.3;
+    }
+}
+
+/* 11. Responsive Design */
+@media (max-width: 768px) {
+    .l-container {
+        padding: 0 var(--space-md);
+    }
+    
+    .l-grid--2,
+    .l-grid--3,
+    .l-grid--4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .l-flex {
+        flex-direction: column;
+    }
+    
+    .geometry-element {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* 12. Print Styles */
+@media print {
+    .sacred-geometry-bg,
+    .geometry-element {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .c-navigation {
+        display: none;
+    }
+}

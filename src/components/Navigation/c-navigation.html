@@ -1,0 +1,117 @@
+<!-- Navigation Component - Per Ankh -->
+<!-- Reusable navigation component following BEM methodology -->
+
+<nav class="c-navigation" role="navigation" aria-label="Main navigation">
+    <div class="c-navigation__container">
+        <!-- Logo and Brand -->
+        <a href="/" class="c-navigation__brand">
+            <div class="c-navigation__ankh-symbol">☥</div>
+            <span class="c-navigation__brand-text" data-nav-title="Per Ankh">Per Ankh</span>
+        </a>
+        
+        <!-- Main Navigation Menu -->
+        <div class="c-navigation__menu" data-nav-type="main">
+            <!-- Dashboard Dropdown -->
+            <div class="c-navigation__item">
+                <button class="c-navigation__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                    <span>Dashboard</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="c-navigation__dropdown-menu" role="menu">
+                    <a href="#overview" class="c-navigation__dropdown-item" role="menuitem">Overview</a>
+                    <a href="#analytics" class="c-navigation__dropdown-item" role="menuitem">Analytics</a>
+                    <a href="#reports" class="c-navigation__dropdown-item" role="menuitem">Reports</a>
+                </div>
+            </div>
+            
+            <!-- Website Dropdown -->
+            <div class="c-navigation__item">
+                <button class="c-navigation__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                    <i class="fas fa-globe" aria-hidden="true"></i>
+                    <span>Website</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="c-navigation__dropdown-menu" role="menu">
+                    <a href="#content-manager" class="c-navigation__dropdown-item" role="menuitem">Content Manager</a>
+                    <a href="#page-editor" class="c-navigation__dropdown-item" role="menuitem">Page Editor</a>
+                    <a href="#media-library" class="c-navigation__dropdown-item" role="menuitem">Media Library</a>
+                    <a href="#seo-settings" class="c-navigation__dropdown-item" role="menuitem">SEO Settings</a>
+                </div>
+            </div>
+            
+            <!-- Members Dropdown -->
+            <div class="c-navigation__item">
+                <button class="c-navigation__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <span>Members</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="c-navigation__dropdown-menu" role="menu">
+                    <a href="#member-list" class="c-navigation__dropdown-item" role="menuitem">Member List</a>
+                    <a href="#membership-forms" class="c-navigation__dropdown-item" role="menuitem">Applications</a>
+                    <a href="#member-communications" class="c-navigation__dropdown-item" role="menuitem">Communications</a>
+                    <a href="#member-analytics" class="c-navigation__dropdown-item" role="menuitem">Analytics</a>
+                </div>
+            </div>
+            
+            <!-- Ceremonies Dropdown -->
+            <div class="c-navigation__item">
+                <button class="c-navigation__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                    <i class="fas fa-leaf" aria-hidden="true"></i>
+                    <span>Ceremonies</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="c-navigation__dropdown-menu" role="menu">
+                    <a href="#ceremony-schedule" class="c-navigation__dropdown-item" role="menuitem">Schedule</a>
+                    <a href="#safety-protocols" class="c-navigation__dropdown-item" role="menuitem">Safety Protocols</a>
+                    <a href="#ceremony-reports" class="c-navigation__dropdown-item" role="menuitem">Reports</a>
+                    <a href="#facilitator-management" class="c-navigation__dropdown-item" role="menuitem">Facilitators</a>
+                </div>
+            </div>
+            
+            <!-- Organization Dropdown -->
+            <div class="c-navigation__item">
+                <button class="c-navigation__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                    <i class="fas fa-cog" aria-hidden="true"></i>
+                    <span>Organization</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="c-navigation__dropdown-menu" role="menu">
+                    <a href="#org-settings" class="c-navigation__dropdown-item" role="menuitem">Settings</a>
+                    <a href="#admin-roles" class="c-navigation__dropdown-item" role="menuitem">Admin Roles</a>
+                    <a href="#permissions" class="c-navigation__dropdown-item" role="menuitem">Permissions</a>
+                    <a href="#audit-log" class="c-navigation__dropdown-item" role="menuitem">Audit Log</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- User Menu -->
+        <div class="c-navigation__user">
+            <button class="c-navigation__user-toggle" aria-expanded="false" aria-haspopup="true">
+                <div class="c-navigation__user-avatar">👤</div>
+                <span class="c-navigation__user-name" data-user-name="Admin">Admin</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="c-navigation__user-menu" role="menu">
+                <a href="#profile" class="c-navigation__user-menu-item" role="menuitem">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#settings" class="c-navigation__user-menu-item" role="menuitem">
+                    <i class="fas fa-cog" aria-hidden="true"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#help" class="c-navigation__user-menu-item" role="menuitem">
+                    <i class="fas fa-question-circle" aria-hidden="true"></i>
+                    <span>Help</span>
+                </a>
+                <hr class="c-navigation__user-menu-divider">
+                <button class="c-navigation__user-menu-item" data-action="logout" role="menuitem">
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
