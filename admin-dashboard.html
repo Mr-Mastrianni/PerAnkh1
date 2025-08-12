@@ -430,8 +430,8 @@
                     <p>This section contains sensitive content management tools that are only accessible to authenticated administrators.</p>
                 </div>
                 <div class="card-actions">
-                    <a href="website.html" class="action-btn">Edit Main Site</a>
-                    <button class="action-btn secondary" onclick="showContentEditor()">Content Editor</button>
+                    <a href="admin-content-manager.html" class="action-btn" onclick="console.log('📝 Navigating to Content Manager'); return true;">Content Manager</a>
+                    <a href="index.html" class="action-btn secondary">Edit Main Site</a>
                 </div>
             </div>
 
@@ -449,8 +449,8 @@
                     <p>User management functions are restricted to super administrators only.</p>
                 </div>
                 <div class="card-actions">
-                    <button class="action-btn" onclick="showUserManager()">Manage Users</button>
-                    <button class="action-btn secondary" onclick="showPermissions()">Permissions</button>
+                    <a href="admin-user-manager.html" class="action-btn" onclick="console.log('👥 Navigating to User Manager'); return true;">Manage Users</a>
+                    <a href="admin-user-manager.html#permissions" class="action-btn secondary" onclick="console.log('🔑 Navigating to Permissions'); return true;">Permissions</a>
                 </div>
             </div>
 
@@ -514,8 +514,38 @@
                     <p>Analytics data contains sensitive user information and site metrics.</p>
                 </div>
                 <div class="card-actions">
-                    <button class="action-btn" onclick="showAnalytics()">View Analytics</button>
-                    <button class="action-btn secondary" onclick="generateReport()">Generate Report</button>
+                    <a href="admin-analytics.html" class="action-btn">View Analytics</a>
+                    <a href="admin-analytics.html#export" class="action-btn secondary">Generate Report</a>
+                </div>
+            </div>
+            
+            <!-- System Settings -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="card-title">System Settings</div>
+                </div>
+                <div class="card-description">
+                    Configure website settings, security options, email configuration, and system preferences.
+                </div>
+                <div class="card-actions">
+                    <a href="admin-settings.html" class="action-btn">System Settings</a>
+                    <a href="admin-settings.html#security" class="action-btn secondary">Security</a>
+                </div>
+            </div>
+            
+            <!-- Notifications -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-bell"></i></div>
+                    <div class="card-title">Notification Center</div>
+                </div>
+                <div class="card-description">
+                    Manage system alerts, send notifications to users, and monitor communication channels.
+                </div>
+                <div class="card-actions">
+                    <a href="admin-notifications.html" class="action-btn">View Notifications</a>
+                    <a href="admin-notifications.html#create" class="action-btn secondary">Send Alert</a>
                 </div>
             </div>
         </div>
@@ -594,6 +624,8 @@
                 </div>
                 <div class="card-actions">
                     <a href="admin_pages/Shanna2.html" class="action-btn">Shanna Profile</a>
+                    <a href="jon.html" class="action-btn secondary">Jon Profile</a>
+                    <a href="moudoubaqui.html" class="action-btn secondary">Mou Dou Baqui Profile</a>
                 </div>
             </div>
         </div>
@@ -644,6 +676,8 @@
         </button>
     </div>
 
+    <!-- Load authentication library -->
+    <script src="admin-auth.js"></script>
     <script>
         // Admin Authentication and Dashboard Management
         class AdminDashboard {
@@ -653,11 +687,18 @@
             }
 
             initializeDashboard() {
-                // Check authentication
+                console.log('🔍 Starting dashboard initialization...');
+                console.log('🔍 Checking authentication...');
+                
+                // Check authentication using the global auth system
                 if (!this.isAuthenticated()) {
+                    console.log('❌ Authentication failed, redirecting to login');
                     window.location.href = 'admin-login.html';
                     return;
                 }
+
+                console.log('✅ Admin authenticated successfully');
+                console.log('🚀 Initializing dashboard features...');
 
                 // Initialize dashboard features
                 this.updateStats();
@@ -665,10 +706,19 @@
             }
 
             isAuthenticated() {
+                // Use the global perAnkhAuth object if available
+                if (typeof perAnkhAuth !== 'undefined') {
+                    return perAnkhAuth.isAdminAuthenticated();
+                }
+                
+                // Fallback to manual check
                 const session = localStorage.getItem('perankh_admin_session');
                 const active = sessionStorage.getItem('perankh_admin_active');
                 
-                if (!session || !active) return false;
+                if (!session || !active) {
+                    console.log('No session or active flag found');
+                    return false;
+                }
 
                 try {
                     const sessionData = JSON.parse(session);
@@ -676,8 +726,15 @@
                     const now = new Date();
                     const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
 
-                    return hoursDiff < 8; // 8-hour session timeout
+                    if (hoursDiff >= 8) {
+                        console.log('Session expired');
+                        return false;
+                    }
+
+                    console.log('Session valid');
+                    return true;
                 } catch (error) {
+                    console.log('Session validation error:', error);
                     return false;
                 }
             }
@@ -734,48 +791,206 @@
 
         // Dashboard Functions
         function showContentEditor() {
-            alert('Content Editor would open here. This would be a rich text editor for managing site content.');
+            window.location.href = 'admin-content-manager.html';
         }
 
         function showUserManager() {
-            alert('User Management panel would open here. This would allow creating/editing admin users.');
+            window.location.href = 'admin-user-manager.html';
         }
 
         function showPermissions() {
-            alert('Permissions panel would open here. This would manage role-based access control.');
+            window.location.href = 'admin-user-manager.html#permissions';
         }
 
         function showAnalytics() {
-            alert('Analytics dashboard would open here. This would show detailed site metrics and user behavior.');
+            window.location.href = 'admin-analytics.html';
         }
 
         function generateReport() {
-            alert('Report generator would open here. This would create downloadable reports.');
+            window.location.href = 'admin-analytics.html#export';
         }
 
         function showQuickActions() {
-            const actions = [
-                'Create New Page',
-                'Upload Media',
-                'Send Notification',
-                'Backup Site',
-                'View Logs'
-            ];
+            // Create quick actions modal
+            const modal = document.createElement('div');
+            modal.id = 'quick-actions-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(10px);
+            `;
             
-            const action = prompt('Quick Actions:\n' + actions.map((a, i) => `${i + 1}. ${a}`).join('\n') + '\n\nEnter number:');
+            modal.innerHTML = `
+                <div style="
+                    background: rgba(28, 28, 28, 0.95);
+                    border: 1px solid rgba(212, 175, 55, 0.3);
+                    border-radius: 15px;
+                    padding: 2rem;
+                    max-width: 400px;
+                    width: 90%;
+                ">
+                    <div style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 1.5rem;
+                        padding-bottom: 1rem;
+                        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+                    ">
+                        <h3 style="
+                            color: var(--primary-gold);
+                            font-family: 'Cinzel', serif;
+                            font-size: 1.3rem;
+                            font-weight: 600;
+                        ">Quick Actions</h3>
+                        <button onclick="closeQuickActions()" style="
+                            background: none;
+                            border: none;
+                            color: rgba(248, 248, 255, 0.7);
+                            font-size: 1.5rem;
+                            cursor: pointer;
+                        ">&times;</button>
+                    </div>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <button onclick="quickAction('createPage')" class="quick-action-btn">
+                            <i class="fas fa-plus mr-2"></i>Create New Page
+                        </button>
+                        <button onclick="quickAction('uploadMedia')" class="quick-action-btn">
+                            <i class="fas fa-upload mr-2"></i>Upload Media
+                        </button>
+                        <button onclick="quickAction('sendNotification')" class="quick-action-btn">
+                            <i class="fas fa-bell mr-2"></i>Send Notification
+                        </button>
+                        <button onclick="quickAction('backupSite')" class="quick-action-btn">
+                            <i class="fas fa-download mr-2"></i>Backup Site
+                        </button>
+                        <button onclick="quickAction('viewLogs')" class="quick-action-btn">
+                            <i class="fas fa-list mr-2"></i>View Logs
+                        </button>
+                        <button onclick="quickAction('clearCache')" class="quick-action-btn">
+                            <i class="fas fa-trash-alt mr-2"></i>Clear Cache
+                        </button>
+                    </div>
+                </div>
+            `;
             
-            if (action && action >= 1 && action <= actions.length) {
-                alert(`${actions[action - 1]} would be executed here.`);
+            // Add styles for quick action buttons
+            const style = document.createElement('style');
+            style.textContent = `
+                .quick-action-btn {
+                    background: rgba(45, 27, 105, 0.6);
+                    color: var(--ethereal-white);
+                    border: 1px solid rgba(212, 175, 55, 0.3);
+                    padding: 1rem;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    font-size: 1rem;
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                }
+                
+                .quick-action-btn:hover {
+                    border-color: var(--primary-gold);
+                    background: rgba(212, 175, 55, 0.1);
+                    transform: translateY(-2px);
+                }
+            `;
+            
+            document.head.appendChild(style);
+            document.body.appendChild(modal);
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeQuickActions();
+                }
+            });
+        }
+
+        function closeQuickActions() {
+            const modal = document.getElementById('quick-actions-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        function quickAction(action) {
+            closeQuickActions();
+            
+            switch(action) {
+                case 'createPage':
+                    window.location.href = 'admin-content-manager.html#create';
+                    break;
+                case 'uploadMedia':
+                    window.location.href = 'admin-content-manager.html#media';
+                    break;
+                case 'sendNotification':
+                    showNotificationSender();
+                    break;
+                case 'backupSite':
+                    initiateBackup();
+                    break;
+                case 'viewLogs':
+                    window.location.href = 'admin-user-manager.html#audit';
+                    break;
+                case 'clearCache':
+                    clearSiteCache();
+                    break;
+                default:
+                    alert(`Action "${action}" executed!`);
+            }
+        }
+
+        function showNotificationSender() {
+            const notification = prompt(
+                'Send Notification to:\n\n' +
+                '1. All Members\n' +
+                '2. Admin Users Only\n' +
+                '3. Specific Group\n\n' +
+                'Enter number (1-3):'
+            );
+            
+            if (notification && notification >= 1 && notification <= 3) {
+                const types = ['All Members', 'Admin Users Only', 'Specific Group'];
+                const message = prompt(`Enter notification message for ${types[notification - 1]}:`);
+                
+                if (message) {
+                    alert(`Notification sent to ${types[notification - 1]}: "${message}"\n\n(Demo implementation)`);
+                }
+            }
+        }
+
+        function initiateBackup() {
+            if (confirm('Create a full backup of the website?\n\nThis will include:\n• All pages and content\n• User data\n• Media files\n• Settings\n\nThis may take several minutes.')) {
+                alert('Backup initiated!\n\nYou will receive an email when the backup is complete.\n(Demo implementation)');
+            }
+        }
+
+        function clearSiteCache() {
+            if (confirm('Clear all site cache?\n\nThis will:\n• Clear page cache\n• Clear image cache\n• Clear database cache\n• May temporarily slow site performance')) {
+                alert('Cache cleared successfully!\n\nSite performance may be temporarily affected while cache rebuilds.\n(Demo implementation)');
             }
         }
 
         // Initialize dashboard
         const adminAuth = new AdminDashboard();
 
-        // Auto-logout on tab close/refresh
-        window.addEventListener('beforeunload', () => {
-            // Keep session but mark as inactive
-            sessionStorage.removeItem('perankh_admin_active');
+        // Ensure session remains active across navigations
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                sessionStorage.setItem('perankh_admin_active', 'true');
+            }
         });
 
         // Re-activate session when tab becomes visible

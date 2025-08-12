@@ -170,7 +170,7 @@ class PerAnkhMemberAuth {
             this.checkAuthStatus();
 
             // Redirect to home
-            window.location.href = 'website.html';
+            window.location.href = 'index.html';
             
             return true;
         } catch (error) {
@@ -236,7 +236,7 @@ class PerAnkhMemberAuth {
         this.checkAuthStatus();
         
         // Redirect to home
-        window.location.href = 'website.html';
+        window.location.href = 'index.html';
     }
 
     /**

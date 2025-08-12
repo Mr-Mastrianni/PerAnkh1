@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Per Ankh Sacred Psilocybin Dosage Calculator</title>
+    <link rel="icon" type="image/png" href="./PerAnkhLogo.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap');
         
         :root {
-            --gold: #D4AF37;
+            --primary-gold: #D4AF37;
+            --deep-gold: #B8860B;
+            --dark-purple: #2D1B69;
+            --cosmic-blue: #0F0F23;
+            --matte-black: #0A0A0A;
+            --steel-gray: #1C1C1C;
+            --ethereal-white: #F8F8FF;
+            --gold: var(--primary-gold);
             --amber: #FFBF00;
             --deep-green: #2D5016;
             --dark-green: #1A3D0A;
@@ -19,10 +27,10 @@
         }
         
         body {
-            font-family: 'Crimson Text', serif;
-            background: linear-gradient(135deg, var(--dark-green) 0%, var(--deep-green) 50%, #1a1a1a 100%);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
             min-height: 100vh;
-            color: var(--papyrus);
+            color: var(--ethereal-white);
             overflow-x: hidden;
         }
         
@@ -66,23 +74,28 @@
         }
         
         .consciousness-card {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(45, 80, 22, 0.2) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.3);
+            background: rgba(15, 15, 35, 0.88);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            color: var(--ethereal-white);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
         
         .consciousness-card:hover {
             border-color: rgba(212, 175, 55, 0.6);
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(45, 80, 22, 0.3) 100%);
+            background: rgba(20, 20, 45, 0.95);
             transform: translateY(-2px);
         }
         
         .input-field {
-            background: rgba(244, 228, 188, 0.1);
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            color: var(--papyrus);
+            background: rgba(45, 27, 105, 0.35);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            color: var(--ethereal-white);
             transition: all 0.3s ease;
+        }
+
+        .input-field::placeholder {
+            color: rgba(248, 248, 255, 0.85);
         }
         
         .input-field:focus {
@@ -93,8 +106,8 @@
         }
         
         .btn-sacred {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
-            color: var(--dark-green);
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
             border: none;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -108,8 +121,9 @@
         }
         
         .dose-level {
-            border-left: 4px solid var(--gold);
-            background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, rgba(45, 80, 22, 0.1) 100%);
+            border-left: 4px solid var(--primary-gold);
+            background: rgba(22, 22, 40, 0.85);
+            color: var(--ethereal-white);
             transition: all 0.3s ease;
         }
         
@@ -155,8 +169,9 @@
         }
         
         .warning-box {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.2) 100%);
-            border: 2px solid rgba(239, 68, 68, 0.3);
+            background: rgba(120, 20, 20, 0.35);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: var(--ethereal-white);
             animation: pulse-warning 2s ease-in-out infinite;
         }
         
@@ -168,7 +183,7 @@
         .quote-text {
             font-family: 'Cinzel', serif;
             font-style: italic;
-            color: var(--gold);
+            color: var(--primary-gold);
             position: relative;
         }
         
@@ -185,7 +200,18 @@
         .hieroglyph {
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            color: var(--gold);
+            color: var(--primary-gold);
+        }
+
+        /* Improve default label/readability inside dark cards */
+        .consciousness-card label,
+        .consciousness-card p,
+        .consciousness-card li,
+        .consciousness-card span,
+        .consciousness-card select,
+        .consciousness-card input,
+        .consciousness-card small {
+            color: var(--ethereal-white);
         }
         
         @media print {

@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manager - Per Ankh Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Rich Text Editor -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-gold: #B8860B;
+            --dark-purple: #2D1B69;
+            --cosmic-blue: #0F0F23;
+            --matte-black: #0A0A0A;
+            --steel-gray: #1C1C1C;
+            --ethereal-white: #F8F8FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-logo .ankh {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .admin-logo h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(248, 248, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--ethereal-white);
+        }
+
+        .content-manager {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .manager-header {
+            margin-bottom: 2rem;
+        }
+
+        .manager-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .manager-subtitle {
+            color: rgba(248, 248, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .content-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            color: rgba(248, 248, 255, 0.7);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-button.active {
+            color: var(--primary-gold);
+            border-bottom-color: var(--primary-gold);
+        }
+
+        .tab-button:hover {
+            color: var(--ethereal-white);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .page-list {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .page-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .page-item:last-child {
+            border-bottom: none;
+        }
+
+        .page-item:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .page-info {
+            flex: 1;
+        }
+
+        .page-name {
+            font-weight: 600;
+            color: var(--ethereal-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .page-path {
+            color: rgba(248, 248, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .page-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: rgba(45, 27, 105, 0.6);
+            color: var(--ethereal-white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.danger {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+        }
+
+        .editor-container {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .editor-title {
+            flex: 1;
+        }
+
+        .editor-title input {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .editor-title input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .editor-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .ql-container {
+            min-height: 400px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .ql-toolbar {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(45, 27, 105, 0.2);
+        }
+
+        .ql-editor {
+            color: var(--ethereal-white);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .file-upload {
+            background: rgba(45, 27, 105, 0.3);
+            border: 2px dashed rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-gold);
+            background: rgba(45, 27, 105, 0.5);
+        }
+
+        .file-upload.dragover {
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            color: rgba(248, 248, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-subtext {
+            color: rgba(248, 248, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .create-page {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-select {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-textarea {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .content-manager {
+                padding: 1rem;
+            }
+            
+            .content-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .page-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .page-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="admin-logo">
+                <div class="ankh">☥</div>
+                <h1>Content Manager</h1>
+            </div>
+            <div class="breadcrumb">
+                <a href="admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <span>/</span>
+                <span>Content Manager</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Manager -->
+    <div class="content-manager">
+        <div class="manager-header">
+            <h1 class="manager-title">Content Management System</h1>
+            <p class="manager-subtitle">Manage all website content, pages, and sacred teachings</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="content-tabs">
+            <button class="tab-button active" onclick="switchTab('pages')">
+                <i class="fas fa-file-alt mr-2"></i>Manage Pages
+            </button>
+            <button class="tab-button" onclick="switchTab('editor')">
+                <i class="fas fa-edit mr-2"></i>Page Editor
+            </button>
+            <button class="tab-button" onclick="switchTab('create')">
+                <i class="fas fa-plus mr-2"></i>Create New Page
+            </button>
+            <button class="tab-button" onclick="switchTab('media')">
+                <i class="fas fa-images mr-2"></i>Media Library
+            </button>
+            <button class="tab-button" onclick="switchTab('profiles')">
+                <i class="fas fa-user mr-2"></i>Profiles
+            </button>
+        </div>
+
+        <!-- Manage Pages Tab -->
+        <div id="pages-tab" class="tab-content active">
+            <div class="page-list">
+                <h2 style="color: var(--primary-gold); margin-bottom: 1.5rem; font-family: 'Cinzel', serif;">
+                    <i class="fas fa-file-alt mr-2"></i>Website Pages
+                </h2>
+                <div id="page-list-container">
+                    <!-- Pages will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Editor Tab -->
+        <div id="editor-tab" class="tab-content">
+            <div class="editor-container">
+                <div class="success-message" id="save-success">
+                    <i class="fas fa-check-circle mr-2"></i>Page saved successfully!
+                </div>
+                <div class="error-message" id="save-error">
+                    <i class="fas fa-exclamation-circle mr-2"></i>Error saving page. Please try again.
+                </div>
+                
+                <div class="editor-header">
+                    <div class="editor-title">
+                        <input type="text" id="page-title" placeholder="Page Title" value="">
+                    </div>
+                    <div class="editor-controls">
+                        <button class="action-btn" onclick="savePage()">
+                            <i class="fas fa-save mr-2"></i>Save Changes
+                        </button>
+                        <button class="action-btn secondary" onclick="previewPage()">
+                            <i class="fas fa-eye mr-2"></i>Preview
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="page-editor" style="height: 400px;">
+                    <!-- Quill editor will be initialized here -->
+                </div>
+                
+                <div style="margin-top: 1rem;">
+                    <label class="form-label">Page URL Path:</label>
+                    <input type="text" id="page-path" class="form-input" placeholder="/page-name.html" readonly>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create New Page Tab -->
+        <div id="create-tab" class="tab-content">
+            <div class="create-page">
+                <h2 style="color: var(--primary-gold); margin-bottom: 1.5rem; font-family: 'Cinzel', serif;">
+                    <i class="fas fa-plus mr-2"></i>Create New Page
+                </h2>
+                
+                <div class="success-message" id="create-success">
+                    <i class="fas fa-check-circle mr-2"></i>Page created successfully!
+                </div>
+                <div class="error-message" id="create-error">
+                    <i class="fas fa-exclamation-circle mr-2"></i>Error creating page. Please try again.
+                </div>
+                
+                <form id="create-page-form">
+                    <div class="form-group">
+                        <label class="form-label">Page Name</label>
+                        <input type="text" id="new-page-name" class="form-input" placeholder="My Sacred Page" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">URL Path</label>
+                        <input type="text" id="new-page-path" class="form-input" placeholder="my-sacred-page.html" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Page Type</label>
+                        <select id="new-page-type" class="form-select">
+                            <option value="content">Content Page</option>
+                            <option value="teaching">Sacred Teaching</option>
+                            <option value="community">Community Page</option>
+                            <option value="admin">Admin Page</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Page Description</label>
+                        <textarea id="new-page-description" class="form-textarea" placeholder="Brief description of the page content..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Initial Content</label>
+                        <div id="new-page-editor" style="height: 300px;">
+                            <!-- Quill editor for new page content -->
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="action-btn" onclick="createNewPage()">
+                        <i class="fas fa-plus mr-2"></i>Create Page
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Media Library Tab -->
+        <div id="media-tab" class="tab-content">
+            <div class="create-page">
+                <h2 style="color: var(--primary-gold); margin-bottom: 1.5rem; font-family: 'Cinzel', serif;">
+                    <i class="fas fa-images mr-2"></i>Media Library
+                </h2>
+                
+                <div class="file-upload" id="file-upload-area">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">Drag and drop files here or click to browse</div>
+                    <div class="upload-subtext">Supported formats: JPG, PNG, GIF, PDF, MP4</div>
+                    <input type="file" id="file-input" multiple style="display: none;">
+                </div>
+                
+                <div id="media-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <!-- Media files will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Profiles Tab -->
+        <div id="profiles-tab" class="tab-content">
+            <div class="create-page">
+                <h2 style="color: var(--primary-gold); margin-bottom: 1.5rem; font-family: 'Cinzel', serif; display:flex; align-items:center; gap:.5rem;">
+                    <i class="fas fa-user"></i> Profiles Manager
+                </h2>
+
+                <div id="profiles-messages" style="margin-bottom:1rem; display:none;" class="success-message"></div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1rem;">
+                    <div style="color: rgba(248, 248, 255, 0.8);">Create and edit personal profile pages.</div>
+                    <button class="action-btn" onclick="openProfileForm()"><i class="fas fa-plus mr-2"></i>Add Profile</button>
+                </div>
+
+                <div id="profiles-list" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:1rem;"></div>
+
+                <!-- Profile Form Modal -->
+                <div id="profile-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); z-index:10000; align-items:center; justify-content:center;">
+                    <div style="background: rgba(28,28,28,.95); border:1px solid rgba(212,175,55,.3); border-radius:12px; padding:1.5rem; width:95%; max-width:720px;">
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; border-bottom:1px solid rgba(212,175,55,.2); padding-bottom:.75rem;">
+                            <div style="color:var(--primary-gold); font-family:'Cinzel', serif; font-weight:600;">Profile</div>
+                            <button onclick="closeProfileForm()" style="background:none; border:none; color:#fff; font-size:1.4rem; cursor:pointer;">&times;</button>
+                        </div>
+
+                        <form id="profile-form">
+                            <input type="hidden" id="profile-id">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input id="profile-name" class="form-input" placeholder="Full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Title/Role</label>
+                                <input id="profile-title" class="form-input" placeholder="e.g., Temple Keeper">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Profile Page Path</label>
+                                <input id="profile-path" class="form-input" placeholder="jon.html" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Avatar URL</label>
+                                <div style="display:flex; gap:.5rem;">
+                                    <input id="profile-avatar" class="form-input" placeholder="https://..." style="flex:1;">
+                                    <input type="file" id="profile-avatar-file" accept="image/*" style="display:none;">
+                                    <button type="button" class="action-btn secondary" onclick="document.getElementById('profile-avatar-file').click()"><i class="fas fa-upload mr-1"></i>Upload</button>
+                                </div>
+                                <div id="profile-avatar-preview" style="margin-top:.5rem;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Short Bio</label>
+                                <textarea id="profile-bio" class="form-textarea" placeholder="Brief bio..."></textarea>
+                            </div>
+                            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+                                <div>
+                                    <label class="form-label">Email</label>
+                                    <input id="profile-email" class="form-input" placeholder="email@example.com">
+                                </div>
+                                <div>
+                                    <label class="form-label">Website</label>
+                                    <input id="profile-website" class="form-input" placeholder="https://...">
+                                </div>
+                                <div>
+                                    <label class="form-label">Instagram</label>
+                                    <input id="profile-instagram" class="form-input" placeholder="@handle or URL">
+                                </div>
+                                <div>
+                                    <label class="form-label">Twitter/X</label>
+                                    <input id="profile-twitter" class="form-input" placeholder="@handle or URL">
+                                </div>
+                            </div>
+                            <div style="display:flex; gap:.75rem; justify-content:flex-end; margin-top:1rem;">
+                                <button type="button" class="action-btn secondary" onclick="closeProfileForm()">Cancel</button>
+                                <button type="submit" class="action-btn">Save Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-auth.js"></script>
+    <script>
+        let quillEditor;
+        let newPageEditor;
+        let currentEditingPage = null;
+        
+        // Check authentication with enhanced error handling
+        function checkAuthentication() {
+            console.log('🔐 Starting authentication check...');
+            
+            if (typeof perAnkhAuth === 'undefined') {
+                console.error('PerAnkhAuth not loaded, checking manually');
+                // Fallback to manual check
+                const session = localStorage.getItem('perankh_admin_session');
+                const active = sessionStorage.getItem('perankh_admin_active');
+                
+                console.log('Session data:', session ? 'EXISTS' : 'MISSING');
+                console.log('Active flag:', active ? 'EXISTS' : 'MISSING');
+                
+                if (!session || !active) {
+                    console.log('No session found, redirecting to login');
+                    window.location.href = 'admin-login.html';
+                    return false;
+                }
+
+                try {
+                    const sessionData = JSON.parse(session);
+                    const loginTime = new Date(sessionData.loginTime);
+                    const now = new Date();
+                    const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+
+                    if (hoursDiff >= 8) {
+                        console.log('Session expired, redirecting to login');
+                        window.location.href = 'admin-login.html';
+                        return false;
+                    }
+
+                    console.log('Manual auth check passed');
+                    return true;
+                } catch (error) {
+                    console.error('Session validation error:', error);
+                    window.location.href = 'admin-login.html';
+                    return false;
+                }
+            }
+
+            if (!perAnkhAuth.isAdminAuthenticated()) {
+                console.log('PerAnkhAuth check failed, redirecting to login');
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+
+            console.log('PerAnkhAuth check passed');
+            return true;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📝 Content Manager page initializing...');
+            // Mark admin tab as active on load
+            try { sessionStorage.setItem('perankh_admin_active', 'true'); } catch (e) {}
+            
+            // Perform authentication check after DOM is loaded
+            if (!checkAuthentication()) {
+                console.log('❌ Content Manager: Authentication failed, page will redirect');
+                return;
+            }
+            
+            console.log('✅ Content Manager: Authentication successful, loading content...');
+            initializeEditors();
+            loadPageList();
+            setupFileUpload();
+            initMediaLibrary();
+        });
+
+        // Initialize Quill editors
+        function initializeEditors() {
+            // Main editor
+            quillEditor = new Quill('#page-editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'],
+                        ['blockquote', 'code-block'],
+                        [{ 'header': 1 }, { 'header': 2 }],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        [{ 'script': 'sub'}, { 'script': 'super' }],
+                        [{ 'indent': '-1'}, { 'indent': '+1' }],
+                        [{ 'direction': 'rtl' }],
+                        [{ 'size': ['small', false, 'large', 'huge'] }],
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        [{ 'color': [] }, { 'background': [] }],
+                        [{ 'font': [] }],
+                        [{ 'align': [] }],
+                        ['clean'],
+                        ['link', 'image', 'video']
+                    ]
+                }
+            });
+
+            // New page editor
+            newPageEditor = new Quill('#new-page-editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline'],
+                        ['blockquote'],
+                        [{ 'header': 1 }, { 'header': 2 }],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['clean'],
+                        ['link', 'image']
+                    ]
+                }
+            });
+        }
+
+        // Media storage (IndexedDB) for persistent media library
+        const MediaDB = (() => {
+            const dbName = 'PerAnkhCMS';
+            const storeName = 'media';
+
+            function open() {
+                return new Promise((resolve, reject) => {
+                    const req = indexedDB.open(dbName, 1);
+                    req.onupgradeneeded = (e) => {
+                        const db = e.target.result;
+                        if (!db.objectStoreNames.contains(storeName)) {
+                            const os = db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
+                            os.createIndex('name', 'name', { unique: false });
+                            os.createIndex('type', 'type', { unique: false });
+                            os.createIndex('uploadDate', 'uploadDate', { unique: false });
+                        }
+                    };
+                    req.onsuccess = () => resolve(req.result);
+                    req.onerror = () => reject(req.error);
+                });
+            }
+
+            async function addFile(file) {
+                const db = await open();
+                return new Promise((resolve, reject) => {
+                    const tx = db.transaction(storeName, 'readwrite');
+                    const os = tx.objectStore(storeName);
+                    const record = {
+                        name: file.name,
+                        size: file.size,
+                        type: file.type,
+                        uploadDate: new Date().toISOString(),
+                        blob: file
+                    };
+                    const r = os.add(record);
+                    r.onsuccess = () => { record.id = r.result; resolve(record); };
+                    r.onerror = () => reject(r.error);
+                });
+            }
+
+            async function getAll() {
+                const db = await open();
+                return new Promise((resolve, reject) => {
+                    const tx = db.transaction(storeName, 'readonly');
+                    const os = tx.objectStore(storeName);
+                    const r = os.getAll();
+                    r.onsuccess = () => resolve(r.result || []);
+                    r.onerror = () => reject(r.error);
+                });
+            }
+
+            async function get(id) {
+                const db = await open();
+                return new Promise((resolve, reject) => {
+                    const tx = db.transaction(storeName, 'readonly');
+                    const os = tx.objectStore(storeName);
+                    const r = os.get(Number(id));
+                    r.onsuccess = () => resolve(r.result || null);
+                    r.onerror = () => reject(r.error);
+                });
+            }
+
+            async function remove(id) {
+                const db = await open();
+                return new Promise((resolve, reject) => {
+                    const tx = db.transaction(storeName, 'readwrite');
+                    const os = tx.objectStore(storeName);
+                    const r = os.delete(Number(id));
+                    r.onsuccess = () => resolve();
+                    r.onerror = () => reject(r.error);
+                });
+            }
+
+            return { addFile, getAll, get, remove };
+        })();
+
+        const mediaUrlMap = new Map();
+        function getBlobUrlFor(media) {
+            if (mediaUrlMap.has(media.id)) return mediaUrlMap.get(media.id);
+            const url = URL.createObjectURL(media.blob);
+            mediaUrlMap.set(media.id, url);
+            return url;
+        }
+        function revokeBlobUrl(id) {
+            const url = mediaUrlMap.get(id);
+            if (url) {
+                URL.revokeObjectURL(url);
+                mediaUrlMap.delete(id);
+            }
+        }
+
+        const API_BASE = 'http://localhost:4000';
+
+        async function initMediaLibrary() {
+            try {
+                const mediaGrid = document.getElementById('media-grid');
+                mediaGrid.innerHTML = '';
+
+                // 1) Try server media
+                try {
+                    const resp = await fetch(`${API_BASE}/api/media`, { credentials: 'include' });
+                    if (resp.ok) {
+                        const serverItems = await resp.json();
+                        serverItems
+                            .sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate))
+                            .forEach(item => renderMediaItem({ ...item, blob: null }));
+                    }
+                } catch (e) {
+                    console.warn('Server media fetch failed, showing local only');
+                }
+
+                // 2) Local IndexedDB media
+                const localItems = await MediaDB.getAll();
+                localItems
+                    .sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate))
+                    .forEach(media => renderMediaItem(media));
+            } catch (e) {
+                console.error('Failed to load media library:', e);
+            }
+        }
+
+        function renderMediaItem(media) {
+            const mediaGrid = document.getElementById('media-grid');
+            const item = document.createElement('div');
+            item.className = 'media-item';
+            item.dataset.id = media.id;
+            item.dataset.name = media.name || '';
+            item.dataset.type = media.type || '';
+            item.style.cssText = `
+                background: rgba(28, 28, 28, 0.8);
+                border: 1px solid rgba(212, 175, 55, 0.3);
+                border-radius: 10px;
+                padding: 1rem;
+                text-align: center;
+                transition: all 0.3s ease;
+                position: relative;
+            `;
+
+            const isImage = media.type && media.type.startsWith('image/');
+            const src = media.blob ? getBlobUrlFor(media) : (media.url ? media.url : '');
+            if (src) item.dataset.url = src;
+            const preview = isImage ?
+                `<img src="${src}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 5px; margin-bottom: 0.5rem;">` :
+                `<div style="width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; background: rgba(212, 175, 55, 0.1); border-radius: 5px; margin-bottom: 0.5rem;">
+                    <i class="fas fa-file" style="font-size: 3rem; color: var(--primary-gold);"></i>
+                </div>`;
+
+            item.innerHTML = `
+                ${preview}
+                <div class="media-name" style="color: var(--ethereal-white); font-size: 0.9rem; margin-bottom: 0.25rem; word-break: break-word;">${media.name}</div>
+                <div class="media-size" style="color: rgba(248, 248, 255, 0.6); font-size: 0.8rem; margin-bottom: 0.5rem;">${formatFileSize(media.size)}</div>
+                <div class="media-actions" style="display: flex; gap: 0.5rem; justify-content: center;">
+                    <button class="action-btn" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="event.stopPropagation(); downloadMedia('${media.id}')" title="Download">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="action-btn danger" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="event.stopPropagation(); deleteMediaItem('${media.id}', this)" title="Delete">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+
+            // Click to preview
+            item.addEventListener('click', () => openMediaPreview(item.dataset.id));
+            mediaGrid.insertBefore(item, mediaGrid.firstChild);
+        }
+
+        function openMediaPreview(id) {
+            const el = document.querySelector(`.media-item[data-id="${id}"]`);
+            if (!el) return;
+            const url = el.dataset.url;
+            const type = el.dataset.type;
+            const name = el.dataset.name || 'file';
+
+            const modal = document.createElement('div');
+            modal.id = 'media-preview-modal';
+            modal.style.cssText = `
+                position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+                z-index: 10000; display: flex; align-items: center; justify-content: center;
+                padding: 2rem; backdrop-filter: blur(6px);
+            `;
+
+            const box = document.createElement('div');
+            box.style.cssText = `
+                max-width: 90vw; max-height: 85vh; background: #111827; border: 1px solid rgba(212,175,55,.3);
+                border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,.4);
+            `;
+
+            const header = document.createElement('div');
+            header.style.cssText = `display:flex; justify-content: space-between; align-items:center; padding:.75rem 1rem; border-bottom:1px solid rgba(212,175,55,.2); color:#F8F8FF;`;
+            header.innerHTML = `<div style="font-weight:600;">${name}</div><button style="background:none;border:none;color:#F8F8FF;font-size:1.5rem;cursor:pointer;">&times;</button>`;
+            header.lastChild.addEventListener('click', () => modal.remove());
+
+            const content = document.createElement('div');
+            content.style.cssText = `padding: 1rem; display:flex; align-items:center; justify-content:center;`;
+
+            if (type && type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.src = url;
+                img.style.maxWidth = '85vw';
+                img.style.maxHeight = '75vh';
+                img.style.borderRadius = '8px';
+                content.appendChild(img);
+            } else if (type && type.startsWith('video/')) {
+                const vid = document.createElement('video');
+                vid.src = url;
+                vid.controls = true;
+                vid.style.maxWidth = '85vw';
+                vid.style.maxHeight = '75vh';
+                vid.style.borderRadius = '8px';
+                content.appendChild(vid);
+            } else if (type === 'application/pdf') {
+                const iframe = document.createElement('iframe');
+                iframe.src = url;
+                iframe.style.width = '85vw';
+                iframe.style.height = '75vh';
+                iframe.style.background = 'white';
+                content.appendChild(iframe);
+            } else {
+                content.innerHTML = `<div style="color:#F8F8FF; text-align:center">Preview unavailable. <a href="${url}" target="_blank" style="color: var(--primary-gold); text-decoration: underline;">Open</a> or use Download.</div>`;
+            }
+
+            box.appendChild(header);
+            box.appendChild(content);
+            modal.appendChild(box);
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+            document.body.appendChild(modal);
+        }
+
+        async function deleteMediaItem(id, btn) {
+            if (!confirm('Delete this file? This action cannot be undone.')) return;
+            const el = btn ? btn.closest('.media-item') : document.querySelector(`.media-item[data-id="${id}"]`);
+            if (!el) return;
+            const isServerId = isNaN(Number(id));
+            try {
+                if (isServerId) {
+                    const res = await fetch(`${API_BASE}/api/media/${id}`, { method: 'DELETE' });
+                    if (!res.ok) throw new Error('Server delete failed');
+                } else {
+                    await MediaDB.remove(id);
+                    revokeBlobUrl(id);
+                }
+                el.style.opacity = '0';
+                el.style.transform = 'scale(0.98)';
+                setTimeout(() => el.remove(), 200);
+            } catch (e) {
+                alert('Failed to delete media.');
+                console.error(e);
+            }
+        }
+
+        async function downloadMedia(id) {
+            try {
+                // Try local first
+                const media = await MediaDB.get(id);
+                let url = null; let name = 'download';
+                if (media) {
+                    url = getBlobUrlFor(media);
+                    name = media.name || name;
+                } else {
+                    const el = document.querySelector(`.media-item[data-id="${id}"]`);
+                    if (el) { url = el.dataset.url; name = el.dataset.name || name; }
+                }
+                if (!url) return;
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = name;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            } catch (e) {
+                console.error('Download failed:', e);
+            }
+        }
+
+        // Switch between tabs
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            // Show selected tab
+            const tabEl = document.getElementById(tabName + '-tab');
+            if (tabEl) tabEl.classList.add('active');
+            const clickedBtn = (typeof event !== 'undefined' && (event.currentTarget || event.target)) || document.querySelector(`.tab-button[onclick*="switchTab('${tabName}')"]`);
+            if (clickedBtn) clickedBtn.classList.add('active');
+            // Lazy load per tab
+            try {
+                if (tabName === 'pages') loadPageList();
+                if (tabName === 'media') initMediaLibrary();
+                if (tabName === 'profiles') renderProfiles();
+            } catch (e) { console.warn('Tab init error', e); }
+        }
+
+        // Load list of pages
+        function loadPageList() {
+            const pages = [
+                { name: 'Home Page', path: 'index.html', type: 'Main', lastModified: '2 hours ago' },
+                { name: 'Main Site', path: 'index.html', type: 'Main', lastModified: '5 hours ago' },
+                { name: 'Community Portal', path: 'community.html', type: 'Community', lastModified: '1 day ago' },
+                { name: 'Sacred Protocols', path: 'protocols.html', type: 'Teaching', lastModified: '2 days ago' },
+                { name: 'Crystal Technology', path: 'crystaltech.html', type: 'Teaching', lastModified: '3 days ago' },
+                { name: 'Events', path: 'events.html', type: 'Community', lastModified: '1 week ago' },
+                { name: 'Admin Dashboard', path: 'admin-dashboard.html', type: 'Admin', lastModified: '1 hour ago' },
+                { name: 'Per Ankh Technology', path: 'PerAnkhTech.html', type: 'Teaching', lastModified: '4 days ago' },
+                { name: 'Women\'s Empowerment', path: 'women\'sempowerment.html', type: 'Teaching', lastModified: '1 week ago' },
+                { name: 'Jon', path: 'jon.html', type: 'Profile', lastModified: 'recently' },
+                { name: 'Mou Dou Baqui', path: 'moudoubaqui.html', type: 'Profile', lastModified: 'recently' }
+            ];
+
+            const container = document.getElementById('page-list-container');
+            if (!container) return;
+            container.innerHTML = pages.map(page => `
+                <div class="page-item">
+                    <div class="page-info">
+                        <div class="page-name">${page.name}</div>
+                        <div class="page-path">${page.path} • ${page.type} • Modified ${page.lastModified}</div>
+                    </div>
+                    <div class="page-actions">
+                        <button class="action-btn" onclick="editPage('${page.path}', '${page.name}')">
+                            <i class="fas fa-edit mr-1"></i>Edit
+                        </button>
+                        <button class="action-btn secondary" onclick="viewPage('${page.path}')">
+                            <i class="fas fa-eye mr-1"></i>View
+                        </button>
+                        <button class="action-btn secondary" onclick="duplicatePage('${page.path}')">
+                            <i class="fas fa-copy mr-1"></i>Duplicate
+                        </button>
+                        ${page.type !== 'Main' ? `<button class="action-btn danger" onclick="deletePage('${page.path}')">
+                            <i class="fas fa-trash mr-1"></i>Delete
+                        </button>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Edit a page
+        function editPage(path, name) {
+            currentEditingPage = path;
+            document.getElementById('page-title').value = name;
+            document.getElementById('page-path').value = '/' + path;
+            
+            // Load page content (in a real system, this would fetch from server)
+            loadPageContent(path);
+            
+            // Switch to editor tab
+            switchTab('editor');
+            document.querySelector('[onclick="switchTab(\'editor\')"]').classList.add('active');
+        }
+
+        // Load page content (mock implementation)
+        function loadPageContent(path) {
+            // In a real system, this would fetch the actual page content
+            const mockContent = `
+                <h1>Welcome to ${path}</h1>
+                <p>This is the content for ${path}. You can edit this using the rich text editor above.</p>
+                <p>The content management system allows you to:</p>
+                <ul>
+                    <li>Edit text content with rich formatting</li>
+                    <li>Add images and media</li>
+                    <li>Create links and navigation</li>
+                    <li>Manage page structure</li>
+                </ul>
+                <p><strong>Note:</strong> This is a demo implementation. In a production system, this would connect to a proper backend.</p>
+            `;
+            
+            quillEditor.root.innerHTML = mockContent;
+        }
+
+        // Save page
+        function savePage() {
+            if (!currentEditingPage) {
+                showError('save-error', 'No page selected for editing');
+                return;
+            }
+
+            const title = document.getElementById('page-title').value;
+            const content = quillEditor.root.innerHTML;
+            
+            if (!title.trim()) {
+                showError('save-error', 'Page title is required');
+                return;
+            }
+
+            // Simulate saving (in a real system, this would send to server)
+            setTimeout(() => {
+                showSuccess('save-success', 'Page saved successfully!');
+                console.log('Saving page:', {
+                    path: currentEditingPage,
+                    title: title,
+                    content: content
+                });
+            }, 500);
+        }
+
+        // Preview page
+        function previewPage() {
+            if (!currentEditingPage) {
+                alert('No page selected for preview');
+                return;
+            }
+            
+            // Open page in new tab for preview
+            window.open(currentEditingPage, '_blank');
+        }
+
+        // Create new page
+        function createNewPage() {
+            const name = document.getElementById('new-page-name').value;
+            const path = document.getElementById('new-page-path').value;
+            const type = document.getElementById('new-page-type').value;
+            const description = document.getElementById('new-page-description').value;
+            const content = newPageEditor.root.innerHTML;
+            
+            if (!name.trim() || !path.trim()) {
+                showError('create-error', 'Page name and path are required');
+                return;
+            }
+
+            // Simulate creating page
+            setTimeout(() => {
+                showSuccess('create-success', 'Page created successfully!');
+                console.log('Creating page:', {
+                    name: name,
+                    path: path,
+                    type: type,
+                    description: description,
+                    content: content
+                });
+                
+                // Clear form
+                document.getElementById('create-page-form').reset();
+                newPageEditor.root.innerHTML = '';
+                
+                // Reload page list
+                loadPageList();
+            }, 500);
+        }
+
+        // View page
+        function viewPage(path) {
+            window.open(path, '_blank');
+        }
+
+        // Duplicate page
+        function duplicatePage(path) {
+            if (confirm(`Are you sure you want to duplicate ${path}?`)) {
+                // Simulate duplication
+                alert('Page duplicated successfully! (Demo implementation)');
+                loadPageList();
+            }
+        }
+
+        // Delete page
+        function deletePage(path) {
+            if (confirm(`Are you sure you want to delete ${path}? This action cannot be undone.`)) {
+                // Simulate deletion
+                alert('Page deleted successfully! (Demo implementation)');
+                loadPageList();
+            }
+        }
+
+        // Setup file upload (uses backend API if available)
+        function setupFileUpload() {
+            const uploadArea = document.getElementById('file-upload-area');
+            const fileInput = document.getElementById('file-input');
+
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files);
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+        }
+
+        // Handle file uploads with enhanced feedback
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                uploadFileWithProgress(file);
+            });
+        }
+
+        // Enhanced file upload with better user experience
+        function uploadFileWithProgress(file) {
+            // Validate file type
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'application/pdf', 'video/mp4'];
+            if (!allowedTypes.includes(file.type)) {
+                alert(`❌ Error: File type "${file.type}" is not supported.\n\nSupported formats: JPG, PNG, GIF, WEBP, PDF, MP4`);
+                return;
+            }
+
+            // Validate file size (10MB limit)
+            const maxSize = 10 * 1024 * 1024;
+            if (file.size > maxSize) {
+                alert(`❌ Error: File "${file.name}" is too large.\n\nMaximum file size: 10MB\nYour file size: ${formatFileSize(file.size)}`);
+                return;
+            }
+
+            // Create and show upload progress
+            const uploadNotification = createUploadNotification(file);
+            document.body.appendChild(uploadNotification);
+
+            // If backend is available, upload to API; otherwise fall back to IndexedDB demo storage
+            if (window.location.protocol.startsWith('http')) {
+                uploadToServer(file, uploadNotification);
+            } else {
+                simulateUploadProgress(file, uploadNotification);
+            }
+        }
+
+        async function uploadToServer(file, notification) {
+            const progressBar = notification.querySelector('.upload-progress');
+            const statusText = notification.querySelector('.upload-status');
+            try {
+                const form = new FormData();
+                form.append('files', file);
+
+                const res = await fetch('http://localhost:4000/api/media', {
+                    method: 'POST',
+                    body: form
+                });
+                if (!res.ok) throw new Error('Upload failed');
+                const saved = await res.json();
+                progressBar.style.width = '100%';
+                statusText.innerHTML = '<i class="fas fa-check-circle" style="color: #86efac; margin-right: 0.5rem;"></i>Upload completed successfully!';
+                // Render returned record(s)
+                saved.forEach(record => {
+                    // Render as remote file (no blob)
+                    renderMediaItem({ ...record, blob: null });
+                });
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(100%)';
+                    notification.style.opacity = '0';
+                    setTimeout(() => notification.remove(), 300);
+                }, 1500);
+            } catch (e) {
+                statusText.textContent = 'Upload failed. Falling back to local storage...';
+                simulateUploadProgress(file, notification);
+            }
+        }
+
+        // Create upload notification
+        function createUploadNotification(file) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: rgba(28, 28, 28, 0.95);
+                border: 1px solid rgba(212, 175, 55, 0.3);
+                border-radius: 10px;
+                padding: 1rem;
+                color: var(--ethereal-white);
+                z-index: 10000;
+                min-width: 300px;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            `;
+
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <i class="fas fa-upload" style="color: var(--primary-gold);"></i>
+                    <strong>Uploading File</strong>
+                </div>
+                <div style="margin-bottom: 0.5rem; font-size: 0.9rem; word-break: break-word;">${file.name}</div>
+                <div style="margin-bottom: 0.5rem; font-size: 0.8rem; color: rgba(248, 248, 255, 0.6);">${formatFileSize(file.size)}</div>
+                <div style="background: rgba(156, 163, 175, 0.3); height: 6px; border-radius: 3px; margin-bottom: 0.5rem; overflow: hidden;">
+                    <div class="upload-progress" style="background: linear-gradient(90deg, var(--primary-gold), var(--deep-gold)); height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                </div>
+                <div class="upload-status" style="font-size: 0.8rem; color: rgba(248, 248, 255, 0.8);">Initializing upload...</div>
+            `;
+
+            return notification;
+        }
+
+        // Simulate upload with realistic progress
+        function simulateUploadProgress(file, notification) {
+            const progressBar = notification.querySelector('.upload-progress');
+            const statusText = notification.querySelector('.upload-status');
+            let progress = 0;
+
+            const stages = [
+                { text: 'Preparing file...', maxProgress: 10 },
+                { text: 'Uploading to server...', maxProgress: 80 },
+                { text: 'Processing file...', maxProgress: 95 },
+                { text: 'Finalizing...', maxProgress: 100 }
+            ];
+
+            let currentStage = 0;
+
+            const uploadInterval = setInterval(() => {
+                const stage = stages[currentStage];
+                const increment = Math.random() * 8 + 2; // 2-10% increment
+                progress = Math.min(progress + increment, stage.maxProgress);
+
+                progressBar.style.width = progress + '%';
+                statusText.textContent = `${stage.text} ${Math.round(progress)}%`;
+
+                if (progress >= stage.maxProgress && currentStage < stages.length - 1) {
+                    currentStage++;
+                }
+
+                if (progress >= 100) {
+                    clearInterval(uploadInterval);
+                    
+                    // Success state
+                    statusText.innerHTML = '<i class="fas fa-check-circle" style="color: #86efac; margin-right: 0.5rem;"></i>Upload completed successfully!';
+                    
+                    // Persist file then render in grid
+                    MediaDB.addFile(file).then(record => {
+                        renderMediaItem(record);
+                    }).catch(err => console.error('Failed to save media:', err));
+                    
+                    // Remove notification after 3 seconds
+                    setTimeout(() => {
+                        notification.style.transform = 'translateX(100%)';
+                        notification.style.opacity = '0';
+                        setTimeout(() => notification.remove(), 300);
+                    }, 3000);
+                }
+            }, 300 + Math.random() * 400); // Realistic timing
+        }
+
+
+        // Format file size helper
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Utility functions
+        function showSuccess(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+            setTimeout(() => element.style.display = 'none', 3000);
+        }
+
+        function showError(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+            setTimeout(() => element.style.display = 'none', 5000);
+        }
+
+        // Auto-save draft every 30 seconds
+        setInterval(() => {
+            if (currentEditingPage && quillEditor.root.innerHTML.trim()) {
+                console.log('Auto-saving draft...');
+                // In a real system, this would save a draft version
+            }
+        }, 30000);
+
+        // Update page path when name changes
+        document.getElementById('new-page-name').addEventListener('input', function() {
+            const name = this.value;
+            const path = name.toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .trim('-') + '.html';
+            document.getElementById('new-page-path').value = path;
+        });
+
+        // ===================== Profiles Manager =====================
+        function getStoredProfiles() {
+            try {
+                const data = localStorage.getItem('perankh_profiles');
+                return data ? JSON.parse(data) : [];
+            } catch { return []; }
+        }
+        function setStoredProfiles(items) {
+            try { localStorage.setItem('perankh_profiles', JSON.stringify(items)); } catch {}
+        }
+
+        function renderProfiles() {
+            const list = document.getElementById('profiles-list');
+            const profiles = getStoredProfiles();
+            list.innerHTML = profiles.map(p => `
+                <div class="profile-card" style="background: rgba(28,28,28,.8); border:1px solid rgba(212,175,55,.3); border-radius:10px; padding:1rem;">
+                    <div style="display:flex; gap:1rem; align-items:center;">
+                        <img src="${p.avatar || ''}" onerror="this.style.display='none'" style="width:56px; height:56px; object-fit:cover; border-radius:50%; border:1px solid rgba(212,175,55,.3);">
+                        <div style="flex:1;">
+                            <div style="color:var(--ethereal-white); font-weight:600;">${p.name}</div>
+                            <div style="color:rgba(248,248,255,.6); font-size:.9rem;">${p.title || ''}</div>
+                            <div style="color:rgba(248,248,255,.5); font-size:.8rem;">${p.path}</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:.5rem; justify-content:flex-end; margin-top:.75rem;">
+                        <button class="action-btn secondary" onclick="editProfile('${p.id}')"><i class="fas fa-edit mr-1"></i>Edit</button>
+                        <button class="action-btn danger" onclick="deleteProfile('${p.id}')"><i class="fas fa-trash mr-1"></i>Delete</button>
+                        <a class="action-btn" href="${p.path}" target="_blank"><i class="fas fa-external-link-alt mr-1"></i>View</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openProfileForm(existing) {
+            const modal = document.getElementById('profile-modal');
+            modal.style.display = 'flex';
+            if (existing) {
+                document.getElementById('profile-id').value = existing.id;
+                document.getElementById('profile-name').value = existing.name || '';
+                document.getElementById('profile-title').value = existing.title || '';
+                document.getElementById('profile-path').value = existing.path || '';
+                document.getElementById('profile-avatar').value = existing.avatar || '';
+                document.getElementById('profile-bio').value = existing.bio || '';
+                updateAvatarPreview();
+            } else {
+                document.getElementById('profile-form').reset();
+                document.getElementById('profile-id').value = '';
+                updateAvatarPreview();
+            }
+        }
+        function closeProfileForm() { document.getElementById('profile-modal').style.display = 'none'; }
+        function editProfile(id) {
+            const p = getStoredProfiles().find(x => String(x.id) === String(id));
+            if (p) openProfileForm(p);
+        }
+        function deleteProfile(id) {
+            if (!confirm('Delete this profile?')) return;
+            const arr = getStoredProfiles().filter(x => String(x.id) !== String(id));
+            setStoredProfiles(arr);
+            renderProfiles();
+        }
+
+        function updateAvatarPreview() {
+            const url = document.getElementById('profile-avatar').value;
+            const preview = document.getElementById('profile-avatar-preview');
+            if (url) {
+                preview.innerHTML = `<img src="${url}" style="width:100px; height:100px; object-fit:cover; border-radius:8px; border:1px solid rgba(212,175,55,.3);">`;
+            } else {
+                preview.innerHTML = '';
+            }
+        }
+
+        document.getElementById('profile-avatar').addEventListener('input', updateAvatarPreview);
+        document.getElementById('profile-avatar-file').addEventListener('change', async (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            // Try upload via API, fallback to blob URL
+            try {
+                const form = new FormData();
+                form.append('files', file);
+                const resp = await fetch('http://localhost:4000/api/media', { method: 'POST', body: form });
+                if (resp.ok) {
+                    const [saved] = await resp.json();
+                    document.getElementById('profile-avatar').value = saved.url;
+                } else {
+                    document.getElementById('profile-avatar').value = URL.createObjectURL(file);
+                }
+            } catch {
+                document.getElementById('profile-avatar').value = URL.createObjectURL(file);
+            }
+            updateAvatarPreview();
+        });
+
+        document.getElementById('profile-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const id = document.getElementById('profile-id').value || Date.now();
+            const p = {
+                id,
+                name: document.getElementById('profile-name').value.trim(),
+                title: document.getElementById('profile-title').value.trim(),
+                path: document.getElementById('profile-path').value.trim(),
+                avatar: document.getElementById('profile-avatar').value.trim(),
+                bio: document.getElementById('profile-bio').value.trim(),
+                email: document.getElementById('profile-email').value.trim(),
+                website: document.getElementById('profile-website').value.trim(),
+                instagram: document.getElementById('profile-instagram').value.trim(),
+                twitter: document.getElementById('profile-twitter').value.trim(),
+            };
+            if (!p.name || !p.path) { alert('Name and Path are required'); return; }
+            const arr = getStoredProfiles();
+            const idx = arr.findIndex(x => String(x.id) === String(id));
+            if (idx > -1) arr[idx] = p; else arr.push(p);
+            setStoredProfiles(arr);
+            closeProfileForm();
+            renderProfiles();
+            const msg = document.getElementById('profiles-messages');
+            msg.textContent = 'Profile saved';
+            msg.style.display = 'block'; setTimeout(() => msg.style.display = 'none', 2500);
+        });
+
+        // Seed with Jon and Mou Dou Baqui if not present
+        (function seedProfiles(){
+            const arr = getStoredProfiles();
+            const ensure = (name, path) => { if (!arr.some(p => p.path === path)) arr.push({ id: Date.now()+Math.random(), name, path, title:'', avatar:'', bio:'' }); };
+            ensure('Jon', 'jon.html');
+            ensure('Mou Dou Baqui', 'moudoubaqui.html');
+            ensure('Shanna', 'admin_pages/Shanna2.html');
+            setStoredProfiles(arr);
+        })();
+
+        // Render on load
+        document.addEventListener('DOMContentLoaded', renderProfiles);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Per Ankh Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Load authentication library -->
+    <script src="admin-auth.js"></script>
+    
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-gold: #B8860B;
+            --dark-purple: #2D1B69;
+            --cosmic-blue: #0F0F23;
+            --matte-black: #0A0A0A;
+            --steel-gray: #1C1C1C;
+            --ethereal-white: #F8F8FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-logo .ankh {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .admin-logo h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(248, 248, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--ethereal-white);
+        }
+
+        .settings-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .settings-header {
+            margin-bottom: 2rem;
+        }
+
+        .settings-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .settings-subtitle {
+            color: rgba(248, 248, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .settings-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            color: rgba(248, 248, 255, 0.7);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        .tab-button.active {
+            color: var(--primary-gold);
+            border-bottom-color: var(--primary-gold);
+        }
+
+        .tab-button:hover {
+            color: var(--ethereal-white);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .settings-panel {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .panel-title {
+            color: var(--primary-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--ethereal-white);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-description {
+            color: rgba(248, 248, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-select {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-textarea {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(156, 163, 175, 0.3);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-gold);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: rgba(45, 27, 105, 0.6);
+            color: var(--ethereal-white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.danger {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .danger-zone {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .danger-title {
+            color: #fca5a5;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .settings-container {
+                padding: 1rem;
+            }
+            
+            .settings-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="admin-logo">
+                <div class="ankh">☥</div>
+                <h1>Settings</h1>
+            </div>
+            <div class="breadcrumb">
+                <a href="admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <span>/</span>
+                <span>Settings</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Settings Container -->
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1 class="settings-title">System Settings</h1>
+            <p class="settings-subtitle">Configure website settings, security, and system preferences</p>
+        </div>
+
+        <!-- Success/Error Messages -->
+        <div class="success-message" id="success-message">
+            <i class="fas fa-check-circle mr-2"></i><span id="success-text"></span>
+        </div>
+        <div class="error-message" id="error-message">
+            <i class="fas fa-exclamation-circle mr-2"></i><span id="error-text"></span>
+        </div>
+
+        <!-- Settings Tabs -->
+        <div class="settings-tabs">
+            <button class="tab-button active" onclick="switchTab('general')">
+                <i class="fas fa-cog mr-2"></i>General
+            </button>
+            <button class="tab-button" onclick="switchTab('security')">
+                <i class="fas fa-shield-alt mr-2"></i>Security
+            </button>
+            <button class="tab-button" onclick="switchTab('appearance')">
+                <i class="fas fa-palette mr-2"></i>Appearance
+            </button>
+            <button class="tab-button" onclick="switchTab('email')">
+                <i class="fas fa-envelope mr-2"></i>Email
+            </button>
+            <button class="tab-button" onclick="switchTab('backup')">
+                <i class="fas fa-database mr-2"></i>Backup
+            </button>
+            <button class="tab-button" onclick="switchTab('performance')">
+                <i class="fas fa-tachometer-alt mr-2"></i>Performance
+            </button>
+        </div>
+
+        <!-- General Settings Tab -->
+        <div id="general-tab" class="tab-content active">
+            <div class="settings-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <i class="fas fa-cog"></i>
+                        General Settings
+                    </h2>
+                    <button class="action-btn" onclick="saveSettings('general')">
+                        <i class="fas fa-save"></i>Save Changes
+                    </button>
+                </div>
+
+                <form id="general-form">
+                    <div class="form-section">
+                        <h3 class="section-title">Site Information</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Site Title</label>
+                            <div class="form-description">The main title of your website</div>
+                            <input type="text" class="form-input" value="Per Ankh Entheogenic Church" id="site-title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Site Description</label>
+                            <div class="form-description">Brief description for search engines and social media</div>
+                            <textarea class="form-textarea" id="site-description">Sacred portal for consciousness exploration and spiritual awakening through entheogenic practices and ancient wisdom.</textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Site URL</label>
+                            <div class="form-description">Primary domain for your website</div>
+                            <input type="url" class="form-input" value="https://perankh.org" id="site-url">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Contact Information</h3>
+                        
+                        <div class="settings-grid">
+                            <div class="form-group">
+                                <label class="form-label">Admin Email</label>
+                                <input type="email" class="form-input" value="admin@perankh.org" id="admin-email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Support Email</label>
+                                <input type="email" class="form-input" value="support@perankh.org" id="support-email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Regional Settings</h3>
+                        
+                        <div class="settings-grid">
+                            <div class="form-group">
+                                <label class="form-label">Timezone</label>
+                                <select class="form-select" id="timezone">
+                                    <option value="UTC">UTC</option>
+                                    <option value="America/New_York">Eastern Time</option>
+                                    <option value="America/Chicago">Central Time</option>
+                                    <option value="America/Denver">Mountain Time</option>
+                                    <option value="America/Los_Angeles" selected>Pacific Time</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Date Format</label>
+                                <select class="form-select" id="date-format">
+                                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                    <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                    <option value="YYYY-MM-DD" selected>YYYY-MM-DD</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Security Settings Tab -->
+        <div id="security-tab" class="tab-content">
+            <div class="settings-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Security Settings
+                    </h2>
+                    <button class="action-btn" onclick="saveSettings('security')">
+                        <i class="fas fa-save"></i>Save Changes
+                    </button>
+                </div>
+
+                <form id="security-form">
+                    <div class="form-section">
+                        <h3 class="section-title">Authentication</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Session Timeout (hours)</label>
+                            <div class="form-description">How long admin sessions remain active</div>
+                            <input type="number" class="form-input" value="8" min="1" max="24" id="session-timeout">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Two-Factor Authentication</label>
+                            <div class="form-description">Require 2FA for admin accounts</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="enable-2fa">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Login Attempts Limit</label>
+                            <div class="form-description">Lock account after this many failed attempts</div>
+                            <input type="number" class="form-input" value="5" min="3" max="10" id="login-attempts">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Access Control</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">IP Whitelist</label>
+                            <div class="form-description">Restrict admin access to specific IP addresses (one per line)</div>
+                            <textarea class="form-textarea" id="ip-whitelist" placeholder="192.168.1.100&#10;203.0.113.0/24"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Maintenance Mode</label>
+                            <div class="form-description">Put site in maintenance mode for non-admin users</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="maintenance-mode">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Appearance Settings Tab -->
+        <div id="appearance-tab" class="tab-content">
+            <div class="settings-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <i class="fas fa-palette"></i>
+                        Appearance Settings
+                    </h2>
+                    <button class="action-btn" onclick="saveSettings('appearance')">
+                        <i class="fas fa-save"></i>Save Changes
+                    </button>
+                </div>
+
+                <form id="appearance-form">
+                    <div class="form-section">
+                        <h3 class="section-title">Theme Configuration</h3>
+                        
+                        <div class="settings-grid">
+                            <div class="form-group">
+                                <label class="form-label">Primary Color</label>
+                                <input type="color" class="form-input" value="#D4AF37" id="primary-color">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Secondary Color</label>
+                                <input type="color" class="form-input" value="#2D1B69" id="secondary-color">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Logo Upload</label>
+                            <div class="form-description">Upload a custom logo (recommended: 200x60px)</div>
+                            <input type="file" class="form-input" accept="image/*" id="logo-upload">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Favicon Upload</label>
+                            <div class="form-description">Upload a favicon (recommended: 32x32px)</div>
+                            <input type="file" class="form-input" accept="image/x-icon,image/png" id="favicon-upload">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Layout Options</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Header Style</label>
+                            <select class="form-select" id="header-style">
+                                <option value="fixed" selected>Fixed Header</option>
+                                <option value="static">Static Header</option>
+                                <option value="hidden">Hidden Header</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Footer Copyright</label>
+                            <input type="text" class="form-input" value="© 2024 Per Ankh Entheogenic Church. All rights reserved." id="footer-copyright">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Email Settings Tab -->
+        <div id="email-tab" class="tab-content">
+            <div class="settings-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <i class="fas fa-envelope"></i>
+                        Email Settings
+                    </h2>
+                    <button class="action-btn" onclick="saveSettings('email')">
+                        <i class="fas fa-save"></i>Save Changes
+                    </button>
+                </div>
+
+                <form id="email-form">
+                    <div class="form-section">
+                        <h3 class="section-title">SMTP Configuration</h3>
+                        
+                        <div class="settings-grid">
+                            <div class="form-group">
+                                <label class="form-label">SMTP Host</label>
+                                <input type="text" class="form-input" placeholder="smtp.gmail.com" id="smtp-host">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">SMTP Port</label>
+                                <input type="number" class="form-input" value="587" id="smtp-port">
+                            </div>
+                        </div>
+                        
+                        <div class="settings-grid">
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-input" id="smtp-username">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" id="smtp-password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Use SSL/TLS</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="smtp-ssl" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Email Templates</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">From Name</label>
+                            <input type="text" class="form-input" value="Per Ankh Sacred Portal" id="email-from-name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">From Email</label>
+                            <input type="email" class="form-input" value="noreply@perankh.org" id="email-from-address">
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <button type="button" class="action-btn secondary" onclick="testEmail()">
+                                <i class="fas fa-paper-plane"></i>Send Test Email
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Backup Settings Tab -->
+        <div id="backup-tab" class="tab-content">
+            <div class="settings-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <i class="fas fa-database"></i>
+                        Backup & Recovery
+                    </h2>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Automatic Backups</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Enable Automatic Backups</label>
+                        <div class="form-description">Automatically backup site data at regular intervals</div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="auto-backup" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Backup Frequency</label>
+                        <select class="form-select" id="backup-frequency">
+                            <option value="daily" selected>Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Retention Period</label>
+                        <div class="form-description">How long to keep backup files</div>
+                        <select class="form-select" id="backup-retention">
+                            <option value="7">7 days</option>
+                            <option value="30" selected>30 days</option>
+                            <option value="90">90 days</option>
+                            <option value="365">1 year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Manual Backup</h3>
+                    
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <button class="action-btn" onclick="createBackup()">
+                            <i class="fas fa-download"></i>Create Backup Now
+                        </button>
+                        <button class="action-btn secondary" onclick="viewBackups()">
+                            <i class="fas fa-list"></i>View Backups
+                        </button>
+                        <button class="action-btn secondary" onclick="restoreBackup()">
+                            <i class="fas fa-upload"></i>Restore from Backup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Settings Tab -->
+        <div id="performance-tab" class="tab-content">
+            <div class="settings-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Performance Settings
+                    </h2>
+                    <button class="action-btn" onclick="saveSettings('performance')">
+                        <i class="fas fa-save"></i>Save Changes
+                    </button>
+                </div>
+
+                <form id="performance-form">
+                    <div class="form-section">
+                        <h3 class="section-title">Caching</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Enable Page Caching</label>
+                            <div class="form-description">Cache static pages for faster loading</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="page-cache" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Cache Duration (minutes)</label>
+                            <input type="number" class="form-input" value="60" min="5" max="1440" id="cache-duration">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Enable Image Compression</label>
+                            <div class="form-description">Automatically compress uploaded images</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="image-compression" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Optimization</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Minify CSS/JS</label>
+                            <div class="form-description">Reduce file sizes for faster loading</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="minify-assets" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Lazy Load Images</label>
+                            <div class="form-description">Load images only when they come into view</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="lazy-loading" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <button type="button" class="action-btn secondary" onclick="clearCache()">
+                                <i class="fas fa-trash-alt"></i>Clear All Cache
+                            </button>
+                            <button type="button" class="action-btn secondary" onclick="optimizeDatabase()">
+                                <i class="fas fa-database"></i>Optimize Database
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="danger-zone">
+                <h3 class="danger-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Danger Zone
+                </h3>
+                <p style="color: rgba(248, 248, 255, 0.8); margin-bottom: 1rem;">
+                    These actions are irreversible and can cause data loss. Proceed with extreme caution.
+                </p>
+                
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="action-btn danger" onclick="resetSettings()">
+                        <i class="fas fa-undo"></i>Reset All Settings
+                    </button>
+                    <button class="action-btn danger" onclick="factoryReset()">
+                        <i class="fas fa-exclamation-triangle"></i>Factory Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-auth.js"></script>
+    <script>
+        // Check authentication with enhanced error handling
+        function checkAuthentication() {
+            if (typeof perAnkhAuth === 'undefined') {
+                console.error('PerAnkhAuth not loaded, checking manually');
+                const session = localStorage.getItem('perankh_admin_session');
+                const active = sessionStorage.getItem('perankh_admin_active');
+                
+                if (!session || !active) {
+                    console.log('No session found, redirecting to login');
+                    window.location.href = 'admin-login.html';
+                    return false;
+                }
+
+                try {
+                    const sessionData = JSON.parse(session);
+                    const loginTime = new Date(sessionData.loginTime);
+                    const now = new Date();
+                    const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+
+                    if (hoursDiff >= 8) {
+                        console.log('Session expired, redirecting to login');
+                        window.location.href = 'admin-login.html';
+                        return false;
+                    }
+
+                    return true;
+                } catch (error) {
+                    console.error('Session validation error:', error);
+                    window.location.href = 'admin-login.html';
+                    return false;
+                }
+            }
+
+            if (!perAnkhAuth.isAdminAuthenticated()) {
+                console.log('PerAnkhAuth check failed, redirecting to login');
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+
+            return true;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mark session active on admin settings load
+            try { sessionStorage.setItem('perankh_admin_active', 'true'); } catch (e) {}
+            // Perform authentication check after DOM is loaded
+            if (!checkAuthentication()) {
+                // Authentication failed, page will redirect
+                return;
+            }
+            loadSettings();
+        });
+
+        // Switch between tabs
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Load settings from storage (mock implementation)
+        function loadSettings() {
+            // In a real implementation, this would load from server
+            console.log('Settings loaded from server');
+        }
+
+        // Save settings
+        function saveSettings(category) {
+            // Collect form data
+            const formData = new FormData(document.getElementById(category + '-form'));
+            const settings = {};
+            
+            for (let [key, value] of formData.entries()) {
+                settings[key] = value;
+            }
+            
+            // Include checkbox states
+            document.querySelectorAll(`#${category}-form input[type="checkbox"]`).forEach(checkbox => {
+                settings[checkbox.id] = checkbox.checked;
+            });
+            
+            // Simulate saving
+            setTimeout(() => {
+                showSuccess(`${category.charAt(0).toUpperCase() + category.slice(1)} settings saved successfully!`);
+                console.log('Settings saved:', settings);
+            }, 500);
+        }
+
+        // Test email function
+        function testEmail() {
+            const testEmail = prompt('Enter email address to send test email:');
+            if (testEmail) {
+                showSuccess(`Test email sent to ${testEmail}!`);
+            }
+        }
+
+        // Backup functions
+        function createBackup() {
+            if (confirm('Create a full backup now?\n\nThis may take several minutes depending on the size of your data.')) {
+                showSuccess('Backup creation started! You will receive an email when complete.');
+            }
+        }
+
+        function viewBackups() {
+            alert('Backup Manager would open here showing:\n\n• List of all backups\n• Backup dates and sizes\n• Download options\n• Restore options\n\n(Demo implementation)');
+        }
+
+        function restoreBackup() {
+            const file = prompt('Enter backup filename to restore:');
+            if (file) {
+                if (confirm(`Restore from backup "${file}"?\n\nWARNING: This will overwrite all current data!`)) {
+                    alert('Restore process initiated! Site will be temporarily unavailable.\n(Demo implementation)');
+                }
+            }
+        }
+
+        // Performance functions
+        function clearCache() {
+            if (confirm('Clear all cached data?\n\nThis may temporarily slow down the site while cache rebuilds.')) {
+                showSuccess('All cache cleared successfully!');
+            }
+        }
+
+        function optimizeDatabase() {
+            if (confirm('Optimize database?\n\nThis will clean up unused data and improve performance.')) {
+                showSuccess('Database optimization completed!');
+            }
+        }
+
+        // Danger zone functions
+        function resetSettings() {
+            if (confirm('Reset all settings to defaults?\n\nThis action cannot be undone.')) {
+                if (confirm('Are you absolutely sure? This will reset ALL configuration settings.')) {
+                    showSuccess('All settings have been reset to defaults.');
+                }
+            }
+        }
+
+        function factoryReset() {
+            const confirmation = prompt('DANGER: Factory Reset\n\nThis will delete ALL data including:\n• All content and pages\n• User accounts\n• Settings\n• Media files\n\nType "FACTORY RESET" to confirm:');
+            
+            if (confirmation === 'FACTORY RESET') {
+                alert('Factory reset would be initiated here.\n\n(Demo implementation - action blocked for safety)');
+            }
+        }
+
+        // Utility functions
+        function showSuccess(message) {
+            const element = document.getElementById('success-message');
+            document.getElementById('success-text').textContent = message;
+            element.style.display = 'block';
+            setTimeout(() => element.style.display = 'none', 3000);
+        }
+
+        function showError(message) {
+            const element = document.getElementById('error-message');
+            document.getElementById('error-text').textContent = message;
+            element.style.display = 'block';
+            setTimeout(() => element.style.display = 'none', 5000);
+        }
+
+        // Auto-save settings on change (for toggles)
+        document.addEventListener('change', function(e) {
+            if (e.target.type === 'checkbox' && e.target.closest('.tab-content.active')) {
+                const tabId = e.target.closest('.tab-content').id;
+                const category = tabId.replace('-tab', '');
+                console.log(`Auto-saving ${category} settings...`);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -403,7 +403,7 @@
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <span class="ankh-symbol text-3xl mr-3">☥</span>
+                    <img src="PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
                     <a href="index.html" class="text-2xl font-bold" style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
                 </div>
                 <div class="hidden md:flex space-x-6">
@@ -413,6 +413,7 @@
                     <a href="ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
                     <a href="donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
                     <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
+                    <a href="calculator.html" class="text-white hover:text-yellow-400 transition-colors">Calculator</a>
                     <a href="member-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Member Login</a>
                 </div>
                 
@@ -433,11 +434,14 @@
                     <a href="ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
                     <a href="donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
                     <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
+                    <a href="calculator.html" class="text-white hover:text-yellow-400 transition-colors">Calculator</a>
                     <a href="member-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors inline-block">Member Login</a>
                 </div>
             </div>
         </div>
     </nav>
+    <link rel="stylesheet" href="src/components/side-nav.css">
+    <script src="src/components/side-nav.js" defer></script>
     
     <!-- Sacred Geometry Background -->
     <div class="sacred-geometry">
@@ -575,7 +579,7 @@
                     if (!this.hasCompletedOnboarding()) {
                         this.showOnboarding();
                     } else {
-                        window.location.href = 'admin.html';
+                        window.location.href = 'admin-dashboard.html';
                     }
                 }
             }
@@ -635,7 +639,7 @@
                             if (!this.hasCompletedOnboarding()) {
                                 this.showOnboarding();
                             } else {
-                                window.location.href = 'admin.html';
+                                window.location.href = 'admin-dashboard.html';
                             }
                         }, 1500);
                     } else {
@@ -662,15 +666,43 @@
             }
 
             setSession(username) {
+                // Map known admins to roles. Others default to admin
+                const roleMap = {
+                    'BabaBaqui': 'super_admin',
+                    'MamaAyana': 'super_admin'
+                };
+
                 const sessionData = {
                     username: username,
                     loginTime: new Date().toISOString(),
                     sessionId: this.generateSessionId(),
-                    role: username.includes('admin') ? 'admin' : 'member'
+                    role: roleMap[username] || 'admin'
                 };
 
                 localStorage.setItem('perankh_admin_session', JSON.stringify(sessionData));
                 sessionStorage.setItem('perankh_admin_active', 'true');
+
+                // Ensure the logged in admin exists in the admin users store
+                try {
+                    const stored = localStorage.getItem('perankh_admin_users');
+                    const adminUsers = stored ? JSON.parse(stored) : [];
+                    const exists = adminUsers.some(u => u.username === username);
+                    if (!exists) {
+                        adminUsers.push({
+                            id: Date.now(),
+                            username,
+                            name: username,
+                            email: '',
+                            role: sessionData.role,
+                            status: 'active',
+                            lastLogin: 'just now',
+                            avatar: username.charAt(0).toUpperCase()
+                        });
+                        localStorage.setItem('perankh_admin_users', JSON.stringify(adminUsers));
+                    }
+                } catch (e) {
+                    console.warn('Unable to seed admin users store:', e);
+                }
             }
 
             generateSessionId() {
@@ -763,7 +795,7 @@
             document.getElementById('onboardingModal').style.display = 'none';
             
             // Redirect to admin dashboard
-            window.location.href = 'admin.html';
+            window.location.href = 'admin-dashboard.html';
         }
 
         // Initialize authentication system

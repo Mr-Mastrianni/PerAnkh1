@@ -323,7 +323,7 @@ Per Ankh ("House of Life") creates sacred digital spaces for consciousness expan
 ## File Structure Analysis
 
 ### File Structure
-- **website.html**: Main digital sanctuary with Egyptian temple aesthetics
+- (deprecated) website.html: old main page, replaced by `index.html`
 - **PerAnkhTech.html**: Comprehensive consciousness mastery guide
 - **communitypartnership.html**: Community onboarding and partnership frameworks
 - **protocols.html**: Complete sacred psilocybin protocols system
