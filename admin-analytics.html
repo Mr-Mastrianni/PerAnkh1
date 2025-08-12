@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - Per Ankh Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Load authentication library -->
+    <script src="admin-auth.js"></script>
+    
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-gold: #B8860B;
+            --dark-purple: #2D1B69;
+            --cosmic-blue: #0F0F23;
+            --matte-black: #0A0A0A;
+            --steel-gray: #1C1C1C;
+            --ethereal-white: #F8F8FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-logo .ankh {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .admin-logo h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(248, 248, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--ethereal-white);
+        }
+
+        .analytics-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .analytics-header {
+            margin-bottom: 2rem;
+        }
+
+        .analytics-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .analytics-subtitle {
+            color: rgba(248, 248, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .time-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .filter-label {
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+
+        .filter-button {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: rgba(248, 248, 255, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-button.active {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            border-color: var(--primary-gold);
+        }
+
+        .filter-button:hover {
+            border-color: var(--primary-gold);
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
+            transition: left 0.6s ease;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .stat-trend {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .trend-up {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+
+        .trend-down {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(248, 248, 255, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            color: rgba(248, 248, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-panel {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-title {
+            color: var(--primary-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .table-panel {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .data-table th {
+            color: var(--primary-gold);
+            font-weight: 600;
+            background: rgba(45, 27, 105, 0.2);
+        }
+
+        .data-table tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .page-link {
+            color: var(--ethereal-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .page-link:hover {
+            color: var(--primary-gold);
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: rgba(45, 27, 105, 0.6);
+            color: var(--ethereal-white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .real-time-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(248, 248, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (max-width: 1024px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .analytics-container {
+                padding: 1rem;
+            }
+            
+            .stats-overview {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-filter {
+                flex-wrap: wrap;
+            }
+            
+            .chart-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="admin-logo">
+                <div class="ankh">☥</div>
+                <h1>Analytics Dashboard</h1>
+            </div>
+            <div class="breadcrumb">
+                <a href="admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <span>/</span>
+                <span>Analytics</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Analytics Container -->
+    <div class="analytics-container">
+        <div class="analytics-header">
+            <h1 class="analytics-title">Analytics & Insights</h1>
+            <p class="analytics-subtitle">Monitor website performance, user engagement, and sacred community growth</p>
+        </div>
+
+        <div class="real-time-indicator">
+            <div class="live-dot"></div>
+            <span>Real-time data • Last updated: <span id="last-update">just now</span></span>
+        </div>
+
+        <!-- Time Filters -->
+        <div class="time-filter">
+            <span class="filter-label">Time Period:</span>
+            <button class="filter-button" onclick="setTimeFilter('1d')">Today</button>
+            <button class="filter-button active" onclick="setTimeFilter('7d')">7 Days</button>
+            <button class="filter-button" onclick="setTimeFilter('30d')">30 Days</button>
+            <button class="filter-button" onclick="setTimeFilter('90d')">90 Days</button>
+            <button class="filter-button" onclick="setTimeFilter('1y')">1 Year</button>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-trend trend-up">+12.5%</div>
+                </div>
+                <div class="stat-number" id="total-visitors">0</div>
+                <div class="stat-label">Total Visitors</div>
+                <div class="stat-description">Unique visitors in the last 7 days</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                    <div class="stat-trend trend-up">+8.3%</div>
+                </div>
+                <div class="stat-number" id="page-views">0</div>
+                <div class="stat-label">Page Views</div>
+                <div class="stat-description">Total page views across all sections</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                    <div class="stat-trend trend-up">+5.2%</div>
+                </div>
+                <div class="stat-number" id="avg-session">—</div>
+                <div class="stat-label">Avg. Session Duration</div>
+                <div class="stat-description">Average time spent on the portal</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon"><i class="fas fa-percentage"></i></div>
+                    <div class="stat-trend trend-down">-2.1%</div>
+                </div>
+                <div class="stat-number" id="bounce-rate">—</div>
+                <div class="stat-label">Bounce Rate</div>
+                <div class="stat-description">Visitors who leave after one page</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="stat-trend trend-up">+18.7%</div>
+                </div>
+                <div class="stat-number" id="new-members">0</div>
+                <div class="stat-label">New Members</div>
+                <div class="stat-description">Members joined this week</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="stat-trend trend-up">+15.4%</div>
+                </div>
+                <div class="stat-number" id="mobile-traffic">—</div>
+                <div class="stat-label">Mobile Traffic</div>
+                <div class="stat-description">Visitors using mobile devices</div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+            <!-- Visitors Chart -->
+            <div class="chart-panel">
+                <h3 class="chart-title">
+                    <i class="fas fa-chart-line"></i>
+                    Visitor Traffic Trends
+                </h3>
+                <div class="chart-container">
+                    <canvas id="visitorsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Top Pages -->
+            <div class="chart-panel">
+                <h3 class="chart-title">
+                    <i class="fas fa-fire"></i>
+                    Most Visited Pages
+                </h3>
+                <div class="chart-container">
+                    <canvas id="pagesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Charts -->
+        <div class="charts-grid">
+            <!-- Traffic Sources -->
+            <div class="chart-panel">
+                <h3 class="chart-title">
+                    <i class="fas fa-share-alt"></i>
+                    Traffic Sources
+                </h3>
+                <div class="chart-container">
+                    <canvas id="sourcesChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Device Types -->
+            <div class="chart-panel">
+                <h3 class="chart-title">
+                    <i class="fas fa-desktop"></i>
+                    Device Distribution
+                </h3>
+                <div class="chart-container">
+                    <canvas id="devicesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-time Activity -->
+        <div class="table-panel">
+            <h3 class="chart-title">
+                <i class="fas fa-activity"></i>
+                Real-time Activity
+                <button class="action-btn secondary" style="margin-left: auto; font-size: 0.8rem;" onclick="refreshRealTime()">
+                    <i class="fas fa-sync-alt"></i>Refresh
+                </button>
+            </h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Page</th>
+                        <th>Location</th>
+                        <th>Device</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody id="realtime-tbody">
+                    <!-- Real-time data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Export Actions -->
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+            <button class="action-btn" onclick="exportReport()">
+                <i class="fas fa-download"></i>Export Report
+            </button>
+            <button class="action-btn secondary" onclick="scheduleReport()">
+                <i class="fas fa-calendar"></i>Schedule Report
+            </button>
+            <button class="action-btn secondary" onclick="shareAnalytics()">
+                <i class="fas fa-share"></i>Share Analytics
+            </button>
+        </div>
+    </div>
+
+    <script src="admin-auth.js"></script>
+    <script>
+        // Check authentication with enhanced error handling
+        function checkAuthentication() {
+            if (typeof perAnkhAuth === 'undefined') {
+                console.error('PerAnkhAuth not loaded, checking manually');
+                const session = localStorage.getItem('perankh_admin_session');
+                const active = sessionStorage.getItem('perankh_admin_active');
+                
+                if (!session || !active) {
+                    console.log('No session found, redirecting to login');
+                    window.location.href = 'admin-login.html';
+                    return false;
+                }
+
+                try {
+                    const sessionData = JSON.parse(session);
+                    const loginTime = new Date(sessionData.loginTime);
+                    const now = new Date();
+                    const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+
+                    if (hoursDiff >= 8) {
+                        console.log('Session expired, redirecting to login');
+                        window.location.href = 'admin-login.html';
+                        return false;
+                    }
+
+                    return true;
+                } catch (error) {
+                    console.error('Session validation error:', error);
+                    window.location.href = 'admin-login.html';
+                    return false;
+                }
+            }
+
+            if (!perAnkhAuth.isAdminAuthenticated()) {
+                console.log('PerAnkhAuth check failed, redirecting to login');
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+
+            return true;
+        }
+
+        let currentTimeFilter = '7d';
+        let charts = {};
+        const API_BASE = 'http://localhost:4000';
+
+        // Initialize charts on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📊 Analytics page initializing...');
+            // Keep admin session active on this tab
+            try { sessionStorage.setItem('perankh_admin_active', 'true'); } catch (e) {}
+            
+            // Perform authentication check after DOM is loaded
+            if (!checkAuthentication()) {
+                console.log('❌ Analytics: Authentication failed, page will redirect');
+                return;
+            }
+            
+            console.log('✅ Analytics: Authentication successful, loading content...');
+            initializeCharts();
+            refreshAll();
+            startRealTimeUpdates();
+        });
+
+        // Initialize all charts
+        function initializeCharts() {
+            initVisitorsChart();
+            initPagesChart();
+            initSourcesChart();
+            initDevicesChart();
+        }
+
+        async function refreshAll() {
+            await Promise.all([
+                updateVisitorsFromServer(),
+                updateTopPagesFromServer(),
+                updateSourcesFromServer(),
+                updateDevicesFromServer(),
+                loadRealTimeData()
+            ]);
+            await updateSummaryFromServer();
+        }
+
+        // Visitors trend chart
+        function initVisitorsChart() {
+            const ctx = document.getElementById('visitorsChart').getContext('2d');
+            charts.visitors = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Visitors',
+                            data: [],
+                            borderColor: '#D4AF37',
+                            backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#F8F8FF'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#F8F8FF' },
+                            grid: { color: 'rgba(212, 175, 55, 0.1)' }
+                        },
+                        y: {
+                            ticks: { color: '#F8F8FF' },
+                            grid: { color: 'rgba(212, 175, 55, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Top pages chart
+        function initPagesChart() {
+            const ctx = document.getElementById('pagesChart').getContext('2d');
+            charts.pages = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: [
+                            '#D4AF37','#2D1B69','#0F0F23','#B8860B','#1C1C1C',
+                            '#8B5CF6','#10B981','#F59E0B','#EF4444','#3B82F6'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#F8F8FF'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#F8F8FF',
+                                padding: 20
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Traffic sources chart
+        function initSourcesChart() {
+            const ctx = document.getElementById('sourcesChart').getContext('2d');
+            charts.sources = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Visits',
+                        data: [],
+                        backgroundColor: [
+                            'rgba(212, 175, 55, 0.8)',
+                            'rgba(45, 27, 105, 0.8)',
+                            'rgba(15, 15, 35, 0.8)',
+                            'rgba(184, 134, 11, 0.8)',
+                            'rgba(28, 28, 28, 0.8)'
+                        ],
+                        borderColor: '#D4AF37',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#F8F8FF' },
+                            grid: { color: 'rgba(212, 175, 55, 0.1)' }
+                        },
+                        y: {
+                            ticks: { color: '#F8F8FF' },
+                            grid: { color: 'rgba(212, 175, 55, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Device types chart
+        function initDevicesChart() {
+            const ctx = document.getElementById('devicesChart').getContext('2d');
+            charts.devices = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: [
+                            '#D4AF37',
+                            '#2D1B69',
+                            '#0F0F23'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#F8F8FF'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#F8F8FF',
+                                padding: 20
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Set time filter
+        function setTimeFilter(period) {
+            currentTimeFilter = period;
+            
+            // Update active button
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update charts with new data
+            updateChartsForPeriod(period);
+            updateStatsForPeriod(period);
+        }
+
+        // Update charts for selected period
+        function updateChartsForPeriod(period) { updateVisitorsFromServer(); }
+
+        // Update stats for selected period (from server)
+        function updateStatsForPeriod(period) { updateSummaryFromServer(); }
+
+        // Load real-time data from server
+        async function loadRealTimeData() {
+            try {
+                const resp = await fetch(`${API_BASE}/api/analytics/realtime`);
+                const rows = resp.ok ? await resp.json() : [];
+                const tbody = document.getElementById('realtime-tbody');
+                tbody.innerHTML = rows.map(r => `
+                    <tr>
+                        <td>${r.time}</td>
+                        <td><a href="#" class="page-link">${r.page}</a></td>
+                        <td>${r.location || '—'}</td>
+                        <td>${r.device || '—'}</td>
+                        <td>${r.duration || '—'}</td>
+                    </tr>
+                `).join('');
+            } catch (e) {
+                console.warn('Realtime fetch failed');
+            }
+        }
+
+        // Start real-time updates
+        function startRealTimeUpdates() {
+            setInterval(() => {
+                updateLastUpdateTime();
+                refreshRealTime();
+            }, 30000); // Update every 30 seconds
+        }
+
+        // Update last update time
+        function updateLastUpdateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('last-update').textContent = timeString;
+        }
+
+        // Removed simulation; real-time is server driven
+
+        // Refresh real-time data
+        function refreshRealTime() { loadRealTimeData(); updateLastUpdateTime(); }
+
+        async function updateSummaryFromServer() {
+            try {
+                const resp = await fetch(`${API_BASE}/api/analytics/summary?period=${currentTimeFilter}`);
+                if (!resp.ok) return;
+                const s = await resp.json();
+                if (s.visitors != null) document.getElementById('total-visitors').textContent = Number(s.visitors).toLocaleString();
+                if (s.pageViews != null) document.getElementById('page-views').textContent = Number(s.pageViews).toLocaleString();
+                if (s.bounceRate != null) document.getElementById('bounce-rate').textContent = `${s.bounceRate}%`;
+                if (s.avgSession) document.getElementById('avg-session').textContent = s.avgSession;
+                if (s.newMembers) document.getElementById('new-members').textContent = s.newMembers;
+                if (s.mobileTraffic) document.getElementById('mobile-traffic').textContent = s.mobileTraffic;
+            } catch (e) {}
+        }
+
+        async function updateVisitorsFromServer() {
+            try {
+                const resp = await fetch(`${API_BASE}/api/analytics/timeseries?period=${currentTimeFilter}`);
+                if (!resp.ok) return;
+                const data = await resp.json();
+                charts.visitors.data.labels = data.labels;
+                charts.visitors.data.datasets[0].data = data.values;
+                charts.visitors.update();
+            } catch (e) {}
+        }
+
+        async function updateTopPagesFromServer() {
+            try {
+                const resp = await fetch(`${API_BASE}/api/analytics/top-pages?period=${currentTimeFilter}`);
+                if (!resp.ok) return;
+                const rows = await resp.json();
+                charts.pages.data.labels = rows.map(r => r.path);
+                charts.pages.data.datasets[0].data = rows.map(r => r.count);
+                charts.pages.update();
+            } catch (e) {}
+        }
+
+        async function updateSourcesFromServer() {
+            try {
+                const resp = await fetch(`${API_BASE}/api/analytics/sources?period=${currentTimeFilter}`);
+                if (!resp.ok) return;
+                const rows = await resp.json();
+                charts.sources.data.labels = rows.map(r => r.source);
+                charts.sources.data.datasets[0].data = rows.map(r => r.count);
+                charts.sources.update();
+            } catch (e) {}
+        }
+
+        async function updateDevicesFromServer() {
+            try {
+                const resp = await fetch(`${API_BASE}/api/analytics/devices?period=${currentTimeFilter}`);
+                if (!resp.ok) return;
+                const rows = await resp.json();
+                charts.devices.data.labels = rows.map(r => r.device);
+                charts.devices.data.datasets[0].data = rows.map(r => r.count);
+                charts.devices.update();
+            } catch (e) {}
+        }
+
+        // Export functions
+        function exportReport() {
+            alert('Analytics report export initiated! (Demo implementation)\n\nA comprehensive PDF report will be generated with:\n• Traffic statistics\n• User behavior insights\n• Performance metrics\n• Growth trends');
+        }
+
+        function scheduleReport() {
+            const frequency = prompt('Schedule Analytics Report:\n\n1. Daily\n2. Weekly\n3. Monthly\n\nEnter number (1-3):');
+            
+            if (frequency && frequency >= 1 && frequency <= 3) {
+                const frequencies = ['Daily', 'Weekly', 'Monthly'];
+                alert(`${frequencies[frequency - 1]} analytics report scheduled! (Demo implementation)`);
+            }
+        }
+
+        function shareAnalytics() {
+            alert('Analytics sharing initiated! (Demo implementation)\n\nYou can share analytics with:\n• Stakeholders\n• Team members\n• External partners\n\nSecure sharing links will be generated.');
+        }
+    </script>
+</body>
+</html>

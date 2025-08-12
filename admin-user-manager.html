@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Manager - Per Ankh Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Load authentication library -->
+    <script src="admin-auth.js"></script>
+    
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-gold: #B8860B;
+            --dark-purple: #2D1B69;
+            --cosmic-blue: #0F0F23;
+            --matte-black: #0A0A0A;
+            --steel-gray: #1C1C1C;
+            --ethereal-white: #F8F8FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-logo .ankh {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .admin-logo h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(248, 248, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--ethereal-white);
+        }
+
+        .user-manager {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .manager-header {
+            margin-bottom: 2rem;
+        }
+
+        .manager-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .manager-subtitle {
+            color: rgba(248, 248, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .user-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            color: rgba(248, 248, 255, 0.7);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-button.active {
+            color: var(--primary-gold);
+            border-bottom-color: var(--primary-gold);
+        }
+
+        .tab-button:hover {
+            color: var(--ethereal-white);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .user-panel {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .panel-title {
+            color: var(--primary-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .panel-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: rgba(45, 27, 105, 0.6);
+            color: var(--ethereal-white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.danger {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .user-table th,
+        .user-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .user-table th {
+            color: var(--primary-gold);
+            font-weight: 600;
+            background: rgba(45, 27, 105, 0.2);
+        }
+
+        .user-table tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--matte-black);
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-details {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--ethereal-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .user-email {
+            color: rgba(248, 248, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .role-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .role-super-admin {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .role-admin {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--primary-gold);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .role-moderator {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .role-member {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-inactive {
+            background: rgba(156, 163, 175, 0.2);
+            color: #d1d5db;
+            border: 1px solid rgba(156, 163, 175, 0.3);
+        }
+
+        .status-suspended {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-select {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgba(28, 28, 28, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .modal-title {
+            color: var(--primary-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: rgba(248, 248, 255, 0.7);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--ethereal-white);
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(248, 248, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .user-manager {
+                padding: 1rem;
+            }
+            
+            .user-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .user-table {
+                font-size: 0.9rem;
+            }
+            
+            .user-table th,
+            .user-table td {
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="admin-logo">
+                <div class="ankh">☥</div>
+                <h1>User Manager</h1>
+            </div>
+            <div class="breadcrumb">
+                <a href="admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <span>/</span>
+                <span>User Manager</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- User Manager -->
+    <div class="user-manager">
+        <div class="manager-header">
+            <h1 class="manager-title">User Management System</h1>
+            <p class="manager-subtitle">Manage administrators, members, and user permissions</p>
+        </div>
+
+        <!-- Success/Error Messages -->
+        <div class="success-message" id="success-message">
+            <i class="fas fa-check-circle mr-2"></i><span id="success-text"></span>
+        </div>
+        <div class="error-message" id="error-message">
+            <i class="fas fa-exclamation-circle mr-2"></i><span id="error-text"></span>
+        </div>
+
+        <!-- Tabs -->
+        <div class="user-tabs">
+            <button class="tab-button active" onclick="switchTab('admin')">
+                <i class="fas fa-user-shield mr-2"></i>Admin Users
+            </button>
+            <button class="tab-button" onclick="switchTab('members')">
+                <i class="fas fa-users mr-2"></i>Members
+            </button>
+            <button class="tab-button" onclick="switchTab('permissions')">
+                <i class="fas fa-key mr-2"></i>Permissions
+            </button>
+            <button class="tab-button" onclick="switchTab('audit')">
+                <i class="fas fa-history mr-2"></i>Audit Log
+            </button>
+        </div>
+
+        <!-- Admin Users Tab -->
+        <div id="admin-tab" class="tab-content active">
+            <div class="user-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title"><i class="fas fa-user-shield mr-2"></i>Admin Users</h2>
+                    <div class="panel-actions">
+                        <button class="action-btn" onclick="openCreateUserModal('admin')">
+                            <i class="fas fa-plus"></i>Add Admin
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search admin users..." onkeyup="searchUsers('admin')">
+                </div>
+                
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Last Login</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-users-tbody">
+                        <!-- Admin users will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Members Tab -->
+        <div id="members-tab" class="tab-content">
+            <div class="user-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title"><i class="fas fa-users mr-2"></i>Community Members</h2>
+                    <div class="panel-actions">
+                        <button class="action-btn" onclick="openCreateUserModal('member')">
+                            <i class="fas fa-plus"></i>Add Member
+                        </button>
+                        <button class="action-btn secondary" onclick="exportMembers()">
+                            <i class="fas fa-download"></i>Export
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search members..." onkeyup="searchUsers('members')">
+                </div>
+                
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>Member</th>
+                            <th>Status</th>
+                            <th>Join Date</th>
+                            <th>Last Active</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="members-tbody">
+                        <!-- Members will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Permissions Tab -->
+        <div id="permissions-tab" class="tab-content">
+            <div class="user-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title"><i class="fas fa-key mr-2"></i>Role Permissions</h2>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <!-- Super Admin Permissions -->
+                    <div style="background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 10px; padding: 1.5rem;">
+                        <h3 style="color: #fca5a5; margin-bottom: 1rem; font-weight: 600;">Super Admin</h3>
+                        <ul style="list-style: none; color: rgba(248, 248, 255, 0.8);">
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Full system access</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>User management</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Content management</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>System settings</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Audit logs</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Backup/restore</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Admin Permissions -->
+                    <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 10px; padding: 1.5rem;">
+                        <h3 style="color: var(--primary-gold); margin-bottom: 1rem; font-weight: 600;">Admin</h3>
+                        <ul style="list-style: none; color: rgba(248, 248, 255, 0.8);">
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Content management</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Member management</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Event management</li>
+                            <li><i class="fas fa-times text-red-400 mr-2"></i>System settings</li>
+                            <li><i class="fas fa-times text-red-400 mr-2"></i>User creation</li>
+                            <li><i class="fas fa-times text-red-400 mr-2"></i>Backup/restore</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Moderator Permissions -->
+                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 10px; padding: 1.5rem;">
+                        <h3 style="color: #93c5fd; margin-bottom: 1rem; font-weight: 600;">Moderator</h3>
+                        <ul style="list-style: none; color: rgba(248, 248, 255, 0.8);">
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Content moderation</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Member support</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Event coordination</li>
+                            <li><i class="fas fa-times text-red-400 mr-2"></i>Content creation</li>
+                            <li><i class="fas fa-times text-red-400 mr-2"></i>System access</li>
+                            <li><i class="fas fa-times text-red-400 mr-2"></i>User management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audit Log Tab -->
+        <div id="audit-tab" class="tab-content">
+            <div class="user-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title"><i class="fas fa-history mr-2"></i>User Activity Audit Log</h2>
+                    <div class="panel-actions">
+                        <button class="action-btn secondary" onclick="exportAuditLog()">
+                            <i class="fas fa-download"></i>Export Log
+                        </button>
+                    </div>
+                </div>
+                
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>User</th>
+                            <th>Action</th>
+                            <th>Details</th>
+                            <th>IP Address</th>
+                        </tr>
+                    </thead>
+                    <tbody id="audit-tbody">
+                        <!-- Audit log entries will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create/Edit User Modal -->
+    <div id="user-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Create User</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <form id="user-form">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="user-name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="user-email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Role</label>
+                    <select id="user-role" class="form-select" required>
+                        <option value="">Select Role</option>
+                        <option value="super_admin">Super Admin</option>
+                        <option value="admin">Admin</option>
+                        <option value="moderator">Moderator</option>
+                        <option value="member">Member</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="user-password" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" id="user-password-confirm" class="form-input" required>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+                    <button type="button" class="action-btn secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="action-btn">Create User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-auth.js"></script>
+    <script>
+        // Debug function to test if functions are accessible
+        function testFunctions() {
+            console.log('🧪 Testing global functions...');
+            console.log('switchTab:', typeof switchTab);
+            console.log('openCreateUserModal:', typeof openCreateUserModal);
+            console.log('closeModal:', typeof closeModal);
+        }
+        // Check authentication with enhanced error handling
+        function checkAuthentication() {
+            if (typeof perAnkhAuth === 'undefined') {
+                console.error('PerAnkhAuth not loaded, checking manually');
+                const session = localStorage.getItem('perankh_admin_session');
+                const active = sessionStorage.getItem('perankh_admin_active');
+                
+                if (!session || !active) {
+                    console.log('No session found, redirecting to login');
+                    window.location.href = 'admin-login.html';
+                    return false;
+                }
+
+                try {
+                    const sessionData = JSON.parse(session);
+                    const loginTime = new Date(sessionData.loginTime);
+                    const now = new Date();
+                    const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+
+                    if (hoursDiff >= 8) {
+                        console.log('Session expired, redirecting to login');
+                        window.location.href = 'admin-login.html';
+                        return false;
+                    }
+
+                    return true;
+                } catch (error) {
+                    console.error('Session validation error:', error);
+                    window.location.href = 'admin-login.html';
+                    return false;
+                }
+            }
+
+            if (!perAnkhAuth.isAdminAuthenticated()) {
+                console.log('PerAnkhAuth check failed, redirecting to login');
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+
+            return true;
+        }
+
+        let currentUserType = '';
+        let editingUserId = null;
+
+        // Persistent admin users store
+        function getStoredAdminUsers() {
+            try {
+                const data = localStorage.getItem('perankh_admin_users');
+                return data ? JSON.parse(data) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+        function setStoredAdminUsers(users) {
+            try { localStorage.setItem('perankh_admin_users', JSON.stringify(users)); } catch (e) {}
+        }
+
+        // Persistent members store
+        function getStoredMembers() {
+            try {
+                const data = localStorage.getItem('perankh_members');
+                return data ? JSON.parse(data) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+        function setStoredMembers(users) {
+            try { localStorage.setItem('perankh_members', JSON.stringify(users)); } catch (e) {}
+        }
+
+        const auditLog = [
+            {
+                timestamp: '2024-01-15 14:30:22',
+                user: 'Master Temple Keeper',
+                action: 'User Created',
+                details: 'Created admin user: Sacred Administrator',
+                ip: '192.168.1.100'
+            },
+            {
+                timestamp: '2024-01-15 13:15:45',
+                user: 'Sacred Administrator',
+                action: 'Content Updated',
+                details: 'Modified page: Crystal Technology',
+                ip: '192.168.1.101'
+            },
+            {
+                timestamp: '2024-01-15 12:00:10',
+                user: 'Temple Moderator',
+                action: 'Member Status',
+                details: 'Activated member: Spiritual Seeker One',
+                ip: '192.168.1.102'
+            }
+        ];
+
+        // Switch between tabs - GLOBAL FUNCTION
+        function switchTab(tabName) {
+            console.log('🔄 Switching to tab:', tabName);
+            
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Load admin users
+        function loadAdminUsers() {
+            const adminUsers = getStoredAdminUsers();
+            const tbody = document.getElementById('admin-users-tbody');
+            tbody.innerHTML = adminUsers.map(user => `
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <div class="user-avatar">${user.avatar}</div>
+                            <div class="user-details">
+                                <div class="user-name">${user.name}</div>
+                                <div class="user-email">${user.email}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="role-badge role-${user.role.replace('_', '-')}">${formatRole(user.role)}</span></td>
+                    <td><span class="status-badge status-${user.status}">${user.status}</span></td>
+                    <td>${user.lastLogin}</td>
+                    <td>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button class="action-btn" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="editUser(${user.id}, 'admin')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            ${user.role !== 'super_admin' ? `
+                                <button class="action-btn danger" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="deleteUser(${user.id}, 'admin')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            ` : ''}
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Load members
+        function loadMembers() {
+            const members = getStoredMembers();
+            const tbody = document.getElementById('members-tbody');
+            tbody.innerHTML = members.map(member => `
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <div class="user-avatar">${member.avatar}</div>
+                            <div class="user-details">
+                                <div class="user-name">${member.name}</div>
+                                <div class="user-email">${member.email}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status-badge status-${member.status}">${member.status}</span></td>
+                    <td>${member.joinDate}</td>
+                    <td>${member.lastActive}</td>
+                    <td>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button class="action-btn" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="editUser(${member.id}, 'member')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="toggleMemberStatus(${member.id})">
+                                <i class="fas fa-power-off"></i>
+                            </button>
+                            <button class="action-btn danger" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="deleteUser(${member.id}, 'member')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Load audit log
+        function loadAuditLog() {
+            const tbody = document.getElementById('audit-tbody');
+            tbody.innerHTML = auditLog.map(entry => `
+                <tr>
+                    <td>${entry.timestamp}</td>
+                    <td>${entry.user}</td>
+                    <td>${entry.action}</td>
+                    <td>${entry.details}</td>
+                    <td>${entry.ip}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Format role display
+        function formatRole(role) {
+            const roleMap = {
+                'super_admin': 'Super Admin',
+                'admin': 'Admin',
+                'moderator': 'Moderator',
+                'member': 'Member'
+            };
+            return roleMap[role] || role;
+        }
+
+        // Open create user modal
+        function openCreateUserModal(userType) {
+            console.log('📝 Opening create user modal for:', userType);
+            currentUserType = userType;
+            editingUserId = null;
+            
+            document.getElementById('modal-title').textContent = `Create ${userType === 'admin' ? 'Admin User' : 'Member'}`;
+            document.getElementById('user-form').reset();
+            
+            // Set appropriate role options
+            const roleSelect = document.getElementById('user-role');
+            if (userType === 'admin') {
+                roleSelect.innerHTML = `
+                    <option value="">Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="moderator">Moderator</option>
+                `;
+            } else {
+                roleSelect.innerHTML = `
+                    <option value="member">Member</option>
+                `;
+                roleSelect.value = 'member';
+            }
+            
+            document.getElementById('user-modal').classList.add('active');
+        }
+
+        // Edit user
+        function editUser(userId, userType) {
+            // Find user data
+            const users = userType === 'admin' ? getStoredAdminUsers() : getStoredMembers();
+            const user = users.find(u => u.id === userId);
+            
+            if (!user) return;
+            
+            currentUserType = userType;
+            editingUserId = userId;
+            
+            document.getElementById('modal-title').textContent = `Edit ${user.name}`;
+            document.getElementById('user-name').value = user.name;
+            document.getElementById('user-email').value = user.email;
+            document.getElementById('user-role').value = user.role || 'member';
+            
+            // Hide password fields for editing
+            document.getElementById('user-password').required = false;
+            document.getElementById('user-password-confirm').required = false;
+            
+            document.getElementById('user-modal').classList.add('active');
+        }
+
+        // Close modal - GLOBAL FUNCTION
+        function closeModal() {
+            document.getElementById('user-modal').classList.remove('active');
+            editingUserId = null;
+            
+            // Reset password requirements
+            document.getElementById('user-password').required = true;
+            document.getElementById('user-password-confirm').required = true;
+        }
+
+        // Handle form submission
+        document.getElementById('user-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const role = document.getElementById('user-role').value;
+            const password = document.getElementById('user-password').value;
+            const confirmPassword = document.getElementById('user-password-confirm').value;
+            
+            // Validation
+            if (!name || !email || !role) {
+                showError('Please fill in all required fields');
+                return;
+            }
+            
+            if (password && password !== confirmPassword) {
+                showError('Passwords do not match');
+                return;
+            }
+            
+            if (currentUserType === 'admin') {
+                const users = getStoredAdminUsers();
+                if (editingUserId) {
+                    const idx = users.findIndex(u => u.id === editingUserId);
+                    if (idx > -1) users[idx] = { ...users[idx], name, email, role };
+                } else {
+                    users.push({ id: Date.now(), username: name, name, email, role, status: 'active', lastLogin: 'just now', avatar: name.charAt(0).toUpperCase() });
+                }
+                setStoredAdminUsers(users);
+                loadAdminUsers();
+            } else {
+                const members = getStoredMembers();
+                if (editingUserId) {
+                    const idx = members.findIndex(u => u.id === editingUserId);
+                    if (idx > -1) members[idx] = { ...members[idx], name, email };
+                } else {
+                    members.push({ id: Date.now(), name, email, status: 'active', joinDate: new Date().toISOString().slice(0,10), lastActive: 'just now', avatar: name.charAt(0).toUpperCase() });
+                }
+                setStoredMembers(members);
+                loadMembers();
+            }
+
+            closeModal();
+        });
+
+        // Delete user
+        function deleteUser(userId, userType) {
+            const users = userType === 'admin' ? getStoredAdminUsers() : getStoredMembers();
+            const user = users.find(u => u.id === userId);
+            
+            if (!user) return;
+            
+            if (confirm(`Are you sure you want to delete ${user.name}? This action cannot be undone.`)) {
+                // Persisted deletion
+                const index = users.findIndex(u => u.id === userId);
+                if (index > -1) {
+                    users.splice(index, 1);
+                    if (userType === 'admin') setStoredAdminUsers(users); else setStoredMembers(users);
+                    showSuccess(`User ${user.name} deleted successfully!`);
+                    if (userType === 'admin') loadAdminUsers(); else loadMembers();
+                }
+            }
+        }
+
+        // Toggle member status
+        function toggleMemberStatus(memberId) {
+            const members = getStoredMembers();
+            const member = members.find(m => m.id === memberId);
+            if (!member) return;
+            
+            const newStatus = member.status === 'active' ? 'inactive' : 'active';
+            const action = newStatus === 'active' ? 'activated' : 'deactivated';
+            
+            if (confirm(`Are you sure you want to ${newStatus === 'active' ? 'activate' : 'deactivate'} ${member.name}?`)) {
+                member.status = newStatus;
+                setStoredMembers(members);
+                showSuccess(`Member ${member.name} ${action} successfully!`);
+                loadMembers();
+            }
+        }
+
+        // Search users
+        function searchUsers(userType) {
+            const searchTerm = event.target.value.toLowerCase();
+            const users = userType === 'admin' ? getStoredAdminUsers() : getStoredMembers();
+            
+            const filteredUsers = users.filter(user => 
+                user.name.toLowerCase().includes(searchTerm) ||
+                user.email.toLowerCase().includes(searchTerm)
+            );
+            
+            // Re-render table with filtered results
+            if (userType === 'admin') {
+                const tbody = document.getElementById('admin-users-tbody');
+                tbody.innerHTML = filteredUsers.map(user => `
+                    <tr>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar">${user.avatar}</div>
+                                <div class="user-details">
+                                    <div class="user-name">${user.name}</div>
+                                    <div class="user-email">${user.email}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="role-badge role-${user.role.replace('_', '-')}">${formatRole(user.role)}</span></td>
+                        <td><span class="status-badge status-${user.status}">${user.status}</span></td>
+                        <td>${user.lastLogin}</td>
+                        <td>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="action-btn" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="editUser(${user.id}, 'admin')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                ${user.role !== 'super_admin' ? `
+                                    <button class="action-btn danger" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="deleteUser(${user.id}, 'admin')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Export functions
+        function exportMembers() {
+            alert('Member data export initiated! (Demo implementation)');
+        }
+
+        function exportAuditLog() {
+            alert('Audit log export initiated! (Demo implementation)');
+        }
+
+        // Utility functions
+        function showSuccess(message) {
+            const element = document.getElementById('success-message');
+            document.getElementById('success-text').textContent = message;
+            element.style.display = 'block';
+            setTimeout(() => element.style.display = 'none', 3000);
+        }
+
+        function showError(message) {
+            const element = document.getElementById('error-message');
+            document.getElementById('error-text').textContent = message;
+            element.style.display = 'block';
+            setTimeout(() => element.style.display = 'none', 5000);
+        }
+
+        // Initialize page when DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Perform authentication check after DOM is loaded
+            if (!checkAuthentication()) {
+                // Authentication failed, page will redirect
+                return;
+            }
+
+            // Ensure admin session is marked active on this tab
+            try { sessionStorage.setItem('perankh_admin_active', 'true'); } catch (e) {}
+
+            // Test function accessibility
+            testFunctions();
+            
+            // Initialize page content
+            loadAdminUsers();
+            loadMembers();
+            loadAuditLog();
+
+            // Set up modal close functionality
+            document.getElementById('user-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+
+            // Handle form submission
+            document.getElementById('user-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('user-name').value;
+                const email = document.getElementById('user-email').value;
+                const password = document.getElementById('user-password').value;
+                const role = document.getElementById('user-role').value;
+
+                if (editingUserId) {
+                    // Update existing user
+                    alert(`User "${name}" updated successfully! (Demo implementation)`);
+                } else {
+                    // Create new user
+                    alert(`${currentUserType === 'admin' ? 'Admin' : 'Member'} "${name}" created successfully! (Demo implementation)`);
+                }
+
+                closeModal();
+                
+                // Refresh the appropriate user list
+                if (currentUserType === 'admin') {
+                    loadAdminUsers();
+                } else {
+                    loadMembers();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
