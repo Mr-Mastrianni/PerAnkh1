@@ -25,17 +25,23 @@ async function initHeroScene({ reducedMotion = false } = {}) {
     ({ FXAAShader } = await import('three/examples/jsm/shaders/FXAAShader.js'));
   } catch (e) {
     console.warn('Three.js post-processing unavailable; using basic renderer.', e);
-    return initHeroScene({ reducedMotion, usePostProcessing: false });
+    return initFallback2D(canvas, section);
   }
   console.log('Hero scene: Three.js loaded');
 
   // Renderer
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: true,
-    alpha: true,
-    powerPreference: 'high-performance'
-  });
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,
+      powerPreference: 'high-performance'
+    });
+  } catch (e) {
+    console.warn('WebGL not supported, falling back to 2D');
+    return initFallback2D(canvas, section);
+  }
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
@@ -659,13 +665,14 @@ async function initHeroScene({ reducedMotion = false } = {}) {
   // Animation loop
   const clock = new THREE.Clock();
   function animate() {
-    if (!reducedMotion) requestAnimationFrame(animate);
-    if (!isVisible && !reducedMotion) return;
+    requestAnimationFrame(animate);
+    if (!isVisible) return;
 
     const t = clock.getElapsedTime();
 
-    // Subtle motions
-    pyramid.rotation.y += 0.0018;
+    // Subtle motions (skip if reduced motion is preferred)
+    if (!reducedMotion) {
+      pyramid.rotation.y += 0.0018;
     mushroom.rotation.y = Math.sin(t * 0.2) * 0.15;
     const capScale = 1 + Math.sin(t * 0.9) * 0.03;
     mushroom.children.forEach((child) => {
@@ -762,6 +769,7 @@ async function initHeroScene({ reducedMotion = false } = {}) {
       }
     }
     pos.needsUpdate = true;
+    }
 
     composer.render();
   }
