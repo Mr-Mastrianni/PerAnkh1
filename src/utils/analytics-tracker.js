@@ -21,6 +21,16 @@
 
   async function track(type = 'pageview', data = {}) {
     if (isAdminPage()) return; // do not track admin pages
+    
+    // Temporarily disabled to avoid CSP violations during development
+    // TODO: Configure proper CSP for analytics endpoint
+    console.log(`Analytics: ${type}`, { 
+      path: location.pathname, 
+      sessionId: getSessionId(),
+      ...data 
+    });
+    return;
+    
     try {
       await fetch(`${API_BASE}/api/analytics/track`, {
         method: 'POST',

@@ -70,39 +70,7 @@
             opacity: 0.2;
         }
         
-        .geometry-element {
-            position: absolute;
-            border: 1px solid var(--golden-ankh);
-            opacity: 0.15;
-            animation: sacredFloat 12s ease-in-out infinite;
-        }
-        
-        .geometry-1 {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 5%;
-            border-radius: 50%;
-            animation-delay: 0s;
-        }
-        
-        .geometry-2 {
-            width: 200px;
-            height: 200px;
-            top: 50%;
-            right: 10%;
-            border-radius: 50%;
-            animation-delay: 4s;
-        }
-        
-        .geometry-3 {
-            width: 150px;
-            height: 150px;
-            top: 30%;
-            left: 50%;
-            transform: rotate(45deg);
-            animation-delay: 8s;
-        }
+        /* Geometry elements removed */
         
         @keyframes sacredFloat {
             0%, 100% { 
@@ -443,12 +411,7 @@
     <link rel="stylesheet" href="src/components/side-nav.css">
     <script src="src/components/side-nav.js" defer></script>
     
-    <!-- Sacred Geometry Background -->
-    <div class="sacred-geometry">
-        <div class="geometry-element geometry-1"></div>
-        <div class="geometry-element geometry-2"></div>
-        <div class="geometry-element geometry-3"></div>
-    </div>
+    <!-- Sacred Geometry Background removed -->
 
     <!-- Login Container -->
     <div class="login-container">
@@ -803,14 +766,7 @@
             window.adminAuth = new AdminAuth();
         });
 
-        // Dynamic geometry animation
-        setInterval(() => {
-            const geometryElements = document.querySelectorAll('.geometry-element');
-            geometryElements.forEach(element => {
-                const hue = Math.random() * 60 + 30; // Gold to orange range
-                element.style.borderColor = `hsl(${hue}, 70%, 60%)`;
-            });
-        }, 3000);
+        // Geometry animation removed
     </script>
 </body>
 </html>
