@@ -185,6 +185,12 @@
         .floating-ankh {
             animation: float 6s ease-in-out infinite;
         }
+        
+        .floating-ankh img {
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
+        }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
@@ -215,7 +221,7 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center">
                 <div class="floating-ankh mb-8">
-                    <i class="fas fa-ankh text-per-ankh-gold text-6xl md:text-8xl pulse-glow"></i>
+                    <img src="../floating-ankh.png" alt="Sacred Ankh Symbol" class="mx-auto">
                 </div>
                 <h1 class="font-cinzel text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
                     PER ANKH
@@ -1057,7 +1063,7 @@
         <div class="container mx-auto px-6">
             <div class="text-center">
                 <div class="floating-ankh mb-6">
-                    <i class="fas fa-ankh text-per-ankh-gold text-4xl"></i>
+                    <img src="../floating-ankh.png" alt="Sacred Ankh Symbol" class="mx-auto" style="width: 80px; height: auto;">
                 </div>
                 <h3 class="font-cinzel text-2xl font-bold text-per-ankh-gold mb-4">PER ANKH</h3>
                 <p class="text-gray-300 mb-6">

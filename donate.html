@@ -123,11 +123,11 @@
             position: absolute;
             top: 20%;
             left: 50%;
-            font-size: 4rem;
-            color: var(--primary-gold);
-            font-family: 'Cinzel', serif;
-            animation: ankh3DRotation 12s linear infinite;
+            width: 120px;
+            height: auto;
+            animation: ankh3DRotation 8s linear infinite;
             perspective: 1000px;
+            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
         }
         
         .hero-content {
@@ -248,6 +248,91 @@
             font-weight: 600;
         }
         
+        /* Book Store Styles */
+        .books-grid {
+            position: relative;
+        }
+        
+        .book-item {
+            transition: all 0.3s ease;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .book-item:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-5px);
+        }
+        
+        .book-showcase {
+            perspective: 1000px;
+        }
+        
+        .book-cover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+        
+        .book-cover:hover {
+            transform: rotateY(5deg) rotateX(5deg) scale(1.05);
+            filter: drop-shadow(0 20px 40px rgba(212, 175, 55, 0.4));
+        }
+        
+        .book-glow {
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .book-showcase:hover .book-glow {
+            opacity: 1;
+            animation: bookPulse 2s ease-in-out infinite alternate;
+        }
+        
+        .price-section {
+            min-width: 200px;
+        }
+        
+        .purchase-buttons .sacred-button {
+            min-width: 160px;
+            font-size: 0.9rem;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .purchase-buttons .sacred-button:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .coming-soon-books {
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .book-item {
+                text-align: center;
+            }
+            
+            .book-details {
+                text-align: center;
+            }
+            
+            .purchase-buttons {
+                justify-content: center;
+            }
+        }
+        
+        @keyframes bookPulse {
+            0% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.4;
+                transform: scale(1.05);
+            }
+        }
+        
         /* Mystical Animations */
         @keyframes cosmicFlow {
             0% {
@@ -278,23 +363,23 @@
         @keyframes ankh3DRotation {
             0% {
                 transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
-                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)) brightness(1);
             }
             25% {
                 transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
-                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 1)) brightness(1.2);
             }
             50% {
                 transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
-                text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+                filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.6)) brightness(0.8);
             }
             75% {
                 transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
-                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 1)) brightness(1.2);
             }
             100% {
                 transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
-                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)) brightness(1);
             }
         }
         
@@ -387,7 +472,7 @@
         <section class="hero-section">
             <div class="hero-background"></div>
             <div class="temple-silhouette"></div>
-            <div class="floating-ankh">☥</div>
+            <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
             
             <div class="hero-content">
                 <h1 class="hero-title">Support Per-Ankh</h1>
@@ -441,6 +526,101 @@
                             <p class="text-xl font-bold mb-8" style="color: var(--primary-gold);">
                                 💜 Donate today & be a part of the movement!
                             </p>
+                        </div>
+                        
+                        <!-- Sacred Books Store -->
+                        <div class="sacred-card mb-8">
+                            <h3 class="section-title text-3xl mb-6 text-center">Sacred Books Store</h3>
+                            <p class="text-center text-lg mb-8" style="color: var(--ethereal-white);">
+                                Expand your consciousness with transformative literature from our curated collection of sacred texts and consciousness-expanding works.
+                            </p>
+                            
+                            <!-- Book Grid -->
+                            <div class="books-grid max-w-6xl mx-auto">
+                                <!-- Book 1: Sacred Mushroom Rituals -->
+                                <div class="book-item sacred-card p-6 mb-6">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                                        <!-- Book Cover -->
+                                        <div class="text-center">
+                                            <div class="book-showcase relative inline-block">
+                                                <img src="sacredmushritual.jpg" 
+                                                     alt="Sacred Mushroom Rituals: The Search for the Blood of Quetzalcoatl by Tom Lane" 
+                                                     class="book-cover w-48 h-auto rounded-lg shadow-2xl mx-auto transform transition-all duration-300 hover:scale-105"
+                                                     style="box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);">
+                                                <div class="book-glow absolute inset-0 rounded-lg"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Book Details -->
+                                        <div class="book-details md:col-span-2">
+                                            <h4 class="text-2xl font-bold mb-2" 
+                                                style="color: var(--primary-gold); font-family: 'Cinzel', serif;">
+                                                Sacred Mushroom Rituals
+                                            </h4>
+                                            <h5 class="text-lg mb-2" 
+                                                style="color: var(--ethereal-white); font-family: 'Cinzel', serif;">
+                                                The Search for the Blood of Quetzalcoatl
+                                            </h5>
+                                            <p class="text-base mb-4" style="color: var(--temple-bronze);">
+                                                by Tom Lane
+                                            </p>
+                                            
+                                            <div class="book-description mb-6">
+                                                <p class="text-sm leading-relaxed mb-3" style="color: var(--ethereal-white);">
+                                                    Embark on a profound journey into the ancient wisdom of sacred mushroom rituals and the mystical quest for Quetzalcoatl's divine essence. This transformative work explores the intersection of consciousness, spirituality, and the sacred plant medicines that have guided humanity's spiritual evolution for millennia.
+                                                </p>
+                                            </div>
+                                            
+                                            <!-- Purchase Options -->
+                                            <div class="book-purchase-options">
+                                                <div class="flex flex-col sm:flex-row gap-4 items-start">
+                                                    <div class="price-section">
+                                                        <p class="text-2xl font-bold mb-2" style="color: var(--primary-gold);">
+                                                            $65.00
+                                                        </p>
+                                                        <p class="text-sm" style="color: var(--ethereal-white);">
+                                                            Physical Book + Digital Copy
+                                                        </p>
+                                                    </div>
+                                                    <div class="purchase-buttons flex flex-col gap-2">
+                                                        <button onclick="purchaseBook('sacred-mushroom-rituals', 65.00)" 
+                                                                class="sacred-button bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400">
+                                                            📖 Purchase Book
+                                                        </button>
+                                                        <button onclick="addToCart('sacred-mushroom-rituals', 65.00)" 
+                                                                class="sacred-button bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-blue-500 hover:to-indigo-400">
+                                                            🛒 Add to Cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Placeholder for Future Books -->
+                                <div class="coming-soon-books text-center py-8">
+                                    <div class="sacred-card p-6">
+                                        <h4 class="text-xl font-bold mb-4" style="color: var(--primary-gold); font-family: 'Cinzel', serif;">
+                                            More Sacred Texts Coming Soon
+                                        </h4>
+                                        <p class="text-base mb-4" style="color: var(--ethereal-white);">
+                                            We're expanding our collection with more consciousness-expanding literature, ancient wisdom texts, and transformative spiritual works.
+                                        </p>
+                                        <div class="flex justify-center gap-4">
+                                            <div class="w-16 h-20 bg-gradient-to-br from-amber-900 to-yellow-800 rounded opacity-50 flex items-center justify-center">
+                                                <span class="text-2xl">📚</span>
+                                            </div>
+                                            <div class="w-16 h-20 bg-gradient-to-br from-amber-900 to-yellow-800 rounded opacity-50 flex items-center justify-center">
+                                                <span class="text-2xl">📜</span>
+                                            </div>
+                                            <div class="w-16 h-20 bg-gradient-to-br from-amber-900 to-yellow-800 rounded opacity-50 flex items-center justify-center">
+                                                <span class="text-2xl">🔮</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                         <!-- Sacred Donation Form -->
@@ -604,6 +784,135 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        // Shopping cart functionality
+        let cart = [];
+        
+        // Book purchase functionality
+        function purchaseBook(bookId, price) {
+            // For now, directly process the purchase
+            processBookPurchase(bookId, price);
+        }
+        
+        function addToCart(bookId, price) {
+            const book = {
+                id: bookId,
+                price: price,
+                title: getBookTitle(bookId),
+                quantity: 1
+            };
+            
+            // Check if book already in cart
+            const existingItem = cart.find(item => item.id === bookId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push(book);
+            }
+            
+            updateCartDisplay();
+            showCartNotification(`"${book.title}" added to cart!`);
+        }
+        
+        function getBookTitle(bookId) {
+            const bookTitles = {
+                'sacred-mushroom-rituals': 'Sacred Mushroom Rituals'
+            };
+            return bookTitles[bookId] || 'Unknown Book';
+        }
+        
+        function processBookPurchase(bookId, price) {
+            const bookTitle = getBookTitle(bookId);
+            
+            // Create a simple purchase form popup or redirect to payment
+            const purchaseData = {
+                type: 'book_purchase',
+                bookId: bookId,
+                title: bookTitle,
+                price: price,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log('Processing book purchase:', purchaseData);
+            
+            // For now, show a confirmation
+            alert(`Thank you for purchasing "${bookTitle}"!\n\nPrice: $${price}\n\nYou will be redirected to our secure payment processor.`);
+            
+            // Here you would typically redirect to your payment processor
+            // window.location.href = `/checkout?item=${bookId}&price=${price}`;
+        }
+        
+        function updateCartDisplay() {
+            // This would update a cart icon/counter if you have one
+            console.log('Cart updated:', cart);
+        }
+        
+        function showCartNotification(message) {
+            // Create a temporary notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // Card number formatting
+        document.addEventListener('DOMContentLoaded', function() {
+            const cardNumberInput = document.querySelector('input[name="cardNumber"]');
+            const expiryInput = document.querySelector('input[name="expiry"]');
+            
+            if (cardNumberInput) {
+                cardNumberInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+                    e.target.value = value;
+                });
+            }
+            
+            if (expiryInput) {
+                expiryInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + ' / ' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+        });
+        
+        // Form submission handler
+        document.getElementById('donationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const donationData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                amount: formData.get('amount'),
+                message: formData.get('message'),
+                cardDetails: {
+                    email: formData.get('cardEmail'),
+                    cardNumber: formData.get('cardNumber'),
+                    expiry: formData.get('expiry'),
+                    cvc: formData.get('cvc'),
+                    country: formData.get('country'),
+                    zipCode: formData.get('zipCode')
+                }
+            };
+            
+            // Here you would typically send this to your payment processor
+            console.log('Donation Data:', donationData);
+            
+            // Show success message
+            alert('Thank you for your sacred contribution! Your donation is being processed.');
+        });
+    </script>
 </body>
 <script src="/src/utils/analytics-tracker.js"></script>
 </html>
