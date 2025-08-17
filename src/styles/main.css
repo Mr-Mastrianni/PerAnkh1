@@ -169,52 +169,7 @@ body {
     overflow: hidden;
 }
 
-.geometry-element {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border: 2px solid rgba(218, 165, 32, 0.1);
-    border-radius: 50%;
-    animation: geometryFloat 8s ease-in-out infinite;
-}
-
-.geometry-element:nth-child(1) {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.geometry-element:nth-child(2) {
-    top: 20%;
-    right: 15%;
-    animation-delay: 2s;
-    transform: rotate(45deg);
-}
-
-.geometry-element:nth-child(3) {
-    bottom: 30%;
-    left: 20%;
-    animation-delay: 4s;
-    border-radius: 0;
-}
-
-.geometry-element:nth-child(4) {
-    bottom: 15%;
-    right: 10%;
-    animation-delay: 6s;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-@keyframes geometryFloat {
-    0%, 100% { 
-        transform: translateY(0px) rotate(0deg);
-        opacity: 0.1;
-    }
-    50% { 
-        transform: translateY(-30px) rotate(180deg);
-        opacity: 0.3;
-    }
-}
+/* Geometry elements removed */
 
 /* 11. Responsive Design */
 @media (max-width: 768px) {
@@ -232,16 +187,12 @@ body {
         flex-direction: column;
     }
     
-    .geometry-element {
-        width: 60px;
-        height: 60px;
-    }
+    /* Geometry elements removed */
 }
 
 /* 12. Print Styles */
 @media print {
-    .sacred-geometry-bg,
-    .geometry-element {
+    .sacred-geometry-bg {
         display: none;
     }
     
