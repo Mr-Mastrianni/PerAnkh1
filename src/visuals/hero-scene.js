@@ -13,16 +13,17 @@ async function initHeroScene({ reducedMotion = false } = {}) {
   // Mark hero as 3D-active for CSS adjustments
   section.setAttribute('data-hero3d', 'on');
 
-  // Import Three.js and post-processing modules locally
+  // Import Three.js and post-processing modules from CDN for GitHub Pages compatibility
   let THREE, RGBELoader, EffectComposer, RenderPass, UnrealBloomPass, ShaderPass, FXAAShader;
   try {
-    THREE = await import('three');
-    ({ RGBELoader } = await import('three/examples/jsm/loaders/RGBELoader.js'));
-    ({ EffectComposer } = await import('three/examples/jsm/postprocessing/EffectComposer.js'));
-    ({ RenderPass } = await import('three/examples/jsm/postprocessing/RenderPass.js'));
-    ({ UnrealBloomPass } = await import('three/examples/jsm/postprocessing/UnrealBloomPass.js'));
-    ({ ShaderPass } = await import('three/examples/jsm/postprocessing/ShaderPass.js'));
-    ({ FXAAShader } = await import('three/examples/jsm/shaders/FXAAShader.js'));
+    // Use CDN imports for GitHub Pages compatibility
+    THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+    ({ RGBELoader } = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/RGBELoader.js'));
+    ({ EffectComposer } = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js'));
+    ({ RenderPass } = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/RenderPass.js'));
+    ({ UnrealBloomPass } = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js'));
+    ({ ShaderPass } = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/ShaderPass.js'));
+    ({ FXAAShader } = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/shaders/FXAAShader.js'));
   } catch (e) {
     console.warn('Three.js post-processing unavailable; using basic renderer.', e);
     return initFallback2D(canvas, section);
