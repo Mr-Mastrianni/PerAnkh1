@@ -91,11 +91,12 @@
         
         .floating-ankh {
             position: fixed;
-            opacity: 0.1;
-            font-size: 8rem;
-            color: var(--sacred-gold);
+            opacity: 0.15;
+            width: 120px;
+            height: auto;
             pointer-events: none;
             animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
         }
         
         @keyframes float {
@@ -112,8 +113,8 @@
     </style>
 </head>
 <body>
-    <div class="floating-ankh" style="top: 10%; right: 10%;">☥</div>
-    <div class="floating-ankh" style="top: 60%; left: 5%;">☥</div>
+    <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh" style="top: 10%; right: 10%;">
+    <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh" style="top: 60%; left: 5%;">
     <div class="floating-ankh" style="top: 30%; right: 80%;">👁️</div>
 
     <!-- Hero Section -->

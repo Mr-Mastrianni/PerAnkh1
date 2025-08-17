@@ -168,12 +168,11 @@
             position: absolute;
             top: 20%;
             left: 50%;
-            transform: translateX(-50%);
-            font-size: 4rem;
-            color: var(--primary-gold);
-            animation: ankh3DRotation 8s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
-            filter: drop-shadow(0 10px 20px rgba(212, 175, 55, 0.4));
+            width: 120px;
+            height: auto;
+            animation: ankh3DRotation 8s linear infinite;
+            perspective: 1000px;
+            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
         }
         
         .hero-title {
@@ -284,23 +283,23 @@
         @keyframes ankh3DRotation {
             0% {
                 transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
-                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)) brightness(1);
             }
             25% {
                 transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
-                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 1)) brightness(1.2);
             }
             50% {
                 transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
-                text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+                filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.6)) brightness(0.8);
             }
             75% {
                 transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
-                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 1)) brightness(1.2);
             }
             100% {
                 transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
-                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)) brightness(1);
             }
         }
         
@@ -495,7 +494,7 @@
             <div class="temple-silhouette"></div>
             <div class="pyramid-left"></div>
             <div class="pyramid-right"></div>
-            <div class="floating-ankh">☥</div>
+            <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
             
             <div class="hero-content">
                 <h1 class="hero-title">WELCOME TO PER ANKH</h1>
