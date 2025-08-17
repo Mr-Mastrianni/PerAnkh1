@@ -668,8 +668,16 @@
         });
     </script>
     
+    <!-- Three.js for 3D hero scene -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/shaders/FXAAShader.js"></script>
+    
     <!-- Physically-based hero background visuals -->
-    <script type="module" src="src/visuals/hero-scene.js"></script>
+    <script src="src/visuals/hero-scene.js"></script>
+    <script src="./src/utils/analytics-tracker.js"></script>
 </body>
-  <script src="/src/utils/analytics-tracker.js"></script>
 </html>
