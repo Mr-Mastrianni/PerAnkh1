@@ -166,7 +166,7 @@
         
         .floating-ankh {
             position: absolute;
-            top: 20%;
+            top: 10%;
             left: 50%;
             width: 120px;
             height: auto;
@@ -455,27 +455,7 @@
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip to main content</a>
     
-    <!-- Navigation -->
-    <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <img src="PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
-                    <a href="index.html" class="text-2xl font-bold" style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
-                </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a Member</a>
-                    <a href="events.html" class="text-white hover:text-yellow-400 transition-colors">Events</a>
-                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos & Structure</a>
-                    <a href="ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
-                    <a href="donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
-                    <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
-                    <a href="calculator.html" class="text-white hover:text-yellow-400 transition-colors">Calculator</a>
-                    <a href="admin-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Navigation is now handled by side-nav.js -->
     <link rel="stylesheet" href="src/components/side-nav.css">
     <script src="src/components/side-nav.js" defer></script>
 
@@ -540,7 +520,7 @@
                         </a>
                     </div>
                     <div class="text-center">
-                        <div class="text-8xl ankh-symbol spore-animation" style="color: var(--golden-ankh); opacity: 0.8;">☥</div>
+                        <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh" style="position: relative; top: auto; left: auto; transform: none; margin: 0 auto; display: block;">
                     </div>
                 </div>
             </div>
@@ -550,9 +530,55 @@
         <section class="py-16 bg-gray-100 text-center">
             <div class="container mx-auto px-6">
                 <h3 class="text-3xl md:text-4xl font-bold mb-8 ankh-symbol" style="color: var(--consciousness-purple);">UPCOMING EVENTS</h3>
-                <div class="consciousness-card bg-white bg-opacity-10 p-8 rounded-lg max-w-2xl mx-auto" style="background-color: var(--earth-brown); color: var(--mycelium-white);">
-                    <h4 class="text-2xl font-bold mb-4">📅 Add these dates to your calendars</h4>
-                    <p class="text-lg">Stay tuned for upcoming ceremonies, workshops, and community gatherings.</p>
+                
+                <!-- Events Grid -->
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    
+                    <!-- Entheo Cup Event -->
+                    <div class="consciousness-card bg-white bg-opacity-10 p-4 rounded-lg flex flex-col" style="background-color: var(--dark-purple); color: var(--ethereal-white);">
+                        <img src="upcomingevents/Entheo-Cup.jpg" alt="Entheo Cup Detroit 2025" class="w-full h-56 object-contain rounded-lg mb-4">
+                        <div class="flex-grow">
+                            <h4 class="text-lg font-bold mb-2" style="color: var(--primary-gold);">ENTHEO CUP</h4>
+                            <p class="text-base font-semibold mb-2">Detroit, August 23, 2025</p>
+                            <p class="text-sm mb-2">Competition • Event • Awards</p>
+                            <p class="text-xs leading-relaxed">Fundraiser by Michigan Psychedelic Society, Detroit Psychedelic Society, Kilindi Iyi Community Lab, Oakland Hyphae</p>
+                        </div>
+                    </div>
+
+                    <!-- Mushroom Growing Workshop -->
+                    <div class="consciousness-card bg-white bg-opacity-10 p-4 rounded-lg flex flex-col" style="background-color: var(--dark-purple); color: var(--ethereal-white);">
+                        <img src="upcomingevents/Mushroom-Growing-workshop-1080-x-1350-px.png" alt="Mushroom Growing Workshop" class="w-full h-56 object-contain rounded-lg mb-4">
+                        <div class="flex-grow">
+                            <h4 class="text-lg font-bold mb-2" style="color: var(--primary-gold);">MUSHROOM GROW CLASS</h4>
+                            <p class="text-base font-semibold mb-2">Sunday, August 24th, 2025</p>
+                            <p class="text-sm mb-1">12:00 PM - 4:30 PM</p>
+                            <p class="text-sm mb-1">With Moudou Baqui</p>
+                            <p class="text-sm mb-2">@ Per-Ankh<br>15605 Woodrow Wilson, Detroit, MI</p>
+                            <p class="text-lg font-bold" style="color: var(--sacred-amber);">$65</p>
+                        </div>
+                    </div>
+
+                    <!-- Midnight Mass -->
+                    <div class="consciousness-card bg-white bg-opacity-10 p-4 rounded-lg flex flex-col" style="background-color: var(--dark-purple); color: var(--ethereal-white);">
+                        <img src="upcomingevents/Copy-of-FUNGAL-FUTUIRES-Sacred-Mushrooms-Sustainability-Instagram-Post-45.png" alt="Midnight Mass Ceremony" class="w-full h-56 object-contain rounded-lg mb-4">
+                        <div class="flex-grow">
+                            <h4 class="text-lg font-bold mb-2" style="color: var(--primary-gold);">MIDNIGHT MASS</h4>
+                            <p class="text-base font-semibold mb-2">August 31, 2025</p>
+                            <p class="text-sm mb-2">8:30 PM - Midnight</p>
+                            <p class="text-xs mb-1">Wear ceremonial whites or comfortable clothing</p>
+                            <p class="text-xs mb-2">Refreshments will be available</p>
+                            <p class="text-sm">Per-Ankh House of Life<br>15605 Woodrow Wilson, Detroit, MI 48238</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Call to Action -->
+                <div class="mt-12">
+                    <p class="text-lg mb-4" style="color: var(--consciousness-purple);">📅 Mark your calendars and join our sacred community gatherings</p>
+                    <a href="events.html" class="inline-block bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all">
+                        View All Events
+                    </a>
                 </div>
             </div>
         </section>
@@ -560,7 +586,7 @@
         <!-- Support Section -->
         <section class="consciousness-gradient py-20 text-white text-center">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 ankh-symbol" style="color: var(--golden-ankh);">🙏 Support Our Vision Of Light and Transformation 🙏</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 ankh-symbol" style="color: var(--golden-ankh);">Support Our Vision Of Life and Transformation</h2>
                 <div class="max-w-4xl mx-auto">
                     <p class="text-lg mb-6 leading-relaxed">
                         At Per-Ankh Church, we are dedicated to fostering spiritual growth, healing, and community empowerment. Your donation fuels the heart of Per-Ankh Church. From sacred ceremonies and workshops to community outreach and spiritual guidance, your support helps us grow as a beacon of light and transformation.
@@ -569,7 +595,7 @@
                         With your support, we can continue to expand our mission, touch more lives, and spread the light of spiritual awakening across the globe.
                     </p>
                     <p class="text-lg mb-8 leading-relaxed">
-                        🙏 Every contribution, no matter the size, makes a difference. Click below and Donate now to empower our work!!!
+                        Every contribution, no matter the size, makes a difference. Click below and Donate now to empower our work!!!
                     </p>
                     <a href="donate.html" class="inline-block bg-yellow-500 text-gray-900 px-10 py-4 rounded-full text-xl font-bold hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-lg">
                         Donate
