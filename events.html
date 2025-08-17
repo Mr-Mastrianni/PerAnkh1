@@ -223,6 +223,24 @@
             transition: all 0.3s ease;
             animation: containerGlow 6s ease-in-out infinite alternate;
         }
+
+        /* Form Input Styling */
+        .consciousness-card input[type="text"],
+        .consciousness-card input[type="email"],
+        .consciousness-card input[type="tel"],
+        .consciousness-card select {
+            background-color: white !important;
+            color: #333 !important;
+            border: 2px solid #d1d5db !important;
+        }
+
+        .consciousness-card input[type="text"]:focus,
+        .consciousness-card input[type="email"]:focus,
+        .consciousness-card input[type="tel"]:focus,
+        .consciousness-card select:focus {
+            border-color: #f59e0b !important;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1) !important;
+        }
         
         .event-card:hover {
             transform: translateY(-5px);
@@ -495,74 +513,69 @@
                         <p style="color: var(--ethereal-white); font-size: 1.1rem;">Please scroll down to find the event you want to attend. Thank you!</p>
                     </div>
                     
-                    <!-- Sacred Grow Classes Section -->
+                    <!-- Upcoming Events Section -->
                     <div class="mb-16">
-                        <h3 class="text-3xl font-bold text-center mb-8" style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">Sacred Grow Classes</h3>
-                        
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                            <!-- Mushroom Grow Class 101 -->
+                            
+                            <!-- Entheo Cup Event -->
                             <div class="event-card">
-                                <div class="absolute top-0 left-0 w-full h-full opacity-10">
-                                    <div class="flex justify-center items-center h-full">
-                                        <i class="fas fa-seedling text-8xl" style="color: var(--primary-gold);"></i>
-                                    </div>
-                                </div>
-                                <div class="relative z-10">
-                                    <h4 class="event-title">MUSHROOM</h4>
-                                    <h5 class="text-xl font-semibold mb-2" style="color: var(--ethereal-white);">GROW CLASS 101</h5>
-                                    <p class="text-sm mb-4" style="color: var(--ethereal-white); opacity: 0.9;">Learn the fundamentals of mushroom cultivation</p>
-                                    <div class="text-right">
-                                        <span class="event-price">$65</span>
+                                <div class="relative">
+                                    <img src="upcomingevents/Entheo-Cup.jpg" alt="Entheo Cup Detroit 2025" class="w-full h-64 object-contain rounded-lg mb-6">
+                                    <div class="text-center">
+                                        <h4 class="event-title text-2xl mb-3">ENTHEO CUP</h4>
+                                        <p class="text-lg font-semibold mb-3" style="color: var(--ethereal-white);">Detroit, August 23, 2025</p>
+                                        <p class="text-sm mb-4" style="color: var(--ethereal-white); opacity: 0.9;">Competition • Event • Awards</p>
+                                        <p class="text-xs mb-4 leading-relaxed" style="color: var(--ethereal-white); opacity: 0.8;">Fundraiser by Michigan Psychedelic Society, Detroit Psychedelic Society, Kilindi Iyi Community Lab, Oakland Hyphae</p>
+                                        <a href="#register" class="inline-block bg-yellow-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">Learn More</a>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Mushroom Grow Class Intermediate -->
+
+                            <!-- Mushroom Growing Workshop -->
                             <div class="event-card">
-                                <div class="absolute top-0 left-0 w-full h-full opacity-10">
-                                    <div class="flex justify-center items-center h-full">
-                                        <i class="fas fa-leaf text-8xl" style="color: var(--primary-gold);"></i>
-                                    </div>
-                                </div>
-                                <div class="relative z-10">
-                                    <h4 class="event-title">MUSHROOM</h4>
-                                    <h5 class="text-xl font-semibold mb-2" style="color: var(--ethereal-white);">GROW CLASS</h5>
-                                    <h6 class="text-lg font-medium mb-2" style="color: var(--deep-gold);">INTERMEDIATE</h6>
-                                    <p class="text-sm mb-2" style="color: var(--ethereal-white); opacity: 0.9;">Advanced cultivation techniques</p>
-                                    <div class="text-right">
-                                        <span class="event-price">$75</span>
+                                <div class="relative">
+                                    <img src="upcomingevents/Mushroom-Growing-workshop-1080-x-1350-px.png" alt="Mushroom Growing Workshop" class="w-full h-64 object-contain rounded-lg mb-6">
+                                    <div class="text-center">
+                                        <h4 class="event-title text-2xl mb-3">MUSHROOM GROW CLASS</h4>
+                                        <p class="text-lg font-semibold mb-2" style="color: var(--ethereal-white);">Sunday, August 24th, 2025</p>
+                                        <p class="text-sm mb-2" style="color: var(--ethereal-white);">12:00 PM - 4:30 PM</p>
+                                        <p class="text-sm mb-2" style="color: var(--ethereal-white);">With Moudou Baqui</p>
+                                        <p class="text-sm mb-4 leading-relaxed" style="color: var(--ethereal-white); opacity: 0.9;">@ Per-Ankh<br>15605 Woodrow Wilson, Detroit, MI</p>
+                                        <div class="text-right mb-4">
+                                            <span class="event-price">$65</span>
+                                        </div>
+                                        <a href="#register" class="inline-block bg-yellow-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">Register Now</a>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Mushroom Grow Class with Mycoremediation -->
+
+                            <!-- Midnight Mass -->
                             <div class="event-card">
-                                <div class="absolute top-0 left-0 w-full h-full opacity-10">
-                                    <div class="flex justify-center items-center h-full">
-                                        <i class="fas fa-recycle text-8xl" style="color: var(--primary-gold);"></i>
-                                    </div>
-                                </div>
-                                <div class="relative z-10">
-                                    <h4 class="event-title">MUSHROOM</h4>
-                                    <h5 class="text-xl font-semibold mb-2" style="color: var(--ethereal-white);">GROW CLASS</h5>
-                                    <h6 class="text-lg font-medium mb-2" style="color: var(--deep-gold);">WITH MYCOREMEDIATION</h6>
-                                    <p class="text-sm mb-2" style="color: var(--ethereal-white); opacity: 0.9;">Environmental restoration through fungi</p>
-                                    <div class="text-right">
-                                        <span class="event-price">$120</span>
+                                <div class="relative">
+                                    <img src="upcomingevents/Copy-of-FUNGAL-FUTUIRES-Sacred-Mushrooms-Sustainability-Instagram-Post-45.png" alt="Midnight Mass Ceremony" class="w-full h-64 object-contain rounded-lg mb-6">
+                                    <div class="text-center">
+                                        <h4 class="event-title text-2xl mb-3">MIDNIGHT MASS</h4>
+                                        <p class="text-lg font-semibold mb-2" style="color: var(--ethereal-white);">August 31, 2025</p>
+                                        <p class="text-sm mb-3" style="color: var(--ethereal-white);">8:30 PM - Midnight</p>
+                                        <p class="text-xs mb-2 leading-relaxed" style="color: var(--ethereal-white); opacity: 0.9;">Wear ceremonial whites or comfortable clothing</p>
+                                        <p class="text-xs mb-4 leading-relaxed" style="color: var(--ethereal-white); opacity: 0.9;">Refreshments will be available</p>
+                                        <p class="text-sm mb-4 leading-relaxed" style="color: var(--ethereal-white);">Per-Ankh House of Life<br>15605 Woodrow Wilson, Detroit, MI 48238</p>
+                                        <a href="#register" class="inline-block bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 transition-colors">Register Now</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Registration Form -->
-                        <div class="consciousness-card bg-white p-8 rounded-lg" style="background-color: var(--mycelium-white);">
+                        <div class="consciousness-card p-8 rounded-lg" style="background-color: var(--mycelium-white); color: #333;">
+                            <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--consciousness-purple);">Event Registration</h3>
                             <form id="growClassForm" class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">Your Name *</label>
                                         <input type="text" id="firstName" name="firstName" required 
-                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                                               placeholder="First">
+                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-gray-900"
+                                               placeholder="First" style="color: #333 !important; background-color: white !important;">
                                     </div>
                                     <div class="flex items-end">
                                         <input type="text" id="lastName" name="lastName" required 
@@ -578,13 +591,13 @@
                                 </div>
                                 
                                 <div>
-                                    <label for="availableClasses" class="block text-sm font-medium text-gray-700 mb-2">Available Classes</label>
+                                    <label for="availableClasses" class="block text-sm font-medium text-gray-700 mb-2">Available Events</label>
                                     <select id="availableClasses" name="availableClasses" 
                                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                                        <option value="">Pick the class you want to attend</option>
-                                        <option value="grow-101">Grow Class 101 (Beginner) - $65.00</option>
-                                        <option value="grow-intermediate">Grow Class Intermediate - $75.00</option>
-                                        <option value="grow-mycoremediation">Grow Class with Mycoremediation - $120.00</option>
+                                        <option value="">Select an event to attend</option>
+                                        <option value="entheo-cup">Entheo Cup - August 23, 2025 - Detroit</option>
+                                        <option value="mushroom-grow">Mushroom Grow Class - August 24, 2025 - $65.00</option>
+                                        <option value="midnight-mass">Midnight Mass - August 31, 2025 - 8:30 PM</option>
                                     </select>
                                 </div>
                                 
@@ -642,31 +655,31 @@
                         </div>
                     </div>
                     
-                    <!-- Event Promotional Images -->
+                    <!-- Event Details & Additional Information -->
                     <div class="mb-16">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <!-- Five Trips Event -->
-                            <div class="relative overflow-hidden rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-300">
-                                <img src="eventsimages/fivetrips.png" 
-                                     alt="Five Trips - Kendis Gibson - An Investigative Journey Into Mental Health, Psychedelic Healing, and Saving a Life - July 27 - Per Ankh Entheogenic Church"
-                                     class="w-full h-auto object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
-                                     onclick="openEventModal('fivetrips')">
-                            </div>
+                        <h3 class="text-3xl font-bold text-center mb-8" style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">Event Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             
-                            <!-- Ready Set Let Go Event -->
-                            <div class="relative overflow-hidden rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-300">
-                                <img src="eventsimages/readyletgo.png" 
-                                     alt="Ready! Set! Let Go! - Bi-Weekly Entheogenic Healing Ceremony - July 13th 5pm-10pm - $150 - 15605 Woodrow Wilson Detroit, MI"
-                                     class="w-full h-auto object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
-                                     onclick="openEventModal('readyletgo')">
+                            <!-- Location Information -->
+                            <div class="event-card">
+                                <h4 class="event-title text-xl mb-4">Location</h4>
+                                <div style="color: var(--ethereal-white);">
+                                    <p class="mb-2"><strong>Per-Ankh House of Life</strong></p>
+                                    <p class="mb-2">15605 Woodrow Wilson</p>
+                                    <p class="mb-4">Detroit, MI 48238</p>
+                                    <p class="text-sm opacity-80">All events are held at our sacred space unless otherwise noted.</p>
+                                </div>
                             </div>
-                            
-                            <!-- Midnight Mass Event -->
-                            <div class="relative overflow-hidden rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-300">
-                                <img src="eventsimages/midnitemass.png" 
-                                     alt="Midnight Mass - 07.19.2025 7PM - Per-Ankh House of Life - 15605 Woodrow Wilson, Detroit, MI 48238"
-                                     class="w-full h-auto object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
-                                     onclick="openEventModal('midnitemass')">
+
+                            <!-- Contact & Registration -->
+                            <div class="event-card">
+                                <h4 class="event-title text-xl mb-4">Registration & Contact</h4>
+                                <div style="color: var(--ethereal-white);">
+                                    <p class="mb-2">For questions or assistance with registration:</p>
+                                    <p class="mb-2"><strong>Email:</strong> info@perankh.org</p>
+                                    <p class="mb-4"><strong>Phone:</strong> Available upon request</p>
+                                    <p class="text-sm opacity-80">Please register in advance as spaces are limited.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -681,69 +694,10 @@
                         </div>
                     </div>
                     
-                    <!-- Event Registration Form -->
-                    <div class="consciousness-card bg-white p-8 rounded-lg" style="background-color: var(--mycelium-white);">
-                        <form id="eventRegistrationForm" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="eventFirstName" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
-                                    <input type="text" id="eventFirstName" name="eventFirstName" required 
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                                           placeholder="First">
-                                </div>
-                                <div class="flex items-end">
-                                    <input type="text" id="eventLastName" name="eventLastName" required 
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                                           placeholder="Last">
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label for="eventEmail" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                                <input type="email" id="eventEmail" name="eventEmail" required 
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                            </div>
-                            
-                            <div>
-                                <label for="eventPhone" class="block text-sm font-medium text-gray-700 mb-2">Phone number</label>
-                                <input type="tel" id="eventPhone" name="eventPhone" 
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                            </div>
-                            
-                            <div>
-                                <label for="selectedEvent" class="block text-sm font-medium text-gray-700 mb-2">Events</label>
-                                <select id="selectedEvent" name="selectedEvent" 
-                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                                    <option value="">Select an event</option>
-                                    <option value="five-trips">Five Trips - July 27th - Kendis Gibson</option>
-                                    <option value="ready-set-let-go">Ready! Set! Let Go! - July 13th, 5pm-10pm - $150.00</option>
-                                    <option value="midnight-mass">Midnight Mass - July 19th, 2025, 7PM</option>
-                                </select>
-                            </div>
-                            
-                            <div class="text-center">
-                                <button type="submit" 
-                                        class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                                    Submit
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="event-details">
-                    <i class="fas fa-users"></i>
-                    <span>Limited to 12 participants</span>
-                </div>
-                <div class="event-details">
-                    <i class="fas fa-heart"></i>
-                    <span>By donation</span>
-                </div>
-                <a href="#register" class="register-btn">Register Now</a>
-            </div>
 
-            <div class="event-card">
-                <div class="event-date">Monthly • Full Moon</div>
-            </div>
+                </div>
+
+
         </div>
     </footer>
 
