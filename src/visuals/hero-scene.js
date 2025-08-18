@@ -13,15 +13,18 @@ async function initHeroScene({ reducedMotion = false } = {}) {
   // Mark hero as 3D-active for CSS adjustments
   section.setAttribute('data-hero3d', 'on');
 
-  // Use global THREE object loaded from CDN
-  if (typeof THREE === 'undefined') {
-    console.warn('Three.js not loaded; using basic renderer.');
-    return initFallback2D(canvas, section);
-  }
-  
-  // Check if post-processing modules are available
-  if (typeof THREE.EffectComposer === 'undefined') {
-    console.warn('Three.js post-processing modules not available; using basic renderer.');
+  // Import Three.js and post-processing modules locally
+  let THREE, RGBELoader, EffectComposer, RenderPass, UnrealBloomPass, ShaderPass, FXAAShader;
+  try {
+    THREE = await import('three');
+    ({ RGBELoader } = await import('three/examples/jsm/loaders/RGBELoader.js'));
+    ({ EffectComposer } = await import('three/examples/jsm/postprocessing/EffectComposer.js'));
+    ({ RenderPass } = await import('three/examples/jsm/postprocessing/RenderPass.js'));
+    ({ UnrealBloomPass } = await import('three/examples/jsm/postprocessing/UnrealBloomPass.js'));
+    ({ ShaderPass } = await import('three/examples/jsm/postprocessing/ShaderPass.js'));
+    ({ FXAAShader } = await import('three/examples/jsm/shaders/FXAAShader.js'));
+  } catch (e) {
+    console.warn('Three.js post-processing unavailable; using basic renderer.', e);
     return initFallback2D(canvas, section);
   }
   console.log('Hero scene: Three.js loaded');

@@ -1,16 +1,17 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   root: '.',
-  base: './',
+  // Use the repository name for GitHub Pages
+  base: mode === 'production' ? '/Per-Ankh/' : '/',
   publicDir: 'public',
   
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: true,
-    minify: 'terser',
+    minify: 'esbuild',
     target: 'es2020',
     rollupOptions: {
       input: {
@@ -20,18 +21,12 @@ export default defineConfig({
       },
       output: {
         manualChunks: {
-          vendor: ['crypto-js', 'jwt-simple', 'validator'],
-          auth: ['./src/utils/auth.js', './src/utils/storage.js'],
+          vendor: ['crypto-js', 'jwt-simple', 'validator']
         }
       }
     },
-    // Security headers
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      }
-    }
+    // Chunk size warning limit
+    chunkSizeWarningLimit: 1000
   },
   
   server: {
@@ -83,4 +78,4 @@ export default defineConfig({
     __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
     __BUILD_TIME__: JSON.stringify(new Date().toISOString())
   }
-});
+}));
