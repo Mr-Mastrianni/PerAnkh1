@@ -485,13 +485,19 @@
                             <!-- Single Upcoming Event -->
                             <div class="event-card p-4 sm:p-6 md:p-8">
                                 <div class="relative">
-                                    <img src="eventsimages/image.png" alt="Upcoming Event" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg mb-4 sm:mb-6">
+                                    <button type="button" id="eventZoomTriggerEvents" class="w-full mb-4 sm:mb-6 focus:outline-none" style="cursor: zoom-in;">
+                                        <img src="eventsimages/image.png" alt="Upcoming Event" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg">
+                                    </button>
                                     <div class="text-center">
                                         <h4 class="event-title text-2xl sm:text-3xl mb-3 sm:mb-4">UPCOMING EVENT</h4>
                                         <a href="#register" class="inline-block bg-yellow-600 text-white px-5 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-700 transition-colors">Learn More</a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <!-- Lightbox overlay for events page -->
+                        <div id="imageLightboxEvents" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50" style="display: none;">
+                            <img id="lightboxImgEvents" src="eventsimages/image.png" alt="Upcoming Event" style="max-width: 90vw; max-height: 90vh; border-radius: 0.5rem;">
                         </div>
                         
                         <!-- Registration Form -->
@@ -632,6 +638,21 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Per Ankh - Events Page Loaded');
             initializeEventForms();
+
+            // Lightbox: events page event image
+            const triggerEvents = document.getElementById('eventZoomTriggerEvents');
+            const lightboxEvents = document.getElementById('imageLightboxEvents');
+            if (triggerEvents && lightboxEvents) {
+                const openLightbox = () => { lightboxEvents.style.display = 'flex'; };
+                const closeLightbox = () => { lightboxEvents.style.display = 'none'; };
+                triggerEvents.addEventListener('click', openLightbox);
+                lightboxEvents.addEventListener('click', (e) => {
+                    if (e.target === lightboxEvents) closeLightbox();
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeLightbox();
+                });
+            }
         });
 
         function initializeEventForms() {

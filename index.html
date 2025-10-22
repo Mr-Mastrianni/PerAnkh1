@@ -507,12 +507,18 @@
                 <div class="grid md:grid-cols-1 gap-6 sm:gap-8 max-w-7xl mx-auto px-2 sm:px-4">
                     <!-- Single Upcoming Event -->
                     <div class="consciousness-card bg-white bg-opacity-10 p-4 sm:p-6 md:p-8 rounded-lg flex flex-col" style="background-color: var(--dark-purple); color: var(--ethereal-white);">
-                        <img src="eventsimages/image.png" alt="Upcoming Event" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg mb-4 sm:mb-6">
+                        <button type="button" id="eventZoomTriggerHome" class="w-full mb-4 sm:mb-6 focus:outline-none" style="cursor: zoom-in;">
+                            <img src="eventsimages/image.png" alt="Upcoming Event" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg">
+                        </button>
                         <div class="flex-grow text-center">
                             <h4 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4" style="color: var(--primary-gold);">UPCOMING EVENT</h4>
                             <a href="events.html#register" class="inline-block bg-yellow-600 text-white px-5 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-700 transition-colors">Learn More</a>
                         </div>
                     </div>
+                </div>
+
+                <div id="imageLightboxHome" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50" style="display: none;">
+                    <img id="lightboxImgHome" src="eventsimages/image.png" alt="Upcoming Event" style="max-width: 90vw; max-height: 90vh; border-radius: 0.5rem;">
                 </div>
 
                 <!-- Call to Action -->
@@ -645,6 +651,22 @@
                 section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(section);
             });
+
+            // Lightbox: homepage event image
+            const triggerHome = document.getElementById('eventZoomTriggerHome');
+            const lightboxHome = document.getElementById('imageLightboxHome');
+            if (triggerHome && lightboxHome) {
+                const openLightbox = () => { lightboxHome.style.display = 'flex'; };
+                const closeLightbox = () => { lightboxHome.style.display = 'none'; };
+                triggerHome.addEventListener('click', openLightbox);
+                lightboxHome.addEventListener('click', (e) => {
+                    // Close when clicking backdrop or pressing ESC
+                    if (e.target === lightboxHome) closeLightbox();
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeLightbox();
+                });
+            }
         });
     </script>
     
