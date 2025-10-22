@@ -4,7 +4,7 @@ import { resolve } from 'path';
 export default defineConfig(({ mode }) => ({
   root: '.',
   // Use the repository name for GitHub Pages
-  base: mode === 'production' ? '/Per-Ankh/' : '/',
+  base: mode === 'production' ? '/PerAnkh1/' : '/',
   publicDir: 'public',
   
   build: {
