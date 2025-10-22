@@ -179,6 +179,16 @@
             transform: translateX(-50%);
         }
         
+        /* Mobile adjustments: avoid overlap with hero text */
+        @media (max-width: 640px) {
+            .floating-ankh {
+                width: 80px;
+                top: -10px; /* nudge upward */
+                z-index: 8; /* place behind hero-content (z=10) */
+                filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.6));
+            }
+        }
+        
         .hero-title {
             font-family: 'Cinzel', serif;
             font-size: clamp(3rem, 8vw, 6rem);
@@ -494,45 +504,15 @@
                 <h3 class="text-3xl md:text-4xl font-bold mb-8 ankh-symbol" style="color: var(--consciousness-purple);">UPCOMING EVENTS</h3>
                 
                 <!-- Events Grid -->
-                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    
-                    <!-- Entheo Cup Event -->
-                    <div class="consciousness-card bg-white bg-opacity-10 p-4 rounded-lg flex flex-col" style="background-color: var(--dark-purple); color: var(--ethereal-white);">
-                        <img src="upcomingevents/Entheo-Cup.jpg" alt="Entheo Cup Detroit 2025" class="w-full h-56 object-contain rounded-lg mb-4">
-                        <div class="flex-grow">
-                            <h4 class="text-lg font-bold mb-2" style="color: var(--primary-gold);">ENTHEO CUP</h4>
-                            <p class="text-base font-semibold mb-2">Detroit, August 23, 2025</p>
-                            <p class="text-sm mb-2">Competition • Event • Awards</p>
-                            <p class="text-xs leading-relaxed">Fundraiser by Michigan Psychedelic Society, Detroit Psychedelic Society, Kilindi Iyi Community Lab, Oakland Hyphae</p>
+                <div class="grid md:grid-cols-1 gap-6 sm:gap-8 max-w-7xl mx-auto px-2 sm:px-4">
+                    <!-- Single Upcoming Event -->
+                    <div class="consciousness-card bg-white bg-opacity-10 p-4 sm:p-6 md:p-8 rounded-lg flex flex-col" style="background-color: var(--dark-purple); color: var(--ethereal-white);">
+                        <img src="eventsimages/image.png" alt="Upcoming Event" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg mb-4 sm:mb-6">
+                        <div class="flex-grow text-center">
+                            <h4 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4" style="color: var(--primary-gold);">UPCOMING EVENT</h4>
+                            <a href="events.html#register" class="inline-block bg-yellow-600 text-white px-5 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-700 transition-colors">Learn More</a>
                         </div>
                     </div>
-
-                    <!-- Mushroom Growing Workshop -->
-                    <div class="consciousness-card bg-white bg-opacity-10 p-4 rounded-lg flex flex-col" style="background-color: var(--dark-purple); color: var(--ethereal-white);">
-                        <img src="upcomingevents/Mushroom-Growing-workshop-1080-x-1350-px.png" alt="Mushroom Growing Workshop" class="w-full h-56 object-contain rounded-lg mb-4">
-                        <div class="flex-grow">
-                            <h4 class="text-lg font-bold mb-2" style="color: var(--primary-gold);">MUSHROOM GROW CLASS</h4>
-                            <p class="text-base font-semibold mb-2">Sunday, August 24th, 2025</p>
-                            <p class="text-sm mb-1">12:00 PM - 4:30 PM</p>
-                            <p class="text-sm mb-1">With Moudou Baqui</p>
-                            <p class="text-sm mb-2">@ Per-Ankh<br>15605 Woodrow Wilson, Detroit, MI</p>
-                            <p class="text-lg font-bold" style="color: var(--sacred-amber);">$65</p>
-                        </div>
-                    </div>
-
-                    <!-- Midnight Mass -->
-                    <div class="consciousness-card bg-white bg-opacity-10 p-4 rounded-lg flex flex-col" style="background-color: var(--dark-purple); color: var(--ethereal-white);">
-                        <img src="upcomingevents/Copy-of-FUNGAL-FUTUIRES-Sacred-Mushrooms-Sustainability-Instagram-Post-45.png" alt="Midnight Mass Ceremony" class="w-full h-56 object-contain rounded-lg mb-4">
-                        <div class="flex-grow">
-                            <h4 class="text-lg font-bold mb-2" style="color: var(--primary-gold);">MIDNIGHT MASS</h4>
-                            <p class="text-base font-semibold mb-2">August 31, 2025</p>
-                            <p class="text-sm mb-2">8:30 PM - Midnight</p>
-                            <p class="text-xs mb-1">Wear ceremonial whites or comfortable clothing</p>
-                            <p class="text-xs mb-2">Refreshments will be available</p>
-                            <p class="text-sm">Per-Ankh House of Life<br>15605 Woodrow Wilson, Detroit, MI 48238</p>
-                        </div>
-                    </div>
-
                 </div>
 
                 <!-- Call to Action -->

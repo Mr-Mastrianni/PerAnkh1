@@ -637,13 +637,30 @@ async function initHeroScene({ reducedMotion = false } = {}) {
 
 
   // Layout & resize handling
+  // Apply responsive layout so objects fit on mobile
+  function applyResponsiveLayout(width, height) {
+    const isMobile = width < 768;
+    // Wider FOV and slightly farther camera on mobile to prevent cropping
+    camera.fov = isMobile ? 55 : 40;
+    camera.position.set(0.6, isMobile ? 1.2 : 1.6, isMobile ? 7.6 : 6.5);
+    camera.updateProjectionMatrix();
+
+    // Scale the whole group down a touch on mobile and adjust object placement
+    const s = isMobile ? 0.85 : 1.0;
+    group.scale.set(s, s, s);
+
+    pyramid.position.set(isMobile ? -1.2 : -1.8, 0.1, isMobile ? -1.2 : -1.5);
+    mushroom.position.set(isMobile ? 0.35 : 0.6, -0.2, isMobile ? -1.2 : -1.5);
+    magicCarpet.position.set(isMobile ? 1.8 : 2.8, isMobile ? 0.45 : 0.5, -0.2);
+  }
+
   function resize() {
     const width = section.clientWidth;
     const height = section.clientHeight;
     renderer.setSize(width, height, false);
     composer.setSize(width, height);
     camera.aspect = width / Math.max(1, height);
-    camera.updateProjectionMatrix();
+    applyResponsiveLayout(width, height);
     
     // Update post-processing uniforms
     fxaaPass.material.uniforms['resolution'].value.x = 1 / width;
