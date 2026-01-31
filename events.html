@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Events - Per Ankh Entheogenic Church - Join our upcoming ceremonies, workshops, and community gatherings.">
+    <meta name="description"
+        content="Events - Per Ankh Entheogenic Church - Join our upcoming ceremonies, workshops, and community gatherings.">
     <meta name="keywords" content="events, per ankh, entheogenic church, ceremonies, workshops, grow classes">
     <meta name="author" content="Per Ankh Entheogenic Church">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://perankh1.org/events/">
@@ -27,14 +29,16 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
+
     <title>Events - Per Ankh Entheogenic Church</title>
 
     <style>
@@ -51,9 +55,9 @@
             --mycelium-white: #F5F5DC;
             --consciousness-purple: #663399;
         }
-        
+
         body {
-            background: 
+            background:
                 radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(45, 27, 105, 0.3) 0%, transparent 50%),
                 linear-gradient(135deg, var(--matte-black) 0%, #0f0f0f 100%);
@@ -64,7 +68,7 @@
             min-height: 100vh;
             position: relative;
         }
-        
+
         /* Sacred Geometry Background */
         .sacred-geometry {
             position: fixed;
@@ -76,16 +80,16 @@
             z-index: 1;
             overflow: hidden;
         }
-        
+
         /* Geometry elements removed */
-        
+
         /* Cinematic Container */
         .cinematic-container {
             position: relative;
             z-index: 10;
             min-height: 100vh;
         }
-        
+
         /* Hero Section Styling */
         .hero-section {
             position: relative;
@@ -94,23 +98,23 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: 
+            background:
                 radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
                 linear-gradient(135deg, rgba(45, 27, 105, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
         }
-        
+
         .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 70% 30%, rgba(45, 27, 105, 0.4) 0%, transparent 50%);
             animation: cosmicFlow 25s ease-in-out infinite alternate;
         }
-        
+
         .temple-silhouette {
             position: absolute;
             bottom: 0;
@@ -118,16 +122,15 @@
             transform: translateX(-50%);
             width: 300px;
             height: 200px;
-            background: 
-                linear-gradient(to top, 
-                    rgba(212, 175, 55, 0.8) 0%, 
-                    rgba(212, 175, 55, 0.4) 50%, 
-                    transparent 100%
-                );
+            background:
+                linear-gradient(to top,
+                    rgba(212, 175, 55, 0.8) 0%,
+                    rgba(212, 175, 55, 0.4) 50%,
+                    transparent 100%);
             clip-path: polygon(20% 100%, 0% 60%, 15% 40%, 25% 45%, 35% 30%, 50% 35%, 65% 30%, 75% 45%, 85% 40%, 100% 60%, 80% 100%);
             animation: templeGlow 4s ease-in-out infinite alternate;
         }
-        
+
         .temple-silhouette::before {
             content: '';
             position: absolute;
@@ -139,7 +142,7 @@
             border-radius: 50%;
             filter: blur(10px);
         }
-        
+
         .floating-ankh {
             position: absolute;
             top: 20%;
@@ -155,14 +158,14 @@
             transform-style: preserve-3d;
             filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
         }
-        
+
         .hero-content {
             text-align: center;
             z-index: 10;
             max-width: 800px;
             padding: 0 2rem;
         }
-        
+
         .hero-title {
             font-family: 'Cinzel', serif;
             font-size: clamp(2.5rem, 8vw, 5rem);
@@ -175,7 +178,7 @@
             text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
             animation: titlePulse 3s ease-in-out infinite alternate;
         }
-        
+
         .hero-subtitle {
             font-size: clamp(1.1rem, 3vw, 1.5rem);
             color: var(--ethereal-white);
@@ -183,7 +186,7 @@
             line-height: 1.6;
             animation: subtitleGlow 4s ease-in-out infinite alternate;
         }
-        
+
         /* Event Cards Styling */
         .event-card {
             background: rgba(26, 26, 26, 0.8);
@@ -212,13 +215,13 @@
             border-color: #f59e0b !important;
             box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1) !important;
         }
-        
+
         .event-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
             border-color: var(--primary-gold);
         }
-        
+
         .event-title {
             font-family: 'Cinzel', serif;
             color: var(--primary-gold);
@@ -227,13 +230,13 @@
             margin-bottom: 1rem;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
-        
+
         .event-price {
             color: var(--deep-gold);
             font-weight: 700;
             font-size: 1.25rem;
         }
-        
+
         .event-button {
             background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
             color: var(--matte-black);
@@ -246,12 +249,12 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .event-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
         }
-        
+
         /* Form Styling */
         .sacred-form {
             background: rgba(26, 26, 26, 0.9);
@@ -261,11 +264,11 @@
             box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
             animation: containerGlow 8s ease-in-out infinite alternate;
         }
-        
+
         .form-section {
             margin-bottom: 2rem;
         }
-        
+
         .form-section h3 {
             font-family: 'Cinzel', serif;
             color: var(--primary-gold);
@@ -274,7 +277,7 @@
             text-align: center;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
-        
+
         .form-label {
             display: block;
             color: var(--ethereal-white);
@@ -282,8 +285,10 @@
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
         }
-        
-        .form-input, .form-select, .form-textarea {
+
+        .form-input,
+        .form-select,
+        .form-textarea {
             width: 100%;
             padding: 0.75rem 1rem;
             background: rgba(45, 27, 105, 0.2);
@@ -293,14 +298,16 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-        
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
             outline: none;
             border-color: var(--primary-gold);
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
             background: rgba(45, 27, 105, 0.3);
         }
-        
+
         .submit-button {
             position: relative;
             background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
@@ -316,105 +323,117 @@
             letter-spacing: 1px;
             overflow: hidden;
         }
-        
+
         .submit-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
         }
-        
+
         /* Mystical Animations */
         @keyframes cosmicFlow {
             0% {
-                background: 
+                background:
                     radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                     radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
                     linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
             }
+
             100% {
-                background: 
+                background:
                     radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.4) 0%, transparent 60%),
                     radial-gradient(circle at 30% 80%, rgba(45, 27, 105, 0.5) 0%, transparent 60%),
                     linear-gradient(135deg, transparent 20%, rgba(212, 175, 55, 0.15) 60%, transparent 80%);
             }
         }
-        
+
         @keyframes templeGlow {
             0% {
                 box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
                 filter: brightness(1);
             }
+
             100% {
                 box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
                 filter: brightness(1.2);
             }
         }
-        
+
         @keyframes ankh3DRotation {
             0% {
                 transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
             }
+
             25% {
                 transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
                 text-shadow: 0 0 40px rgba(212, 175, 55, 1);
             }
+
             50% {
                 transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
                 text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
             }
+
             75% {
                 transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
                 text-shadow: 0 0 40px rgba(212, 175, 55, 1);
             }
+
             100% {
                 transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
             }
         }
-        
+
         @keyframes titlePulse {
             0% {
                 filter: brightness(1) saturate(1);
                 transform: scale(1);
             }
+
             100% {
                 filter: brightness(1.2) saturate(1.3);
                 transform: scale(1.02);
             }
         }
-        
+
         @keyframes subtitleGlow {
             0% {
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
                 opacity: 0.9;
             }
+
             100% {
                 text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.3);
                 opacity: 1;
             }
         }
-        
+
         @keyframes geometryFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) rotate(0deg);
                 opacity: 0.3;
             }
+
             50% {
                 transform: translateY(-20px) rotate(180deg);
                 opacity: 0.6;
             }
         }
-        
+
         @keyframes containerGlow {
             0% {
-                box-shadow: 
+                box-shadow:
                     0 20px 60px rgba(212, 175, 55, 0.2),
                     0 0 40px rgba(45, 27, 105, 0.1),
                     inset 0 1px 0 rgba(255, 255, 255, 0.1);
                 border-color: var(--primary-gold);
             }
+
             100% {
-                box-shadow: 
+                box-shadow:
                     0 25px 80px rgba(212, 175, 55, 0.3),
                     0 0 60px rgba(45, 27, 105, 0.15),
                     inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -423,30 +442,38 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip to main content</a>
-    
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip
+        to main content</a>
+
     <!-- Sacred Geometry Background removed -->
-    
+
     <!-- Navigation -->
     <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <img src="PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
-                    <a href="index.html" class="text-2xl font-bold" style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
+                    <a href="index.html" class="text-2xl font-bold"
+                        style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
                 </div>
                 <div class="hidden md:flex space-x-6">
                     <a href="index.html" class="text-white hover:text-yellow-400 transition-colors">Home</a>
-                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a Member</a>
+                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a
+                        Member</a>
                     <a href="events.html" class="text-yellow-400 hover:text-yellow-300 transition-colors">Events</a>
-                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos & Structure</a>
-                    <a href="ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
+                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos &
+                        Structure</a>
+                    <a href="ceremony-and-safety.html"
+                        class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
                     <a href="donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
                     <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
                     <a href="calculator.html" class="text-white hover:text-yellow-400 transition-colors">Calculator</a>
-                    <a href="admin-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
+                    <a href="admin-login.html"
+                        class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
                 </div>
             </div>
         </div>
@@ -461,7 +488,7 @@
             <div class="hero-background"></div>
             <div class="temple-silhouette"></div>
             <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
-            
+
             <div class="hero-content">
                 <h1 class="hero-title">Sacred Events</h1>
                 <p class="hero-subtitle">
@@ -475,123 +502,179 @@
             <div class="container mx-auto px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="text-center mb-12">
-                        <h2 class="text-4xl font-bold mb-4" style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">UPCOMING EVENTS</h2>
-                        <p style="color: var(--ethereal-white); font-size: 1.1rem;">Please scroll down to find the event you want to attend. Thank you!</p>
+                        <h2 class="text-4xl font-bold mb-4"
+                            style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">
+                            UPCOMING EVENTS</h2>
+                        <p style="color: var(--ethereal-white); font-size: 1.1rem;">Please scroll down to find the event
+                            you want to attend. Thank you!</p>
                     </div>
-                    
+
                     <!-- Upcoming Events Section -->
                     <div class="mb-16">
-                        <div class="grid grid-cols-1 md:grid-cols-1 gap-6 sm:gap-8 mb-8 max-w-7xl mx-auto px-2 sm:px-4">
-                            <!-- Single Upcoming Event -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 max-w-7xl mx-auto px-2 sm:px-4">
+                            <!-- Midnight Mass Event -->
                             <div class="event-card p-4 sm:p-6 md:p-8">
                                 <div class="relative">
-                                    <button type="button" id="eventZoomTriggerEvents" class="w-full mb-4 sm:mb-6 focus:outline-none" style="cursor: zoom-in;">
-                                        <img src="eventsimages/image.png" alt="Upcoming Event" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg">
+                                    <button type="button" id="eventZoomTriggerEvents"
+                                        class="w-full mb-4 sm:mb-6 focus:outline-none" style="cursor: zoom-in;">
+                                        <img src="eventsimages/midnitemassevent.jpeg" alt="Midnight Mass"
+                                            class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg">
                                     </button>
                                     <div class="text-center">
-                                        <h4 class="event-title text-2xl sm:text-3xl mb-3 sm:mb-4">UPCOMING EVENT</h4>
-                                        <a href="#register" class="inline-block bg-yellow-600 text-white px-5 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-700 transition-colors">Learn More</a>
+                                        <h4 class="event-title text-2xl sm:text-3xl mb-3 sm:mb-4">MIDNIGHT MASS</h4>
+                                        <a href="#register"
+                                            class="inline-block bg-yellow-600 text-white px-5 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-700 transition-colors">Learn
+                                            More</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Open Deck Night Event -->
+                            <div class="event-card p-4 sm:p-6 md:p-8">
+                                <div class="relative">
+                                    <button type="button" id="eventZoomTriggerOpenDeck"
+                                        class="w-full mb-4 sm:mb-6 focus:outline-none" style="cursor: zoom-in;">
+                                        <img src="eventsimages/perankhopendeck.jpeg" alt="Open Deck Night"
+                                            class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg">
+                                    </button>
+                                    <div class="text-center">
+                                        <h4 class="event-title text-2xl sm:text-3xl mb-3 sm:mb-4">OPEN DECK NIGHT</h4>
+                                        <p class="mb-4 text-yellow-400 font-semibold">Every Wednesday</p>
+                                        <a href="#register"
+                                            class="inline-block bg-yellow-600 text-white px-5 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-700 transition-colors">Learn
+                                            More</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Lightbox overlay for events page -->
-                        <div id="imageLightboxEvents" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50" style="display: none;">
-                            <img id="lightboxImgEvents" src="eventsimages/image.png" alt="Upcoming Event" style="max-width: 90vw; max-height: 90vh; border-radius: 0.5rem;">
+                        <!-- Lightbox overlay for events page (Midnight Mass) -->
+                        <div id="imageLightboxEvents"
+                            class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+                            style="display: none;">
+                            <img id="lightboxImgEvents" src="eventsimages/midnitemassevent.jpeg" alt="Midnight Mass"
+                                style="max-width: 90vw; max-height: 90vh; border-radius: 0.5rem;">
                         </div>
-                        
+
+                        <!-- Lightbox overlay for events page (Open Deck Night) -->
+                        <div id="imageLightboxOpenDeck"
+                            class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+                            style="display: none;">
+                            <img id="lightboxImgOpenDeck" src="eventsimages/perankhopendeck.jpeg" alt="Open Deck Night"
+                                style="max-width: 90vw; max-height: 90vh; border-radius: 0.5rem;">
+                        </div>
+
                         <!-- Registration Form -->
-                        <div class="consciousness-card p-8 rounded-lg" style="background-color: var(--mycelium-white); color: #333;">
-                            <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--consciousness-purple);">Event Registration</h3>
-                            <form id="growClassForm" class="space-y-6">
+                        <div class="consciousness-card p-8 rounded-lg"
+                            style="background-color: var(--mycelium-white); color: #333;">
+                            <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--consciousness-purple);">
+                                Event Registration</h3>
+                            <a id="register"></a>
+                            <form id="growClassForm" action="https://formspree.io/f/xlgnavwo" method="POST"
+                                class="space-y-6">
+                                <input type="hidden" name="_subject" value="New Event Registration - Per Ankh Church">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">Your Name *</label>
-                                        <input type="text" id="firstName" name="firstName" required 
-                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-gray-900"
-                                               placeholder="First" style="color: #333 !important; background-color: white !important;">
+                                        <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">Your
+                                            Name *</label>
+                                        <input type="text" id="firstName" name="firstName" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-gray-900"
+                                            placeholder="First"
+                                            style="color: #333 !important; background-color: white !important;">
                                     </div>
                                     <div class="flex items-end">
-                                        <input type="text" id="lastName" name="lastName" required 
-                                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                                               placeholder="Last">
+                                        <input type="text" id="lastName" name="lastName" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                            placeholder="Last">
                                     </div>
                                 </div>
-                                
+
                                 <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                                    <input type="email" id="email" name="email" required 
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email
+                                        *</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
                                 </div>
-                                
+
                                 <div>
-                                    <label for="availableClasses" class="block text-sm font-medium text-gray-700 mb-2">Available Events</label>
-                                    <select id="availableClasses" name="availableClasses" 
-                                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    <label for="availableClasses"
+                                        class="block text-sm font-medium text-gray-700 mb-2">Available Events</label>
+                                    <select id="availableClasses" name="availableClasses"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
                                         <option value="">Select an event to attend</option>
-                                        <option value="upcoming">Upcoming Event</option>
+                                        <option value="midnight-mass">Midnight Mass</option>
+                                        <option value="open-deck-night">Open Deck Night (Every Wednesday)</option>
                                     </select>
                                 </div>
-                                
+
                                 <div>
-                                    <label for="emailList" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                    <input type="email" id="emailList" name="emailList" 
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                                           placeholder="example@email.com">
+                                    <label for="emailList"
+                                        class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                    <input type="email" id="emailList" name="emailList"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                        placeholder="example@email.com">
                                 </div>
-                                
+
                                 <!-- Payment Section -->
                                 <div class="border-t pt-6">
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
-                                            <input type="text" placeholder="1234 5678 9012 3456" 
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Card
+                                                Number</label>
+                                            <input type="text" placeholder="1234 5678 9012 3456"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Cardholder Name</label>
-                                            <input type="text" 
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Cardholder
+                                                Name</label>
+                                            <input type="text"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="grid grid-cols-2 gap-4 mt-4">
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Expiration Date</label>
-                                            <input type="text" placeholder="MM/YY" 
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Expiration
+                                                Date</label>
+                                            <input type="text" placeholder="MM/YY"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Security Code</label>
-                                            <input type="text" placeholder="123" 
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Security
+                                                Code</label>
+                                            <input type="text" placeholder="123"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="flex justify-center mt-4">
                                         <div class="flex space-x-2">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="h-8">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="h-8">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="American Express" class="h-8">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                                                alt="Visa" class="h-8">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                                                alt="Mastercard" class="h-8">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg"
+                                                alt="American Express" class="h-8">
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="text-center">
-                                    <button type="submit" 
-                                            class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                    <button type="submit"
+                                        class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                                         Complete My RSVP
                                     </button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    
+
                     <!-- Event Details & Additional Information -->
                     <div class="mb-16">
-                        <h3 class="text-3xl font-bold text-center mb-8" style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">Event Details</h3>
+                        <h3 class="text-3xl font-bold text-center mb-8"
+                            style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">
+                            Event Details</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            
+
                             <!-- Location Information -->
                             <div class="event-card">
                                 <h4 class="event-title text-xl mb-4">Location</h4>
@@ -599,7 +682,8 @@
                                     <p class="mb-2"><strong>Per-Ankh House of Life</strong></p>
                                     <p class="mb-2">15605 Woodrow Wilson</p>
                                     <p class="mb-4">Detroit, MI 48238</p>
-                                    <p class="text-sm opacity-80">All events are held at our sacred space unless otherwise noted.</p>
+                                    <p class="text-sm opacity-80">All events are held at our sacred space unless
+                                        otherwise noted.</p>
                                 </div>
                             </div>
 
@@ -615,173 +699,190 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Event Modal -->
-                    <div id="eventModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+                    <div id="eventModal"
+                        class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
                         <div class="bg-white rounded-lg p-8 max-w-2xl mx-4 relative">
-                            <button onclick="closeEventModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                            <button onclick="closeEventModal()"
+                                class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
                             <div id="modalContent">
                                 <!-- Modal content will be populated by JavaScript -->
                             </div>
                         </div>
                     </div>
-                    
+
 
                 </div>
 
 
-        </div>
-    </footer>
+            </div>
+            </footer>
 
-    <script>
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Per Ankh - Events Page Loaded');
-            initializeEventForms();
+            <script>
+                // Initialize page
+                document.addEventListener('DOMContentLoaded', () => {
+                    console.log('Per Ankh - Events Page Loaded');
+                    initializeEventForms();
 
-            // Lightbox: events page event image
-            const triggerEvents = document.getElementById('eventZoomTriggerEvents');
-            const lightboxEvents = document.getElementById('imageLightboxEvents');
-            if (triggerEvents && lightboxEvents) {
-                const openLightbox = () => { lightboxEvents.style.display = 'flex'; };
-                const closeLightbox = () => { lightboxEvents.style.display = 'none'; };
-                triggerEvents.addEventListener('click', openLightbox);
-                lightboxEvents.addEventListener('click', (e) => {
-                    if (e.target === lightboxEvents) closeLightbox();
+                    // Lightbox: events page event image (Midnight Mass)
+                    const triggerEvents = document.getElementById('eventZoomTriggerEvents');
+                    const lightboxEvents = document.getElementById('imageLightboxEvents');
+                    if (triggerEvents && lightboxEvents) {
+                        const openLightbox = () => { lightboxEvents.style.display = 'flex'; };
+                        const closeLightbox = () => { lightboxEvents.style.display = 'none'; };
+                        triggerEvents.addEventListener('click', openLightbox);
+                        lightboxEvents.addEventListener('click', (e) => {
+                            if (e.target === lightboxEvents) closeLightbox();
+                        });
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape') closeLightbox();
+                        });
+                    }
+
+                    // Lightbox: events page event image (Open Deck Night)
+                    const triggerOpenDeck = document.getElementById('eventZoomTriggerOpenDeck');
+                    const lightboxOpenDeck = document.getElementById('imageLightboxOpenDeck');
+                    if (triggerOpenDeck && lightboxOpenDeck) {
+                        const openLightbox = () => { lightboxOpenDeck.style.display = 'flex'; };
+                        const closeLightbox = () => { lightboxOpenDeck.style.display = 'none'; };
+                        triggerOpenDeck.addEventListener('click', openLightbox);
+                        lightboxOpenDeck.addEventListener('click', (e) => {
+                            if (e.target === lightboxOpenDeck) closeLightbox();
+                        });
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape') closeLightbox();
+                        });
+                    }
                 });
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') closeLightbox();
-                });
-            }
-        });
 
-        function initializeEventForms() {
-            const growClassForm = document.getElementById('growClassForm');
-            const eventRegistrationForm = document.getElementById('eventRegistrationForm');
+                function initializeEventForms() {
+                    const growClassForm = document.getElementById('growClassForm');
+                    const eventRegistrationForm = document.getElementById('eventRegistrationForm');
 
-            // Grow Class Form submission
-            if (growClassForm) {
-                growClassForm.addEventListener('submit', handleGrowClassSubmission);
-            }
+                    // Grow Class Form submission
+                    if (growClassForm) {
+                        growClassForm.addEventListener('submit', handleGrowClassSubmission);
+                    }
 
-            // Event Registration Form submission
-            if (eventRegistrationForm) {
-                eventRegistrationForm.addEventListener('submit', handleEventRegistrationSubmission);
-            }
-        }
+                    // Event Registration Form submission
+                    if (eventRegistrationForm) {
+                        eventRegistrationForm.addEventListener('submit', handleEventRegistrationSubmission);
+                    }
+                }
 
-        async function handleGrowClassSubmission(event) {
-            event.preventDefault();
-            
-            const form = event.target;
-            const submitButton = form.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            
-            // Disable submit button and show loading state
-            submitButton.disabled = true;
-            submitButton.textContent = 'Processing...';
-            submitButton.classList.add('opacity-50', 'cursor-not-allowed');
-            
-            try {
-                // Collect form data
-                const formData = new FormData(form);
-                const registrationData = {
-                    firstName: formData.get('firstName'),
-                    lastName: formData.get('lastName'),
-                    email: formData.get('email'),
-                    selectedClass: formData.get('availableClasses'),
-                    submissionDate: new Date().toISOString(),
-                    formType: 'Grow Class Registration'
-                };
+                async function handleGrowClassSubmission(event) {
+                    event.preventDefault();
 
-                // Send email
-                await sendRegistrationEmail(registrationData);
-                
-                // Show success message
-                showSuccessMessage('Grow class registration submitted successfully!');
-                
-                // Reset form
-                form.reset();
-                
-            } catch (error) {
-                console.error('Form submission error:', error);
-                showErrorMessage('There was an error submitting your registration. Please try again or contact us directly.');
-            } finally {
-                // Re-enable submit button
-                submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
-                submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
-            }
-        }
+                    const form = event.target;
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.textContent;
 
-        async function handleEventRegistrationSubmission(event) {
-            event.preventDefault();
-            
-            const form = event.target;
-            const submitButton = form.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            
-            // Disable submit button and show loading state
-            submitButton.disabled = true;
-            submitButton.textContent = 'Processing...';
-            submitButton.classList.add('opacity-50', 'cursor-not-allowed');
-            
-            try {
-                // Collect form data
-                const formData = new FormData(form);
-                const registrationData = {
-                    firstName: formData.get('eventFirstName'),
-                    lastName: formData.get('eventLastName'),
-                    email: formData.get('eventEmail'),
-                    phone: formData.get('eventPhone'),
-                    selectedEvent: formData.get('selectedEvent'),
-                    submissionDate: new Date().toISOString(),
-                    formType: 'Event Registration'
-                };
+                    // Disable submit button and show loading state
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Processing...';
+                    submitButton.classList.add('opacity-50', 'cursor-not-allowed');
 
-                // Send email
-                await sendRegistrationEmail(registrationData);
-                
-                // Show success message
-                showSuccessMessage('Event registration submitted successfully!');
-                
-                // Reset form
-                form.reset();
-                
-            } catch (error) {
-                console.error('Form submission error:', error);
-                showErrorMessage('There was an error submitting your registration. Please try again or contact us directly.');
-            } finally {
-                // Re-enable submit button
-                submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
-                submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
-            }
-        }
+                    try {
+                        // Collect form data
+                        const formData = new FormData(form);
+                        const registrationData = {
+                            firstName: formData.get('firstName'),
+                            lastName: formData.get('lastName'),
+                            email: formData.get('email'),
+                            selectedClass: formData.get('availableClasses'),
+                            submissionDate: new Date().toISOString(),
+                            formType: 'Grow Class Registration'
+                        };
 
-        async function sendRegistrationEmail(registrationData) {
-            const subject = `${registrationData.formType} - ${registrationData.firstName} ${registrationData.lastName}`;
-            const body = `New ${registrationData.formType.toLowerCase()} received:\n\n` +
-                `Name: ${registrationData.firstName} ${registrationData.lastName}\n` +
-                `Email: ${registrationData.email}\n` +
-                `Phone: ${registrationData.phone || 'Not provided'}\n` +
-                `Selected Class/Event: ${registrationData.selectedClass || registrationData.selectedEvent || 'Not specified'}\n` +
-                `Submitted: ${new Date().toLocaleString()}`;
-            
-            // Create mailto link
-            const mailtoLink = `mailto:contactperankh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Store registration data in localStorage for backup
-            localStorage.setItem('lastEventRegistration', JSON.stringify(registrationData));
-            
-            // Open email client
-            window.location.href = mailtoLink;
-        }
+                        // Send email
+                        await sendRegistrationEmail(registrationData);
 
-        function showSuccessMessage(message) {
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50';
-            notification.innerHTML = `
+                        // Show success message
+                        showSuccessMessage('Grow class registration submitted successfully!');
+
+                        // Reset form
+                        form.reset();
+
+                    } catch (error) {
+                        console.error('Form submission error:', error);
+                        showErrorMessage('There was an error submitting your registration. Please try again or contact us directly.');
+                    } finally {
+                        // Re-enable submit button
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                        submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                }
+
+                async function handleEventRegistrationSubmission(event) {
+                    event.preventDefault();
+
+                    const form = event.target;
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.textContent;
+
+                    // Disable submit button and show loading state
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Processing...';
+                    submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+
+                    try {
+                        // Collect form data
+                        const formData = new FormData(form);
+                        const registrationData = {
+                            firstName: formData.get('eventFirstName'),
+                            lastName: formData.get('eventLastName'),
+                            email: formData.get('eventEmail'),
+                            phone: formData.get('eventPhone'),
+                            selectedEvent: formData.get('selectedEvent'),
+                            submissionDate: new Date().toISOString(),
+                            formType: 'Event Registration'
+                        };
+
+                        // Send email
+                        await sendRegistrationEmail(registrationData);
+
+                        // Show success message
+                        showSuccessMessage('Event registration submitted successfully!');
+
+                        // Reset form
+                        form.reset();
+
+                    } catch (error) {
+                        console.error('Form submission error:', error);
+                        showErrorMessage('There was an error submitting your registration. Please try again or contact us directly.');
+                    } finally {
+                        // Re-enable submit button
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                        submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                }
+
+                async function sendRegistrationEmail(registrationData) {
+                    const subject = `${registrationData.formType} - ${registrationData.firstName} ${registrationData.lastName}`;
+                    const body = `New ${registrationData.formType.toLowerCase()} received:\n\n` +
+                        `Name: ${registrationData.firstName} ${registrationData.lastName}\n` +
+                        `Email: ${registrationData.email}\n` +
+                        `Phone: ${registrationData.phone || 'Not provided'}\n` +
+                        `Selected Class/Event: ${registrationData.selectedClass || registrationData.selectedEvent || 'Not specified'}\n` +
+                        `Submitted: ${new Date().toLocaleString()}`;
+
+                    // Create mailto link
+                    const mailtoLink = `mailto:contactperankh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                    // Store registration data in localStorage for backup
+                    localStorage.setItem('lastEventRegistration', JSON.stringify(registrationData));
+
+                    // Open email client
+                    window.location.href = mailtoLink;
+                }
+
+                function showSuccessMessage(message) {
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50';
+                    notification.innerHTML = `
                 <div class="flex items-center">
                     <i class="fas fa-check-circle mr-3"></i>
                     <div>
@@ -790,19 +891,19 @@
                     </div>
                 </div>
             `;
-            
-            document.body.appendChild(notification);
-            
-            // Remove message after 5 seconds
-            setTimeout(() => {
-                notification.remove();
-            }, 5000);
-        }
 
-        function showErrorMessage(errorText) {
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg z-50';
-            notification.innerHTML = `
+                    document.body.appendChild(notification);
+
+                    // Remove message after 5 seconds
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 5000);
+                }
+
+                function showErrorMessage(errorText) {
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg z-50';
+                    notification.innerHTML = `
                 <div class="flex items-center">
                     <i class="fas fa-exclamation-triangle mr-3"></i>
                     <div>
@@ -811,25 +912,25 @@
                     </div>
                 </div>
             `;
-            
-            document.body.appendChild(notification);
-            
-            // Remove message after 7 seconds
-            setTimeout(() => {
-                notification.remove();
-            }, 7000);
-        }
 
-        // Event Modal Functions
-        function openEventModal(eventType) {
-            const modal = document.getElementById('eventModal');
-            const modalContent = document.getElementById('modalContent');
-            
-            let content = '';
-            
-            switch(eventType) {
-                case 'fivetrips':
-                    content = `
+                    document.body.appendChild(notification);
+
+                    // Remove message after 7 seconds
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 7000);
+                }
+
+                // Event Modal Functions
+                function openEventModal(eventType) {
+                    const modal = document.getElementById('eventModal');
+                    const modalContent = document.getElementById('modalContent');
+
+                    let content = '';
+
+                    switch (eventType) {
+                        case 'fivetrips':
+                            content = `
                         <div class="text-center">
                             <img src="eventsimages/fivetrips.png" alt="Five Trips Event" class="w-full max-w-md mx-auto mb-6 rounded-lg">
                             <h2 class="text-3xl font-bold mb-4" style="color: var(--earth-brown); font-family: 'Cinzel', serif;">Five Trips</h2>
@@ -847,10 +948,10 @@
                             </div>
                         </div>
                     `;
-                    break;
-                    
-                case 'readyletgo':
-                    content = `
+                            break;
+
+                        case 'readyletgo':
+                            content = `
                         <div class="text-center">
                             <img src="eventsimages/readyletgo.png" alt="Ready Set Let Go Event" class="w-full max-w-md mx-auto mb-6 rounded-lg">
                             <h2 class="text-3xl font-bold mb-4" style="color: var(--consciousness-purple); font-family: 'Cinzel', serif;">Ready! Set! Let Go!</h2>
@@ -870,10 +971,10 @@
                             </div>
                         </div>
                     `;
-                    break;
-                    
-                case 'midnitemass':
-                    content = `
+                            break;
+
+                        case 'midnitemass':
+                            content = `
                         <div class="text-center">
                             <img src="eventsimages/midnitemass.png" alt="Midnight Mass Event" class="w-full max-w-md mx-auto mb-6 rounded-lg">
                             <h2 class="text-3xl font-bold mb-4" style="color: var(--sacred-amber); font-family: 'Cinzel', serif;">Midnight Mass</h2>
@@ -897,53 +998,54 @@
                             </div>
                         </div>
                     `;
-                    break;
-            }
-            
-            modalContent.innerHTML = content;
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
+                            break;
+                    }
 
-        function closeEventModal() {
-            const modal = document.getElementById('eventModal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-
-        function registerForEvent(eventType) {
-            // Close modal
-            closeEventModal();
-            
-            // Scroll to registration form
-            const registrationForm = document.getElementById('eventRegistrationForm');
-            if (registrationForm) {
-                registrationForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Pre-select the event in the dropdown
-                const eventSelect = document.getElementById('selectedEvent');
-                if (eventSelect) {
-                    eventSelect.value = eventType;
-                    eventSelect.focus();
+                    modalContent.innerHTML = content;
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
                 }
-            }
-        }
 
-        // Close modal when clicking outside of it
-        document.addEventListener('click', function(event) {
-            const modal = document.getElementById('eventModal');
-            if (event.target === modal) {
-                closeEventModal();
-            }
-        });
+                function closeEventModal() {
+                    const modal = document.getElementById('eventModal');
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }
 
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeEventModal();
-            }
-        });
-    </script>
+                function registerForEvent(eventType) {
+                    // Close modal
+                    closeEventModal();
+
+                    // Scroll to registration form
+                    const registrationForm = document.getElementById('eventRegistrationForm');
+                    if (registrationForm) {
+                        registrationForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                        // Pre-select the event in the dropdown
+                        const eventSelect = document.getElementById('selectedEvent');
+                        if (eventSelect) {
+                            eventSelect.value = eventType;
+                            eventSelect.focus();
+                        }
+                    }
+                }
+
+                // Close modal when clicking outside of it
+                document.addEventListener('click', function (event) {
+                    const modal = document.getElementById('eventModal');
+                    if (event.target === modal) {
+                        closeEventModal();
+                    }
+                });
+
+                // Close modal with Escape key
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape') {
+                        closeEventModal();
+                    }
+                });
+            </script>
 </body>
 <script type="module" src="/src/utils/analytics-tracker.js"></script>
+
 </html>

@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate - Per Ankh Entheogenic Church</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --primary-gold: #d4af37;
@@ -18,13 +21,13 @@
             --sacred-purple: #4a148c;
             --temple-bronze: #cd7f32;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--matte-black);
@@ -32,7 +35,7 @@
             overflow-x: hidden;
             animation: cosmicFlow 20s ease-in-out infinite alternate;
         }
-        
+
         /* Sacred Geometry Background */
         .sacred-geometry {
             position: fixed;
@@ -43,16 +46,16 @@
             pointer-events: none;
             z-index: 1;
         }
-        
+
         /* Geometry elements removed */
-        
+
         /* Cinematic Container */
         .cinematic-container {
             position: relative;
             z-index: 10;
             min-height: 100vh;
         }
-        
+
         /* Hero Section */
         .hero-section {
             position: relative;
@@ -62,20 +65,20 @@
             justify-content: center;
             overflow: hidden;
         }
-        
+
         .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.4) 0%, transparent 50%),
                 radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.5) 0%, transparent 50%),
                 linear-gradient(45deg, var(--matte-black) 0%, rgba(45, 27, 105, 0.3) 50%, var(--matte-black) 100%);
             animation: cosmicFlow 25s ease-in-out infinite alternate;
         }
-        
+
         .temple-silhouette {
             position: absolute;
             bottom: 0;
@@ -87,7 +90,7 @@
             clip-path: polygon(10% 100%, 20% 60%, 30% 70%, 40% 40%, 50% 50%, 60% 40%, 70% 70%, 80% 60%, 90% 100%);
             animation: templeGlow 4s ease-in-out infinite alternate;
         }
-        
+
         .floating-ankh {
             position: absolute;
             top: 20%;
@@ -98,13 +101,13 @@
             perspective: 1000px;
             filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
         }
-        
+
         .hero-content {
             text-align: center;
             z-index: 20;
             position: relative;
         }
-        
+
         .hero-title {
             font-size: 4.5rem;
             font-weight: 700;
@@ -116,7 +119,7 @@
             margin-bottom: 1.5rem;
             animation: titlePulse 3s ease-in-out infinite alternate;
         }
-        
+
         .hero-subtitle {
             font-size: 1.5rem;
             color: var(--ethereal-white);
@@ -124,7 +127,7 @@
             margin: 0 auto;
             animation: subtitleGlow 4s ease-in-out infinite alternate;
         }
-        
+
         /* Sacred Cards */
         .sacred-card {
             background: rgba(26, 26, 26, 0.8);
@@ -137,7 +140,7 @@
             overflow: hidden;
             animation: containerGlow 6s ease-in-out infinite alternate;
         }
-        
+
         .sacred-card::before {
             content: '';
             position: absolute;
@@ -148,7 +151,7 @@
             background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
             pointer-events: none;
         }
-        
+
         .section-title {
             font-family: 'Cinzel', serif;
             background: linear-gradient(45deg, var(--primary-gold), var(--deep-gold));
@@ -158,14 +161,14 @@
             margin-bottom: 1rem;
             font-weight: 600;
         }
-        
+
         /* Navigation */
         nav {
             background: rgba(26, 26, 26, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
-        
+
         /* Donation Button */
         .sacred-button {
             background: linear-gradient(45deg, var(--primary-gold), var(--deep-gold));
@@ -182,12 +185,12 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .sacred-button:hover {
             transform: translateY(-2px) scale(1.05);
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
-        
+
         .sacred-button::before {
             content: '';
             position: absolute;
@@ -198,11 +201,11 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s;
         }
-        
+
         .sacred-button:hover::before {
             left: 100%;
         }
-        
+
         /* Warning Box */
         .warning-box {
             background: rgba(212, 175, 55, 0.1);
@@ -211,190 +214,203 @@
             padding: 1rem;
             margin: 1rem 0;
         }
-        
+
         .warning-text {
             color: var(--primary-gold);
             font-weight: 600;
         }
-        
+
         /* Book Store Styles */
         .books-grid {
             position: relative;
         }
-        
+
         .book-item {
             transition: all 0.3s ease;
             border: 2px solid rgba(212, 175, 55, 0.3);
         }
-        
+
         .book-item:hover {
             border-color: var(--primary-gold);
             transform: translateY(-5px);
         }
-        
+
         .book-showcase {
             perspective: 1000px;
         }
-        
+
         .book-cover {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
         }
-        
+
         .book-cover:hover {
             transform: rotateY(5deg) rotateX(5deg) scale(1.05);
             filter: drop-shadow(0 20px 40px rgba(212, 175, 55, 0.4));
         }
-        
+
         .book-glow {
             background: radial-gradient(circle at center, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
         }
-        
+
         .book-showcase:hover .book-glow {
             opacity: 1;
             animation: bookPulse 2s ease-in-out infinite alternate;
         }
-        
+
         .price-section {
             min-width: 200px;
         }
-        
+
         .purchase-buttons .sacred-button {
             min-width: 160px;
             font-size: 0.9rem;
             padding: 0.75rem 1rem;
             transition: all 0.3s ease;
         }
-        
+
         .purchase-buttons .sacred-button:hover {
             transform: translateY(-2px) scale(1.02);
         }
-        
+
         .coming-soon-books {
             opacity: 0.8;
         }
-        
+
         @media (max-width: 768px) {
             .book-item {
                 text-align: center;
             }
-            
+
             .book-details {
                 text-align: center;
             }
-            
+
             .purchase-buttons {
                 justify-content: center;
             }
         }
-        
+
         @keyframes bookPulse {
             0% {
                 opacity: 0.2;
                 transform: scale(1);
             }
+
             100% {
                 opacity: 0.4;
                 transform: scale(1.05);
             }
         }
-        
+
         /* Mystical Animations */
         @keyframes cosmicFlow {
             0% {
-                background: 
+                background:
                     radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                     radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
                     linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
             }
+
             100% {
-                background: 
+                background:
                     radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.4) 0%, transparent 60%),
                     radial-gradient(circle at 30% 80%, rgba(45, 27, 105, 0.5) 0%, transparent 60%),
                     linear-gradient(135deg, transparent 20%, rgba(212, 175, 55, 0.15) 60%, transparent 80%);
             }
         }
-        
+
         @keyframes templeGlow {
             0% {
                 box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
                 filter: brightness(1);
             }
+
             100% {
                 box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
                 filter: brightness(1.2);
             }
         }
-        
+
         @keyframes ankh3DRotation {
             0% {
                 transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
                 filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)) brightness(1);
             }
+
             25% {
                 transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
                 filter: drop-shadow(0 0 40px rgba(212, 175, 55, 1)) brightness(1.2);
             }
+
             50% {
                 transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
                 filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.6)) brightness(0.8);
             }
+
             75% {
                 transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
                 filter: drop-shadow(0 0 40px rgba(212, 175, 55, 1)) brightness(1.2);
             }
+
             100% {
                 transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
                 filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)) brightness(1);
             }
         }
-        
+
         @keyframes titlePulse {
             0% {
                 filter: brightness(1) saturate(1);
                 transform: scale(1);
             }
+
             100% {
                 filter: brightness(1.2) saturate(1.3);
                 transform: scale(1.02);
             }
         }
-        
+
         @keyframes subtitleGlow {
             0% {
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
                 opacity: 0.9;
             }
+
             100% {
                 text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.3);
                 opacity: 1;
             }
         }
-        
+
         @keyframes geometryFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) rotate(0deg);
                 opacity: 0.3;
             }
+
             50% {
                 transform: translateY(-20px) rotate(180deg);
                 opacity: 0.6;
             }
         }
-        
+
         @keyframes containerGlow {
             0% {
-                box-shadow: 
+                box-shadow:
                     0 20px 60px rgba(212, 175, 55, 0.2),
                     0 0 40px rgba(45, 27, 105, 0.1),
                     inset 0 1px 0 rgba(255, 255, 255, 0.1);
                 border-color: var(--primary-gold);
             }
+
             100% {
-                box-shadow: 
+                box-shadow:
                     0 25px 80px rgba(212, 175, 55, 0.3),
                     0 0 60px rgba(45, 27, 105, 0.15),
                     inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -403,26 +419,32 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Sacred Geometry Background removed -->
-    
+
     <!-- Navigation -->
     <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <img src="PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
-                    <a href="index.html" class="text-2xl font-bold" style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
+                    <a href="index.html" class="text-2xl font-bold"
+                        style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
                 </div>
                 <div class="hidden md:flex space-x-6">
-                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a Member</a>
+                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a
+                        Member</a>
                     <a href="events.html" class="text-white hover:text-yellow-400 transition-colors">Events</a>
-                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos & Structure</a>
-                    <a href="ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
+                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos &
+                        Structure</a>
+                    <a href="ceremony-and-safety.html"
+                        class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
                     <a href="donate.html" class="text-yellow-400 hover:text-yellow-300 transition-colors">Donate</a>
                     <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
                     <a href="calculator.html" class="text-white hover:text-yellow-400 transition-colors">Calculator</a>
-                    <a href="admin-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
+                    <a href="admin-login.html"
+                        class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
                 </div>
             </div>
         </div>
@@ -437,7 +459,7 @@
             <div class="hero-background"></div>
             <div class="temple-silhouette"></div>
             <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
-            
+
             <div class="hero-content">
                 <h1 class="hero-title">Support Per-Ankh</h1>
                 <p class="hero-subtitle">
@@ -452,9 +474,12 @@
                 <div class="max-w-4xl mx-auto">
                     <div class="sacred-card mb-8">
                         <p class="text-lg mb-6 leading-relaxed" style="color: var(--ethereal-white);">
-                            PerAnkh is more than an organization—it's a movement dedicated to spiritual awakening, healing, and the decriminalization of entheogens. Based in Detroit, we are committed to advocating for the sacred use of plant medicines while providing education, community support, and safe spaces for exploration.
+                            PerAnkh is more than an organization—it's a movement dedicated to spiritual awakening,
+                            healing, and the decriminalization of entheogens. Based in Detroit, we are committed to
+                            advocating for the sacred use of plant medicines while providing education, community
+                            support, and safe spaces for exploration.
                         </p>
-                    
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                             <div class="sacred-card">
                                 <h3 class="section-title text-2xl mb-4">Our Mission</h3>
@@ -465,18 +490,21 @@
                                     <li>🌱 Build a thriving community rooted in healing and transformation</li>
                                 </ul>
                             </div>
-                            
+
                             <div class="sacred-card">
                                 <h3 class="section-title text-2xl mb-4">Your Impact</h3>
                                 <p class="text-left" style="color: var(--ethereal-white);">
-                                    Every contribution, big or small, fuels the vision of a world where natural medicines are recognized, respected, and accessible to those seeking spiritual and personal growth.
+                                    Every contribution, big or small, fuels the vision of a world where natural
+                                    medicines are recognized, respected, and accessible to those seeking spiritual and
+                                    personal growth.
                                 </p>
                             </div>
                         </div>
 
                         <div class="text-center mb-8">
                             <p class="text-lg mb-4" style="color: var(--ethereal-white);">
-                                To keep this mission going, we need your support. Your donations and love offerings directly fund our efforts to:
+                                To keep this mission going, we need your support. Your donations and love offerings
+                                directly fund our efforts to:
                             </p>
                             <ul class="text-left max-w-2xl mx-auto space-y-2 mb-6" style="color: var(--primary-gold);">
                                 <li>🌱 Advocate for entheogen decriminalization</li>
@@ -485,20 +513,23 @@
                                 <li>🌱 Build a thriving community rooted in healing and transformation</li>
                             </ul>
                             <p class="text-lg mb-6" style="color: var(--ethereal-white);">
-                                Every contribution, big or small, fuels the vision of a world where natural medicines are recognized, respected, and accessible to those seeking spiritual and personal growth.
+                                Every contribution, big or small, fuels the vision of a world where natural medicines
+                                are recognized, respected, and accessible to those seeking spiritual and personal
+                                growth.
                             </p>
                             <p class="text-xl font-bold mb-8" style="color: var(--primary-gold);">
                                 💜 Donate today & be a part of the movement!
                             </p>
                         </div>
-                        
+
                         <!-- Sacred Books Store -->
                         <div class="sacred-card mb-8">
                             <h3 class="section-title text-3xl mb-6 text-center">Sacred Books Store</h3>
                             <p class="text-center text-lg mb-8" style="color: var(--ethereal-white);">
-                                Expand your consciousness with transformative literature from our curated collection of sacred texts and consciousness-expanding works.
+                                Expand your consciousness with transformative literature from our curated collection of
+                                sacred texts and consciousness-expanding works.
                             </p>
-                            
+
                             <!-- Book Grid -->
                             <div class="books-grid max-w-6xl mx-auto">
                                 <!-- Book 1: Sacred Mushroom Rituals -->
@@ -507,39 +538,45 @@
                                         <!-- Book Cover -->
                                         <div class="text-center">
                                             <div class="book-showcase relative inline-block">
-                                                <img src="sacredmushritual.jpg" 
-                                                     alt="Sacred Mushroom Rituals: The Search for the Blood of Quetzalcoatl by Tom Lane" 
-                                                     class="book-cover w-48 h-auto rounded-lg shadow-2xl mx-auto transform transition-all duration-300 hover:scale-105"
-                                                     style="box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);">
+                                                <img src="sacredmushritual.jpg"
+                                                    alt="Sacred Mushroom Rituals: The Search for the Blood of Quetzalcoatl by Tom Lane"
+                                                    class="book-cover w-48 h-auto rounded-lg shadow-2xl mx-auto transform transition-all duration-300 hover:scale-105"
+                                                    style="box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);">
                                                 <div class="book-glow absolute inset-0 rounded-lg"></div>
                                             </div>
                                         </div>
-                                        
+
                                         <!-- Book Details -->
                                         <div class="book-details md:col-span-2">
-                                            <h4 class="text-2xl font-bold mb-2" 
+                                            <h4 class="text-2xl font-bold mb-2"
                                                 style="color: var(--primary-gold); font-family: 'Cinzel', serif;">
                                                 Sacred Mushroom Rituals
                                             </h4>
-                                            <h5 class="text-lg mb-2" 
+                                            <h5 class="text-lg mb-2"
                                                 style="color: var(--ethereal-white); font-family: 'Cinzel', serif;">
                                                 The Search for the Blood of Quetzalcoatl
                                             </h5>
                                             <p class="text-base mb-4" style="color: var(--temple-bronze);">
                                                 by Tom Lane
                                             </p>
-                                            
+
                                             <div class="book-description mb-6">
-                                                <p class="text-sm leading-relaxed mb-3" style="color: var(--ethereal-white);">
-                                                    Embark on a profound journey into the ancient wisdom of sacred mushroom rituals and the mystical quest for Quetzalcoatl's divine essence. This transformative work explores the intersection of consciousness, spirituality, and the sacred plant medicines that have guided humanity's spiritual evolution for millennia.
+                                                <p class="text-sm leading-relaxed mb-3"
+                                                    style="color: var(--ethereal-white);">
+                                                    Embark on a profound journey into the ancient wisdom of sacred
+                                                    mushroom rituals and the mystical quest for Quetzalcoatl's divine
+                                                    essence. This transformative work explores the intersection of
+                                                    consciousness, spirituality, and the sacred plant medicines that
+                                                    have guided humanity's spiritual evolution for millennia.
                                                 </p>
                                             </div>
-                                            
+
                                             <!-- Purchase Options -->
                                             <div class="book-purchase-options">
                                                 <div class="flex flex-col sm:flex-row gap-4 items-start">
                                                     <div class="price-section">
-                                                        <p class="text-2xl font-bold mb-2" style="color: var(--primary-gold);">
+                                                        <p class="text-2xl font-bold mb-2"
+                                                            style="color: var(--primary-gold);">
                                                             $40.00
                                                         </p>
                                                         <p class="text-sm" style="color: var(--ethereal-white);">
@@ -547,12 +584,12 @@
                                                         </p>
                                                     </div>
                                                     <div class="purchase-buttons flex flex-col gap-2">
-                                                        <button onclick="purchaseBook('sacred-mushroom-rituals', 40.00)" 
-                                                                class="sacred-button bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400">
+                                                        <button onclick="purchaseBook('sacred-mushroom-rituals', 40.00)"
+                                                            class="sacred-button bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400">
                                                             📖 Purchase Book
                                                         </button>
-                                                        <button onclick="addToCart('sacred-mushroom-rituals', 40.00)" 
-                                                                class="sacred-button bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-blue-500 hover:to-indigo-400">
+                                                        <button onclick="addToCart('sacred-mushroom-rituals', 40.00)"
+                                                            class="sacred-button bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-blue-500 hover:to-indigo-400">
                                                             🛒 Add to Cart
                                                         </button>
                                                     </div>
@@ -561,24 +598,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Placeholder for Future Books -->
                                 <div class="coming-soon-books text-center py-8">
                                     <div class="sacred-card p-6">
-                                        <h4 class="text-xl font-bold mb-4" style="color: var(--primary-gold); font-family: 'Cinzel', serif;">
+                                        <h4 class="text-xl font-bold mb-4"
+                                            style="color: var(--primary-gold); font-family: 'Cinzel', serif;">
                                             More Sacred Texts Coming Soon
                                         </h4>
                                         <p class="text-base mb-4" style="color: var(--ethereal-white);">
-                                            We're expanding our collection with more consciousness-expanding literature, ancient wisdom texts, and transformative spiritual works.
+                                            We're expanding our collection with more consciousness-expanding literature,
+                                            ancient wisdom texts, and transformative spiritual works.
                                         </p>
                                         <div class="flex justify-center gap-4">
-                                            <div class="w-16 h-20 bg-gradient-to-br from-amber-900 to-yellow-800 rounded opacity-50 flex items-center justify-center">
+                                            <div
+                                                class="w-16 h-20 bg-gradient-to-br from-amber-900 to-yellow-800 rounded opacity-50 flex items-center justify-center">
                                                 <span class="text-2xl">📚</span>
                                             </div>
-                                            <div class="w-16 h-20 bg-gradient-to-br from-amber-900 to-yellow-800 rounded opacity-50 flex items-center justify-center">
+                                            <div
+                                                class="w-16 h-20 bg-gradient-to-br from-amber-900 to-yellow-800 rounded opacity-50 flex items-center justify-center">
                                                 <span class="text-2xl">📜</span>
                                             </div>
-                                            <div class="w-16 h-20 bg-gradient-to-br from-amber-900 to-yellow-800 rounded opacity-50 flex items-center justify-center">
+                                            <div
+                                                class="w-16 h-20 bg-gradient-to-br from-amber-900 to-yellow-800 rounded opacity-50 flex items-center justify-center">
                                                 <span class="text-2xl">🔮</span>
                                             </div>
                                         </div>
@@ -586,81 +628,123 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Sacred Donation Form -->
                         <div class="sacred-card max-w-2xl mx-auto">
                             <h3 class="section-title text-2xl mb-6 text-center">Sacred Donation Form</h3>
-                            
-                            <form id="donationForm" class="space-y-6">
+
+                            <form id="donationForm" action="https://formspree.io/f/xgoyrqpj" method="POST"
+                                class="space-y-6">
+                                <input type="hidden" name="_subject" value="New Donation - Per Ankh Church">
                                 <!-- Name Fields -->
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">First Name *</label>
-                                        <input type="text" name="firstName" required class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                        <label class="block text-sm font-medium mb-2"
+                                            style="color: var(--primary-gold);">First Name *</label>
+                                        <input type="text" name="firstName" required
+                                            class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                            style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Last Name *</label>
-                                        <input type="text" name="lastName" required class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                        <label class="block text-sm font-medium mb-2"
+                                            style="color: var(--primary-gold);">Last Name *</label>
+                                        <input type="text" name="lastName" required
+                                            class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                            style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                     </div>
                                 </div>
-                                
+
                                 <!-- Email -->
                                 <div>
-                                    <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Email *</label>
-                                    <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                    <label class="block text-sm font-medium mb-2"
+                                        style="color: var(--primary-gold);">Email *</label>
+                                    <input type="email" name="email" required
+                                        class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                        style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                 </div>
-                                
+
                                 <!-- Donation Amount -->
                                 <div>
-                                    <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Donation Amount *</label>
-                                    <input type="number" name="amount" min="20" step="0.01" required class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="Minimum Price: $20.00" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                    <label class="block text-sm font-medium mb-2"
+                                        style="color: var(--primary-gold);">Donation Amount *</label>
+                                    <input type="number" name="amount" min="20" step="0.01" required
+                                        class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                        placeholder="Minimum Price: $20.00"
+                                        style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                 </div>
-                                
+
                                 <!-- Donor Message -->
                                 <div>
-                                    <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Donor Message</label>
-                                    <textarea name="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="Share your thoughts or intentions..." style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);"></textarea>
+                                    <label class="block text-sm font-medium mb-2"
+                                        style="color: var(--primary-gold);">Donor Message</label>
+                                    <textarea name="message" rows="4"
+                                        class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                        placeholder="Share your thoughts or intentions..."
+                                        style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);"></textarea>
                                 </div>
-                                
+
                                 <!-- Card Details Section -->
-                                <div class="border-t border-primary-gold pt-6" style="border-color: var(--primary-gold);">
-                                    <h4 class="text-lg font-semibold mb-4" style="color: var(--primary-gold);">Card Details</h4>
-                                    
+                                <div class="border-t border-primary-gold pt-6"
+                                    style="border-color: var(--primary-gold);">
+                                    <h4 class="text-lg font-semibold mb-4" style="color: var(--primary-gold);">Card
+                                        Details</h4>
+
                                     <!-- Email for Card -->
                                     <div class="mb-4">
-                                        <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Email</label>
-                                        <input type="email" name="cardEmail" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="youremail@example.com" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                        <label class="block text-sm font-medium mb-2"
+                                            style="color: var(--primary-gold);">Email</label>
+                                        <input type="email" name="cardEmail"
+                                            class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                            placeholder="youremail@example.com"
+                                            style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                     </div>
-                                    
+
                                     <!-- Card Number -->
                                     <div class="mb-4">
-                                        <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Card Number</label>
+                                        <label class="block text-sm font-medium mb-2"
+                                            style="color: var(--primary-gold);">Card Number</label>
                                         <div class="relative">
-                                            <input type="text" name="cardNumber" maxlength="19" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="1234 1234 1234 1234" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                            <input type="text" name="cardNumber" maxlength="19"
+                                                class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                                placeholder="1234 1234 1234 1234"
+                                                style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                             <div class="absolute right-3 top-3 flex space-x-1">
-                                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iIzAwNTFBNSIvPgo8cGF0aCBkPSJNMTMuNSA3VjEzSDE1VjdIMTMuNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNy41IDdWMTNIMTlWN0gxNy41WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="Visa" class="h-5">
-                                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI0VCMDAxQiIvPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjEwIiByPSI2IiBmaWxsPSIjRkY1RjAwIi8+CjxjaXJjbGUgY3g9IjIwIiBjeT0iMTAiIHI9IjYiIGZpbGw9IiNGRkY1RjAiLz4KPC9zdmc+" alt="Mastercard" class="h-5">
+                                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iIzAwNTFBNSIvPgo8cGF0aCBkPSJNMTMuNSA3VjEzSDE1VjdIMTMuNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNy41IDdWMTNIMTlWN0gxNy41WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+"
+                                                    alt="Visa" class="h-5">
+                                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI0VCMDAxQiIvPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjEwIiByPSI2IiBmaWxsPSIjRkY1RjAwIi8+CjxjaXJjbGUgY3g9IjIwIiBjeT0iMTAiIHI9IjYiIGZpbGw9IiNGRkY1RjAiLz4KPC9zdmc+"
+                                                    alt="Mastercard" class="h-5">
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Expiry and CVC -->
                                     <div class="grid grid-cols-2 gap-4 mb-4">
                                         <div>
-                                            <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Expiration Date</label>
-                                            <input type="text" name="expiry" maxlength="5" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="MM / YY" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                            <label class="block text-sm font-medium mb-2"
+                                                style="color: var(--primary-gold);">Expiration Date</label>
+                                            <input type="text" name="expiry" maxlength="5"
+                                                class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                                placeholder="MM / YY"
+                                                style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Security Code</label>
-                                            <input type="text" name="cvc" maxlength="4" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="CVC" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                            <label class="block text-sm font-medium mb-2"
+                                                style="color: var(--primary-gold);">Security Code</label>
+                                            <input type="text" name="cvc" maxlength="4"
+                                                class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                                placeholder="CVC"
+                                                style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Country and ZIP -->
                                     <div class="grid grid-cols-2 gap-4 mb-6">
                                         <div>
-                                            <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">Country</label>
-                                            <select name="country" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                            <label class="block text-sm font-medium mb-2"
+                                                style="color: var(--primary-gold);">Country</label>
+                                            <select name="country"
+                                                class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                                style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                                 <option value="US">United States</option>
                                                 <option value="CA">Canada</option>
                                                 <option value="UK">United Kingdom</option>
@@ -668,12 +752,16 @@
                                             </select>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium mb-2" style="color: var(--primary-gold);">ZIP Code</label>
-                                            <input type="text" name="zipCode" class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold" placeholder="12345" style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
+                                            <label class="block text-sm font-medium mb-2"
+                                                style="color: var(--primary-gold);">ZIP Code</label>
+                                            <input type="text" name="zipCode"
+                                                class="w-full px-4 py-3 rounded-lg bg-rgba(26, 26, 26, 0.8) border border-primary-gold text-ethereal-white focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                                                placeholder="12345"
+                                                style="background: rgba(26, 26, 26, 0.8); border-color: var(--primary-gold); color: var(--ethereal-white);">
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Submit Button -->
                                 <div class="text-center">
                                     <button type="submit" class="sacred-button w-full md:w-auto">
@@ -682,7 +770,7 @@
                                 </div>
                             </form>
                         </div>
-                        
+
                         <!-- Gratitude Message -->
                         <div class="text-center mt-8">
                             <p class="text-lg font-semibold mb-2" style="color: var(--primary-gold);">
@@ -700,65 +788,95 @@
             </div>
         </section>
     </main>
-    
+
     <!-- Footer -->
     <footer class="bg-gray-800 py-12 text-white">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h4 class="text-xl font-bold mb-4 ankh-symbol" style="color: var(--golden-ankh);">PER ANKH ENTHEOGENIC CHURCH</h4>
+                    <h4 class="text-xl font-bold mb-4 ankh-symbol" style="color: var(--golden-ankh);">PER ANKH
+                        ENTHEOGENIC CHURCH</h4>
                     <p class="text-gray-300 mb-4">15705 Woodrow Wilson<br>Detroit, Michigan</p>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="/become-a-member.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Become A Member</a></li>
-                        <li><a href="/donate.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Donate</a></li>
-                        <li><a href="/ceremony-and-safety.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Useful Resources</a></li>
-                        <li><a href="/vendor-registration.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Vendor Registration</a></li>
+                        <li><a href="/become-a-member.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Become A Member</a></li>
+                        <li><a href="/donate.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Donate</a></li>
+                        <li><a href="/ceremony-and-safety.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Useful Resources</a></li>
+                        <li><a href="/vendor-registration.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Vendor Registration</a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Social Media</h4>
                     <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/perankh_church" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/perankh_church"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=61565651284992" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-facebook"></i>
+                        <a href="https://www.facebook.com/profile.php?id=61565651284992"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-youtube"></i>
+                        <a href="#"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-twitter"></i>
+                        <a href="#"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="X (Twitter)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z" />
+                            </svg>
                         </a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-700 mt-8 pt-8 text-center">
                 <p class="text-gray-400 mb-2">&copy; 2025 Per Ankh Entheogenic Church. All rights reserved.</p>
                 <p class="text-gray-400">
-                    <a href="/terms.html" class="hover:text-yellow-400 transition-colors">Terms of Use</a> | 
+                    <a href="/terms.html" class="hover:text-yellow-400 transition-colors">Terms of Use</a> |
                     <a href="/privacy.html" class="hover:text-yellow-400 transition-colors">Privacy Policy</a>
                 </p>
             </div>
         </div>
     </footer>
-    
+
     <script>
         // Shopping cart functionality
         let cart = [];
-        
+
         // Book purchase functionality
         function purchaseBook(bookId, price) {
             // For now, directly process the purchase
             processBookPurchase(bookId, price);
         }
-        
+
         function addToCart(bookId, price) {
             const book = {
                 id: bookId,
@@ -766,7 +884,7 @@
                 title: getBookTitle(bookId),
                 quantity: 1
             };
-            
+
             // Check if book already in cart
             const existingItem = cart.find(item => item.id === bookId);
             if (existingItem) {
@@ -774,21 +892,21 @@
             } else {
                 cart.push(book);
             }
-            
+
             updateCartDisplay();
             showCartNotification(`"${book.title}" added to cart!`);
         }
-        
+
         function getBookTitle(bookId) {
             const bookTitles = {
                 'sacred-mushroom-rituals': 'Sacred Mushroom Rituals'
             };
             return bookTitles[bookId] || 'Unknown Book';
         }
-        
+
         function processBookPurchase(bookId, price) {
             const bookTitle = getBookTitle(bookId);
-            
+
             // Create a simple purchase form popup or redirect to payment
             const purchaseData = {
                 type: 'book_purchase',
@@ -797,48 +915,52 @@
                 price: price,
                 timestamp: new Date().toISOString()
             };
-            
-            console.log('Processing book purchase:', purchaseData);
-            
-            // For now, show a confirmation
-            alert(`Thank you for purchasing "${bookTitle}"!\n\nPrice: $${price}\n\nYou will be redirected to our secure payment processor.`);
-            
-            // Here you would typically redirect to your payment processor
-            // window.location.href = `/checkout?item=${bookId}&price=${price}`;
+
+            // Scroll to donation form and pre-fill
+            const donationForm = document.getElementById('donationForm');
+            if (donationForm) {
+                const amountInput = donationForm.querySelector('input[name="amount"]');
+                const messageInput = donationForm.querySelector('textarea[name="message"]');
+
+                if (amountInput) amountInput.value = price.toFixed(2);
+                if (messageInput) messageInput.value = `Purchase of: ${bookTitle}`;
+
+                donationForm.scrollIntoView({ behavior: 'smooth' });
+            }
         }
-        
+
         function updateCartDisplay() {
             // This would update a cart icon/counter if you have one
             console.log('Cart updated:', cart);
         }
-        
+
         function showCartNotification(message) {
             // Create a temporary notification
             const notification = document.createElement('div');
             notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
             notification.textContent = message;
             document.body.appendChild(notification);
-            
+
             setTimeout(() => {
                 notification.remove();
             }, 3000);
         }
-        
+
         // Card number formatting
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const cardNumberInput = document.querySelector('input[name="cardNumber"]');
             const expiryInput = document.querySelector('input[name="expiry"]');
-            
+
             if (cardNumberInput) {
-                cardNumberInput.addEventListener('input', function(e) {
+                cardNumberInput.addEventListener('input', function (e) {
                     let value = e.target.value.replace(/\D/g, '');
                     value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
                     e.target.value = value;
                 });
             }
-            
+
             if (expiryInput) {
-                expiryInput.addEventListener('input', function(e) {
+                expiryInput.addEventListener('input', function (e) {
                     let value = e.target.value.replace(/\D/g, '');
                     if (value.length >= 2) {
                         value = value.substring(0, 2) + ' / ' + value.substring(2, 4);
@@ -847,11 +969,11 @@
                 });
             }
         });
-        
+
         // Form submission handler
-        document.getElementById('donationForm').addEventListener('submit', function(e) {
+        document.getElementById('donationForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(this);
             const donationData = {
@@ -869,14 +991,15 @@
                     zipCode: formData.get('zipCode')
                 }
             };
-            
+
             // Here you would typically send this to your payment processor
             console.log('Donation Data:', donationData);
-            
+
             // Show success message
             alert('Thank you for your sacred contribution! Your donation is being processed.');
         });
     </script>
 </body>
 <script type="module" src="/src/utils/analytics-tracker.js"></script>
+
 </html>

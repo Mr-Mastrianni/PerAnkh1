@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Registration - Per Ankh Entheogenic Church</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --deep-gold: #b8941f;
+            --cosmic-blue: #2d1b69;
+            --matte-black: #1a1a1a;
+            --ethereal-white: #f8f9fa;
+            --sacred-purple: #4a148c;
+            --temple-bronze: #cd7f32;
+            --golden-ankh: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--matte-black);
+            color: var(--ethereal-white);
+            overflow-x: hidden;
+        }
+
+        .cinematic-container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.5) 0%, transparent 50%),
+                linear-gradient(45deg, var(--matte-black) 0%, rgba(45, 27, 105, 0.3) 50%, var(--matte-black) 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 20;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(45deg, var(--primary-gold), var(--deep-gold), var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--ethereal-white);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .sacred-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(45deg, var(--primary-gold), var(--deep-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .form-input {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--ethereal-white);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            width: 100%;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-label {
+            color: var(--primary-gold);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .submit-button {
+            background: linear-gradient(45deg, var(--primary-gold), var(--deep-gold));
+            color: var(--matte-black);
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
+                    <a href="index.html" class="text-2xl font-bold"
+                        style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a
+                        Member</a>
+                    <a href="events.html" class="text-white hover:text-yellow-400 transition-colors">Events</a>
+                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos &
+                        Structure</a>
+                    <a href="ceremony-and-safety.html"
+                        class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
+                    <a href="donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
+                    <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <link rel="stylesheet" href="src/components/side-nav.css">
+    <script type="module" src="src/components/side-nav.js" defer></script>
+
+    <!-- Main Content -->
+    <main class="cinematic-container pt-20">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Vendor Registration</h1>
+                <p class="hero-subtitle">
+                    Join our sacred marketplace and share your offerings with the Per Ankh community
+                </p>
+            </div>
+        </section>
+
+        <!-- Registration Form Section -->
+        <section class="py-16" style="position: relative; z-index: 10;">
+            <div class="container mx-auto px-6">
+                <div class="max-w-2xl mx-auto">
+                    <div class="sacred-card">
+                        <h2 class="section-title text-3xl mb-6 text-center">Vendor Application</h2>
+                        <p class="text-center mb-8" style="color: var(--ethereal-white);">
+                            Interested in becoming a vendor at Per Ankh events? Fill out the form below and we'll be in
+                            touch.
+                        </p>
+
+                        <form action="https://formspree.io/f/xeekvdpd" method="POST" class="space-y-6">
+                            <input type="hidden" name="_subject" value="New Vendor Registration - Per Ankh Church">
+
+                            <!-- Business/Vendor Name -->
+                            <div>
+                                <label for="businessName" class="form-label">Business/Vendor Name *</label>
+                                <input type="text" id="businessName" name="businessName" required class="form-input">
+                            </div>
+
+                            <!-- Contact Name -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="form-label">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required class="form-input">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="form-label">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required class="form-input">
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" name="email" required class="form-input">
+                            </div>
+
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input">
+                            </div>
+
+                            <!-- Products/Services -->
+                            <div>
+                                <label for="products" class="form-label">What products or services do you offer?
+                                    *</label>
+                                <textarea id="products" name="products" rows="4" required class="form-input"
+                                    placeholder="Describe your offerings..."></textarea>
+                            </div>
+
+                            <!-- Website/Social -->
+                            <div>
+                                <label for="website" class="form-label">Website or Social Media Links</label>
+                                <input type="text" id="website" name="website" class="form-input"
+                                    placeholder="https://...">
+                            </div>
+
+                            <!-- Additional Info -->
+                            <div>
+                                <label for="additionalInfo" class="form-label">Additional Information</label>
+                                <textarea id="additionalInfo" name="additionalInfo" rows="3" class="form-input"
+                                    placeholder="Any other details you'd like to share..."></textarea>
+                            </div>
+
+                            <!-- Submit -->
+                            <div class="text-center pt-4">
+                                <button type="submit" class="submit-button">
+                                    🌱 Submit Application
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-12 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4 ankh-symbol" style="color: var(--golden-ankh);">PER ANKH
+                        ENTHEOGENIC CHURCH</h4>
+                    <p class="text-gray-300 mb-4">15705 Woodrow Wilson<br>Detroit, Michigan</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="become-a-member.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Become A Member</a></li>
+                        <li><a href="donate.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Donate</a></li>
+                        <li><a href="ceremony-and-safety.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Useful Resources</a></li>
+                        <li><a href="vendor-registration.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Vendor Registration</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Social Media</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/perankh_church"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61565651284992"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400 mb-2">&copy; 2025 Per Ankh Entheogenic Church. All rights reserved.</p>
+                <p class="text-gray-400">
+                    <a href="terms.html" class="hover:text-yellow-400 transition-colors">Terms of Use</a> |
+                    <a href="privacy.html" class="hover:text-yellow-400 transition-colors">Privacy Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

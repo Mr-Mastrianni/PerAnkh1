@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceremony and Safety - Per Ankh Entheogenic Church</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --primary-gold: #D4AF37;
@@ -22,9 +25,9 @@
             --mycelium-white: #F5F5DC;
             --consciousness-purple: #663399;
         }
-        
+
         body {
-            background: 
+            background:
                 radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(45, 27, 105, 0.3) 0%, transparent 50%),
                 linear-gradient(135deg, var(--matte-black) 0%, #0f0f0f 100%);
@@ -35,7 +38,7 @@
             min-height: 100vh;
             position: relative;
         }
-        
+
         /* Sacred Geometry Background */
         .sacred-geometry {
             position: fixed;
@@ -47,16 +50,16 @@
             z-index: 1;
             overflow: hidden;
         }
-        
+
         /* Geometry elements removed */
-        
+
         /* Cinematic Container */
         .cinematic-container {
             position: relative;
             z-index: 10;
             min-height: 100vh;
         }
-        
+
         /* Hero Section Styling */
         .hero-section {
             position: relative;
@@ -65,23 +68,23 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: 
+            background:
                 radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
                 linear-gradient(135deg, rgba(45, 27, 105, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
         }
-        
+
         .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 70% 30%, rgba(45, 27, 105, 0.4) 0%, transparent 50%);
             animation: cosmicFlow 25s ease-in-out infinite alternate;
         }
-        
+
         .temple-silhouette {
             position: absolute;
             bottom: 0;
@@ -89,16 +92,15 @@
             transform: translateX(-50%);
             width: 300px;
             height: 200px;
-            background: 
-                linear-gradient(to top, 
-                    rgba(212, 175, 55, 0.8) 0%, 
-                    rgba(212, 175, 55, 0.4) 50%, 
-                    transparent 100%
-                );
+            background:
+                linear-gradient(to top,
+                    rgba(212, 175, 55, 0.8) 0%,
+                    rgba(212, 175, 55, 0.4) 50%,
+                    transparent 100%);
             clip-path: polygon(20% 100%, 0% 60%, 15% 40%, 25% 45%, 35% 30%, 50% 35%, 65% 30%, 75% 45%, 85% 40%, 100% 60%, 80% 100%);
             animation: templeGlow 4s ease-in-out infinite alternate;
         }
-        
+
         .temple-silhouette::before {
             content: '';
             position: absolute;
@@ -110,7 +112,7 @@
             border-radius: 50%;
             filter: blur(10px);
         }
-        
+
         .floating-ankh {
             position: absolute;
             top: 20%;
@@ -126,14 +128,14 @@
             transform-style: preserve-3d;
             filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
         }
-        
+
         .hero-content {
             text-align: center;
             z-index: 10;
             max-width: 800px;
             padding: 0 2rem;
         }
-        
+
         .hero-title {
             font-family: 'Cinzel', serif;
             font-size: clamp(2.5rem, 8vw, 5rem);
@@ -146,7 +148,7 @@
             text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
             animation: titlePulse 3s ease-in-out infinite alternate;
         }
-        
+
         .hero-subtitle {
             font-size: clamp(1.1rem, 3vw, 1.5rem);
             color: var(--ethereal-white);
@@ -154,7 +156,7 @@
             line-height: 1.6;
             animation: subtitleGlow 4s ease-in-out infinite alternate;
         }
-        
+
         /* Sacred Cards Styling */
         .sacred-card {
             background: rgba(26, 26, 26, 0.8);
@@ -165,13 +167,13 @@
             transition: all 0.3s ease;
             animation: containerGlow 6s ease-in-out infinite alternate;
         }
-        
+
         .sacred-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
             border-color: var(--primary-gold);
         }
-        
+
         .section-title {
             font-family: 'Cinzel', serif;
             color: var(--primary-gold);
@@ -180,13 +182,13 @@
             margin-bottom: 1.5rem;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
-        
+
         .ankh-symbol {
             font-family: 'Cinzel', serif;
             color: var(--primary-gold);
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
-        
+
         /* Warning Box Styling */
         .warning-box {
             background: rgba(139, 69, 19, 0.2);
@@ -196,105 +198,117 @@
             padding: 1.5rem;
             margin: 1.5rem 0;
         }
-        
+
         .warning-text {
             color: var(--primary-gold);
             font-weight: 600;
         }
-        
+
         /* Mystical Animations */
         @keyframes cosmicFlow {
             0% {
-                background: 
+                background:
                     radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                     radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
                     linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
             }
+
             100% {
-                background: 
+                background:
                     radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.4) 0%, transparent 60%),
                     radial-gradient(circle at 30% 80%, rgba(45, 27, 105, 0.5) 0%, transparent 60%),
                     linear-gradient(135deg, transparent 20%, rgba(212, 175, 55, 0.15) 60%, transparent 80%);
             }
         }
-        
+
         @keyframes templeGlow {
             0% {
                 box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
                 filter: brightness(1);
             }
+
             100% {
                 box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
                 filter: brightness(1.2);
             }
         }
-        
+
         @keyframes ankh3DRotation {
             0% {
                 transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
             }
+
             25% {
                 transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
                 text-shadow: 0 0 40px rgba(212, 175, 55, 1);
             }
+
             50% {
                 transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
                 text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
             }
+
             75% {
                 transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
                 text-shadow: 0 0 40px rgba(212, 175, 55, 1);
             }
+
             100% {
                 transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
             }
         }
-        
+
         @keyframes titlePulse {
             0% {
                 filter: brightness(1) saturate(1);
                 transform: scale(1);
             }
+
             100% {
                 filter: brightness(1.2) saturate(1.3);
                 transform: scale(1.02);
             }
         }
-        
+
         @keyframes subtitleGlow {
             0% {
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
                 opacity: 0.9;
             }
+
             100% {
                 text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.3);
                 opacity: 1;
             }
         }
-        
+
         @keyframes geometryFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) rotate(0deg);
                 opacity: 0.3;
             }
+
             50% {
                 transform: translateY(-20px) rotate(180deg);
                 opacity: 0.6;
             }
         }
-        
+
         @keyframes containerGlow {
             0% {
-                box-shadow: 
+                box-shadow:
                     0 20px 60px rgba(212, 175, 55, 0.2),
                     0 0 40px rgba(45, 27, 105, 0.1),
                     inset 0 1px 0 rgba(255, 255, 255, 0.1);
                 border-color: var(--primary-gold);
             }
+
             100% {
-                box-shadow: 
+                box-shadow:
                     0 25px 80px rgba(212, 175, 55, 0.3),
                     0 0 60px rgba(45, 27, 105, 0.15),
                     inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -303,26 +317,32 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Sacred Geometry Background removed -->
-    
+
     <!-- Navigation -->
     <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <img src="PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
-                    <a href="index.html" class="text-2xl font-bold" style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
+                    <a href="index.html" class="text-2xl font-bold"
+                        style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
                 </div>
                 <div class="hidden md:flex space-x-6">
-                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a Member</a>
+                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a
+                        Member</a>
                     <a href="events.html" class="text-white hover:text-yellow-400 transition-colors">Events</a>
-                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos & Structure</a>
-                    <a href="ceremony-and-safety.html" class="text-yellow-400 hover:text-yellow-300 transition-colors">Ceremony and Safety</a>
+                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos &
+                        Structure</a>
+                    <a href="ceremony-and-safety.html"
+                        class="text-yellow-400 hover:text-yellow-300 transition-colors">Ceremony and Safety</a>
                     <a href="donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
                     <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
                     <a href="calculator.html" class="text-white hover:text-yellow-400 transition-colors">Calculator</a>
-                    <a href="admin-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
+                    <a href="admin-login.html"
+                        class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
                 </div>
             </div>
         </div>
@@ -337,7 +357,7 @@
             <div class="hero-background"></div>
             <div class="temple-silhouette"></div>
             <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
-            
+
             <div class="hero-content">
                 <h1 class="hero-title">Ceremony and Safety</h1>
                 <p class="hero-subtitle">
@@ -352,17 +372,27 @@
                 <div class="max-w-4xl mx-auto">
                     <div class="sacred-card mb-8">
                         <p class="text-lg mb-6 leading-relaxed" style="color: var(--ethereal-white);">
-                            Psilocybin ceremonies involve the intentional use of psilocybin Sacraments after preparation and meditation on an intent for the experience. These ceremonies allow individuals to access sources of knowledge and wisdom that may be otherwise inaccessible. Through the direct mystical experiences that can occur during ceremony, individuals may gain insight into their spiritual journey, their faith, and their life's purpose.
+                            Psilocybin ceremonies involve the intentional use of psilocybin Sacraments after preparation
+                            and meditation on an intent for the experience. These ceremonies allow individuals to access
+                            sources of knowledge and wisdom that may be otherwise inaccessible. Through the direct
+                            mystical experiences that can occur during ceremony, individuals may gain insight into their
+                            spiritual journey, their faith, and their life's purpose.
                         </p>
-                        
+
                         <p class="text-lg mb-6 leading-relaxed" style="color: var(--ethereal-white);">
-                            Those seeking a psilocybin experience may have questions for God, a sense of searching for meaning, a longing for completeness, or a desire to connect to something more. Many come with big life questions tugging at their hearts, spirits, minds, and bodies. The wisdom and spiritual insights that can be gained through these direct mystical experiences are innumerable and hold an unquantifiable potential for inducing positive transformation.
+                            Those seeking a psilocybin experience may have questions for God, a sense of searching for
+                            meaning, a longing for completeness, or a desire to connect to something more. Many come
+                            with big life questions tugging at their hearts, spirits, minds, and bodies. The wisdom and
+                            spiritual insights that can be gained through these direct mystical experiences are
+                            innumerable and hold an unquantifiable potential for inducing positive transformation.
                         </p>
-                        
+
                         <div class="warning-box">
                             <p class="warning-text">
                                 <i class="fas fa-exclamation-triangle mr-2"></i>
-                                It is imperative that all safety and dosage information is thoroughly read and understood. Never attempt to consume psilocybin without careful preparation and adherence to safety guidelines.
+                                It is imperative that all safety and dosage information is thoroughly read and
+                                understood. Never attempt to consume psilocybin without careful preparation and
+                                adherence to safety guidelines.
                             </p>
                         </div>
                     </div>
@@ -378,7 +408,7 @@
                                 <li>• Consider heart conditions before use</li>
                             </ul>
                         </div>
-                        
+
                         <div class="sacred-card">
                             <h3 class="section-title text-2xl mb-4">Available Guides</h3>
                             <ul class="space-y-2" style="color: var(--ethereal-white);">
@@ -393,10 +423,11 @@
 
                     <div class="sacred-card">
                         <h3 class="section-title text-3xl mb-6">Setting an Intent</h3>
-                        
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
-                                <h4 class="text-xl font-bold mb-4" style="color: var(--primary-gold);">Intent as Questions:</h4>
+                                <h4 class="text-xl font-bold mb-4" style="color: var(--primary-gold);">Intent as
+                                    Questions:</h4>
                                 <ul class="space-y-2" style="color: var(--ethereal-white);">
                                     <li>• What is my purpose on earth?</li>
                                     <li>• How do I learn to be more patient?</li>
@@ -404,9 +435,10 @@
                                     <li>• How do I heal my body?</li>
                                 </ul>
                             </div>
-                            
+
                             <div>
-                                <h4 class="text-xl font-bold mb-4" style="color: var(--primary-gold);">Intent as Statements:</h4>
+                                <h4 class="text-xl font-bold mb-4" style="color: var(--primary-gold);">Intent as
+                                    Statements:</h4>
                                 <ul class="space-y-2" style="color: var(--ethereal-white);">
                                     <li>• Introduce me to my guardian angels</li>
                                     <li>• Help me heal my trauma</li>
@@ -415,58 +447,96 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <p class="mt-6 text-lg leading-relaxed" style="color: var(--ethereal-white);">
-                            Maintaining a clear and sincere focus upon the intent before, during, and after each ceremony is helpful for numerous reasons. Focusing on the intent for a psilocybin ceremony sets the stage for a focused mindset, presents your inquiry or request to the divine, and serves as an anchor during potential difficulties that may arise.
+                            Maintaining a clear and sincere focus upon the intent before, during, and after each
+                            ceremony is helpful for numerous reasons. Focusing on the intent for a psilocybin ceremony
+                            sets the stage for a focused mindset, presents your inquiry or request to the divine, and
+                            serves as an anchor during potential difficulties that may arise.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <!-- Footer -->
     <footer class="bg-gray-800 py-12 text-white">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h4 class="text-xl font-bold mb-4 ankh-symbol" style="color: var(--golden-ankh);">PER ANKH ENTHEOGENIC CHURCH</h4>
+                    <h4 class="text-xl font-bold mb-4 ankh-symbol" style="color: var(--golden-ankh);">PER ANKH
+                        ENTHEOGENIC CHURCH</h4>
                     <p class="text-gray-300 mb-4">15705 Woodrow Wilson<br>Detroit, Michigan</p>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="become-a-member.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Become A Member</a></li>
-                        <li><a href="donate.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Donate</a></li>
-                        <li><a href="ceremony-and-safety.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Useful Resources</a></li>
-                        <li><a href="vendor-registration.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Vendor Registration</a></li>
+                        <li><a href="become-a-member.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Become A Member</a></li>
+                        <li><a href="donate.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Donate</a></li>
+                        <li><a href="ceremony-and-safety.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Useful Resources</a></li>
+                        <li><a href="vendor-registration.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Vendor Registration</a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Social Media</h4>
                     <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/perankh_church" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/perankh_church"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 1 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=61565651284992" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-facebook"></i>
+                        <a href="https://www.facebook.com/profile.php?id=61565651284992"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-youtube"></i>
+                        <a href="#"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.12 1 12 1 12s0 3.88.42 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.88 23 12 23 12s0-3.88-.42-5.58z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-twitter"></i>
+                        <a href="#"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="X (Twitter)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z" />
+                            </svg>
                         </a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-700 mt-8 pt-8 text-center">
                 <p class="text-gray-400 mb-2">&copy; 2025 Per Ankh Entheogenic Church. All rights reserved.</p>
                 <p class="text-gray-400">
-                    <a href="terms.html" class="hover:text-yellow-400 transition-colors">Terms of Use</a> | 
+                    <a href="terms.html" class="hover:text-yellow-400 transition-colors">Terms of Use</a> |
                     <a href="privacy.html" class="hover:text-yellow-400 transition-colors">Privacy Policy</a>
                 </p>
             </div>
@@ -474,4 +544,5 @@
     </footer>
 </body>
 <script type="module" src="/src/utils/analytics-tracker.js"></script>
+
 </html>

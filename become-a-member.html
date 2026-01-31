@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Become a Member of Per Ankh Entheogenic Church - Join our community of visionaries exploring consciousness through sacred plant medicines.">
+    <meta name="description"
+        content="Become a Member of Per Ankh Entheogenic Church - Join our community of visionaries exploring consciousness through sacred plant medicines.">
     <meta name="keywords" content="become member, per ankh, entheogenic church, membership, spiritual community">
     <meta name="author" content="Per Ankh Entheogenic Church">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://perankh1.org/become-a-member/">
     <meta property="og:title" content="Become a Member - Per Ankh Entheogenic Church">
-    <meta property="og:description" content="Join our community of visionaries exploring consciousness through sacred plant medicines.">
+    <meta property="og:description"
+        content="Join our community of visionaries exploring consciousness through sacred plant medicines.">
     <meta property="og:image" content="./PerAnkhLogo.png">
 
     <!-- Security Headers -->
@@ -27,17 +30,19 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
+
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
+
     <title>Become a Member - Per Ankh Entheogenic Church</title>
 
     <style>
@@ -57,13 +62,13 @@
             --mycelium-white: #F5F5DC;
             --consciousness-purple: #663399;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
             font-family: 'Inter', sans-serif;
@@ -71,42 +76,41 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
-        
+
         .cinematic-container {
             position: relative;
             min-height: 100vh;
             background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, rgba(45, 27, 105, 0.2) 50%, rgba(10, 10, 10, 0.9) 100%);
         }
-        
+
         /* Hero Section with Ancient Egyptian Temple */
         .hero-section {
             position: relative;
             height: 60vh;
-            background: linear-gradient(135deg, 
-                rgba(10, 10, 10, 0.8) 0%,
-                rgba(45, 27, 105, 0.6) 30%,
-                rgba(184, 134, 11, 0.4) 70%,
-                rgba(212, 175, 55, 0.2) 100%
-            );
+            background: linear-gradient(135deg,
+                    rgba(10, 10, 10, 0.8) 0%,
+                    rgba(45, 27, 105, 0.6) 30%,
+                    rgba(184, 134, 11, 0.4) 70%,
+                    rgba(212, 175, 55, 0.2) 100%);
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
+
         .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
                 linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
             animation: cosmicFlow 20s ease-in-out infinite alternate;
         }
-        
+
         .temple-silhouette {
             position: absolute;
             bottom: 0;
@@ -115,19 +119,16 @@
             width: 120%;
             height: 60%;
             background: linear-gradient(to top,
-                rgba(10, 10, 10, 0.9) 0%,
-                rgba(28, 28, 28, 0.7) 30%,
-                rgba(45, 27, 105, 0.5) 60%,
-                transparent 100%
-            );
-            clip-path: polygon(
-                0% 100%, 15% 80%, 20% 75%, 25% 70%, 30% 60%, 35% 55%, 
-                40% 45%, 45% 40%, 50% 35%, 55% 40%, 60% 45%, 65% 55%, 
-                70% 60%, 75% 70%, 80% 75%, 85% 80%, 100% 100%
-            );
+                    rgba(10, 10, 10, 0.9) 0%,
+                    rgba(28, 28, 28, 0.7) 30%,
+                    rgba(45, 27, 105, 0.5) 60%,
+                    transparent 100%);
+            clip-path: polygon(0% 100%, 15% 80%, 20% 75%, 25% 70%, 30% 60%, 35% 55%,
+                    40% 45%, 45% 40%, 50% 35%, 55% 40%, 60% 45%, 65% 55%,
+                    70% 60%, 75% 70%, 80% 75%, 85% 80%, 100% 100%);
             animation: templeGlow 8s ease-in-out infinite alternate;
         }
-        
+
         .floating-ankh {
             position: absolute;
             top: 5%;
@@ -144,7 +145,7 @@
             text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
             filter: drop-shadow(0 10px 20px rgba(212, 175, 55, 0.4));
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 10;
@@ -152,7 +153,7 @@
             max-width: 1000px;
             padding: 2rem;
         }
-        
+
         .hero-title {
             font-family: 'Cinzel', serif;
             font-size: clamp(2.5rem, 6vw, 4rem);
@@ -166,7 +167,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             animation: titlePulse 4s ease-in-out infinite alternate;
         }
-        
+
         .hero-subtitle {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1rem, 2.5vw, 1.5rem);
@@ -175,7 +176,7 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
             animation: subtitleGlow 6s ease-in-out infinite alternate;
         }
-        
+
         .sacred-geometry {
             position: fixed;
             top: 0;
@@ -186,22 +187,22 @@
             z-index: 1;
             opacity: 0.3;
         }
-        
+
         /* Geometry elements removed */
-        
+
         /* Mystical Form Styling */
         .sacred-form {
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(20px);
             border: 2px solid var(--primary-gold);
             border-radius: 20px;
-            box-shadow: 
+            box-shadow:
                 0 20px 60px rgba(212, 175, 55, 0.2),
                 0 0 40px rgba(45, 27, 105, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             animation: containerGlow 6s ease-in-out infinite alternate;
         }
-        
+
         .form-section {
             background: rgba(10, 10, 10, 0.6);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -210,7 +211,7 @@
             margin-bottom: 2rem;
             backdrop-filter: blur(10px);
         }
-        
+
         .form-section h3 {
             font-family: 'Cinzel', serif;
             color: var(--primary-gold);
@@ -218,7 +219,7 @@
             margin-bottom: 1rem;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
-        
+
         .form-input {
             background: rgba(0, 0, 0, 0.7);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -227,20 +228,20 @@
             padding: 0.75rem;
             transition: all 0.3s ease;
         }
-        
+
         .form-input:focus {
             border-color: var(--primary-gold);
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
             outline: none;
         }
-        
+
         .form-label {
             color: var(--ethereal-white);
             font-weight: 500;
             margin-bottom: 0.5rem;
             display: block;
         }
-        
+
         .submit-button {
             background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
             border: none;
@@ -253,105 +254,117 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
-        
+
         .submit-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
         }
-        
+
         /* Mystical Animations */
         @keyframes cosmicFlow {
             0% {
-                background: 
+                background:
                     radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                     radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
                     linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
             }
+
             100% {
-                background: 
+                background:
                     radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.4) 0%, transparent 60%),
                     radial-gradient(circle at 30% 80%, rgba(45, 27, 105, 0.5) 0%, transparent 60%),
                     linear-gradient(135deg, transparent 20%, rgba(212, 175, 55, 0.15) 60%, transparent 80%);
             }
         }
-        
+
         @keyframes templeGlow {
             0% {
                 box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
                 filter: brightness(1);
             }
+
             100% {
                 box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
                 filter: brightness(1.2);
             }
         }
-        
+
         @keyframes ankh3DRotation {
             0% {
                 transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
             }
+
             25% {
                 transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
                 text-shadow: 0 0 40px rgba(212, 175, 55, 1);
             }
+
             50% {
                 transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
                 text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
             }
+
             75% {
                 transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
                 text-shadow: 0 0 40px rgba(212, 175, 55, 1);
             }
+
             100% {
                 transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
             }
         }
-        
+
         @keyframes titlePulse {
             0% {
                 filter: brightness(1) saturate(1);
                 transform: scale(1);
             }
+
             100% {
                 filter: brightness(1.2) saturate(1.3);
                 transform: scale(1.02);
             }
         }
-        
+
         @keyframes subtitleGlow {
             0% {
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
                 opacity: 0.9;
             }
+
             100% {
                 text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.3);
                 opacity: 1;
             }
         }
-        
+
         @keyframes geometryFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) rotate(0deg);
                 opacity: 0.3;
             }
+
             50% {
                 transform: translateY(-20px) rotate(180deg);
                 opacity: 0.6;
             }
         }
-        
+
         @keyframes containerGlow {
             0% {
-                box-shadow: 
+                box-shadow:
                     0 20px 60px rgba(212, 175, 55, 0.2),
                     0 0 40px rgba(45, 27, 105, 0.1),
                     inset 0 1px 0 rgba(255, 255, 255, 0.1);
                 border-color: var(--primary-gold);
             }
+
             100% {
-                box-shadow: 
+                box-shadow:
                     0 25px 80px rgba(212, 175, 55, 0.3),
                     0 0 60px rgba(45, 27, 105, 0.15),
                     inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -360,30 +373,38 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip to main content</a>
-    
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip
+        to main content</a>
+
     <!-- Sacred Geometry Background removed -->
-    
+
     <!-- Navigation -->
     <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <img src="PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
-                    <a href="index.html" class="text-2xl font-bold" style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
+                    <a href="index.html" class="text-2xl font-bold"
+                        style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
                 </div>
                 <div class="hidden md:flex space-x-6">
                     <a href="index.html" class="text-white hover:text-yellow-400 transition-colors">Home</a>
-                    <a href="become-a-member.html" class="text-yellow-400 hover:text-yellow-300 transition-colors">Become a Member</a>
+                    <a href="become-a-member.html"
+                        class="text-yellow-400 hover:text-yellow-300 transition-colors">Become a Member</a>
                     <a href="events.html" class="text-white hover:text-yellow-400 transition-colors">Events</a>
-                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos & Structure</a>
-                    <a href="ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
+                    <a href="per-ankh.html" class="text-white hover:text-yellow-400 transition-colors">Ethos &
+                        Structure</a>
+                    <a href="ceremony-and-safety.html"
+                        class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
                     <a href="donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
                     <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
                     <a href="calculator.html" class="text-white hover:text-yellow-400 transition-colors">Calculator</a>
-                    <a href="admin-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
+                    <a href="admin-login.html"
+                        class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
                 </div>
             </div>
         </div>
@@ -398,7 +419,7 @@
             <div class="hero-background"></div>
             <div class="temple-silhouette"></div>
             <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
-            
+
             <div class="hero-content">
                 <h1 class="hero-title">Join Our Sacred Community</h1>
                 <p class="hero-subtitle">
@@ -413,309 +434,369 @@
                 <div class="max-w-4xl mx-auto">
                     <div class="sacred-form p-8">
                         <div class="form-section text-center">
-                            <h2 class="text-3xl font-bold mb-4" style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">Sacred Membership Application</h2>
+                            <h2 class="text-3xl font-bold mb-4"
+                                style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">
+                                Sacred Membership Application</h2>
                             <p class="text-lg mb-6" style="color: var(--ethereal-white);">
-                                Complete this application to join the Per Ankh Entheogenic Church community. All information will be kept confidential and used only for membership processing.
+                                Complete this application to join the Per Ankh Entheogenic Church community. All
+                                information will be kept confidential and used only for membership processing.
                             </p>
                         </div>
 
                         <!-- Sacred Membership Application Form -->
                         <div class="form-section">
                             <h3>Personal Information</h3>
-                            <form id="membershipForm" class="space-y-6">
+                            <form id="membershipForm" action="https://formspree.io/f/xpqrknov" method="POST"
+                                class="space-y-6" enctype="multipart/form-data">
+                                <input type="hidden" name="_subject"
+                                    value="New Membership Application - Per Ankh Church">
                                 <!-- Name Fields -->
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label for="firstName" class="form-label">Name *</label>
-                                        <input type="text" id="firstName" name="firstName" required 
-                                               class="form-input w-full"
-                                               placeholder="First">
+                                        <input type="text" id="firstName" name="firstName" required
+                                            class="form-input w-full" placeholder="First">
                                     </div>
                                     <div class="flex items-end">
-                                        <input type="text" id="lastName" name="lastName" required 
-                                               class="form-input w-full"
-                                               placeholder="Last">
+                                        <input type="text" id="lastName" name="lastName" required
+                                            class="form-input w-full" placeholder="Last">
                                     </div>
                                 </div>
 
-                            <!-- Email -->
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                                <input type="email" id="email" name="email" required 
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
-                            </div>
-
-                            <!-- Phone -->
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                                <div class="flex">
-                                    <span class="inline-flex items-center px-3 py-2 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm rounded-l-md">
-                                        Ex: (201) 555-0123
-                                    </span>
-                                    <input type="tel" id="phone" name="phone" 
-                                           class="flex-1 px-3 py-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                                <!-- Email -->
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2"
+                                        style="color: var(--ethereal-white);">Email *</label>
+                                    <input type="email" id="email" name="email" required class="form-input w-full">
                                 </div>
-                            </div>
 
-                            <!-- Address -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
-                                <div class="space-y-3">
-                                    <input type="text" id="addressLine1" name="addressLine1" 
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                                           placeholder="Address Line 1">
-                                    <input type="text" id="addressLine2" name="addressLine2" 
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                                           placeholder="Address Line 2">
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                                        <input type="text" id="city" name="city" 
-                                               class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                                               placeholder="City">
-                                        <select id="state" name="state" 
-                                                class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
-                                            <option value="">-- Select state --</option>
-                                            <option value="AL">Alabama</option>
-                                            <option value="AK">Alaska</option>
-                                            <option value="AZ">Arizona</option>
-                                            <option value="AR">Arkansas</option>
-                                            <option value="CA">California</option>
-                                            <option value="CO">Colorado</option>
-                                            <option value="CT">Connecticut</option>
-                                            <option value="DE">Delaware</option>
-                                            <option value="FL">Florida</option>
-                                            <option value="GA">Georgia</option>
-                                            <option value="HI">Hawaii</option>
-                                            <option value="ID">Idaho</option>
-                                            <option value="IL">Illinois</option>
-                                            <option value="IN">Indiana</option>
-                                            <option value="IA">Iowa</option>
-                                            <option value="KS">Kansas</option>
-                                            <option value="KY">Kentucky</option>
-                                            <option value="LA">Louisiana</option>
-                                            <option value="ME">Maine</option>
-                                            <option value="MD">Maryland</option>
-                                            <option value="MA">Massachusetts</option>
-                                            <option value="MI">Michigan</option>
-                                            <option value="MN">Minnesota</option>
-                                            <option value="MS">Mississippi</option>
-                                            <option value="MO">Missouri</option>
-                                            <option value="MT">Montana</option>
-                                            <option value="NE">Nebraska</option>
-                                            <option value="NV">Nevada</option>
-                                            <option value="NH">New Hampshire</option>
-                                            <option value="NJ">New Jersey</option>
-                                            <option value="NM">New Mexico</option>
-                                            <option value="NY">New York</option>
-                                            <option value="NC">North Carolina</option>
-                                            <option value="ND">North Dakota</option>
-                                            <option value="OH">Ohio</option>
-                                            <option value="OK">Oklahoma</option>
-                                            <option value="OR">Oregon</option>
-                                            <option value="PA">Pennsylvania</option>
-                                            <option value="RI">Rhode Island</option>
-                                            <option value="SC">South Carolina</option>
-                                            <option value="SD">South Dakota</option>
-                                            <option value="TN">Tennessee</option>
-                                            <option value="TX">Texas</option>
-                                            <option value="UT">Utah</option>
-                                            <option value="VT">Vermont</option>
-                                            <option value="VA">Virginia</option>
-                                            <option value="WA">Washington</option>
-                                            <option value="WV">West Virginia</option>
-                                            <option value="WI">Wisconsin</option>
-                                            <option value="WY">Wyoming</option>
-                                        </select>
-                                        <input type="text" id="zipCode" name="zipCode" 
-                                               class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                                               placeholder="Zip Code">
+                                <!-- Phone -->
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-2"
+                                        style="color: var(--ethereal-white);">Phone</label>
+                                    <div class="flex">
+                                        <span
+                                            class="inline-flex items-center px-3 py-2 border border-r-0 border-yellow-600/30 text-gray-300 text-sm rounded-l-md"
+                                            style="background: rgba(0, 0, 0, 0.7); border-color: rgba(212, 175, 55, 0.3);">
+                                            Ex: (201) 555-0123
+                                        </span>
+                                        <input type="tel" id="phone" name="phone"
+                                            class="form-input flex-1 rounded-none rounded-r-md">
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Date of Birth -->
-                            <div>
-                                <label for="dateOfBirth" class="block text-sm font-medium text-gray-700 mb-2">Date Of Birth</label>
-                                <input type="date" id="dateOfBirth" name="dateOfBirth" 
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
-                            </div>
-
-                            <!-- Employment Question -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-3">ARE YOU AN EMPLOYEE OR CONTRACTOR WITH ANY STATE OR FEDERAL ENFORCEMENT AGENCY? *</label>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="lawEnforcement" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>Yes</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="lawEnforcement" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>No</span>
-                                    </label>
+                                <!-- Address -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2"
+                                        style="color: var(--ethereal-white);">Address</label>
+                                    <div class="space-y-3">
+                                        <input type="text" id="addressLine1" name="addressLine1"
+                                            class="form-input w-full" placeholder="Address Line 1">
+                                        <input type="text" id="addressLine2" name="addressLine2"
+                                            class="form-input w-full" placeholder="Address Line 2">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                            <input type="text" id="city" name="city" class="form-input"
+                                                placeholder="City">
+                                            <select id="state" name="state" class="form-input">
+                                                <option value="" style="color: black;">-- Select state --</option>
+                                                <option value="AL" style="color: black;">Alabama</option>
+                                                <option value="AK" style="color: black;">Alaska</option>
+                                                <option value="AZ" style="color: black;">Arizona</option>
+                                                <option value="AR" style="color: black;">Arkansas</option>
+                                                <option value="CA" style="color: black;">California</option>
+                                                <option value="CO" style="color: black;">Colorado</option>
+                                                <option value="CT" style="color: black;">Connecticut</option>
+                                                <option value="DE" style="color: black;">Delaware</option>
+                                                <option value="FL" style="color: black;">Florida</option>
+                                                <option value="GA" style="color: black;">Georgia</option>
+                                                <option value="HI" style="color: black;">Hawaii</option>
+                                                <option value="ID" style="color: black;">Idaho</option>
+                                                <option value="IL" style="color: black;">Illinois</option>
+                                                <option value="IN" style="color: black;">Indiana</option>
+                                                <option value="IA" style="color: black;">Iowa</option>
+                                                <option value="KS" style="color: black;">Kansas</option>
+                                                <option value="KY" style="color: black;">Kentucky</option>
+                                                <option value="LA" style="color: black;">Louisiana</option>
+                                                <option value="ME" style="color: black;">Maine</option>
+                                                <option value="MD" style="color: black;">Maryland</option>
+                                                <option value="MA" style="color: black;">Massachusetts</option>
+                                                <option value="MI" style="color: black;">Michigan</option>
+                                                <option value="MN" style="color: black;">Minnesota</option>
+                                                <option value="MS" style="color: black;">Mississippi</option>
+                                                <option value="MO" style="color: black;">Missouri</option>
+                                                <option value="MT" style="color: black;">Montana</option>
+                                                <option value="NE" style="color: black;">Nebraska</option>
+                                                <option value="NV" style="color: black;">Nevada</option>
+                                                <option value="NH" style="color: black;">New Hampshire</option>
+                                                <option value="NJ" style="color: black;">New Jersey</option>
+                                                <option value="NM" style="color: black;">New Mexico</option>
+                                                <option value="NY" style="color: black;">New York</option>
+                                                <option value="NC" style="color: black;">North Carolina</option>
+                                                <option value="ND" style="color: black;">North Dakota</option>
+                                                <option value="OH" style="color: black;">Ohio</option>
+                                                <option value="OK" style="color: black;">Oklahoma</option>
+                                                <option value="OR" style="color: black;">Oregon</option>
+                                                <option value="PA" style="color: black;">Pennsylvania</option>
+                                                <option value="RI" style="color: black;">Rhode Island</option>
+                                                <option value="SC" style="color: black;">South Carolina</option>
+                                                <option value="SD" style="color: black;">South Dakota</option>
+                                                <option value="TN" style="color: black;">Tennessee</option>
+                                                <option value="TX" style="color: black;">Texas</option>
+                                                <option value="UT" style="color: black;">Utah</option>
+                                                <option value="VT" style="color: black;">Vermont</option>
+                                                <option value="VA" style="color: black;">Virginia</option>
+                                                <option value="WA" style="color: black;">Washington</option>
+                                                <option value="WV" style="color: black;">West Virginia</option>
+                                                <option value="WI" style="color: black;">Wisconsin</option>
+                                                <option value="WY" style="color: black;">Wyoming</option>
+                                            </select>
+                                            <input type="text" id="zipCode" name="zipCode" class="form-input"
+                                                placeholder="Zip Code">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Mushroom Question -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU SEE MUSHROOMS AS PART OF YOUR SPIRITUAL PRACTICE? *</label>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="mushroomSpiritual" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>Yes</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="mushroomSpiritual" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>No</span>
-                                    </label>
+                                <!-- Date of Birth -->
+                                <div>
+                                    <label for="dateOfBirth" class="block text-sm font-medium text-gray-700 mb-2"
+                                        style="color: var(--ethereal-white);">Date
+                                        Of Birth</label>
+                                    <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-input w-full">
                                 </div>
-                            </div>
 
-                            <!-- Rules Agreement -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU AGREE TO FOLLOW THE RULES AND REGULATIONS OF THE CHURCH? *</label>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="rulesAgreement" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>Yes</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="rulesAgreement" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>No</span>
-                                    </label>
+                                <!-- Employment Question -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-3">ARE YOU AN EMPLOYEE OR
+                                        CONTRACTOR WITH ANY STATE OR FEDERAL ENFORCEMENT AGENCY? *</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="lawEnforcement" value="yes" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>Yes</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="lawEnforcement" value="no" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Cannabis Question -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU SMOKE, CONSUME, OR USE CANNABIS IN ANY WAY? *</label>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="cannabisUse" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>Yes</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="cannabisUse" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>No</span>
-                                    </label>
+                                <!-- Mushroom Question -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU SEE MUSHROOMS AS
+                                        PART OF YOUR SPIRITUAL PRACTICE? *</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="mushroomSpiritual" value="yes" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>Yes</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="mushroomSpiritual" value="no" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Entheogenic Plants Question -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU SUPPORT THE PRIVATE ADULT USE OF ENTHEOGENIC PLANTS? *</label>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="entheogenicSupport" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>Yes</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="entheogenicSupport" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>No</span>
-                                    </label>
+                                <!-- Rules Agreement -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU AGREE TO FOLLOW
+                                        THE RULES AND REGULATIONS OF THE CHURCH? *</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="rulesAgreement" value="yes" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>Yes</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="rulesAgreement" value="no" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Safe Place Question -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU THINK ADULTS SHOULD HAVE A SAFE PLACE TO USE AND/OR ACQUIRE ENTHEOGENIC PLANTS? *</label>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="safePlace" value="yes" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>Yes</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="safePlace" value="no" required class="mr-2 text-yellow-500 focus:ring-yellow-500">
-                                        <span>No</span>
-                                    </label>
+                                <!-- Cannabis Question -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU SMOKE, CONSUME,
+                                        OR USE CANNABIS IN ANY WAY? *</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="cannabisUse" value="yes" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>Yes</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="cannabisUse" value="no" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- ID Upload -->
-                            <div>
-                                <label for="idUpload" class="block text-sm font-medium text-gray-700 mb-2">Upload your ID *</label>
-                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-yellow-500 transition-colors">
-                                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
-                                    <p class="text-gray-600 mb-2">Click or drag files to this area to upload.</p>
-                                    <p class="text-sm text-gray-500">You can upload 1 file. 2 MB max</p>
-                                    <input type="file" id="idUpload" name="idUpload" accept="image/*,.pdf" required class="hidden">
-                                    <button type="button" onclick="document.getElementById('idUpload').click()" 
+                                <!-- Entheogenic Plants Question -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU SUPPORT THE
+                                        PRIVATE ADULT USE OF ENTHEOGENIC PLANTS? *</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="entheogenicSupport" value="yes" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>Yes</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="entheogenicSupport" value="no" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Safe Place Question -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-3">DO YOU THINK ADULTS
+                                        SHOULD HAVE A SAFE PLACE TO USE AND/OR ACQUIRE ENTHEOGENIC PLANTS? *</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="safePlace" value="yes" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>Yes</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="safePlace" value="no" required
+                                                class="mr-2 text-yellow-500 focus:ring-yellow-500">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- ID Upload -->
+                                <div>
+                                    <label for="idUpload" class="block text-sm font-medium text-gray-700 mb-2">Upload
+                                        your ID *</label>
+                                    <div
+                                        class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-yellow-500 transition-colors">
+                                        <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                                        <p class="text-gray-600 mb-2">Click or drag files to this area to upload.</p>
+                                        <p class="text-sm text-gray-500">You can upload 1 file. 2 MB max</p>
+                                        <input type="file" id="idUpload" name="idUpload" accept="image/*,.pdf" required
+                                            class="hidden">
+                                        <button type="button" onclick="document.getElementById('idUpload').click()"
                                             class="mt-4 bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors">
-                                        Choose File
-                                    </button>
-                                    <p class="mt-2 text-sm text-gray-600">Upload a Valid ID both Front and Back</p>
+                                            Choose File
+                                        </button>
+                                        <p class="mt-2 text-sm text-gray-600">Upload a Valid ID both Front and Back</p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Referral -->
-                            <div>
-                                <label for="referral" class="block text-sm font-medium text-gray-700 mb-2">WHO WERE YOU REFERRED BY (NAME & MEMBER NUMBER)? OR WHERE DID YOU HEAR ABOUT PER ANKH CHURCH? *</label>
-                                <textarea id="referral" name="referral" rows="3" required
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"></textarea>
-                            </div>
+                                <!-- Referral -->
+                                <div>
+                                    <label for="referral" class="block text-sm font-medium text-gray-700 mb-2"
+                                        style="color: var(--ethereal-white);">WHO WERE
+                                        YOU REFERRED BY (NAME & MEMBER NUMBER)? OR WHERE DID YOU HEAR ABOUT PER ANKH
+                                        CHURCH? *</label>
+                                    <textarea id="referral" name="referral" rows="3" required
+                                        class="form-input w-full"></textarea>
+                                </div>
 
-                            <!-- Why Join -->
-                            <div>
-                                <label for="whyJoin" class="block text-sm font-medium text-gray-700 mb-2">WHY DO YOU WANT TO JOIN THIS CHURCH? *</label>
-                                <textarea id="whyJoin" name="whyJoin" rows="4" required
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"></textarea>
-                            </div>
+                                <!-- Why Join -->
+                                <div>
+                                    <label for="whyJoin" class="block text-sm font-medium text-gray-700 mb-2"
+                                        style="color: var(--ethereal-white);">WHY DO YOU
+                                        WANT TO JOIN THIS CHURCH? *</label>
+                                    <textarea id="whyJoin" name="whyJoin" rows="4" required
+                                        class="form-input w-full"></textarea>
+                                </div>
 
-                            <!-- Sacred Submit Button -->
-                            <div class="text-center pt-6">
-                                <button type="submit" class="submit-button">
-                                    <span class="submit-text">Submit Sacred Application</span>
-                                    <div class="button-glow"></div>
-                                </button>
-                            </div>
-                        </form>
+                                <!-- Sacred Submit Button -->
+                                <div class="text-center pt-6">
+                                    <button type="submit" class="submit-button">
+                                        <span class="submit-text">Submit Sacred Application</span>
+                                        <div class="button-glow"></div>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <!-- Footer -->
     <footer class="bg-gray-800 py-12 text-white">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h4 class="text-xl font-bold mb-4 ankh-symbol" style="color: var(--golden-ankh);">PER ANKH ENTHEOGENIC CHURCH</h4>
+                    <h4 class="text-xl font-bold mb-4 ankh-symbol" style="color: var(--golden-ankh);">PER ANKH
+                        ENTHEOGENIC CHURCH</h4>
                     <p class="text-gray-300 mb-4">15705 Woodrow Wilson<br>Detroit, Michigan</p>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="become-a-member.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Become A Member</a></li>
-                        <li><a href="donate.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Donate</a></li>
-                        <li><a href="ceremony-and-safety.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Useful Resources</a></li>
-                        <li><a href="vendor-registration.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Vendor Registration</a></li>
+                        <li><a href="become-a-member.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Become A Member</a></li>
+                        <li><a href="donate.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Donate</a></li>
+                        <li><a href="ceremony-and-safety.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Useful Resources</a></li>
+                        <li><a href="vendor-registration.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors">Vendor Registration</a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Social Media</h4>
                     <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/perankh_church" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/perankh_church"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=61565651284992" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-facebook"></i>
+                        <a href="https://www.facebook.com/profile.php?id=61565651284992"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-youtube"></i>
+                        <a href="#"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-twitter"></i>
+                        <a href="#"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="X (Twitter)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z" />
+                            </svg>
                         </a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-700 mt-8 pt-8 text-center">
                 <p class="text-gray-400 mb-2">&copy; 2025 Per Ankh Entheogenic Church. All rights reserved.</p>
                 <p class="text-gray-400">
-                    <a href="terms.html" class="hover:text-yellow-400 transition-colors">Terms of Use</a> | 
+                    <a href="terms.html" class="hover:text-yellow-400 transition-colors">Terms of Use</a> |
                     <a href="privacy.html" class="hover:text-yellow-400 transition-colors">Privacy Policy</a>
                 </p>
             </div>
@@ -725,7 +806,7 @@
     <script>
         // Initialize EmailJS
         emailjs.init('YOUR_PUBLIC_KEY'); // You'll need to replace this with your actual EmailJS public key
-        
+
         // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Per Ankh - Become a Member Page Loaded');
@@ -739,18 +820,18 @@
 
             // File upload handling
             fileInput.addEventListener('change', handleFileUpload);
-            
+
             // Drag and drop functionality
             uploadArea.addEventListener('dragover', (e) => {
                 e.preventDefault();
                 uploadArea.classList.add('border-yellow-500');
             });
-            
+
             uploadArea.addEventListener('dragleave', (e) => {
                 e.preventDefault();
                 uploadArea.classList.remove('border-yellow-500');
             });
-            
+
             uploadArea.addEventListener('drop', (e) => {
                 e.preventDefault();
                 uploadArea.classList.remove('border-yellow-500');
@@ -769,14 +850,14 @@
             const file = event.target.files[0];
             const uploadArea = event.target.parentElement;
             const statusText = uploadArea.querySelector('p');
-            
+
             if (file) {
                 if (file.size > 2 * 1024 * 1024) { // 2MB limit
                     alert('File size must be less than 2MB');
                     event.target.value = '';
                     return;
                 }
-                
+
                 statusText.textContent = `Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
                 statusText.className = 'text-green-600 mb-2';
             }
@@ -784,16 +865,16 @@
 
         async function handleFormSubmission(event) {
             event.preventDefault();
-            
+
             const form = event.target;
             const submitButton = form.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.textContent;
-            
+
             // Disable submit button and show loading state
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
             submitButton.classList.add('opacity-50', 'cursor-not-allowed');
-            
+
             try {
                 // Collect form data
                 const formData = new FormData(form);
@@ -832,16 +913,16 @@
 
                 // Create email content
                 const emailContent = createEmailContent(membershipData, fileData);
-                
+
                 // Send email using EmailJS or similar service
                 await sendMembershipEmail(emailContent, membershipData, idFile);
-                
+
                 // Show success message
                 showSuccessMessage();
-                
+
                 // Reset form
                 form.reset();
-                
+
             } catch (error) {
                 console.error('Form submission error:', error);
                 showErrorMessage('There was an error submitting your application. Please try again or contact us directly.');
@@ -893,13 +974,13 @@
 
         async function sendMembershipEmail(emailContent, membershipData, idFile) {
             const subject = `New Membership Application - ${membershipData.firstName} ${membershipData.lastName}`;
-            
+
             // Store application data in localStorage for backup
             localStorage.setItem('lastMembershipApplication', JSON.stringify({
                 ...membershipData,
                 fileName: idFile ? idFile.name : null
             }));
-            
+
             // Try EmailJS first (requires setup)
             try {
                 // EmailJS template parameters
@@ -926,16 +1007,16 @@
                     id_file_name: idFile && idFile.name ? idFile.name : 'No file uploaded',
                     submission_date: new Date().toLocaleString()
                 };
-                
+
                 // Replace with your actual EmailJS service ID and template ID
                 await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
                 console.log('Email sent successfully via EmailJS');
                 return;
-                
+
             } catch (error) {
                 console.log('EmailJS failed, falling back to mailto:', error);
             }
-            
+
             // Fallback to mailto if EmailJS fails or isn't configured
             const body = `New membership application received:\n\n` +
                 `Name: ${membershipData.firstName} ${membershipData.lastName}\n` +
@@ -957,7 +1038,7 @@
                 `Why Join:\n${membershipData.whyJoin}\n\n` +
                 `ID File: ${idFile && idFile.name ? idFile.name : 'No file uploaded'}\n` +
                 `Submitted: ${new Date().toLocaleString()}`;
-            
+
             // Create mailto link as fallback
             const mailtoLink = `mailto:contactperankh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = mailtoLink;
@@ -975,9 +1056,9 @@
                     </div>
                 </div>
             `;
-            
+
             document.body.appendChild(message);
-            
+
             // Remove message after 5 seconds
             setTimeout(() => {
                 message.remove();
@@ -996,9 +1077,9 @@
                     </div>
                 </div>
             `;
-            
+
             document.body.appendChild(message);
-            
+
             // Remove message after 7 seconds
             setTimeout(() => {
                 message.remove();
@@ -1007,4 +1088,5 @@
     </script>
 </body>
 <script type="module" src="/src/utils/analytics-tracker.js"></script>
+
 </html>

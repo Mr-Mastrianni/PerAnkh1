@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Per Ankh Entheogenic Church - A non-denominational, interfaith religious organization supporting research, understanding and safe access of entheogenic plants, with focus on cannabis & magic mushrooms.">
-    <meta name="keywords" content="entheogenic, church, psychedelics, cannabis, magic mushrooms, spiritual growth, healing, consciousness">
+    <meta name="description"
+        content="Per Ankh Entheogenic Church - A non-denominational, interfaith religious organization supporting research, understanding and safe access of entheogenic plants, with focus on cannabis & magic mushrooms.">
+    <meta name="keywords"
+        content="entheogenic, church, psychedelics, cannabis, magic mushrooms, spiritual growth, healing, consciousness">
     <meta name="author" content="Per Ankh Entheogenic Church">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://perankh1.org/">
     <meta property="og:title" content="Per Ankh Entheogenic Church">
-    <meta property="og:description" content="A community of visionaries exploring the cutting-edge of awakening through psychedelics and sacred plant medicines.">
+    <meta property="og:description"
+        content="A community of visionaries exploring the cutting-edge of awakening through psychedelics and sacred plant medicines.">
     <meta property="og:image" content="./PerAnkhLogo.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://perankh1.org/">
     <meta property="twitter:title" content="Per Ankh Entheogenic Church">
-    <meta property="twitter:description" content="A community of visionaries exploring the cutting-edge of awakening through psychedelics and sacred plant medicines.">
+    <meta property="twitter:description"
+        content="A community of visionaries exploring the cutting-edge of awakening through psychedelics and sacred plant medicines.">
     <meta property="twitter:image" content="./PerAnkhLogo.png">
 
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    
+
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
@@ -43,17 +48,26 @@
     <link rel="icon" type="image/png" href="./PerAnkhLogo.png">
     <link rel="apple-touch-icon" href="./PerAnkhLogo.png">
 
+    <!-- Mobile Web App Capable -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Per Ankh">
+    <meta name="theme-color" content="#0F0F23">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
+
     <title>Per Ankh Entheogenic Church - Sacred Plant Medicine & Consciousness</title>
 
     <style>
@@ -73,56 +87,82 @@
             --mycelium-white: #F5F5DC;
             --consciousness-purple: #663399;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
             font-family: 'Inter', sans-serif;
             color: var(--ethereal-white);
             overflow-x: hidden;
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
+
+        /* Mobile touch optimization */
+        @media (hover: none) and (pointer: coarse) {
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            a,
+            button {
+                touch-action: manipulation;
+            }
+        }
+
+        /* Touch manipulation for better mobile scrolling */
+        .touch-manipulation {
+            touch-action: manipulation;
+        }
+
         .cinematic-container {
             position: relative;
             min-height: 100vh;
             background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, rgba(45, 27, 105, 0.2) 50%, rgba(10, 10, 10, 0.9) 100%);
         }
-        
+
         /* Hero Section with Ancient Egyptian Temple */
         .hero-section {
             position: relative;
             height: 100vh;
-            background: linear-gradient(135deg, 
-                rgba(10, 10, 10, 0.8) 0%,
-                rgba(45, 27, 105, 0.6) 30%,
-                rgba(184, 134, 11, 0.4) 70%,
-                rgba(212, 175, 55, 0.2) 100%
-            );
+            background: linear-gradient(135deg,
+                    rgba(10, 10, 10, 0.8) 0%,
+                    rgba(45, 27, 105, 0.6) 30%,
+                    rgba(184, 134, 11, 0.4) 70%,
+                    rgba(212, 175, 55, 0.2) 100%);
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
+
         .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: none; /* Removed the overlay gradients */
-            animation: none; /* Removed animation */
+            background: none;
+            /* Removed the overlay gradients */
+            animation: none;
+            /* Removed animation */
         }
 
         /* When WebGL hero is active, reduce overlay strength to reveal more detail */
-        .hero-section[data-hero3d="on"] .hero-background { opacity: 0.2; }
-        .hero-section[data-hero3d="on"] .temple-silhouette { opacity: 0.35; }
+        .hero-section[data-hero3d="on"] .hero-background {
+            opacity: 0.2;
+        }
+
+        .hero-section[data-hero3d="on"] .temple-silhouette {
+            opacity: 0.35;
+        }
 
         /* WebGL canvas for physically-based hero background */
         .hero-canvas {
@@ -131,10 +171,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 5; /* behind content but above overlays */
+            z-index: 5;
+            /* behind content but above overlays */
             pointer-events: none;
         }
-        
+
         .temple-silhouette {
             position: absolute;
             bottom: 0;
@@ -143,21 +184,18 @@
             width: 120%;
             height: 60%;
             background: linear-gradient(to top,
-                rgba(10, 10, 10, 0.9) 0%,
-                rgba(28, 28, 28, 0.7) 30%,
-                rgba(45, 27, 105, 0.5) 60%,
-                transparent 100%
-            );
-            clip-path: polygon(
-                0% 100%, 15% 80%, 20% 75%, 25% 70%, 30% 60%, 35% 55%, 
-                40% 45%, 45% 40%, 50% 35%, 55% 40%, 60% 45%, 65% 55%, 
-                70% 60%, 75% 70%, 80% 75%, 85% 80%, 100% 100%
-            );
+                    rgba(10, 10, 10, 0.9) 0%,
+                    rgba(28, 28, 28, 0.7) 30%,
+                    rgba(45, 27, 105, 0.5) 60%,
+                    transparent 100%);
+            clip-path: polygon(0% 100%, 15% 80%, 20% 75%, 25% 70%, 30% 60%, 35% 55%,
+                    40% 45%, 45% 40%, 50% 35%, 55% 40%, 60% 45%, 65% 55%,
+                    70% 60%, 75% 70%, 80% 75%, 85% 80%, 100% 100%);
             animation: templeGlow 8s ease-in-out infinite alternate;
         }
-        
+
         /* Pyramid elements removed */
-        
+
         .hero-content {
             position: relative;
             z-index: 10;
@@ -165,7 +203,7 @@
             max-width: 1000px;
             padding: 2rem;
         }
-        
+
         .floating-ankh {
             position: absolute;
             top: 0%;
@@ -178,17 +216,38 @@
             z-index: 12;
             transform: translateX(-50%);
         }
-        
+
         /* Mobile adjustments: avoid overlap with hero text */
         @media (max-width: 640px) {
             .floating-ankh {
-                width: 80px;
-                top: -10px; /* nudge upward */
-                z-index: 8; /* place behind hero-content (z=10) */
-                filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.6));
+                width: 60px;
+                top: 5px;
+                z-index: 8;
+                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 10vw, 3rem);
+                margin-top: 3rem;
+                padding: 0 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                padding: 0 1rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+                padding: 0 1rem;
+            }
+
+            .hero-section {
+                min-height: auto;
+                padding: 4rem 0 3rem;
             }
         }
-        
+
         .hero-title {
             font-family: 'Cinzel', serif;
             font-size: clamp(3rem, 8vw, 6rem);
@@ -203,7 +262,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             animation: titlePulse 4s ease-in-out infinite alternate;
         }
-        
+
         .hero-subtitle {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.2rem, 3vw, 2rem);
@@ -212,7 +271,7 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
             /* Removed subtitleGlow animation */
         }
-        
+
         .sacred-geometry {
             position: fixed;
             top: 0;
@@ -223,94 +282,105 @@
             z-index: 1;
             opacity: 0.3;
         }
-        
+
         /* Geometry elements removed */
-        
+
         /* Mystical Animations */
         @keyframes cosmicFlow {
             0% {
-                background: 
+                background:
                     radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                     radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
                     linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
             }
+
             100% {
-                background: 
+                background:
                     radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.4) 0%, transparent 60%),
                     radial-gradient(circle at 30% 80%, rgba(45, 27, 105, 0.5) 0%, transparent 60%),
                     linear-gradient(135deg, transparent 20%, rgba(212, 175, 55, 0.15) 60%, transparent 80%);
             }
         }
-        
+
         @keyframes templeGlow {
             0% {
                 box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
                 filter: brightness(1);
             }
+
             100% {
                 box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
                 filter: brightness(1.2);
             }
         }
-        
+
         /* Pyramid animation removed */
-        
+
         @keyframes ankh3DRotation {
             0% {
                 transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
                 filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)) brightness(1);
             }
+
             25% {
                 transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
                 filter: drop-shadow(0 0 40px rgba(212, 175, 55, 1)) brightness(1.2);
             }
+
             50% {
                 transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
                 filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.6)) brightness(0.8);
             }
+
             75% {
                 transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
                 filter: drop-shadow(0 0 40px rgba(212, 175, 55, 1)) brightness(1.2);
             }
+
             100% {
                 transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
                 filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)) brightness(1);
             }
         }
-        
+
         @keyframes titlePulse {
             0% {
                 filter: brightness(1) saturate(1);
                 transform: scale(1);
             }
+
             100% {
                 filter: brightness(1.2) saturate(1.3);
                 transform: scale(1.02);
             }
         }
-        
+
         @keyframes subtitleGlow {
             0% {
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
                 opacity: 0.9;
             }
+
             100% {
                 text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.3);
                 opacity: 1;
             }
         }
-        
+
         @keyframes geometryFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) rotate(0deg);
                 opacity: 0.3;
             }
+
             50% {
                 transform: translateY(-20px) rotate(180deg);
                 opacity: 0.6;
             }
         }
-        
+
         .mycelium-network::before {
             content: '';
             position: absolute;
@@ -318,31 +388,31 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 linear-gradient(90deg, transparent 48%, rgba(218, 165, 32, 0.2) 50%, transparent 52%),
                 linear-gradient(0deg, transparent 48%, rgba(34, 139, 34, 0.2) 50%, transparent 52%);
             background-size: 40px 40px;
         }
-        
+
         .ankh-symbol {
             font-family: 'Cinzel', serif;
             color: var(--golden-ankh);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        
+
         .consciousness-card {
             backdrop-filter: blur(10px);
             border: 1px solid rgba(218, 165, 32, 0.3);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
-        
+
         .bio-tech-icon {
             background: linear-gradient(135deg, var(--golden-ankh), var(--sacred-amber));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .revolutionary-text {
             background: linear-gradient(135deg, var(--consciousness-purple), var(--golden-ankh));
             -webkit-background-clip: text;
@@ -350,60 +420,67 @@
             background-clip: text;
             font-weight: 700;
         }
-        
+
         .spore-animation {
             animation: float 3s ease-in-out infinite;
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
-        
+
         .entrance-animation {
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s ease-out forwards;
         }
-        
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         .text-golden-ankh {
             color: var(--golden-ankh);
         }
-        
+
         .text-earth-brown {
             color: var(--earth-brown);
         }
-        
+
         .bg-golden-ankh {
             background-color: var(--golden-ankh);
         }
-        
+
         .bg-earth-brown {
             background-color: var(--earth-brown);
         }
-        
+
         .bg-consciousness-purple {
             background-color: var(--consciousness-purple);
         }
-        
+
         .border-golden-ankh {
             border-color: var(--golden-ankh);
         }
-        
+
         /* Navigation Styles */
         .navbar {
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(218, 165, 32, 0.3);
         }
-        
+
         .nav-link {
             color: var(--mycelium-white);
             text-decoration: none;
@@ -412,13 +489,13 @@
             transition: all 0.3s ease;
             font-weight: 500;
         }
-        
+
         .nav-link:hover {
             background: rgba(218, 165, 32, 0.2);
             color: var(--golden-ankh);
             transform: translateY(-2px);
         }
-        
+
         .nav-link.active {
             background: var(--golden-ankh);
             color: var(--earth-brown);
@@ -426,16 +503,19 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-900 text-white font-sans">
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip to main content</a>
-    
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip
+        to main content</a>
+
     <!-- Navigation is now handled by side-nav.js -->
     <link rel="stylesheet" href="src/components/side-nav.css">
     <script type="module" src="src/components/side-nav.js" defer></script>
 
     <!-- Sacred Geometry Background removed -->
-    
+
     <!-- Main Content -->
     <main id="main-content" role="main" class="cinematic-container">
         <!-- Mystical Hero Section -->
@@ -445,17 +525,22 @@
             <!-- Pyramid elements removed -->
             <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
             <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
-            
+
             <div class="hero-content">
                 <h1 class="hero-title">WELCOME TO PER ANKH</h1>
                 <p class="hero-subtitle">
                     A Sacred Digital Sanctuary for Consciousness Exploration
                 </p>
-                <p class="text-lg md:text-xl mb-8 max-w-4xl mx-auto" style="color: var(--ethereal-white); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);">
-                    PER-ANKH is a non-denominational, interfaith religious organization. At Per-Ankh we support the research, understanding and safe access of all Entheogenic plants, with a focus on <strong style="color: var(--primary-gold);">CANNABIS & MAGIC MUSHROOMS</strong>
+                <p class="text-lg md:text-xl mb-8 max-w-4xl mx-auto"
+                    style="color: var(--ethereal-white); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);">
+                    PER-ANKH is a non-denominational, interfaith religious organization. At Per-Ankh we support the
+                    research, understanding and safe access of all Entheogenic plants, with a focus on <strong
+                        style="color: var(--primary-gold);">CANNABIS & MAGIC MUSHROOMS</strong>
                 </p>
                 <div style="margin-top: 15rem;">
-                    <a href="become-a-member.html" class="inline-block bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 px-8 py-4 rounded-full text-lg font-bold hover:from-yellow-400 hover:to-yellow-500 transition-all transform hover:scale-105 shadow-lg" style="box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);">
+                    <a href="become-a-member.html"
+                        class="inline-block bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 px-8 py-4 rounded-full text-lg font-bold hover:from-yellow-400 hover:to-yellow-500 transition-all transform hover:scale-105 shadow-lg"
+                        style="box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);">
                         JOIN THE SACRED JOURNEY
                     </a>
                 </div>
@@ -465,8 +550,10 @@
         <!-- Quote Section -->
         <section class="py-16 bg-gray-100 text-center">
             <div class="container mx-auto px-6">
-                <blockquote class="text-2xl md:text-3xl italic text-gray-800 mb-4 max-w-4xl mx-auto" style="font-family: 'Cinzel', serif; color: var(--consciousness-purple);">
-                    "The true Pioneers in the field of psychedelics have still yet to emerge from the shadows to share their own personal experiences"
+                <blockquote class="text-2xl md:text-3xl italic text-gray-800 mb-4 max-w-4xl mx-auto"
+                    style="font-family: 'Cinzel', serif; color: var(--consciousness-purple);">
+                    "The true Pioneers in the field of psychedelics have still yet to emerge from the shadows to share
+                    their own personal experiences"
                 </blockquote>
                 <p class="text-lg font-semibold" style="color: var(--earth-brown);">— Kilindi iyi</p>
             </div>
@@ -477,22 +564,32 @@
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6 ankh-symbol" style="color: var(--golden-ankh);">WHO ARE WE?</h2>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 ankh-symbol" style="color: var(--golden-ankh);">
+                            WHO ARE WE?</h2>
                         <p class="text-lg mb-6 leading-relaxed">
-                            We are a community of visionaries exploring the cutting-edge of awakening through psychedelics and sacred plant medicines.
+                            We are a community of visionaries exploring the cutting-edge of awakening through
+                            psychedelics and sacred plant medicines.
                         </p>
                         <p class="text-lg mb-6 leading-relaxed">
-                            As worldwide interest in psychedelics expands, we are finding ourselves in the midst of a Psychedelic Renaissance and Global Shamanic Revival, an exciting intersection of groundbreaking science, cultural exchange, cutting-edge therapy, and game-changing personal development.
+                            As worldwide interest in psychedelics expands, we are finding ourselves in the midst of a
+                            Psychedelic Renaissance and Global Shamanic Revival, an exciting intersection of
+                            groundbreaking science, cultural exchange, cutting-edge therapy, and game-changing personal
+                            development.
                         </p>
                         <p class="text-lg mb-8 leading-relaxed">
-                            At Per Ankh we provide deeply researched content about psychedelics – primarily natural psychedelics long-used by indigenous people around the world – and how you can work with them for healing and spiritual growth. We explore these topics through the multifaceted framework of science, culture, and spirituality.
+                            At Per Ankh we provide deeply researched content about psychedelics – primarily natural
+                            psychedelics long-used by indigenous people around the world – and how you can work with
+                            them for healing and spiritual growth. We explore these topics through the multifaceted
+                            framework of science, culture, and spirituality.
                         </p>
-                        <a href="ceremony-and-safety.html" class="inline-block border-2 border-yellow-400 text-yellow-400 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-gray-900 transition-all">
+                        <a href="ceremony-and-safety.html"
+                            class="inline-block border-2 border-yellow-400 text-yellow-400 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-gray-900 transition-all">
                             Learn More
                         </a>
                     </div>
                     <div class="text-center">
-                        <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh" style="position: relative; top: auto; left: auto; transform: none; margin: 0 auto; display: block;">
+                        <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh"
+                            style="position: relative; top: auto; left: auto; transform: none; margin: 0 auto; display: block;">
                     </div>
                 </div>
             </div>
@@ -501,30 +598,71 @@
         <!-- Events Section -->
         <section class="py-16 bg-gray-100 text-center">
             <div class="container mx-auto px-6">
-                <h3 class="text-3xl md:text-4xl font-bold mb-8 ankh-symbol" style="color: var(--consciousness-purple);">UPCOMING EVENTS</h3>
-                
+                <h3 class="text-3xl md:text-4xl font-bold mb-8 ankh-symbol" style="color: var(--consciousness-purple);">
+                    UPCOMING EVENTS</h3>
+
                 <!-- Events Grid -->
-                <div class="grid md:grid-cols-1 gap-6 sm:gap-8 max-w-7xl mx-auto px-2 sm:px-4">
-                    <!-- Single Upcoming Event -->
-                    <div class="consciousness-card bg-white bg-opacity-10 p-4 sm:p-6 md:p-8 rounded-lg flex flex-col" style="background-color: var(--dark-purple); color: var(--ethereal-white);">
-                        <button type="button" id="eventZoomTriggerHome" class="w-full mb-4 sm:mb-6 focus:outline-none" style="cursor: zoom-in;">
-                            <img src="eventsimages/image.png" alt="Upcoming Event" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto px-2 sm:px-4">
+                    <!-- Midnight Mass Event -->
+                    <div class="consciousness-card bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg flex flex-col"
+                        style="background-color: var(--dark-purple); color: var(--ethereal-white);">
+                        <button type="button" id="eventZoomTriggerHome"
+                            class="w-full mb-3 sm:mb-4 md:mb-6 focus:outline-none touch-manipulation"
+                            style="cursor: zoom-in; -webkit-tap-highlight-color: transparent;">
+                            <img src="eventsimages/midnitemassevent.jpeg" alt="Midnight Mass"
+                                class="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-contain rounded-lg">
                         </button>
                         <div class="flex-grow text-center">
-                            <h4 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4" style="color: var(--primary-gold);">UPCOMING EVENT</h4>
-                            <a href="events.html#register" class="inline-block bg-yellow-600 text-white px-5 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-700 transition-colors">Learn More</a>
+                            <h4 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 md:mb-4"
+                                style="color: var(--primary-gold);">MIDNIGHT MASS</h4>
+                            <a href="events.html#register"
+                                class="inline-block bg-yellow-600 text-white px-4 py-2 sm:px-5 sm:py-2.5 md:px-7 md:py-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:bg-yellow-700 transition-colors min-h-[44px] flex items-center justify-center">Learn
+                                More</a>
+                        </div>
+                    </div>
+
+                    <!-- Open Deck Night Event -->
+                    <div class="consciousness-card bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg flex flex-col"
+                        style="background-color: var(--dark-purple); color: var(--ethereal-white);">
+                        <button type="button" id="eventZoomTriggerOpenDeck"
+                            class="w-full mb-3 sm:mb-4 md:mb-6 focus:outline-none touch-manipulation"
+                            style="cursor: zoom-in; -webkit-tap-highlight-color: transparent;">
+                            <img src="eventsimages/perankhopendeck.jpeg" alt="Open Deck Night"
+                                class="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-contain rounded-lg">
+                        </button>
+                        <div class="flex-grow text-center">
+                            <h4 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 md:mb-4"
+                                style="color: var(--primary-gold);">OPEN DECK NIGHT</h4>
+                            <p class="mb-2 sm:mb-3 md:mb-4 text-yellow-400 font-semibold text-sm sm:text-base">Every
+                                Wednesday</p>
+                            <a href="events.html#register"
+                                class="inline-block bg-yellow-600 text-white px-4 py-2 sm:px-5 sm:py-2.5 md:px-7 md:py-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold hover:bg-yellow-700 transition-colors min-h-[44px] flex items-center justify-center">Learn
+                                More</a>
                         </div>
                     </div>
                 </div>
 
-                <div id="imageLightboxHome" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50" style="display: none;">
-                    <img id="lightboxImgHome" src="eventsimages/image.png" alt="Upcoming Event" style="max-width: 90vw; max-height: 90vh; border-radius: 0.5rem;">
+                <div id="imageLightboxHome"
+                    class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+                    style="display: none;">
+                    <img id="lightboxImgHome" src="eventsimages/midnitemassevent.jpeg" alt="Midnight Mass"
+                        style="max-width: 90vw; max-height: 90vh; border-radius: 0.5rem;">
+                </div>
+
+                <div id="imageLightboxOpenDeck"
+                    class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+                    style="display: none;">
+                    <img id="lightboxImgOpenDeck" src="eventsimages/perankhopendeck.jpeg" alt="Open Deck Night"
+                        style="max-width: 90vw; max-height: 90vh; border-radius: 0.5rem;">
                 </div>
 
                 <!-- Call to Action -->
-                <div class="mt-12">
-                    <p class="text-lg mb-4" style="color: var(--consciousness-purple);">📅 Mark your calendars and join our sacred community gatherings</p>
-                    <a href="events.html" class="inline-block bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all">
+                <div class="mt-8 sm:mt-12 px-4">
+                    <p class="text-base sm:text-lg mb-4" style="color: var(--consciousness-purple);">📅 Mark your
+                        calendars and join
+                        our sacred community gatherings</p>
+                    <a href="events.html"
+                        class="inline-block bg-purple-600 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all min-h-[44px] flex items-center justify-center w-full sm:w-auto">
                         View All Events
                     </a>
                 </div>
@@ -532,77 +670,127 @@
         </section>
 
         <!-- Support Section -->
-        <section class="consciousness-gradient py-20 text-white text-center">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 ankh-symbol" style="color: var(--golden-ankh);">Support Our Vision Of Life and Transformation</h2>
-                <div class="max-w-4xl mx-auto">
-                    <p class="text-lg mb-6 leading-relaxed">
-                        At Per-Ankh Church, we are dedicated to fostering spiritual growth, healing, and community empowerment. Your donation fuels the heart of Per-Ankh Church. From sacred ceremonies and workshops to community outreach and spiritual guidance, your support helps us grow as a beacon of light and transformation.
+        <section class="consciousness-gradient py-12 sm:py-16 md:py-20 text-white text-center">
+            <div class="container mx-auto px-4 sm:px-6">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 ankh-symbol px-2"
+                    style="color: var(--golden-ankh);">Support
+                    Our Vision Of Life and Transformation</h2>
+                <div class="max-w-4xl mx-auto px-2 sm:px-0">
+                    <p class="text-base sm:text-lg mb-4 sm:mb-6 leading-relaxed">
+                        At Per-Ankh Church, we are dedicated to fostering spiritual growth, healing, and community
+                        empowerment. Your donation fuels the heart of Per-Ankh Church. From sacred ceremonies and
+                        workshops to community outreach and spiritual guidance, your support helps us grow as a beacon
+                        of light and transformation.
                     </p>
-                    <p class="text-lg mb-6 leading-relaxed">
-                        With your support, we can continue to expand our mission, touch more lives, and spread the light of spiritual awakening across the globe.
+                    <p class="text-base sm:text-lg mb-4 sm:mb-6 leading-relaxed">
+                        With your support, we can continue to expand our mission, touch more lives, and spread the light
+                        of spiritual awakening across the globe.
                     </p>
-                    <p class="text-lg mb-8 leading-relaxed">
-                        Every contribution, no matter the size, makes a difference. Click below and Donate now to empower our work!!!
+                    <p class="text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
+                        Every contribution, no matter the size, makes a difference. Click below and Donate now to
+                        empower our work!!!
                     </p>
-                    <a href="donate.html" class="inline-block bg-yellow-500 text-gray-900 px-10 py-4 rounded-full text-xl font-bold hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-lg">
+                    <a href="donate.html"
+                        class="inline-block bg-yellow-500 text-gray-900 px-8 sm:px-10 py-3 sm:py-4 rounded-full text-lg sm:text-xl font-bold hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-lg min-h-[48px] flex items-center justify-center w-full sm:w-auto">
                         Donate
                     </a>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <!-- Footer -->
-    <footer class="bg-gray-800 py-12 text-white">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h4 class="text-xl font-bold mb-4 ankh-symbol" style="color: var(--golden-ankh);">PER ANKH ENTHEOGENIC CHURCH</h4>
-                    <p class="text-gray-300 mb-4">15705 Woodrow Wilson<br>Detroit, Michigan</p>
+    <footer class="bg-gray-800 py-8 sm:py-12 text-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="text-center sm:text-left">
+                    <h4 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 ankh-symbol"
+                        style="color: var(--golden-ankh);">PER ANKH
+                        ENTHEOGENIC CHURCH</h4>
+                    <p class="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">15705 Woodrow Wilson<br>Detroit, Michigan
+                    </p>
                 </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="become-a-member.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Become A Member</a></li>
-                        <li><a href="donate.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Donate</a></li>
-                        <li><a href="ceremony-and-safety.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Useful Resources</a></li>
-                        <li><a href="vendor-registration.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Vendor Registration</a></li>
+                        <li><a href="become-a-member.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors text-sm sm:text-base min-h-[44px] flex items-center justify-center sm:justify-start">Become
+                                A Member</a></li>
+                        <li><a href="donate.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors text-sm sm:text-base min-h-[44px] flex items-center justify-center sm:justify-start">Donate</a>
+                        </li>
+                        <li><a href="ceremony-and-safety.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors text-sm sm:text-base min-h-[44px] flex items-center justify-center sm:justify-start">Useful
+                                Resources</a></li>
+                        <li><a href="vendor-registration.html"
+                                class="text-gray-300 hover:text-yellow-400 transition-colors text-sm sm:text-base min-h-[44px] flex items-center justify-center sm:justify-start">Vendor
+                                Registration</a>
+                        </li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Social Media</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/perankh_church" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-instagram"></i>
+
+                <div class="text-center sm:text-left sm:col-span-2 md:col-span-1">
+                    <h4 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Social Media</h4>
+                    <div class="flex justify-center sm:justify-start space-x-3 sm:space-x-4">
+                        <a href="https://www.instagram.com/perankh_church"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=61565651284992" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-facebook"></i>
+                        <a href="https://www.facebook.com/profile.php?id=61565651284992"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-youtube"></i>
+                        <a href="#"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110"
+                            aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110">
-                            <i class="fab fa-twitter"></i>
+                        <a href="#"
+                            class="w-10 h-10 bg-yellow-500 text-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-all transform hover:scale-110 min-h-[44px] min-w-[44px]"
+                            aria-label="X (Twitter)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z" />
+                            </svg>
                         </a>
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p class="text-gray-400 mb-2">&copy; 2025 Per Ankh Entheogenic Church. All rights reserved.</p>
-                <p class="text-gray-400">
-                    <a href="terms.html" class="hover:text-yellow-400 transition-colors">Terms of Use</a> | 
-                    <a href="privacy.html" class="hover:text-yellow-400 transition-colors">Privacy Policy</a>
+
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center">
+                <p class="text-gray-400 mb-2 text-sm sm:text-base">&copy; 2025 Per Ankh Entheogenic Church. All rights
+                    reserved.</p>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    <a href="terms.html"
+                        class="hover:text-yellow-400 transition-colors min-h-[44px] inline-flex items-center px-2">Terms
+                        of Use</a> |
+                    <a href="privacy.html"
+                        class="hover:text-yellow-400 transition-colors min-h-[44px] inline-flex items-center px-2">Privacy
+                        Policy</a>
                 </p>
             </div>
         </div>
     </footer>
 
     <!-- Loading indicator -->
-    <div id="loading-indicator" class="fixed inset-0 bg-gray-900 flex items-center justify-center z-50" style="display: none;">
+    <div id="loading-indicator" class="fixed inset-0 bg-gray-900 flex items-center justify-center z-50"
+        style="display: none;">
         <div class="text-center">
             <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500 mx-auto mb-4"></div>
             <p class="text-yellow-500">Initializing Per Ankh Platform...</p>
@@ -627,13 +815,13 @@
         // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Per Ankh Entheogenic Church - Public Site Loaded');
-            
+
             // Hide loading indicator
             const loading = document.getElementById('loading-indicator');
             if (loading) {
                 loading.style.display = 'none';
             }
-            
+
             // Add entrance animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -652,7 +840,7 @@
                 observer.observe(section);
             });
 
-            // Lightbox: homepage event image
+            // Lightbox: homepage event image (Midnight Mass)
             const triggerHome = document.getElementById('eventZoomTriggerHome');
             const lightboxHome = document.getElementById('imageLightboxHome');
             if (triggerHome && lightboxHome) {
@@ -667,11 +855,28 @@
                     if (e.key === 'Escape') closeLightbox();
                 });
             }
+
+            // Lightbox: homepage event image (Open Deck Night)
+            const triggerOpenDeck = document.getElementById('eventZoomTriggerOpenDeck');
+            const lightboxOpenDeck = document.getElementById('imageLightboxOpenDeck');
+            if (triggerOpenDeck && lightboxOpenDeck) {
+                const openLightbox = () => { lightboxOpenDeck.style.display = 'flex'; };
+                const closeLightbox = () => { lightboxOpenDeck.style.display = 'none'; };
+                triggerOpenDeck.addEventListener('click', openLightbox);
+                lightboxOpenDeck.addEventListener('click', (e) => {
+                    // Close when clicking backdrop or pressing ESC
+                    if (e.target === lightboxOpenDeck) closeLightbox();
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeLightbox();
+                });
+            }
         });
     </script>
-    
+
     <!-- Physically-based hero background visuals -->
     <script type="module" src="src/visuals/hero-scene.js"></script>
 </body>
-  <script type="module" src="/src/utils/analytics-tracker.js"></script>
+<script type="module" src="/src/utils/analytics-tracker.js"></script>
+
 </html>

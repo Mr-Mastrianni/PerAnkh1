@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Per Ankh Ethos & Structure</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --primary-gold: #D4AF37;
@@ -22,9 +25,9 @@
             --mycelium-white: #F5F5DC;
             --consciousness-purple: #663399;
         }
-        
+
         body {
-            background: 
+            background:
                 radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(45, 27, 105, 0.3) 0%, transparent 50%),
                 linear-gradient(135deg, var(--matte-black) 0%, #0f0f0f 100%);
@@ -35,7 +38,7 @@
             min-height: 100vh;
             position: relative;
         }
-        
+
         /* Sacred Geometry Background */
         .sacred-geometry {
             position: fixed;
@@ -47,16 +50,16 @@
             z-index: 1;
             overflow: hidden;
         }
-        
+
         /* Geometry elements removed */
-        
+
         /* Cinematic Container */
         .cinematic-container {
             position: relative;
             z-index: 10;
             min-height: 100vh;
         }
-        
+
         /* Hero Section Styling */
         .hero-section {
             position: relative;
@@ -65,23 +68,23 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: 
+            background:
                 radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
                 linear-gradient(135deg, rgba(45, 27, 105, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
         }
-        
+
         .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 70% 30%, rgba(45, 27, 105, 0.4) 0%, transparent 50%);
             animation: cosmicFlow 25s ease-in-out infinite alternate;
         }
-        
+
         .temple-silhouette {
             position: absolute;
             bottom: 0;
@@ -89,16 +92,15 @@
             transform: translateX(-50%);
             width: 300px;
             height: 200px;
-            background: 
-                linear-gradient(to top, 
-                    rgba(212, 175, 55, 0.8) 0%, 
-                    rgba(212, 175, 55, 0.4) 50%, 
-                    transparent 100%
-                );
+            background:
+                linear-gradient(to top,
+                    rgba(212, 175, 55, 0.8) 0%,
+                    rgba(212, 175, 55, 0.4) 50%,
+                    transparent 100%);
             clip-path: polygon(20% 100%, 0% 60%, 15% 40%, 25% 45%, 35% 30%, 50% 35%, 65% 30%, 75% 45%, 85% 40%, 100% 60%, 80% 100%);
             animation: templeGlow 4s ease-in-out infinite alternate;
         }
-        
+
         .temple-silhouette::before {
             content: '';
             position: absolute;
@@ -110,7 +112,7 @@
             border-radius: 50%;
             filter: blur(10px);
         }
-        
+
         .floating-ankh {
             position: absolute;
             top: 5%;
@@ -126,14 +128,14 @@
             transform-style: preserve-3d;
             filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
         }
-        
+
         .hero-content {
             text-align: center;
             z-index: 10;
             max-width: 800px;
             padding: 0 2rem;
         }
-        
+
         .hero-title {
             font-family: 'Cinzel', serif;
             font-size: clamp(2.5rem, 8vw, 5rem);
@@ -146,7 +148,7 @@
             text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
             animation: titlePulse 3s ease-in-out infinite alternate;
         }
-        
+
         .hero-subtitle {
             font-size: clamp(1.1rem, 3vw, 1.5rem);
             color: var(--ethereal-white);
@@ -154,7 +156,7 @@
             line-height: 1.6;
             animation: subtitleGlow 4s ease-in-out infinite alternate;
         }
-        
+
         /* Sacred Cards Styling */
         .consciousness-card {
             background: rgba(26, 26, 26, 0.8);
@@ -165,13 +167,13 @@
             transition: all 0.3s ease;
             animation: containerGlow 6s ease-in-out infinite alternate;
         }
-        
+
         .consciousness-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
             border-color: var(--primary-gold);
         }
-        
+
         .section-title {
             font-family: 'Cinzel', serif;
             color: var(--primary-gold);
@@ -181,14 +183,14 @@
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
             text-align: center;
         }
-        
+
         .bio-tech-icon {
             background: linear-gradient(135deg, var(--primary-gold), var(--deep-gold));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .revolutionary-text {
             background: linear-gradient(135deg, var(--primary-gold), var(--deep-gold));
             -webkit-background-clip: text;
@@ -196,26 +198,33 @@
             -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
-        
+
         .ankh-symbol {
             font-family: 'Cinzel', serif;
             color: var(--primary-gold);
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
-        
+
         .spore-animation {
             animation: float 3s ease-in-out infinite;
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
-        
+
         .sacred-geometry {
             position: relative;
         }
-        
+
         .sacred-geometry::after {
             content: '⬡';
             position: absolute;
@@ -225,48 +234,52 @@
             font-size: 1.5rem;
             opacity: 0.6;
         }
-        
+
         /* Logo Animation Styles */
         .logo-container {
             position: relative;
             display: inline-block;
         }
-        
+
         .animated-logo {
             transition: all 0.3s ease;
             filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.5));
             animation: logoGlow 3s ease-in-out infinite alternate;
         }
-        
+
         .animated-logo:hover {
             transform: scale(1.1) rotate(5deg);
             filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.8));
         }
-        
+
         @keyframes logoGlow {
             0% {
                 filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.5));
             }
+
             100% {
                 filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.9)) drop-shadow(0 0 30px rgba(34, 139, 34, 0.3));
             }
         }
-        
+
         .logo-pulse {
             animation: pulse 2s ease-in-out infinite;
         }
-        
+
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
                 transform: scale(1);
             }
+
             50% {
                 opacity: 0.8;
                 transform: scale(1.05);
             }
         }
-        
+
         /* Sacred geometry animation around logo */
         .logo-container::before {
             content: '';
@@ -281,109 +294,122 @@
             opacity: 0.6;
             box-shadow: 0 0 10px var(--forest-green);
         }
-        
+
         @keyframes rotate {
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
         }
-        
+
         /* Mystical Animations */
         @keyframes cosmicFlow {
             0% {
-                background: 
+                background:
                     radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
                     radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
                     linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
             }
+
             100% {
-                background: 
+                background:
                     radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.4) 0%, transparent 60%),
                     radial-gradient(circle at 30% 80%, rgba(45, 27, 105, 0.5) 0%, transparent 60%),
                     linear-gradient(135deg, transparent 20%, rgba(212, 175, 55, 0.15) 60%, transparent 80%);
             }
         }
-        
+
         @keyframes templeGlow {
             0% {
                 box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
                 filter: brightness(1);
             }
+
             100% {
                 box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
                 filter: brightness(1.2);
             }
         }
-        
+
         @keyframes ankh3DRotation {
             0% {
                 transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
             }
+
             25% {
                 transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
                 text-shadow: 0 0 40px rgba(212, 175, 55, 1);
             }
+
             50% {
                 transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
                 text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
             }
+
             75% {
                 transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
                 text-shadow: 0 0 40px rgba(212, 175, 55, 1);
             }
+
             100% {
                 transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
             }
         }
-        
+
         @keyframes titlePulse {
             0% {
                 filter: brightness(1) saturate(1);
                 transform: scale(1);
             }
+
             100% {
                 filter: brightness(1.2) saturate(1.3);
                 transform: scale(1.02);
             }
         }
-        
+
         @keyframes subtitleGlow {
             0% {
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
                 opacity: 0.9;
             }
+
             100% {
                 text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.3);
                 opacity: 1;
             }
         }
-        
+
         @keyframes geometryFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) rotate(0deg);
                 opacity: 0.3;
             }
+
             50% {
                 transform: translateY(-20px) rotate(180deg);
                 opacity: 0.6;
             }
         }
-        
+
         @keyframes containerGlow {
             0% {
-                box-shadow: 
+                box-shadow:
                     0 20px 60px rgba(212, 175, 55, 0.2),
                     0 0 40px rgba(45, 27, 105, 0.1),
                     inset 0 1px 0 rgba(255, 255, 255, 0.1);
                 border-color: var(--primary-gold);
             }
+
             100% {
-                box-shadow: 
+                box-shadow:
                     0 25px 80px rgba(212, 175, 55, 0.3),
                     0 0 60px rgba(45, 27, 105, 0.15),
                     inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -395,28 +421,35 @@
 
 <body>
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip to main content</a>
-    
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip
+        to main content</a>
+
     <!-- Sacred Geometry Background removed -->
-    
+
     <!-- Navigation -->
     <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <img src="PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
-                    <a href="index.html" class="text-2xl font-bold" style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
+                    <a href="index.html" class="text-2xl font-bold"
+                        style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
                 </div>
                 <div class="hidden md:flex space-x-6">
                     <a href="index.html" class="text-white hover:text-yellow-400 transition-colors">Home</a>
-                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a Member</a>
+                    <a href="become-a-member.html" class="text-white hover:text-yellow-400 transition-colors">Become a
+                        Member</a>
                     <a href="events.html" class="text-white hover:text-yellow-400 transition-colors">Events</a>
-                    <a href="per-ankh.html" class="text-yellow-400 hover:text-yellow-300 transition-colors">Ethos & Structure</a>
-                    <a href="ceremony-and-safety.html" class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
+                    <a href="per-ankh.html" class="text-yellow-400 hover:text-yellow-300 transition-colors">Ethos &
+                        Structure</a>
+                    <a href="ceremony-and-safety.html"
+                        class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
                     <a href="donate.html" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
                     <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
                     <a href="calculator.html" class="text-white hover:text-yellow-400 transition-colors">Calculator</a>
-                    <a href="admin-login.html" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
+                    <a href="admin-login.html"
+                        class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
                 </div>
             </div>
         </div>
@@ -431,7 +464,7 @@
             <div class="hero-background"></div>
             <div class="temple-silhouette"></div>
             <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
-            
+
             <div class="hero-content">
                 <h1 class="hero-title">Ethos & Organizational Structure</h1>
                 <p class="hero-subtitle">
@@ -440,227 +473,273 @@
             </div>
         </section>
 
-    <!-- Sacred Content Section -->
-    <section class="py-16" style="position: relative; z-index: 10;">
-        <div class="container mx-auto px-6">
-            <div class="consciousness-card mb-12">
-                <h2 class="section-title">
-                    <i class="fas fa-landmark mr-3"></i>
-                    Our Sacred Mission
-                </h2>
-                <p class="text-lg leading-relaxed text-center" style="color: var(--ethereal-white);">
-                    Per Ankh Entheogenic Church is a religious organization dedicated to the spiritual upliftment of our 
-                    people and all people throughout the world and the betterment of life on planet earth.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-                <!-- Founding Members -->
-                <div class="consciousness-card bg-gray-900 p-8 rounded-lg sacred-geometry">
-                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
-                        <i class="fas fa-users mr-3"></i>
-                        Founding Members
-                    </h3>
-                    <p class="text-lg mb-6">
-                        KILINDI IYI is the founding member of the Per-Ankh temple and Entheogenic Church alongside 
-                        BABA MOUDOU BAQUI and AYANA IYI. They bring their collective wisdom, knowledge, talents, 
-                        information and insights to rebuild, restore and resurrect ancient teachings of spiritual 
-                        cultivation that enhances the truest Identity and awakens the God presence within every neophyte.
+        <!-- Sacred Content Section -->
+        <section class="py-16" style="position: relative; z-index: 10;">
+            <div class="container mx-auto px-6">
+                <div class="consciousness-card mb-12">
+                    <h2 class="section-title">
+                        <i class="fas fa-landmark mr-3"></i>
+                        Our Sacred Mission
+                    </h2>
+                    <p class="text-lg leading-relaxed text-center" style="color: var(--ethereal-white);">
+                        Per Ankh Entheogenic Church is a religious organization dedicated to the spiritual upliftment of
+                        our
+                        people and all people throughout the world and the betterment of life on planet earth.
                     </p>
                 </div>
 
-                <!-- Seat of Elders -->
-                <div class="consciousness-card bg-gray-900 p-8 rounded-lg sacred-geometry">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                    <!-- Founding Members -->
+                    <div class="consciousness-card bg-gray-900 p-8 rounded-lg sacred-geometry">
+                        <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                            <i class="fas fa-users mr-3"></i>
+                            Founding Members
+                        </h3>
+                        <p class="text-lg mb-6">
+                            KILINDI IYI is the founding member of the Per-Ankh temple and Entheogenic Church alongside
+                            BABA MOUDOU BAQUI and AYANA IYI. They bring their collective wisdom, knowledge, talents,
+                            information and insights to rebuild, restore and resurrect ancient teachings of spiritual
+                            cultivation that enhances the truest Identity and awakens the God presence within every
+                            neophyte.
+                        </p>
+                    </div>
+
+                    <!-- Seat of Elders -->
+                    <div class="consciousness-card bg-gray-900 p-8 rounded-lg sacred-geometry">
+                        <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                            <i class="fas fa-crown mr-3"></i>
+                            Seat of Elders
+                        </h3>
+                        <p class="text-lg mb-6">
+                            The seat of elders is the place of honor for 12 community elders seasoned in significant
+                            aspects
+                            of the development of the self, family and community. The seat of the elders is comprised of
+                            6 men
+                            and 6 women who will gently guide and advice the founding members in the spirit of wisdom
+                            and Love.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Study Group -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
                     <h3 class="text-2xl font-bold mb-6 ankh-symbol">
-                        <i class="fas fa-crown mr-3"></i>
-                        Seat of Elders
+                        <i class="fas fa-book-open mr-3"></i>
+                        Study Group
                     </h3>
                     <p class="text-lg mb-6">
-                        The seat of elders is the place of honor for 12 community elders seasoned in significant aspects 
-                        of the development of the self, family and community. The seat of the elders is comprised of 6 men 
-                        and 6 women who will gently guide and advice the founding members in the spirit of wisdom and Love.
+                        The study group is designed to provide the neophyte with structure and the basic tools by which
+                        to build an appreciation for and knowledge "the self". Further, the study group is designed to
+                        encourage the seeking and fulfillment of each neophyte's life purpose. The core knowledge base
+                        of the neophyte is founded on the principles of Ma'at (Justice, Order, Reciprocity, Harmony,
+                        Balance, Truth and Propriety) and includes but is not limited to:
+                    </p>
+                    <ul class="list-disc list-inside text-lg space-y-2 ml-4">
+                        <li>Organizational skills through (Roberts Rules of Order)</li>
+                        <li>Truth (History and Culture of Black people from the continent America and the Diaspora)</li>
+                        <li>Justice (Knowledge of the Law, public and private)</li>
+                        <li>Propriety (Proper Conduct, Etiquette, Protocol)</li>
+                        <li>Reciprocity (Give and Take, Exchange of Energy)</li>
+                        <li>Balance (Equilibrium, Harmony, Moderation)</li>
+                        <li>Order (Structure, Organization, Sequence)</li>
+                        <li>Harmony (Unity, Agreement, Concord)</li>
+                    </ul>
+                </div>
+
+                <!-- Initiation Process -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        <i class="fas fa-dharmachakra mr-3"></i>
+                        Initiation Process
+                    </h3>
+                    <p class="text-lg mb-6">
+                        The process of initiation is the systematic process by which the neophyte is transformed from a
+                        state of limited awareness to one of expanded consciousness. The process of initiation is
+                        designed
+                        to awaken the neophyte to his/her highest potential and to prepare him/her for service to
+                        humanity
+                        and the planet. The process of initiation involves the study of Alchemy/High Science to access
+                        or
+                        awaken the inner light that will allow him/her to unify with the cosmic forces as well as the
+                        harnessing cosmic energy to manifest the desired reality.
+                    </p>
+                    <p class="text-lg">
+                        Upon completion of the initiation process the Djedhi will re-enter the community with vigor and
+                        purpose.
                     </p>
                 </div>
-            </div>
 
-            <!-- Study Group -->
-            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
-                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
-                    <i class="fas fa-book-open mr-3"></i>
-                    Study Group
-                </h3>
-                <p class="text-lg mb-6">
-                    The study group is designed to provide the neophyte with structure and the basic tools by which 
-                    to build an appreciation for and knowledge "the self". Further, the study group is designed to 
-                    encourage the seeking and fulfillment of each neophyte's life purpose. The core knowledge base 
-                    of the neophyte is founded on the principles of Ma'at (Justice, Order, Reciprocity, Harmony, 
-                    Balance, Truth and Propriety) and includes but is not limited to:
-                </p>
-                <ul class="list-disc list-inside text-lg space-y-2 ml-4">
-                    <li>Organizational skills through (Roberts Rules of Order)</li>
-                    <li>Truth (History and Culture of Black people from the continent America and the Diaspora)</li>
-                    <li>Justice (Knowledge of the Law, public and private)</li>
-                    <li>Propriety (Proper Conduct, Etiquette, Protocol)</li>
-                    <li>Reciprocity (Give and Take, Exchange of Energy)</li>
-                    <li>Balance (Equilibrium, Harmony, Moderation)</li>
-                    <li>Order (Structure, Organization, Sequence)</li>
-                    <li>Harmony (Unity, Agreement, Concord)</li>
-                </ul>
-            </div>
+                <!-- Healing Center -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        <i class="fas fa-spa mr-3"></i>
+                        Healing Center
+                    </h3>
+                    <p class="text-lg mb-6">
+                        Health and wellbeing, affecting our physical, mental, emotional and spiritual aspects,
+                        (Holistic Approach) The Healing center is the purification process where initiates learn
+                        to heal themselves with the Self-Help Technology for emotional Health as well as herbal
+                        healing modalities. The expectation for each initiate is "Man/Woman Know and heal Thyself".
+                        The commitment and intention for self-healing is paramount for each initiate to progress
+                        through the levels of initiation. Without this vital process, the initiate remains burdened
+                        by the emotional "Physical Scars" that weigh on the heart.
+                    </p>
+                </div>
 
-            <!-- Initiation Process -->
-            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
-                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
-                    <i class="fas fa-dharmachakra mr-3"></i>
-                    Initiation Process
-                </h3>
-                <p class="text-lg mb-6">
-                    The process of initiation is the systematic process by which the neophyte is transformed from a 
-                    state of limited awareness to one of expanded consciousness. The process of initiation is designed 
-                    to awaken the neophyte to his/her highest potential and to prepare him/her for service to humanity 
-                    and the planet. The process of initiation involves the study of Alchemy/High Science to access or 
-                    awaken the inner light that will allow him/her to unify with the cosmic forces as well as the 
-                    harnessing cosmic energy to manifest the desired reality.
-                </p>
-                <p class="text-lg">
-                    Upon completion of the initiation process the Djedhi will re-enter the community with vigor and purpose.
-                </p>
-            </div>
+                <!-- Benefits of Fasting -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        <i class="fas fa-apple-alt mr-3"></i>
+                        The Benefits of Fasting
+                    </h3>
+                    <p class="text-lg mb-6">
+                        Fasting has been called the "Miracle Cure" because the list of physical conditions improved
+                        by fasting is long and varied. Cited most often are allergies, arthritis, digestive disorders
+                        of all kinds, skin conditions, cardiovascular disease and asthma. Because fasting initiates
+                        the body's own healing mechanisms, any ailment may show improvement.
+                    </p>
+                    <p class="text-lg mb-6">
+                        Affecting our physical, mental, emotional and spiritual aspects. Can the benefits of fasting
+                        really be so broad? Yes, they can and they are. We are so much more than a physical body and
+                        fasting affects every part of our being. When we cease the over-indulgence that has become so
+                        common in our modern world, even for a short while, our lives and our priorities become clearer.
+                    </p>
+                    <p class="text-lg">
+                        Fasting will: Rest the digestive system and allow for the cleansing and detoxification of the
+                        body,
+                        create a break in eating patterns, while shining a spotlight on the
+                    </p>
+                </div>
 
-            <!-- Healing Center -->
-            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
-                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
-                    <i class="fas fa-spa mr-3"></i>
-                    Healing Center
-                </h3>
-                <p class="text-lg mb-6">
-                    Health and wellbeing, affecting our physical, mental, emotional and spiritual aspects, 
-                    (Holistic Approach) The Healing center is the purification process where initiates learn 
-                    to heal themselves with the Self-Help Technology for emotional Health as well as herbal 
-                    healing modalities. The expectation for each initiate is "Man/Woman Know and heal Thyself". 
-                    The commitment and intention for self-healing is paramount for each initiate to progress 
-                    through the levels of initiation. Without this vital process, the initiate remains burdened 
-                    by the emotional "Physical Scars" that weigh on the heart.
-                </p>
-            </div>
+                <!-- Benefits of Meditation -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        <i class="fas fa-pray mr-3"></i>
+                        The Benefits of Meditation
+                    </h3>
+                    <ul class="list-disc list-inside text-lg space-y-2 ml-4 mb-6">
+                        <li>Emotional steadiness and harmony</li>
+                        <li>It cleanses and nourishes you from within and calms you whenever you feel overwhelmed,
+                            unstable or emotionally shut down</li>
+                        <li>It brings harmony in creation</li>
+                        <li>When you meditate you are in the space of vastness, calmness and joy and this is what you
+                            emit into the environment bringing harmony to the creation/planet</li>
+                        <li>Personal Transformation: Meditation can bring about a true personal transformation. As you
+                            learn more about yourself, you'll naturally start discovering more about yourself.</li>
+                    </ul>
 
-            <!-- Benefits of Fasting -->
-            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
-                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
-                    <i class="fas fa-apple-alt mr-3"></i>
-                    The Benefits of Fasting
-                </h3>
-                <p class="text-lg mb-6">
-                    Fasting has been called the "Miracle Cure" because the list of physical conditions improved 
-                    by fasting is long and varied. Cited most often are allergies, arthritis, digestive disorders 
-                    of all kinds, skin conditions, cardiovascular disease and asthma. Because fasting initiates 
-                    the body's own healing mechanisms, any ailment may show improvement.
-                </p>
-                <p class="text-lg mb-6">
-                    Affecting our physical, mental, emotional and spiritual aspects. Can the benefits of fasting 
-                    really be so broad? Yes, they can and they are. We are so much more than a physical body and 
-                    fasting affects every part of our being. When we cease the over-indulgence that has become so 
-                    common in our modern world, even for a short while, our lives and our priorities become clearer.
-                </p>
-                <p class="text-lg">
-                    Fasting will: Rest the digestive system and allow for the cleansing and detoxification of the body, 
-                    create a break in eating patterns, while shining a spotlight on the
-                </p>
-            </div>
+                    <h4 class="text-xl font-bold mb-4">Tools to Enhance Meditation Results</h4>
+                    <ul class="list-disc list-inside text-lg space-y-2 ml-4">
+                        <li>Frequency vibration/Music</li>
+                        <li>Chants/Mantra</li>
+                        <li>Candles</li>
+                        <li>Salt Burning</li>
+                        <li>Visualization</li>
+                    </ul>
+                </div>
 
-            <!-- Benefits of Meditation -->
-            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
-                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
-                    <i class="fas fa-pray mr-3"></i>
-                    The Benefits of Meditation
-                </h3>
-                <ul class="list-disc list-inside text-lg space-y-2 ml-4 mb-6">
-                    <li>Emotional steadiness and harmony</li>
-                    <li>It cleanses and nourishes you from within and calms you whenever you feel overwhelmed, unstable or emotionally shut down</li>
-                    <li>It brings harmony in creation</li>
-                    <li>When you meditate you are in the space of vastness, calmness and joy and this is what you emit into the environment bringing harmony to the creation/planet</li>
-                    <li>Personal Transformation: Meditation can bring about a true personal transformation. As you learn more about yourself, you'll naturally start discovering more about yourself.</li>
-                </ul>
-                
-                <h4 class="text-xl font-bold mb-4">Tools to Enhance Meditation Results</h4>
-                <ul class="list-disc list-inside text-lg space-y-2 ml-4">
-                    <li>Frequency vibration/Music</li>
-                    <li>Chants/Mantra</li>
-                    <li>Candles</li>
-                    <li>Salt Burning</li>
-                    <li>Visualization</li>
-                </ul>
+                <!-- Physical Activity -->
+                <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
+                    <h3 class="text-2xl font-bold mb-6 ankh-symbol">
+                        <i class="fas fa-dumbbell mr-3"></i>
+                        Physical Activity
+                    </h3>
+                    <ul class="list-disc list-inside text-lg space-y-2 ml-4">
+                        <li>Self Defense</li>
+                        <li>Survival Training</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <!-- Physical Activity -->
-            <div class="consciousness-card bg-gray-900 p-8 rounded-lg mb-12 sacred-geometry">
-                <h3 class="text-2xl font-bold mb-6 ankh-symbol">
-                    <i class="fas fa-dumbbell mr-3"></i>
-                    Physical Activity
-                </h3>
-                <ul class="list-disc list-inside text-lg space-y-2 ml-4">
-                    <li>Self Defense</li>
-                    <li>Survival Training</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        <!-- Contact Section -->
+        <section class="py-16 consciousness-gradient">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-8 ankh-symbol">Connect With Us</h2>
+                <div class="consciousness-card bg-white bg-opacity-10 p-8 rounded-lg max-w-2xl mx-auto mb-12">
+                    <h3 class="text-2xl font-bold mb-4">PER ANKH ENTHEOGENIC CHURCH</h3>
+                    <p class="text-xl mb-6">15705 Woodrow Wilson, Detroit, Michigan</p>
 
-    <!-- Contact Section -->
-    <section class="py-16 consciousness-gradient">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-8 ankh-symbol">Connect With Us</h2>
-            <div class="consciousness-card bg-white bg-opacity-10 p-8 rounded-lg max-w-2xl mx-auto mb-12">
-                <h3 class="text-2xl font-bold mb-4">PER ANKH ENTHEOGENIC CHURCH</h3>
-                <p class="text-xl mb-6">15705 Woodrow Wilson, Detroit, Michigan</p>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                    <a href="https://www.instagram.com/perankh_church" class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform">
-                        <i class="fab fa-instagram text-2xl mb-2"></i>
-                        <p>Instagram</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                        <a href="https://www.instagram.com/perankh_church"
+                            class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform flex flex-col items-center justify-center"
+                            aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mb-2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 1 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            <p>Instagram</p>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61565651284992"
+                            class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform flex flex-col items-center justify-center"
+                            aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mb-2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                            <p>Facebook</p>
+                        </a>
+                        <a href="#"
+                            class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform flex flex-col items-center justify-center"
+                            aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mb-2">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.12 1 12 1 12s0 3.88.42 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.88 23 12 23 12s0-3.88-.42-5.58z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+                            </svg>
+                            <p>YouTube</p>
+                        </a>
+                        <a href="#"
+                            class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform flex flex-col items-center justify-center"
+                            aria-label="X (Twitter)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor" class="mb-2">
+                                <path
+                                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z" />
+                            </svg>
+                            <p>X (Twitter)</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <a href="#"
+                        class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg hover:scale-105 transition-transform">
+                        <i class="fas fa-user-plus text-3xl mb-4 bio-tech-icon"></i>
+                        <h4 class="text-xl font-bold mb-2">Become A Member</h4>
                     </a>
-                    <a href="https://www.facebook.com/profile.php?id=61565651284992" class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform">
-                        <i class="fab fa-facebook text-2xl mb-2"></i>
-                        <p>Facebook</p>
+                    <a href="#"
+                        class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg hover:scale-105 transition-transform">
+                        <i class="fas fa-donate text-3xl mb-4 bio-tech-icon"></i>
+                        <h4 class="text-xl font-bold mb-2">Donate</h4>
                     </a>
-                    <a href="#" class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform">
-                        <i class="fab fa-youtube text-2xl mb-2"></i>
-                        <p>YouTube</p>
-                    </a>
-                    <a href="#" class="consciousness-card bg-gray-900 p-4 rounded-lg hover:scale-105 transition-transform">
-                        <i class="fab fa-twitter text-2xl mb-2"></i>
-                        <p>Twitter</p>
+                    <a href="#"
+                        class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg hover:scale-105 transition-transform">
+                        <i class="fas fa-clipboard-list text-3xl mb-4 bio-tech-icon"></i>
+                        <h4 class="text-xl font-bold mb-2">Vendor Registration</h4>
                     </a>
                 </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <a href="#" class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg hover:scale-105 transition-transform">
-                    <i class="fas fa-user-plus text-3xl mb-4 bio-tech-icon"></i>
-                    <h4 class="text-xl font-bold mb-2">Become A Member</h4>
-                </a>
-                <a href="#" class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg hover:scale-105 transition-transform">
-                    <i class="fas fa-donate text-3xl mb-4 bio-tech-icon"></i>
-                    <h4 class="text-xl font-bold mb-2">Donate</h4>
-                </a>
-                <a href="#" class="consciousness-card bg-white bg-opacity-10 p-6 rounded-lg hover:scale-105 transition-transform">
-                    <i class="fas fa-clipboard-list text-3xl mb-4 bio-tech-icon"></i>
-                    <h4 class="text-xl font-bold mb-2">Vendor Registration</h4>
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 py-12 border-t border-golden-ankh">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex justify-center space-x-8 mb-6">
-                <a href="#" class="hover:text-golden-ankh transition-colors">Terms of Use</a>
-                <a href="#" class="hover:text-golden-ankh transition-colors">Privacy Policy</a>
+        <!-- Footer -->
+        <footer class="bg-gray-900 py-12 border-t border-golden-ankh">
+            <div class="container mx-auto px-6 text-center">
+                <div class="flex justify-center space-x-8 mb-6">
+                    <a href="#" class="hover:text-golden-ankh transition-colors">Terms of Use</a>
+                    <a href="#" class="hover:text-golden-ankh transition-colors">Privacy Policy</a>
+                </div>
+                <p class="text-gray-400">&copy; 2025 Per Ankh Entheogenic Church. All rights reserved.</p>
             </div>
-            <p class="text-gray-400">&copy; 2025 Per Ankh Entheogenic Church. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
 </body>
 <script type="module" src="/src/utils/analytics-tracker.js"></script>
+
 </html>
