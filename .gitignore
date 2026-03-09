@@ -39,3 +39,12 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Test files with secrets
+test-auth-cli.js
+test-auth-api.cjs
+test-auth.js
+
+# Firebase config (contains API keys)
+src/firebase.js
+storage.rules
