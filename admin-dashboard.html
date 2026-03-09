@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Per Ankh Entheogenic Church</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary-gold: #D4AF37;
@@ -333,21 +336,21 @@
             .dashboard-container {
                 padding: 1rem;
             }
-            
+
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
             }
-            
+
             .admin-nav {
                 width: 100%;
                 justify-content: space-between;
             }
-            
+
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -371,6 +374,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Side Navigation -->
     <link rel="stylesheet" href="src/components/side-nav.css">
@@ -388,7 +392,7 @@
                     <span id="userName">Admin</span>
                     <span id="userRole" class="text-sm opacity-70">(Super Admin)</span>
                 </div>
-                <button class="logout-btn" onclick="adminAuth.logout()">
+                <button class="logout-btn" onclick="perAnkhAuth.logout()">
                     <i class="fas fa-sign-out-alt mr-2"></i>Logout
                 </button>
             </nav>
@@ -397,25 +401,7 @@
 
     <!-- Dashboard Container -->
     <div class="dashboard-container">
-        <!-- Stats Overview -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">24</div>
-                <div class="stat-label">Active Pages</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">156</div>
-                <div class="stat-label">Site Visitors Today</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">8</div>
-                <div class="stat-label">Admin Sessions</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">12</div>
-                <div class="stat-label">Content Updates</div>
-            </div>
-        </div>
+
 
         <!-- Main Dashboard Grid -->
         <div class="dashboard-grid">
@@ -426,14 +412,17 @@
                     <div class="card-title">Content Management</div>
                 </div>
                 <div class="card-description">
-                    Manage all website content, pages, and sacred teachings. Edit text, update images, and maintain the spiritual knowledge base.
+                    Manage all website content, pages, and sacred teachings. Edit text, update images, and maintain the
+                    spiritual knowledge base.
                 </div>
                 <div class="protected-content">
                     <div class="protected-label">Admin Only Content</div>
-                    <p>This section contains sensitive content management tools that are only accessible to authenticated administrators.</p>
+                    <p>This section contains sensitive content management tools that are only accessible to
+                        authenticated administrators.</p>
                 </div>
                 <div class="card-actions">
-                    <a href="admin-content-manager.html" class="action-btn" onclick="console.log('📝 Navigating to Content Manager'); return true;">Content Manager</a>
+                    <a href="admin-content-manager.html" class="action-btn"
+                        onclick="console.log('📝 Navigating to Content Manager'); return true;">Content Manager</a>
                     <a href="index.html" class="action-btn secondary">Edit Main Site</a>
                 </div>
             </div>
@@ -445,15 +434,18 @@
                     <div class="card-title">User Management</div>
                 </div>
                 <div class="card-description">
-                    Manage admin users, roles, and permissions. Control access to different sections of the sacred portal.
+                    Manage admin users, roles, and permissions. Control access to different sections of the sacred
+                    portal.
                 </div>
                 <div class="protected-content">
                     <div class="protected-label">Restricted Access</div>
                     <p>User management functions are restricted to super administrators only.</p>
                 </div>
                 <div class="card-actions">
-                    <a href="admin-user-manager.html" class="action-btn" onclick="console.log('👥 Navigating to User Manager'); return true;">Manage Users</a>
-                    <a href="admin-user-manager.html#permissions" class="action-btn secondary" onclick="console.log('🔑 Navigating to Permissions'); return true;">Permissions</a>
+                    <a href="admin-user-manager.html" class="action-btn"
+                        onclick="console.log('👥 Navigating to User Manager'); return true;">Manage Users</a>
+                    <a href="admin-user-manager.html#permissions" class="action-btn secondary"
+                        onclick="console.log('🔑 Navigating to Permissions'); return true;">Permissions</a>
                 </div>
             </div>
 
@@ -464,7 +456,8 @@
                     <div class="card-title">Sacred Teachings</div>
                 </div>
                 <div class="card-description">
-                    Manage protocols, crystal technology teachings, and women's empowerment content. Update spiritual guidance materials.
+                    Manage protocols, crystal technology teachings, and women's empowerment content. Update spiritual
+                    guidance materials.
                 </div>
                 <div class="card-actions">
                     <a href="protocols.html" class="action-btn">Edit Protocols</a>
@@ -480,7 +473,8 @@
                     <div class="card-title">Community Management</div>
                 </div>
                 <div class="card-description">
-                    Oversee community partnerships, outreach programs, and member relationships within the sacred community.
+                    Oversee community partnerships, outreach programs, and member relationships within the sacred
+                    community.
                 </div>
                 <div class="card-actions">
                     <a href="communitypartnership.html" class="action-btn">Partnerships</a>
@@ -510,7 +504,8 @@
                     <div class="card-title">Analytics & Reports</div>
                 </div>
                 <div class="card-description">
-                    View site analytics, user engagement metrics, and generate reports on community growth and content performance.
+                    View site analytics, user engagement metrics, and generate reports on community growth and content
+                    performance.
                 </div>
                 <div class="protected-content">
                     <div class="protected-label">Sensitive Data</div>
@@ -521,7 +516,7 @@
                     <a href="admin-analytics.html#export" class="action-btn secondary">Generate Report</a>
                 </div>
             </div>
-            
+
             <!-- System Settings -->
             <div class="dashboard-card">
                 <div class="card-header">
@@ -536,7 +531,7 @@
                     <a href="admin-settings.html#security" class="action-btn secondary">Security</a>
                 </div>
             </div>
-            
+
             <!-- Notifications -->
             <div class="dashboard-card">
                 <div class="card-header">
@@ -633,43 +628,7 @@
             </div>
         </div>
 
-        <!-- Recent Activity -->
-        <div class="recent-activity">
-            <div class="activity-header">
-                <div class="card-icon"><i class="fas fa-history"></i></div>
-                <div class="card-title">Recent Activity</div>
-            </div>
-            <ul class="activity-list">
-                <li class="activity-item">
-                    <div class="activity-icon"><i class="fas fa-edit"></i></div>
-                    <div class="activity-content">
-                        <div class="activity-text">Updated Women's Empowerment content</div>
-                        <div class="activity-time">2 hours ago</div>
-                    </div>
-                </li>
-                <li class="activity-item">
-                    <div class="activity-icon"><i class="fas fa-user-plus"></i></div>
-                    <div class="activity-content">
-                        <div class="activity-text">New admin user 'temple_keeper' created</div>
-                        <div class="activity-time">5 hours ago</div>
-                    </div>
-                </li>
-                <li class="activity-item">
-                    <div class="activity-icon"><i class="fas fa-upload"></i></div>
-                    <div class="activity-content">
-                        <div class="activity-text">Crystal Technology protocols updated</div>
-                        <div class="activity-time">1 day ago</div>
-                    </div>
-                </li>
-                <li class="activity-item">
-                    <div class="activity-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="activity-content">
-                        <div class="activity-text">Security settings updated</div>
-                        <div class="activity-time">2 days ago</div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+
     </div>
 
     <!-- Quick Actions FAB -->
@@ -692,7 +651,7 @@
             initializeDashboard() {
                 console.log('🔍 Starting dashboard initialization...');
                 console.log('🔍 Checking authentication...');
-                
+
                 // Check authentication using the global auth system
                 if (!this.isAuthenticated()) {
                     console.log('❌ Authentication failed, redirecting to login');
@@ -703,9 +662,7 @@
                 console.log('✅ Admin authenticated successfully');
                 console.log('🚀 Initializing dashboard features...');
 
-                // Initialize dashboard features
-                this.updateStats();
-                this.loadRecentActivity();
+                // Dashboard initialized
             }
 
             isAuthenticated() {
@@ -713,11 +670,13 @@
                 if (typeof perAnkhAuth !== 'undefined') {
                     return perAnkhAuth.isAdminAuthenticated();
                 }
-                
-                // Fallback to manual check
+
+                // Fallback to manual check (now checking for Firebase user via adminAuth)
+                if (typeof window.adminAuth !== 'undefined' && window.adminAuth.firebaseUser) return true;
+
                 const session = localStorage.getItem('perankh_admin_session');
                 const active = sessionStorage.getItem('perankh_admin_active');
-                
+
                 if (!session || !active) {
                     console.log('No session or active flag found');
                     return false;
@@ -743,17 +702,30 @@
             }
 
             loadUserInfo() {
-                try {
-                    const session = localStorage.getItem('perankh_admin_session');
-                    if (session) {
-                        const sessionData = JSON.parse(session);
-                        document.getElementById('userName').textContent = sessionData.username;
-                        document.getElementById('userRole').textContent = `(${this.formatRole(sessionData.role)})`;
-                        document.getElementById('userAvatar').textContent = sessionData.username.charAt(0).toUpperCase();
+                // Determine user info dynamically from Firebase or fallback
+                let username = "Admin";
+                let role = "admin";
+
+                // Check if Firebase Auth is already populated via PerAnkhAuth
+                if (typeof perAnkhAuth !== 'undefined' && perAnkhAuth.firebaseUser) {
+                    username = perAnkhAuth.firebaseUser.email;
+                    // Keep default role
+                } else {
+                    try {
+                        const session = localStorage.getItem('perankh_admin_session');
+                        if (session) {
+                            const sessionData = JSON.parse(session);
+                            username = sessionData.username;
+                            role = sessionData.role;
+                        }
+                    } catch (error) {
+                        console.error('Error loading user info:', error);
                     }
-                } catch (error) {
-                    console.error('Error loading user info:', error);
                 }
+
+                document.getElementById('userName').textContent = username;
+                document.getElementById('userRole').textContent = `(${this.formatRole(role)})`;
+                document.getElementById('userAvatar').textContent = username.charAt(0).toUpperCase();
             }
 
             formatRole(role) {
@@ -766,29 +738,17 @@
                 return roleMap[role] || 'Admin';
             }
 
-            updateStats() {
-                // Simulate real-time stats updates
-                setInterval(() => {
-                    const visitorCount = document.querySelector('.stat-card:nth-child(2) .stat-number');
-                    if (visitorCount) {
-                        const current = parseInt(visitorCount.textContent);
-                        visitorCount.textContent = current + Math.floor(Math.random() * 3);
-                    }
-                }, 30000); // Update every 30 seconds
-            }
 
-            loadRecentActivity() {
-                // This would typically load from a server
-                console.log('Recent activity loaded');
-            }
 
-            logout() {
-                // Clear session data
-                localStorage.removeItem('perankh_admin_session');
-                sessionStorage.removeItem('perankh_admin_active');
-                
-                // Redirect to login
-                window.location.href = 'admin-login.html';
+            async logout() {
+                if (typeof perAnkhAuth !== 'undefined') {
+                    await perAnkhAuth.logout();
+                } else {
+                    // Fallback
+                    localStorage.removeItem('perankh_admin_session');
+                    sessionStorage.removeItem('perankh_admin_active');
+                    window.location.href = 'admin-login.html';
+                }
             }
         }
 
@@ -830,7 +790,7 @@
                 justify-content: center;
                 backdrop-filter: blur(10px);
             `;
-            
+
             modal.innerHTML = `
                 <div style="
                     background: rgba(28, 28, 28, 0.95);
@@ -885,7 +845,7 @@
                     </div>
                 </div>
             `;
-            
+
             // Add styles for quick action buttons
             const style = document.createElement('style');
             style.textContent = `
@@ -909,12 +869,12 @@
                     transform: translateY(-2px);
                 }
             `;
-            
+
             document.head.appendChild(style);
             document.body.appendChild(modal);
-            
+
             // Close modal when clicking outside
-            modal.addEventListener('click', function(e) {
+            modal.addEventListener('click', function (e) {
                 if (e.target === modal) {
                     closeQuickActions();
                 }
@@ -930,8 +890,8 @@
 
         function quickAction(action) {
             closeQuickActions();
-            
-            switch(action) {
+
+            switch (action) {
                 case 'createPage':
                     window.location.href = 'admin-content-manager.html#create';
                     break;
@@ -963,11 +923,11 @@
                 '3. Specific Group\n\n' +
                 'Enter number (1-3):'
             );
-            
+
             if (notification && notification >= 1 && notification <= 3) {
                 const types = ['All Members', 'Admin Users Only', 'Specific Group'];
                 const message = prompt(`Enter notification message for ${types[notification - 1]}:`);
-                
+
                 if (message) {
                     alert(`Notification sent to ${types[notification - 1]}: "${message}"\n\n(Demo implementation)`);
                 }
@@ -985,6 +945,14 @@
                 alert('Cache cleared successfully!\n\nSite performance may be temporarily affected while cache rebuilds.\n(Demo implementation)');
             }
         }
+
+        // Expose functions to global scope
+        window.showQuickActions = showQuickActions;
+        window.closeQuickActions = closeQuickActions;
+        window.quickAction = quickAction;
+        window.showNotificationSender = showNotificationSender;
+        window.initiateBackup = initiateBackup;
+        window.clearSiteCache = clearSiteCache;
 
         // Initialize dashboard
         const adminAuth = new AdminDashboard();
@@ -1020,4 +988,5 @@
         });
     </script>
 </body>
+
 </html>
