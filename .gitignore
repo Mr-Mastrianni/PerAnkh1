@@ -6,6 +6,9 @@ dist/
 dist-ssr/
 *.local
 
+# Vercel
+.vercel
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -45,6 +48,5 @@ test-auth-cli.js
 test-auth-api.cjs
 test-auth.js
 
-# Firebase config (contains API keys)
-src/firebase.js
-storage.rules
+# Firebase security rules (should be configured separately)
+# storage.rules

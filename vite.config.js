@@ -3,8 +3,8 @@ import { resolve } from 'path';
 
 export default defineConfig(({ mode }) => ({
   root: '.',
-  // Use the repository name for GitHub Pages
-  base: mode === 'production' ? '/PerAnkh1/' : '/',
+  // Base path for deployment
+  base: '/',
   publicDir: 'public',
 
   build: {
@@ -42,7 +42,9 @@ export default defineConfig(({ mode }) => ({
         shanna: resolve(__dirname, 'Shanna1.html'),
         womensEmpowerment: resolve(__dirname, 'women\'sempowerment.html'),
         modernizedDemo: resolve(__dirname, 'modernized-demo.html'),
-        testGithub: resolve(__dirname, 'test-github-pages.html')
+        testGithub: resolve(__dirname, 'test-github-pages.html'),
+        vendorRegistration: resolve(__dirname, 'vendor-registration.html'),
+        seedDatabase: resolve(__dirname, 'seed-database.html')
       },
       output: {
         manualChunks: {
