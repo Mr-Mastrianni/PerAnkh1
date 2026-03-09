@@ -34,9 +34,9 @@
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://esm.sh https://unpkg.com;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
-        font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://esm.sh https://unpkg.com https://cdn.quilljs.com https://www.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdn.quilljs.com;
+        font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:;
         img-src 'self' data: https:;
         connect-src 'self' https:;
         frame-src 'none';
@@ -527,8 +527,8 @@
             <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
 
             <div class="hero-content">
-                <h1 class="hero-title">WELCOME TO PER ANKH</h1>
-                <p class="hero-subtitle">
+                <h1 class="hero-title" data-cms="heroTitle">WELCOME TO PER ANKH</h1>
+                <p class="hero-subtitle" data-cms="heroSubtitle">
                     A Sacred Digital Sanctuary for Consciousness Exploration
                 </p>
                 <p class="text-lg md:text-xl mb-8 max-w-4xl mx-auto"
@@ -878,5 +878,6 @@
     <script type="module" src="src/visuals/hero-scene.js"></script>
 </body>
 <script type="module" src="/src/utils/analytics-tracker.js"></script>
+<script type="module" src="/src/cms-loader.js"></script>
 
 </html>

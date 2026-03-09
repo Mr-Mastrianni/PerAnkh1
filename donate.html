@@ -461,8 +461,8 @@
             <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
 
             <div class="hero-content">
-                <h1 class="hero-title">Support Per-Ankh</h1>
-                <p class="hero-subtitle">
+                <h1 class="hero-title" data-cms="heroTitle">Support Per-Ankh</h1>
+                <p class="hero-subtitle" data-cms="heroSubtitle">
                     Help Us Cultivate Consciousness & Freedom
                 </p>
             </div>
@@ -473,7 +473,8 @@
             <div class="container mx-auto px-6">
                 <div class="max-w-4xl mx-auto">
                     <div class="sacred-card mb-8">
-                        <p class="text-lg mb-6 leading-relaxed" style="color: var(--ethereal-white);">
+                        <p class="text-lg mb-6 leading-relaxed" style="color: var(--ethereal-white);"
+                            data-cms="introText">
                             PerAnkh is more than an organization—it's a movement dedicated to spiritual awakening,
                             healing, and the decriminalization of entheogens. Based in Detroit, we are committed to
                             advocating for the sacred use of plant medicines while providing education, community
@@ -482,7 +483,7 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                             <div class="sacred-card">
-                                <h3 class="section-title text-2xl mb-4">Our Mission</h3>
+                                <h3 class="section-title text-2xl mb-4" data-cms="missionTitle">Our Mission</h3>
                                 <ul class="text-left space-y-2" style="color: var(--ethereal-white);">
                                     <li>🌱 Advocate for entheogen decriminalization</li>
                                     <li>🌱 Host educational and spiritual gatherings</li>
@@ -492,8 +493,8 @@
                             </div>
 
                             <div class="sacred-card">
-                                <h3 class="section-title text-2xl mb-4">Your Impact</h3>
-                                <p class="text-left" style="color: var(--ethereal-white);">
+                                <h3 class="section-title text-2xl mb-4" data-cms="impactTitle">Your Impact</h3>
+                                <p class="text-left" style="color: var(--ethereal-white);" data-cms="impactText">
                                     Every contribution, big or small, fuels the vision of a world where natural
                                     medicines are recognized, respected, and accessible to those seeking spiritual and
                                     personal growth.
@@ -524,7 +525,8 @@
 
                         <!-- Sacred Books Store -->
                         <div class="sacred-card mb-8">
-                            <h3 class="section-title text-3xl mb-6 text-center">Sacred Books Store</h3>
+                            <h3 class="section-title text-3xl mb-6 text-center" data-cms="bookstoreTitle">Sacred Books
+                                Store</h3>
                             <p class="text-center text-lg mb-8" style="color: var(--ethereal-white);">
                                 Expand your consciousness with transformative literature from our curated collection of
                                 sacred texts and consciousness-expanding works.
@@ -631,7 +633,8 @@
 
                         <!-- Sacred Donation Form -->
                         <div class="sacred-card max-w-2xl mx-auto">
-                            <h3 class="section-title text-2xl mb-6 text-center">Sacred Donation Form</h3>
+                            <h3 class="section-title text-2xl mb-6 text-center" data-cms="donationFormTitle">Sacred
+                                Donation Form</h3>
 
                             <form id="donationForm" action="https://formspree.io/f/xgoyrqpj" method="POST"
                                 class="space-y-6">
@@ -1001,5 +1004,6 @@
     </script>
 </body>
 <script type="module" src="/src/utils/analytics-tracker.js"></script>
+<script type="module" src="/src/cms-loader.js"></script>
 
 </html>

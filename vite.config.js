@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => ({
   // Use the repository name for GitHub Pages
   base: mode === 'production' ? '/PerAnkh1/' : '/',
   publicDir: 'public',
-  
+
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -53,7 +53,7 @@ export default defineConfig(({ mode }) => ({
     // Chunk size warning limit
     chunkSizeWarningLimit: 1000
   },
-  
+
   server: {
     port: 3000,
     host: true,
@@ -63,17 +63,16 @@ export default defineConfig(({ mode }) => ({
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY',
       'X-XSS-Protection': '1; mode=block',
-      'Referrer-Policy': 'strict-origin-when-cross-origin',
-      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+      'Referrer-Policy': 'strict-origin-when-cross-origin'
     }
   },
-  
+
   preview: {
     port: 4173,
     host: true,
     cors: true
   },
-  
+
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -83,7 +82,7 @@ export default defineConfig(({ mode }) => ({
       '@assets': resolve(__dirname, 'src/assets')
     }
   },
-  
+
   css: {
     devSourcemap: true,
     preprocessorOptions: {
@@ -92,12 +91,12 @@ export default defineConfig(({ mode }) => ({
       }
     }
   },
-  
+
   // Performance optimizations
   optimizeDeps: {
     include: ['crypto-js', 'jwt-simple', 'validator']
   },
-  
+
   // Environment variables
   define: {
     __APP_VERSION__: JSON.stringify(process.env.npm_package_version),

@@ -10,15 +10,29 @@ class PerAnkhAuth {
         this.memberSessionKey = 'perankh_member_session';
         this.memberActiveKey = 'perankh_member_active';
         this.protectedElements = [];
+        this.firebaseUser = null;
         this.init();
     }
 
-    init() {
-        // Initialize authentication system
+    async init() {
+        // Initialize Firebase Auth listener
+        try {
+            const { auth } = await import('./src/firebase-config.js');
+            const { onAuthStateChanged } = await import('firebase/auth');
+
+            onAuthStateChanged(auth, (user) => {
+                this.firebaseUser = user;
+                this.checkAuthStatus();
+            });
+        } catch (error) {
+            console.warn("Could not load Firebase Auth in PerAnkhAuth", error);
+        }
+
+        // Initialize UI protection
         this.checkAuthStatus();
         this.protectContent();
         this.addAuthUI();
-        
+
         // Auto-check authentication every 5 minutes
         setInterval(() => this.checkAuthStatus(), 5 * 60 * 1000);
     }
@@ -34,9 +48,12 @@ class PerAnkhAuth {
      * Check if user is authenticated as admin
      */
     isAdminAuthenticated() {
+        // If Firebase user exists and is signed in
+        if (this.firebaseUser) return true;
+
         const session = localStorage.getItem(this.adminSessionKey);
         const active = sessionStorage.getItem(this.adminActiveKey);
-        
+
         if (!session || !active) return false;
 
         try {
@@ -47,7 +64,7 @@ class PerAnkhAuth {
 
             // Session expires after 8 hours
             if (hoursDiff >= 8) {
-                this.adminLogout();
+                this.logout();
                 return false;
             }
 
@@ -64,7 +81,7 @@ class PerAnkhAuth {
     isMemberAuthenticated() {
         const session = localStorage.getItem(this.memberSessionKey);
         const active = sessionStorage.getItem(this.memberActiveKey);
-        
+
         if (!session || !active) return false;
 
         try {
@@ -100,12 +117,20 @@ class PerAnkhAuth {
      */
     getSession() {
         try {
-            // Check admin session first
+            // Check Firebase first
+            if (this.firebaseUser) {
+                return {
+                    username: this.firebaseUser.email,
+                    role: 'admin' // default all firebase users to admin for now
+                };
+            }
+
+            // Check admin session
             let session = localStorage.getItem(this.adminSessionKey);
             if (session) {
                 return JSON.parse(session);
             }
-            
+
             // Check member session
             session = localStorage.getItem(this.memberSessionKey);
             return session ? JSON.parse(session) : null;
@@ -172,14 +197,14 @@ class PerAnkhAuth {
     protectContent() {
         // Find all elements with protection attributes
         const protectedElements = document.querySelectorAll('[data-admin-only], [data-auth-required]');
-        
+
         protectedElements.forEach(element => {
             if (!this.isAuthenticated()) {
                 // Create protection overlay
                 const overlay = this.createProtectionOverlay(element);
                 element.style.position = 'relative';
                 element.appendChild(overlay);
-                
+
                 // Store reference
                 this.protectedElements.push({
                     element: element,
@@ -205,7 +230,7 @@ class PerAnkhAuth {
                 </button>
             </div>
         `;
-        
+
         // Add styles
         overlay.style.cssText = `
             position: absolute;
@@ -377,7 +402,7 @@ class PerAnkhAuth {
                 }
             }
         `;
-        
+
         document.head.appendChild(style);
         nav.appendChild(adminUI);
     }
@@ -397,21 +422,21 @@ class PerAnkhAuth {
         const adminInfo = document.getElementById('adminInfo');
         const loginBtn = document.getElementById('adminLoginBtn');
         const logoutBtn = document.getElementById('adminLogoutBtn');
-        
+
         if (adminInfo) {
             const sessionData = this.getSession();
             if (sessionData) {
                 const welcomeSpan = adminInfo.querySelector('.admin-welcome');
                 const roleSpan = adminInfo.querySelector('.admin-role');
-                
+
                 if (welcomeSpan) {
                     welcomeSpan.textContent = `Welcome, ${sessionData.username}`;
                 }
-                
+
                 if (roleSpan) {
                     roleSpan.textContent = `(${this.formatRole(sessionData.role)})`;
                 }
-                
+
                 adminInfo.style.display = 'flex';
                 if (loginBtn) loginBtn.style.display = 'none';
                 if (logoutBtn) logoutBtn.style.display = 'inline-block';
@@ -445,6 +470,25 @@ class PerAnkhAuth {
     }
 
     /**
+     * Logout
+     */
+    async logout() {
+        try {
+            const { auth } = await import('./src/firebase-config.js');
+            const { signOut } = await import('firebase/auth');
+            await signOut(auth);
+        } catch (error) {
+            console.error("Firebase signout error:", error);
+        }
+
+        localStorage.removeItem(this.adminSessionKey);
+        sessionStorage.removeItem(this.adminActiveKey);
+        localStorage.removeItem(this.memberSessionKey);
+        sessionStorage.removeItem(this.memberActiveKey);
+        window.location.href = 'admin-login.html';
+    }
+
+    /**
      * Add protection to specific elements
      */
     protectElement(selector, options = {}) {
@@ -455,7 +499,7 @@ class PerAnkhAuth {
                 element.setAttribute('data-admin-only', 'true');
             }
         });
-        
+
         // Re-run protection check
         this.checkAuthStatus();
     }
@@ -468,14 +512,14 @@ class PerAnkhAuth {
         elements.forEach(element => {
             element.removeAttribute('data-auth-required');
             element.removeAttribute('data-admin-only');
-            
+
             // Remove any existing overlays
             const overlay = element.querySelector('.admin-protection-overlay');
             if (overlay) {
                 overlay.remove();
             }
         });
-        
+
         this.checkAuthStatus();
     }
 }

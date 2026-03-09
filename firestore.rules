@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if the user is signed in
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    match /pages/{pageId} {
+      allow read: if true; // Publicly readable
+      allow write: if isAuthenticated(); // Only admins can create/edit/delete
+    }
+
+    match /profiles/{profileId} {
+      allow read: if true; // Publicly readable
+      allow write: if isAuthenticated(); // Only admins can create/edit/delete
+    }
+
+    match /media/{mediaId} {
+      allow read: if true; // Publicly readable
+      allow write: if isAuthenticated(); // Only admins can create/edit/delete
+    }
+  }
+}

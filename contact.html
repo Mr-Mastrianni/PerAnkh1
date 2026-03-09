@@ -430,8 +430,8 @@
             <img src="floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
 
             <div class="hero-content">
-                <h1 class="hero-title">Contact Us</h1>
-                <p class="hero-subtitle">
+                <h1 class="hero-title" data-cms="heroTitle">Contact Us</h1>
+                <p class="hero-subtitle" data-cms="heroSubtitle">
                     Connect with the Per Ankh community
                 </p>
             </div>
@@ -443,14 +443,15 @@
                 <div class="max-w-4xl mx-auto">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="sacred-card">
-                            <h2 class="section-title text-3xl mb-6">Get In Touch</h2>
+                            <h2 class="section-title text-3xl mb-6" data-cms="getInTouchTitle">Get In Touch</h2>
                             <div class="space-y-4">
                                 <div class="flex items-center">
                                     <i class="fas fa-map-marker-alt text-2xl mr-4"
                                         style="color: var(--primary-gold);"></i>
                                     <div>
                                         <h3 class="font-bold" style="color: var(--primary-gold);">Address</h3>
-                                        <p style="color: var(--ethereal-white);">15705 Woodrow Wilson<br>Detroit,
+                                        <p style="color: var(--ethereal-white);" data-cms="address">15705 Woodrow
+                                            Wilson<br>Detroit,
                                             Michigan</p>
                                     </div>
                                 </div>
@@ -458,7 +459,8 @@
                                     <i class="fas fa-envelope text-2xl mr-4" style="color: var(--primary-gold);"></i>
                                     <div>
                                         <h3 class="font-bold" style="color: var(--primary-gold);">Email</h3>
-                                        <p style="color: var(--ethereal-white);">contactperankh@gmail.com</p>
+                                        <p style="color: var(--ethereal-white);" data-cms="email">
+                                            contactperankh@gmail.com</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center">
@@ -473,9 +475,10 @@
                         </div>
 
                         <div class="sacred-card">
-                            <h2 class="section-title text-3xl mb-6">Connect With Us</h2>
+                            <h2 class="section-title text-3xl mb-6" data-cms="connectTitle">Connect With Us</h2>
                             <div class="space-y-4">
-                                <p class="text-lg leading-relaxed" style="color: var(--ethereal-white);">
+                                <p class="text-lg leading-relaxed" style="color: var(--ethereal-white);"
+                                    data-cms="connectText">
                                     Reach out to learn more about membership, events, or our spiritual practices. We
                                     welcome all sincere seekers on the path of consciousness exploration.
                                 </p>
@@ -523,7 +526,8 @@
 
                     <!-- Contact Form -->
                     <div class="sacred-card mt-8">
-                        <h2 class="section-title text-3xl mb-6 text-center">Send Us a Message</h2>
+                        <h2 class="section-title text-3xl mb-6 text-center" data-cms="contactFormTitle">Send Us a
+                            Message</h2>
                         <form action="https://formspree.io/f/xlgnavno" method="POST"
                             class="max-w-2xl mx-auto space-y-6">
                             <input type="hidden" name="_subject" value="New Contact Form Submission - Per Ankh Website">
@@ -651,5 +655,6 @@
     </footer>
 </body>
 <script type="module" src="/src/utils/analytics-tracker.js"></script>
+<script type="module" src="/src/cms-loader.js"></script>
 
 </html>

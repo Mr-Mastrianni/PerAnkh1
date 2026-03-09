@@ -8,9 +8,8 @@
  */
 
 import express from 'express';
-import multer from 'multer';
 import cors from 'cors';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid'; // Keep for analytics session/event IDs
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -41,23 +40,8 @@ app.use(express.json());
 // Serve uploaded files statically
 app.use('/uploads', express.static(path.join(ROOT, 'uploads')));
 
-// Multer storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, UPLOAD_DIR),
-  filename: (req, file, cb) => {
-    const safeName = file.originalname.replace(/[^A-Za-z0-9._-]/g, '_');
-    const unique = `${Date.now()}-${Math.round(Math.random() * 1e6)}-${safeName}`;
-    cb(null, unique);
-  },
-});
-const upload = multer({ storage });
-
-function readMediaDb() {
-  return fs.readJson(MEDIA_DB_PATH);
-}
-function writeMediaDb(data) {
-  return fs.writeJson(MEDIA_DB_PATH, data, { spaces: 2 });
-}
+// Serve uploaded files statically (legacy support if needed)
+app.use('/uploads', express.static(path.join(ROOT, 'uploads')));
 
 async function readAnalyticsDb() {
   return fs.readJson(ANALYTICS_DB_PATH);
@@ -79,50 +63,7 @@ app.get('/api/health', (_req, res) => {
   res.json({ ok: true, uploads: '/uploads', version: 1 });
 });
 
-// List media
-app.get('/api/media', async (_req, res) => {
-  const items = await readMediaDb();
-  res.json(items);
-});
-
-// Upload media
-app.post('/api/media', upload.array('files', 20), async (req, res) => {
-  const files = req.files || [];
-  if (!files.length) return res.status(400).json({ error: 'No files uploaded' });
-  const items = await readMediaDb();
-  const saved = files.map((f) => {
-    const id = uuid();
-    const record = {
-      id,
-      name: f.originalname,
-      storedName: path.basename(f.filename),
-      size: f.size,
-      type: f.mimetype,
-      uploadDate: new Date().toISOString(),
-      url: `/uploads/media/${path.basename(f.filename)}`,
-    };
-    items.push(record);
-    return record;
-  });
-  await writeMediaDb(items);
-  res.json(saved);
-});
-
-// Delete media
-app.delete('/api/media/:id', async (req, res) => {
-  const id = req.params.id;
-  const items = await readMediaDb();
-  const idx = items.findIndex((m) => m.id === id);
-  if (idx === -1) return res.status(404).json({ error: 'Not found' });
-  const item = items[idx];
-  items.splice(idx, 1);
-  await writeMediaDb(items);
-  // Try to remove file
-  try {
-    await fs.remove(path.join(UPLOAD_DIR, item.storedName));
-  } catch {}
-  res.json({ ok: true });
-});
+// (Media endpoints removed - now handled via Firebase by the client)
 
 // --- Analytics -----------------------------------------------------------
 
