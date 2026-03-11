@@ -3,266 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Per Ankh Sacred Psilocybin Dosage Calculator</title>
-    <link rel="icon" type="image/png" href="./PerAnkhLogo.png">
+    <title>Sacred Dosage Calculator - Per Ankh Entheogenic Church</title>
+    <link rel="icon" type="image/png" href="/assets/images/logo/PerAnkhLogo.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/variables.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap');
-        
-        :root {
-            --gold: var(--primary-gold);
-            --amber: #FFBF00;
-            --deep-green: #2D5016;
-            --dark-green: #1A3D0A;
-            --bronze: #CD7F32;
-            --papyrus: #F4E4BC;
-        }
-        
         body {
+            background:
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(45, 27, 105, 0.25) 0%, transparent 50%),
+                linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            background-attachment: fixed;
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
-            min-height: 100vh;
             color: var(--ethereal-white);
+            min-height: 100vh;
             overflow-x: hidden;
         }
-        
-        .sacred-geometry {
-            background-image: 
-                radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 191, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(45, 80, 22, 0.2) 0%, transparent 50%);
+
+        /* Hero */
+        .hero-section {
             position: relative;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
+                linear-gradient(135deg, rgba(45, 27, 105, 0.6) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
-        
-        .sacred-geometry::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(45deg, transparent 48%, rgba(212, 175, 55, 0.1) 49%, rgba(212, 175, 55, 0.1) 51%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(212, 175, 55, 0.1) 49%, rgba(212, 175, 55, 0.1) 51%, transparent 52%);
-            background-size: 60px 60px;
-            animation: geometryPulse 20s ease-in-out infinite;
-        }
-        
-        @keyframes geometryPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-        
-        .ankh-symbol {
+
+        .hero-title {
             font-family: 'Cinzel', serif;
-            color: var(--gold);
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-            animation: ankh-glow 3s ease-in-out infinite alternate;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
         }
-        
-        @keyframes ankh-glow {
-            0% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
-            100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.4); }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(248, 248, 255, 0.85);
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
         }
-        
-        .consciousness-card {
-            background: rgba(15, 15, 35, 0.88);
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            color: var(--ethereal-white);
-            backdrop-filter: blur(10px);
+
+        .ankh-symbol {
+            color: var(--primary-gold);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Sacred Cards */
+        .sacred-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 15px;
+            padding: 2rem;
             transition: all 0.3s ease;
         }
-        
-        .consciousness-card:hover {
-            border-color: rgba(212, 175, 55, 0.6);
-            background: rgba(20, 20, 45, 0.95);
-            transform: translateY(-2px);
+
+        .sacred-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
         }
-        
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Form inputs */
         .input-field {
-            background: rgba(45, 27, 105, 0.35);
-            border: 1px solid rgba(212, 175, 55, 0.45);
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 10px;
             color: var(--ethereal-white);
+            font-size: 1rem;
             transition: all 0.3s ease;
+            outline: none;
         }
 
         .input-field::placeholder {
-            color: rgba(248, 248, 255, 0.85);
+            color: rgba(248, 248, 255, 0.5);
         }
-        
+
         .input-field:focus {
-            border-color: var(--gold);
-            background: rgba(244, 228, 188, 0.2);
-            outline: none;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+            background: rgba(45, 27, 105, 0.45);
         }
-        
-        .btn-sacred {
-            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
-            color: var(--matte-black);
-            border: none;
+
+        .field-label {
+            display: block;
             font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
         }
-        
-        .btn-sacred:hover {
-            background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%);
-            transform: translateY(-1px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-        }
-        
-        .dose-level {
-            border-left: 4px solid var(--primary-gold);
-            background: rgba(22, 22, 40, 0.85);
-            color: var(--ethereal-white);
-            transition: all 0.3s ease;
-        }
-        
-        .dose-level:hover {
-            background: linear-gradient(90deg, rgba(212, 175, 55, 0.2) 0%, rgba(45, 80, 22, 0.2) 100%);
-        }
-        
-        .microdose { border-left-color: #4ADE80; }
-        .perceivable { border-left-color: #22D3EE; }
-        .intense { border-left-color: #FBBF24; }
-        .profound { border-left-color: #F97316; }
-        .breakthrough { border-left-color: #EF4444; }
-        
+
+        /* Slider */
         .slider {
             -webkit-appearance: none;
             appearance: none;
+            width: 100%;
             height: 6px;
             border-radius: 3px;
-            background: linear-gradient(90deg, var(--deep-green) 0%, var(--gold) 100%);
+            background: linear-gradient(90deg, rgba(45, 27, 105, 0.6) 0%, var(--primary-gold) 100%);
             outline: none;
         }
-        
+
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            background: var(--gold);
+            background: var(--primary-gold);
             cursor: pointer;
-            border: 2px solid var(--amber);
+            border: 2px solid var(--deep-gold);
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
-        
+
         .slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            background: var(--gold);
+            background: var(--primary-gold);
             cursor: pointer;
-            border: 2px solid var(--amber);
+            border: 2px solid var(--deep-gold);
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
-        
+
+        /* Dose level cards */
+        .dose-card {
+            background: rgba(26, 26, 26, 0.7);
+            border-left: 4px solid var(--primary-gold);
+            border-radius: 10px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .dose-card:hover {
+            background: rgba(26, 26, 26, 0.9);
+            transform: translateX(4px);
+        }
+
+        .dose-card.microdose { border-left-color: #4ADE80; }
+        .dose-card.perceivable { border-left-color: #22D3EE; }
+        .dose-card.intense { border-left-color: #FBBF24; }
+        .dose-card.profound { border-left-color: #F97316; }
+        .dose-card.breakthrough { border-left-color: #EF4444; }
+
+        /* Level definition cards */
+        .level-card {
+            background: rgba(26, 26, 26, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .level-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Warning box */
         .warning-box {
-            background: rgba(120, 20, 20, 0.35);
-            border: 1px solid rgba(239, 68, 68, 0.5);
-            color: var(--ethereal-white);
-            animation: pulse-warning 2s ease-in-out infinite;
+            background: rgba(120, 20, 20, 0.25);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            border-radius: 15px;
+            padding: 2rem;
         }
-        
-        @keyframes pulse-warning {
-            0%, 100% { border-color: rgba(239, 68, 68, 0.3); }
-            50% { border-color: rgba(239, 68, 68, 0.6); }
-        }
-        
-        .quote-text {
+
+        /* Quote */
+        .sacred-quote {
             font-family: 'Cinzel', serif;
             font-style: italic;
             color: var(--primary-gold);
+            font-size: 1.15rem;
+            line-height: 1.6;
             position: relative;
-        }
-        
-        .quote-text::before {
-            content: '"';
-            font-size: 3rem;
-            position: absolute;
-            left: -20px;
-            top: -10px;
-            color: var(--amber);
-            opacity: 0.5;
-        }
-        
-        .hieroglyph {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            color: var(--primary-gold);
+            padding: 0 1.5rem;
         }
 
-        /* Improve default label/readability inside dark cards */
-        .consciousness-card label,
-        .consciousness-card p,
-        .consciousness-card li,
-        .consciousness-card span,
-        .consciousness-card select,
-        .consciousness-card input,
-        .consciousness-card small {
-            color: var(--ethereal-white);
+        .sacred-quote::before {
+            content: '\201C';
+            font-size: 3rem;
+            position: absolute;
+            left: -0.5rem;
+            top: -0.75rem;
+            color: rgba(212, 175, 55, 0.4);
         }
-        
-        @media print {
-            body { background: white !important; color: black !important; }
-            .sacred-geometry::before { display: none; }
+
+        /* Section titles */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            font-size: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 2rem;
+            text-align: center;
+            background: rgba(10, 10, 10, 0.5);
+        }
+
+        .site-footer p {
+            color: rgba(248, 248, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section { padding: 6rem 1rem 3rem; }
+            .sacred-card { padding: 1.25rem; }
         }
     </style>
 </head>
-<body class="sacred-geometry">
+<body>
     <!-- Side Navigation -->
     <link rel="stylesheet" href="/src/components/SideNav/SideNav.css">
     <script type="module" src="/src/components/SideNav/SideNav.js" defer></script>
-    <!-- Header -->
-    <div class="container mx-auto px-4 py-8">
-        <div class="text-center mb-12">
-            <div class="flex items-center justify-center mb-6">
-                <span class="ankh-symbol text-6xl mr-4">☥</span>
-                <h1 class="text-4xl font-bold text-center" style="font-family: 'Cinzel', serif; color: var(--gold);">
-                    PER ANKH
-                </h1>
-                <span class="ankh-symbol text-6xl ml-4">☥</span>
-            </div>
-            <h2 class="text-2xl mb-4" style="font-family: 'Cinzel', serif; color: var(--amber);">
-                Sacred Psilocybin Dosage Calculator
-            </h2>
-            <p class="text-lg opacity-90 max-w-3xl mx-auto">
-                A consciousness expansion tool guided by the ancient principles of Ma'at, 
-                bridging timeless wisdom with modern safety protocols for sacred mushroom ceremonies.
-            </p>
-        </div>
 
-        <!-- Sacred Quote -->
-        <div class="max-w-4xl mx-auto mb-12 p-6 text-center">
-            <p class="quote-text text-xl mb-2">
-                Know thyself and heal thyself through the sacred gifts of the earth
-            </p>
-            <p class="text-sm opacity-75">- Principles of Ma'at</p>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <span class="ankh-symbol" style="font-size: 3rem; display: block; margin-bottom: 1rem;">&#9765;</span>
+        <h1 class="hero-title">Sacred Psilocybin Dosage Calculator</h1>
+        <p class="hero-subtitle">
+            A consciousness expansion tool guided by the ancient principles of Ma'at,
+            bridging timeless wisdom with modern safety protocols for sacred mushroom ceremonies.
+        </p>
+        <p class="sacred-quote" style="max-width: 600px; margin: 0 auto;">
+            Know thyself and heal thyself through the sacred gifts of the earth
+        </p>
+        <p style="color: rgba(248,248,255,0.5); font-size: 0.85rem; margin-top: 0.5rem;">- Principles of Ma'at</p>
+    </section>
 
-        <!-- Calculator Section -->
-        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+    <!-- Calculator Section -->
+    <div style="max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem;">
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem;" class="calc-grid">
             <!-- Input Panel -->
-            <div class="consciousness-card rounded-lg p-6">
-                <h3 class="text-2xl font-bold mb-6 text-center hieroglyph">
-                    <i class="fas fa-balance-scale mr-2"></i>
-                    Sacred Measurements
-                </h3>
-                
-                <!-- Body Weight Input -->
-                <div class="mb-6">
-                    <label class="block text-lg font-semibold mb-2 text-gold">
-                        <i class="fas fa-user mr-2"></i>Body Weight
-                    </label>
-                    <div class="flex items-center space-x-4">
-                        <input type="number" id="weight" class="input-field rounded-lg px-4 py-3 w-full" 
-                               placeholder="Enter weight" value="150" min="80" max="400">
-                        <select id="weightUnit" class="input-field rounded-lg px-4 py-3">
+            <div class="sacred-card">
+                <div class="card-title">
+                    <i class="fas fa-balance-scale" style="margin-right: 0.5rem;"></i>Sacred Measurements
+                </div>
+
+                <!-- Body Weight -->
+                <div style="margin-bottom: 1.5rem;">
+                    <label class="field-label"><i class="fas fa-user" style="margin-right: 0.5rem;"></i>Body Weight</label>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <input type="number" id="weight" class="input-field" placeholder="Enter weight" value="150" min="80" max="400" style="flex: 1;">
+                        <select id="weightUnit" class="input-field" style="width: 90px;">
                             <option value="lbs">lbs</option>
                             <option value="kg">kg</option>
                         </select>
@@ -270,36 +278,31 @@
                 </div>
 
                 <!-- Mushroom Type -->
-                <div class="mb-6">
-                    <label class="block text-lg font-semibold mb-2 text-gold">
-                        <i class="fas fa-seedling mr-2"></i>Mushroom Type
-                    </label>
-                    <select id="mushroomType" class="input-field rounded-lg px-4 py-3 w-full">
+                <div style="margin-bottom: 1.5rem;">
+                    <label class="field-label"><i class="fas fa-seedling" style="margin-right: 0.5rem;"></i>Mushroom Type</label>
+                    <select id="mushroomType" class="input-field">
                         <option value="lab-tested">Lab Tested (Precise Psilocybin Content)</option>
-                        <option value="traditional">Traditional/Untested</option>
+                        <option value="traditional">Traditional / Untested</option>
                     </select>
                 </div>
 
-                <!-- Sensitivity Adjustment -->
-                <div class="mb-6">
-                    <label class="block text-lg font-semibold mb-2 text-gold">
-                        <i class="fas fa-adjust mr-2"></i>Sensitivity Level: <span id="sensitivityValue">100%</span>
+                <!-- Sensitivity -->
+                <div style="margin-bottom: 1.5rem;">
+                    <label class="field-label">
+                        <i class="fas fa-adjust" style="margin-right: 0.5rem;"></i>Sensitivity Level: <span id="sensitivityValue">100%</span>
                     </label>
-                    <input type="range" id="sensitivity" class="slider w-full" 
-                           min="50" max="150" value="100" step="5">
-                    <div class="flex justify-between text-sm mt-2 opacity-75">
+                    <input type="range" id="sensitivity" class="slider" min="50" max="150" value="100" step="5">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: rgba(248,248,255,0.5); margin-top: 0.5rem;">
                         <span>More Sensitive (50%)</span>
                         <span>Normal (100%)</span>
                         <span>Less Sensitive (150%)</span>
                     </div>
                 </div>
 
-                <!-- Tolerance Level -->
-                <div class="mb-6">
-                    <label class="block text-lg font-semibold mb-2 text-gold">
-                        <i class="fas fa-clock mr-2"></i>Tolerance Level
-                    </label>
-                    <select id="tolerance" class="input-field rounded-lg px-4 py-3 w-full">
+                <!-- Tolerance -->
+                <div style="margin-bottom: 1.5rem;">
+                    <label class="field-label"><i class="fas fa-clock" style="margin-right: 0.5rem;"></i>Tolerance Level</label>
+                    <select id="tolerance" class="input-field">
                         <option value="none">No tolerance (3+ weeks since last use)</option>
                         <option value="low">Low tolerance (1-2 weeks)</option>
                         <option value="medium">Medium tolerance (3-7 days)</option>
@@ -307,202 +310,183 @@
                     </select>
                 </div>
 
-                <!-- Attribution -->
-                <div class="mt-8 p-4 bg-opacity-10 bg-gold rounded-lg">
-                    <p class="text-sm opacity-75 text-center">
-                        <i class="fas fa-heart mr-1"></i>
+                <div style="padding: 0.75rem; background: rgba(212,175,55,0.08); border-radius: 8px; text-align: center;">
+                    <p style="font-size: 0.8rem; color: rgba(248,248,255,0.6);">
+                        <i class="fas fa-heart" style="margin-right: 0.25rem;"></i>
                         Methodology inspired by the pioneering research of the Church of Ambrosia
                     </p>
                 </div>
             </div>
 
             <!-- Results Panel -->
-            <div class="consciousness-card rounded-lg p-6">
-                <h3 class="text-2xl font-bold mb-6 text-center hieroglyph">
-                    <i class="fas fa-eye mr-2"></i>
-                    Consciousness Levels
-                </h3>
-                
-                <div id="dosageResults" class="space-y-4">
-                    <!-- Results will be dynamically generated here -->
+            <div class="sacred-card">
+                <div class="card-title">
+                    <i class="fas fa-eye" style="margin-right: 0.5rem;"></i>Consciousness Levels
                 </div>
-
-                <!-- Sacred Reminder -->
-                <div class="mt-8 p-4 bg-opacity-10 bg-amber rounded-lg">
-                    <p class="text-center text-sm italic">
-                        <span class="ankh-symbol text-lg">☥</span>
-                        "Set sacred intention before your journey"
-                        <span class="ankh-symbol text-lg">☥</span>
-                    </p>
-                </div>
+                <div id="dosageResults" style="display: flex; flex-direction: column; gap: 1rem;"></div>
             </div>
         </div>
 
         <!-- Consciousness Level Definitions -->
-        <div class="max-w-6xl mx-auto mb-12">
-            <h3 class="text-3xl font-bold mb-8 text-center hieroglyph">
-                <i class="fas fa-lotus mr-2"></i>
-                Sacred Consciousness Levels
-            </h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="dose-level microdose rounded-lg p-6">
-                    <h4 class="text-xl font-bold mb-3 text-green-400">
-                        <i class="fas fa-seed mr-2"></i>Microdose
+        <div style="margin-bottom: 3rem;">
+            <h3 class="section-title">Sacred Consciousness Levels</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+                <div class="level-card" style="border-left: 3px solid #4ADE80;">
+                    <h4 style="font-family: 'Cinzel', serif; font-weight: 700; color: #4ADE80; margin-bottom: 0.75rem;">
+                        <i class="fas fa-seedling" style="margin-right: 0.5rem;"></i>Microdose
                     </h4>
-                    <p class="mb-3">A sub-perceptual dose that gently enhances one's state of being without noticeable alterations. Perfect for daily spiritual enhancement and connection with nature.</p>
-                    <p class="text-sm opacity-75 italic">"The whisper of the mushroom spirit"</p>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: rgba(248,248,255,0.8);">
+                        A sub-perceptual dose that gently enhances one's state of being without noticeable alterations. Perfect for daily spiritual enhancement and connection with nature.
+                    </p>
+                    <p style="font-size: 0.8rem; font-style: italic; color: rgba(212,175,55,0.7); margin-top: 0.75rem;">"The whisper of the mushroom spirit"</p>
                 </div>
 
-                <div class="dose-level perceivable rounded-lg p-6">
-                    <h4 class="text-xl font-bold mb-3 text-cyan-400">
-                        <i class="fas fa-eye-dropper mr-2"></i>Perceivable
+                <div class="level-card" style="border-left: 3px solid #22D3EE;">
+                    <h4 style="font-family: 'Cinzel', serif; font-weight: 700; color: #22D3EE; margin-bottom: 0.75rem;">
+                        <i class="fas fa-eye" style="margin-right: 0.5rem;"></i>Perceivable
                     </h4>
-                    <p class="mb-3">The gateway to conscious exploration. Visual and perceptual enhancements that complement spiritual, meditative, and creative practices. Enhances connection with others and nature.</p>
-                    <p class="text-sm opacity-75 italic">"Opening the doors of perception"</p>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: rgba(248,248,255,0.8);">
+                        The gateway to conscious exploration. Visual and perceptual enhancements that complement spiritual, meditative, and creative practices.
+                    </p>
+                    <p style="font-size: 0.8rem; font-style: italic; color: rgba(212,175,55,0.7); margin-top: 0.75rem;">"Opening the doors of perception"</p>
                 </div>
 
-                <div class="dose-level intense rounded-lg p-6">
-                    <h4 class="text-xl font-bold mb-3 text-yellow-400">
-                        <i class="fas fa-fire mr-2"></i>Intense
+                <div class="level-card" style="border-left: 3px solid #FBBF24;">
+                    <h4 style="font-family: 'Cinzel', serif; font-weight: 700; color: #FBBF24; margin-bottom: 0.75rem;">
+                        <i class="fas fa-fire" style="margin-right: 0.5rem;"></i>Intense
                     </h4>
-                    <p class="mb-3">Profound changes in visual, physical, and emotional perceptions. Colors become vivid, emotions surface, and deep introspection begins. Ideal for yogic and meditative practices.</p>
-                    <p class="text-sm opacity-75 italic">"The spirit speaks more clearly"</p>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: rgba(248,248,255,0.8);">
+                        Profound changes in visual, physical, and emotional perceptions. Colors become vivid, emotions surface, and deep introspection begins.
+                    </p>
+                    <p style="font-size: 0.8rem; font-style: italic; color: rgba(212,175,55,0.7); margin-top: 0.75rem;">"The spirit speaks more clearly"</p>
                 </div>
 
-                <div class="dose-level profound rounded-lg p-6">
-                    <h4 class="text-xl font-bold mb-3 text-orange-400">
-                        <i class="fas fa-om mr-2"></i>Profound
+                <div class="level-card" style="border-left: 3px solid #F97316;">
+                    <h4 style="font-family: 'Cinzel', serif; font-weight: 700; color: #F97316; margin-bottom: 0.75rem;">
+                        <i class="fas fa-om" style="margin-right: 0.5rem;"></i>Profound
                     </h4>
-                    <p class="mb-3">Intense introspective experiences with deep self-inquiry. Like examining your psyche with a sacred lens. Profound insights into reality and your place within it emerge.</p>
-                    <p class="text-sm opacity-75 italic">"The soul reveals its mysteries"</p>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: rgba(248,248,255,0.8);">
+                        Intense introspective experiences with deep self-inquiry. Like examining your psyche with a sacred lens. Profound insights into reality emerge.
+                    </p>
+                    <p style="font-size: 0.8rem; font-style: italic; color: rgba(212,175,55,0.7); margin-top: 0.75rem;">"The soul reveals its mysteries"</p>
                 </div>
 
-                <div class="dose-level breakthrough rounded-lg p-6 md:col-span-2 lg:col-span-1">
-                    <h4 class="text-xl font-bold mb-3 text-red-400">
-                        <i class="fas fa-infinity mr-2"></i>Breakthrough
+                <div class="level-card" style="border-left: 3px solid #EF4444;">
+                    <h4 style="font-family: 'Cinzel', serif; font-weight: 700; color: #EF4444; margin-bottom: 0.75rem;">
+                        <i class="fas fa-infinity" style="margin-right: 0.5rem;"></i>Breakthrough
                     </h4>
-                    <p class="mb-3">The heroic dose - a profoundly intense spiritual experience. May include out-of-body experiences and divine encounters. Complete surrender and 24-hour fasting recommended.</p>
-                    <p class="text-sm opacity-75 italic">"Union with the infinite consciousness"</p>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: rgba(248,248,255,0.8);">
+                        The heroic dose - a profoundly intense spiritual experience. May include out-of-body experiences and divine encounters. Complete surrender and 24-hour fasting recommended.
+                    </p>
+                    <p style="font-size: 0.8rem; font-style: italic; color: rgba(212,175,55,0.7); margin-top: 0.75rem;">"Union with the infinite consciousness"</p>
                 </div>
             </div>
         </div>
 
-        <!-- Safety Information -->
-        <div class="max-w-6xl mx-auto mb-12">
-            <div class="warning-box rounded-lg p-8 mb-8">
-                <h3 class="text-2xl font-bold mb-6 text-center text-red-400">
-                    <i class="fas fa-shield-alt mr-2"></i>
-                    Sacred Safety Protocols
-                </h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-lg font-bold mb-3 text-red-300">
-                            <i class="fas fa-exclamation-triangle mr-2"></i>Critical Warnings
-                        </h4>
-                        <ul class="space-y-2 text-sm">
-                            <li>• <strong>NEVER</strong> use with psychiatric medications</li>
-                            <li>• Heart transplant recipients must avoid completely</li>
-                            <li>• Consult physician if you have heart conditions</li>
-                            <li>• Do not combine with alcohol or other substances</li>
-                            <li>• SSRI medications reduce psilocybin effects</li>
-                            <li>• MAOI medications increase psilocybin effects</li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-bold mb-3 text-orange-300">
-                            <i class="fas fa-hands-helping mr-2"></i>Preparation Guidelines
-                        </h4>
-                        <ul class="space-y-2 text-sm">
-                            <li>• Set clear intentions before your ceremony</li>
-                            <li>• Ensure a safe, comfortable environment</li>
-                            <li>• Have a trusted guide or sitter present</li>
-                            <li>• Fast 24 hours before breakthrough doses</li>
-                            <li>• Stay hydrated and have light snacks available</li>
-                            <li>• Allow 6-8 hours for the complete experience</li>
-                        </ul>
-                    </div>
+        <!-- Safety Protocols -->
+        <div class="warning-box" style="margin-bottom: 3rem;">
+            <h3 class="section-title" style="color: #fca5a5;">
+                <i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i>Sacred Safety Protocols
+            </h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <div>
+                    <h4 style="font-weight: 700; color: #fca5a5; margin-bottom: 0.75rem;">
+                        <i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i>Critical Warnings
+                    </h4>
+                    <ul style="list-style: none; font-size: 0.9rem; line-height: 2;">
+                        <li><strong>NEVER</strong> use with psychiatric medications</li>
+                        <li>Heart transplant recipients must avoid completely</li>
+                        <li>Consult physician if you have heart conditions</li>
+                        <li>Do not combine with alcohol or other substances</li>
+                        <li>SSRI medications reduce psilocybin effects</li>
+                        <li>MAOI medications increase psilocybin effects</li>
+                    </ul>
                 </div>
-                
-                <div class="mt-6 p-4 bg-red-900 bg-opacity-30 rounded-lg">
-                    <p class="text-center font-bold">
-                        <i class="fas fa-balance-scale mr-2"></i>
-                        This calculator follows the principles of Ma'at - Truth, Justice, and Divine Order. 
-                        Use this sacred knowledge responsibly and with reverence for the plant spirits.
-                    </p>
+
+                <div>
+                    <h4 style="font-weight: 700; color: #fdba74; margin-bottom: 0.75rem;">
+                        <i class="fas fa-hands-helping" style="margin-right: 0.5rem;"></i>Preparation Guidelines
+                    </h4>
+                    <ul style="list-style: none; font-size: 0.9rem; line-height: 2;">
+                        <li>Set clear intentions before your ceremony</li>
+                        <li>Ensure a safe, comfortable environment</li>
+                        <li>Have a trusted guide or sitter present</li>
+                        <li>Fast 24 hours before breakthrough doses</li>
+                        <li>Stay hydrated and have light snacks available</li>
+                        <li>Allow 6-8 hours for the complete experience</li>
+                    </ul>
                 </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(120,20,20,0.3); border-radius: 10px; text-align: center;">
+                <p style="font-weight: 600; font-size: 0.9rem;">
+                    <i class="fas fa-balance-scale" style="margin-right: 0.5rem;"></i>
+                    This calculator follows the principles of Ma'at - Truth, Justice, and Divine Order.
+                    Use this sacred knowledge responsibly and with reverence for the plant spirits.
+                </p>
             </div>
         </div>
 
         <!-- Methodology -->
-        <div class="max-w-6xl mx-auto mb-12">
-            <div class="consciousness-card rounded-lg p-8">
-                <h3 class="text-2xl font-bold mb-6 text-center hieroglyph">
-                    <i class="fas fa-scroll mr-2"></i>
-                    Sacred Methodology
-                </h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="text-lg font-bold mb-3 text-gold">Ancient Wisdom Meets Modern Science</h4>
-                        <p class="mb-4">Our dosage calculations honor the pioneering work of indigenous medicine carriers like María Sabina, who first introduced Western researchers to sacred psilocybin ceremonies in 1955.</p>
-                        <p class="mb-4">Combined with Johns Hopkins research on mystical experiences, we've developed body-weight adjusted protocols that respect both traditional wisdom and scientific rigor.</p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-bold mb-3 text-gold">Ma'at Principles in Practice</h4>
-                        <p class="mb-4">Following the ancient Egyptian principles of Ma'at - Truth, Justice, and Divine Order - our calculator provides honest, safe guidance for consciousness exploration.</p>
-                        <p class="mb-4">Each dose level is calibrated to your unique physiology while honoring the sacred nature of these plant allies.</p>
-                    </div>
+        <div class="sacred-card" style="margin-bottom: 3rem;">
+            <h3 class="section-title">
+                <i class="fas fa-scroll" style="margin-right: 0.5rem;"></i>Sacred Methodology
+            </h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <div>
+                    <h4 style="font-family: 'Cinzel', serif; font-weight: 600; color: var(--primary-gold); margin-bottom: 0.75rem;">Ancient Wisdom Meets Modern Science</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.7; color: rgba(248,248,255,0.8); margin-bottom: 1rem;">
+                        Our dosage calculations honor the pioneering work of indigenous medicine carriers like Maria Sabina, who first introduced Western researchers to sacred psilocybin ceremonies in 1955.
+                    </p>
+                    <p style="font-size: 0.9rem; line-height: 1.7; color: rgba(248,248,255,0.8);">
+                        Combined with Johns Hopkins research on mystical experiences, we've developed body-weight adjusted protocols that respect both traditional wisdom and scientific rigor.
+                    </p>
                 </div>
-                
-                <div class="mt-8 p-4 bg-opacity-10 bg-gold rounded-lg">
-                    <p class="text-center italic">
-                        "The spirit of the mushroom guides us toward truth, healing, and cosmic consciousness" 
-                        - Per Ankh Teachings
+
+                <div>
+                    <h4 style="font-family: 'Cinzel', serif; font-weight: 600; color: var(--primary-gold); margin-bottom: 0.75rem;">Ma'at Principles in Practice</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.7; color: rgba(248,248,255,0.8); margin-bottom: 1rem;">
+                        Following the ancient Egyptian principles of Ma'at - Truth, Justice, and Divine Order - our calculator provides honest, safe guidance for consciousness exploration.
+                    </p>
+                    <p style="font-size: 0.9rem; line-height: 1.7; color: rgba(248,248,255,0.8);">
+                        Each dose level is calibrated to your unique physiology while honoring the sacred nature of these plant allies.
                     </p>
                 </div>
             </div>
         </div>
 
         <!-- Legal Disclaimer -->
-        <div class="max-w-6xl mx-auto mb-8">
-            <div class="bg-opacity-20 bg-gray-800 rounded-lg p-6 text-center">
-                <h4 class="text-lg font-bold mb-3 text-amber-300">
-                    <i class="fas fa-gavel mr-2"></i>Spiritual & Educational Purposes Only
-                </h4>
-                <p class="text-sm opacity-75 mb-4">
-                    This calculator is provided for educational and spiritual purposes within the context of Per Ankh's 
-                    religious practices. We are not responsible for your use of this information. Individual experiences 
-                    may vary significantly based on physiology, set, setting, and spiritual preparation.
-                </p>
-                <p class="text-sm opacity-75">
-                    Please consult with qualified healthcare providers, especially if you have medical conditions or 
-                    take medications. Always prioritize safety and approach these sacred plants with reverence and respect.
-                </p>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="text-center py-6">
-            <div class="flex items-center justify-center mb-4">
-                <span class="ankh-symbol text-3xl mx-4">☥</span>
-                <p class="text-lg hieroglyph">Per Ankh - Sacred Consciousness Research</p>
-                <span class="ankh-symbol text-3xl mx-4">☥</span>
-            </div>
-            <p class="text-sm opacity-75">
-                Non-denominational • Interfaith • Supporting Safe Access to Sacred Plants
+        <div style="background: rgba(26,26,26,0.6); border: 1px solid rgba(212,175,55,0.15); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; text-align: center;">
+            <h4 style="font-family: 'Cinzel', serif; font-weight: 600; color: #fbbf24; margin-bottom: 0.75rem;">
+                <i class="fas fa-gavel" style="margin-right: 0.5rem;"></i>Spiritual &amp; Educational Purposes Only
+            </h4>
+            <p style="font-size: 0.8rem; color: rgba(248,248,255,0.55); line-height: 1.7; margin-bottom: 0.5rem;">
+                This calculator is provided for educational and spiritual purposes within the context of Per Ankh's
+                religious practices. Individual experiences may vary based on physiology, set, setting, and spiritual preparation.
+            </p>
+            <p style="font-size: 0.8rem; color: rgba(248,248,255,0.55); line-height: 1.7;">
+                Please consult with qualified healthcare providers, especially if you have medical conditions or take medications.
             </p>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 0.75rem;">
+            <span class="ankh-symbol" style="font-size: 1.5rem;">&#9765;</span>
+            <p style="font-family: 'Cinzel', serif; color: var(--primary-gold); font-size: 1rem;">Per Ankh - Sacred Consciousness Research</p>
+            <span class="ankh-symbol" style="font-size: 1.5rem;">&#9765;</span>
+        </div>
+        <p>Non-denominational &bull; Interfaith &bull; Supporting Safe Access to Sacred Plants</p>
+    </footer>
 
     <script>
         // Dosage calculation engine
         class SacredDosageCalculator {
             constructor() {
-                this.baselineWeight = 100; // 100 lbs baseline
+                this.baselineWeight = 100;
                 this.initializeEventListeners();
                 this.calculateDosages();
             }
@@ -512,7 +496,7 @@
                 document.getElementById('weightUnit').addEventListener('change', () => this.calculateDosages());
                 document.getElementById('mushroomType').addEventListener('change', () => this.calculateDosages());
                 document.getElementById('sensitivity').addEventListener('input', () => {
-                    document.getElementById('sensitivityValue').textContent = 
+                    document.getElementById('sensitivityValue').textContent =
                         document.getElementById('sensitivity').value + '%';
                     this.calculateDosages();
                 });
@@ -521,186 +505,108 @@
 
             getAdjustedWeight() {
                 let weight = parseFloat(document.getElementById('weight').value) || 150;
-                const unit = document.getElementById('weightUnit').value;
-                
-                if (unit === 'kg') {
-                    weight = weight * 2.20462; // Convert kg to lbs
+                if (document.getElementById('weightUnit').value === 'kg') {
+                    weight = weight * 2.20462;
                 }
-                
                 return weight;
             }
 
             getWeightMultiplier() {
-                const weight = this.getAdjustedWeight();
-                return weight / this.baselineWeight;
+                return this.getAdjustedWeight() / this.baselineWeight;
             }
 
             getSensitivityMultiplier() {
-                const sensitivity = parseInt(document.getElementById('sensitivity').value);
-                return sensitivity / 100;
+                return parseInt(document.getElementById('sensitivity').value) / 100;
             }
 
             getToleranceMultiplier() {
-                const tolerance = document.getElementById('tolerance').value;
-                const multipliers = {
-                    'none': 1.0,
-                    'low': 1.2,
-                    'medium': 1.5,
-                    'high': 2.0
-                };
-                return multipliers[tolerance] || 1.0;
+                const multipliers = { 'none': 1.0, 'low': 1.2, 'medium': 1.5, 'high': 2.0 };
+                return multipliers[document.getElementById('tolerance').value] || 1.0;
             }
 
             calculateBaseDosage(baseMcg) {
-                const weightMultiplier = this.getWeightMultiplier();
-                const sensitivityMultiplier = this.getSensitivityMultiplier();
-                const toleranceMultiplier = this.getToleranceMultiplier();
-                
-                return Math.round(baseMcg * weightMultiplier * sensitivityMultiplier * toleranceMultiplier);
+                return Math.round(baseMcg * this.getWeightMultiplier() * this.getSensitivityMultiplier() * this.getToleranceMultiplier());
             }
 
-            mcgToGrams(mcg, isLabTested = true) {
-                // Average psilocybin content in dried mushrooms: 0.5-2% (we use 1% for traditional)
-                // Lab tested allows for precise calculation
+            mcgToGrams(mcg, isLabTested) {
                 if (isLabTested) {
-                    return (mcg / 1000000 * 100).toFixed(3); // Assuming 1% psilocybin content for display
-                } else {
-                    // Traditional estimates based on typical potency ranges
-                    return (mcg / 5000).toFixed(2); // Rough estimate for traditional mushrooms
+                    return (mcg / 1000000 * 100).toFixed(3);
                 }
+                return (mcg / 5000).toFixed(2);
             }
 
             formatDosageRange(lowMcg, highMcg, isLabTested) {
-                const lowGrams = this.mcgToGrams(lowMcg, isLabTested);
-                const highGrams = this.mcgToGrams(highMcg, isLabTested);
-                
                 return {
                     mcg: `${lowMcg.toLocaleString()} - ${highMcg.toLocaleString()} mcg`,
-                    grams: `${lowGrams} - ${highGrams} g`
+                    grams: `${this.mcgToGrams(lowMcg, isLabTested)} - ${this.mcgToGrams(highMcg, isLabTested)} g`
                 };
             }
 
             calculateDosages() {
                 const isLabTested = document.getElementById('mushroomType').value === 'lab-tested';
                 const weight = this.getAdjustedWeight();
-                
-                // Base dosage ranges per 100 lbs (Church of Ambrosia methodology)
+
                 const doseLevels = [
-                    {
-                        name: 'Microdose',
-                        icon: 'fas fa-seed',
-                        color: 'text-green-400',
-                        borderColor: 'border-green-400',
-                        baseLow: 25,
-                        baseHigh: 999,
-                        description: 'Sub-perceptual enhancement'
-                    },
-                    {
-                        name: 'Perceivable',
-                        icon: 'fas fa-eye-dropper', 
-                        color: 'text-cyan-400',
-                        borderColor: 'border-cyan-400',
-                        baseLow: 1000,
-                        baseHigh: 4999,
-                        description: 'Gentle perceptual shifts'
-                    },
-                    {
-                        name: 'Intense',
-                        icon: 'fas fa-fire',
-                        color: 'text-yellow-400', 
-                        borderColor: 'border-yellow-400',
-                        baseLow: 5000,
-                        baseHigh: 9999,
-                        description: 'Significant consciousness expansion'
-                    },
-                    {
-                        name: 'Profound',
-                        icon: 'fas fa-om',
-                        color: 'text-orange-400',
-                        borderColor: 'border-orange-400', 
-                        baseLow: 10000,
-                        baseHigh: 17999,
-                        description: 'Deep introspective journey'
-                    },
-                    {
-                        name: 'Breakthrough',
-                        icon: 'fas fa-infinity',
-                        color: 'text-red-400',
-                        borderColor: 'border-red-400',
-                        baseLow: 18000,
-                        baseHigh: 25000,
-                        description: 'Transcendent spiritual experience'
-                    }
+                    { name: 'Microdose', icon: 'fas fa-seedling', color: '#4ADE80', baseLow: 25, baseHigh: 999, desc: 'Sub-perceptual enhancement' },
+                    { name: 'Perceivable', icon: 'fas fa-eye', color: '#22D3EE', baseLow: 1000, baseHigh: 4999, desc: 'Gentle perceptual shifts' },
+                    { name: 'Intense', icon: 'fas fa-fire', color: '#FBBF24', baseLow: 5000, baseHigh: 9999, desc: 'Significant consciousness expansion' },
+                    { name: 'Profound', icon: 'fas fa-om', color: '#F97316', baseLow: 10000, baseHigh: 17999, desc: 'Deep introspective journey' },
+                    { name: 'Breakthrough', icon: 'fas fa-infinity', color: '#EF4444', baseLow: 18000, baseHigh: 25000, desc: 'Transcendent spiritual experience' }
                 ];
 
-                const resultsContainer = document.getElementById('dosageResults');
-                resultsContainer.innerHTML = '';
+                const container = document.getElementById('dosageResults');
+                container.innerHTML = '';
 
                 doseLevels.forEach(level => {
                     const lowDose = this.calculateBaseDosage(level.baseLow);
                     const highDose = this.calculateBaseDosage(level.baseHigh);
-                    const dosageRange = this.formatDosageRange(lowDose, highDose, isLabTested);
+                    const range = this.formatDosageRange(lowDose, highDose, isLabTested);
 
-                    const doseCard = document.createElement('div');
-                    doseCard.className = `dose-level ${level.name.toLowerCase()} rounded-lg p-4 border-l-4 ${level.borderColor}`;
-                    
-                    doseCard.innerHTML = `
-                        <div class="flex items-center justify-between mb-2">
-                            <h4 class="text-lg font-bold ${level.color}">
-                                <i class="${level.icon} mr-2"></i>${level.name}
+                    const card = document.createElement('div');
+                    card.className = `dose-card ${level.name.toLowerCase()}`;
+                    card.innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <h4 style="font-family: 'Cinzel', serif; font-weight: 700; color: ${level.color}; font-size: 1.05rem;">
+                                <i class="${level.icon}" style="margin-right: 0.5rem;"></i>${level.name}
                             </h4>
-                            <span class="ankh-symbol text-sm">☥</span>
+                            <span class="ankh-symbol" style="font-size: 0.9rem;">&#9765;</span>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
-                            <div class="text-sm">
-                                <strong>Pure Psilocybin:</strong><br>
-                                ${dosageRange.mcg}
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.5rem;">
+                            <div style="font-size: 0.85rem;">
+                                <strong style="color: rgba(248,248,255,0.6);">Pure Psilocybin:</strong><br>
+                                ${range.mcg}
                             </div>
-                            <div class="text-sm">
-                                <strong>${isLabTested ? 'Lab-Tested' : 'Traditional'} Mushrooms:</strong><br>
-                                ${dosageRange.grams}
-                                ${!isLabTested ? '<br><small class="opacity-75">(Estimate only)</small>' : ''}
+                            <div style="font-size: 0.85rem;">
+                                <strong style="color: rgba(248,248,255,0.6);">${isLabTested ? 'Lab-Tested' : 'Traditional'} Mushrooms:</strong><br>
+                                ${range.grams}
+                                ${!isLabTested ? '<br><small style="color: rgba(248,248,255,0.4);">(Estimate only)</small>' : ''}
                             </div>
                         </div>
-                        <p class="text-xs opacity-75 italic">${level.description}</p>
+                        <p style="font-size: 0.75rem; color: rgba(248,248,255,0.5); font-style: italic;">${level.desc}</p>
                     `;
-
-                    resultsContainer.appendChild(doseCard);
+                    container.appendChild(card);
                 });
 
-                // Add weight-specific note
-                const noteDiv = document.createElement('div');
-                noteDiv.className = 'mt-6 p-4 bg-opacity-10 bg-gold rounded-lg text-center';
-                noteDiv.innerHTML = `
-                    <p class="text-sm">
-                        <i class="fas fa-info-circle mr-2"></i>
-                        Calculations based on ${weight.toFixed(1)} lbs body weight
-                        ${document.getElementById('sensitivity').value !== '100' ? 
-                            ` with ${document.getElementById('sensitivity').value}% sensitivity adjustment` : ''}
-                        ${document.getElementById('tolerance').value !== 'none' ? 
-                            ` and ${document.getElementById('tolerance').value} tolerance` : ''}
-                    </p>
-                `;
-                resultsContainer.appendChild(noteDiv);
+                // Weight note
+                const note = document.createElement('div');
+                note.style.cssText = 'margin-top: 1rem; padding: 0.75rem; background: rgba(212,175,55,0.08); border-radius: 8px; text-align: center;';
+                const sens = document.getElementById('sensitivity').value;
+                const tol = document.getElementById('tolerance').value;
+                note.innerHTML = `<p style="font-size: 0.8rem; color: rgba(248,248,255,0.6);">
+                    <i class="fas fa-info-circle" style="margin-right: 0.25rem;"></i>
+                    Based on ${weight.toFixed(1)} lbs body weight${sens !== '100' ? ` with ${sens}% sensitivity` : ''}${tol !== 'none' ? ` and ${tol} tolerance` : ''}
+                </p>`;
+                container.appendChild(note);
             }
         }
 
-        // Initialize calculator when page loads
+        // Make calculator layout side-by-side on larger screens
+        const style = document.createElement('style');
+        style.textContent = '@media (min-width: 768px) { .calc-grid { grid-template-columns: 1fr 1fr !important; } }';
+        document.head.appendChild(style);
+
         document.addEventListener('DOMContentLoaded', () => {
             new SacredDosageCalculator();
-        });
-
-        // Add some interactive animations
-        document.querySelectorAll('.consciousness-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-2px)';
-                card.style.boxShadow = '0 10px 25px rgba(212, 175, 55, 0.2)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-                card.style.boxShadow = 'none';
-            });
         });
     </script>
 </body>
