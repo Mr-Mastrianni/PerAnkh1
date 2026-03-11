@@ -42,7 +42,6 @@
     <link rel="stylesheet" href="/src/styles/variables.css">
 
     <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <title>Become a Member - Per Ankh Entheogenic Church</title>
 
@@ -441,7 +440,7 @@
                         <div class="form-section">
                             <h3>Personal Information</h3>
                             <form id="membershipForm" action="https://formspree.io/f/xpqrknov" method="POST"
-                                class="space-y-6" enctype="multipart/form-data">
+                                class="space-y-6">
                                 <input type="hidden" name="_subject"
                                     value="New Membership Application - Per Ankh Church">
                                 <!-- Name Fields -->
@@ -675,7 +674,7 @@
                                         <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
                                         <p class="text-gray-600 mb-2">Click or drag files to this area to upload.</p>
                                         <p class="text-sm text-gray-500">You can upload 1 file. 2 MB max</p>
-                                        <input type="file" id="idUpload" name="idUpload" accept="image/*,.pdf" required
+                                        <input type="file" id="idUpload" name="idUpload" accept="image/*,.pdf"
                                             class="hidden">
                                         <button type="button" onclick="document.getElementById('idUpload').click()"
                                             class="mt-4 bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors">
@@ -798,12 +797,8 @@
     </footer>
 
     <script>
-        // Initialize EmailJS
-        emailjs.init('YOUR_PUBLIC_KEY'); // You'll need to replace this with your actual EmailJS public key
-
         // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('Per Ankh - Become a Member Page Loaded');
             initializeMembershipForm();
         });
 
@@ -864,178 +859,44 @@
             const submitButton = form.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.textContent;
 
-            // Disable submit button and show loading state
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
             submitButton.classList.add('opacity-50', 'cursor-not-allowed');
 
             try {
-                // Collect form data
                 const formData = new FormData(form);
-                const membershipData = {
-                    firstName: formData.get('firstName'),
-                    lastName: formData.get('lastName'),
-                    email: formData.get('email'),
-                    phone: formData.get('phone'),
-                    addressLine1: formData.get('addressLine1'),
-                    addressLine2: formData.get('addressLine2'),
-                    city: formData.get('city'),
-                    state: formData.get('state'),
-                    zipCode: formData.get('zipCode'),
-                    dateOfBirth: formData.get('dateOfBirth'),
-                    lawEnforcement: formData.get('lawEnforcement'),
-                    mushroomSpiritual: formData.get('mushroomSpiritual'),
-                    rulesAgreement: formData.get('rulesAgreement'),
-                    cannabisUse: formData.get('cannabisUse'),
-                    entheogenicSupport: formData.get('entheogenicSupport'),
-                    safePlace: formData.get('safePlace'),
-                    referral: formData.get('referral'),
-                    whyJoin: formData.get('whyJoin'),
-                    submissionDate: new Date().toISOString()
-                };
 
-                // Handle file upload
+                // Formspree free tier doesn't support file uploads
+                // Replace file object with file name text, or remove entirely
                 const idFile = formData.get('idUpload');
-                let fileData = null;
+                formData.delete('idUpload');
                 if (idFile && idFile.size > 0) {
-                    fileData = {
-                        name: idFile.name,
-                        size: idFile.size,
-                        type: idFile.type
-                    };
+                    formData.set('idFileName', idFile.name + ' (please bring ID to orientation)');
+                } else {
+                    formData.set('idFileName', 'No file uploaded (please bring ID to orientation)');
                 }
 
-                // Create email content
-                const emailContent = createEmailContent(membershipData, fileData);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
 
-                // Send email using EmailJS or similar service
-                await sendMembershipEmail(emailContent, membershipData, idFile);
+                if (!response.ok) {
+                    throw new Error('Form submission failed');
+                }
 
-                // Show success message
                 showSuccessMessage();
-
-                // Reset form
                 form.reset();
 
             } catch (error) {
                 console.error('Form submission error:', error);
-                showErrorMessage('There was an error submitting your application. Please try again or contact us directly.');
+                showErrorMessage('There was an error submitting your application. Please try again or contact us directly at contactperankh@gmail.com');
             } finally {
-                // Re-enable submit button
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
                 submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
             }
-        }
-
-        function createEmailContent(data, fileData) {
-            return `
-                <h2>New Membership Application - Per Ankh Entheogenic Church</h2>
-                
-                <h3>Personal Information:</h3>
-                <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
-                <p><strong>Email:</strong> ${data.email}</p>
-                <p><strong>Phone:</strong> ${data.phone || 'Not provided'}</p>
-                <p><strong>Date of Birth:</strong> ${data.dateOfBirth || 'Not provided'}</p>
-                
-                <h3>Address:</h3>
-                <p><strong>Address Line 1:</strong> ${data.addressLine1 || 'Not provided'}</p>
-                <p><strong>Address Line 2:</strong> ${data.addressLine2 || 'Not provided'}</p>
-                <p><strong>City:</strong> ${data.city || 'Not provided'}</p>
-                <p><strong>State:</strong> ${data.state || 'Not provided'}</p>
-                <p><strong>Zip Code:</strong> ${data.zipCode || 'Not provided'}</p>
-                
-                <h3>Application Questions:</h3>
-                <p><strong>Law Enforcement Employee/Contractor:</strong> ${data.lawEnforcement}</p>
-                <p><strong>Mushrooms as Spiritual Practice:</strong> ${data.mushroomSpiritual}</p>
-                <p><strong>Agrees to Church Rules:</strong> ${data.rulesAgreement}</p>
-                <p><strong>Cannabis Use:</strong> ${data.cannabisUse}</p>
-                <p><strong>Supports Entheogenic Plant Use:</strong> ${data.entheogenicSupport}</p>
-                <p><strong>Supports Safe Place for Entheogenic Plants:</strong> ${data.safePlace}</p>
-                
-                <h3>Referral Information:</h3>
-                <p>${data.referral}</p>
-                
-                <h3>Why Join the Church:</h3>
-                <p>${data.whyJoin}</p>
-                
-                <h3>ID Upload:</h3>
-                <p><strong>File:</strong> ${fileData ? `${fileData.name} (${(fileData.size / 1024 / 1024).toFixed(2)} MB)` : 'No file uploaded'}</p>
-                
-                <p><strong>Submission Date:</strong> ${new Date(data.submissionDate).toLocaleString()}</p>
-            `;
-        }
-
-        async function sendMembershipEmail(emailContent, membershipData, idFile) {
-            const subject = `New Membership Application - ${membershipData.firstName} ${membershipData.lastName}`;
-
-            // Store application data in localStorage for backup
-            localStorage.setItem('lastMembershipApplication', JSON.stringify({
-                ...membershipData,
-                fileName: idFile ? idFile.name : null
-            }));
-
-            // Try EmailJS first (requires setup)
-            try {
-                // EmailJS template parameters
-                const templateParams = {
-                    to_email: 'contactperankh@gmail.com',
-                    subject: subject,
-                    applicant_name: `${membershipData.firstName} ${membershipData.lastName}`,
-                    applicant_email: membershipData.email,
-                    applicant_phone: membershipData.phone || 'Not provided',
-                    date_of_birth: membershipData.dateOfBirth || 'Not provided',
-                    address_line1: membershipData.addressLine1 || 'Not provided',
-                    address_line2: membershipData.addressLine2 || '',
-                    city: membershipData.city || 'Not provided',
-                    state: membershipData.state || 'Not provided',
-                    zip_code: membershipData.zipCode || 'Not provided',
-                    law_enforcement: membershipData.lawEnforcement,
-                    mushroom_spiritual: membershipData.mushroomSpiritual,
-                    rules_agreement: membershipData.rulesAgreement,
-                    cannabis_use: membershipData.cannabisUse,
-                    entheogenic_support: membershipData.entheogenicSupport,
-                    safe_place: membershipData.safePlace,
-                    referral_info: membershipData.referral,
-                    why_join: membershipData.whyJoin,
-                    id_file_name: idFile && idFile.name ? idFile.name : 'No file uploaded',
-                    submission_date: new Date().toLocaleString()
-                };
-
-                // Replace with your actual EmailJS service ID and template ID
-                await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
-                console.log('Email sent successfully via EmailJS');
-                return;
-
-            } catch (error) {
-                console.log('EmailJS failed, falling back to mailto:', error);
-            }
-
-            // Fallback to mailto if EmailJS fails or isn't configured
-            const body = `New membership application received:\n\n` +
-                `Name: ${membershipData.firstName} ${membershipData.lastName}\n` +
-                `Email: ${membershipData.email}\n` +
-                `Phone: ${membershipData.phone || 'Not provided'}\n` +
-                `Date of Birth: ${membershipData.dateOfBirth || 'Not provided'}\n\n` +
-                `Address:\n` +
-                `${membershipData.addressLine1 || 'Not provided'}\n` +
-                `${membershipData.addressLine2 || ''}\n` +
-                `${membershipData.city || 'Not provided'}, ${membershipData.state || 'Not provided'} ${membershipData.zipCode || 'Not provided'}\n\n` +
-                `Application Responses:\n` +
-                `Law Enforcement: ${membershipData.lawEnforcement}\n` +
-                `Mushrooms as Spiritual Practice: ${membershipData.mushroomSpiritual}\n` +
-                `Agrees to Church Rules: ${membershipData.rulesAgreement}\n` +
-                `Cannabis Use: ${membershipData.cannabisUse}\n` +
-                `Supports Entheogenic Plants: ${membershipData.entheogenicSupport}\n` +
-                `Supports Safe Place: ${membershipData.safePlace}\n\n` +
-                `Referral Information:\n${membershipData.referral}\n\n` +
-                `Why Join:\n${membershipData.whyJoin}\n\n` +
-                `ID File: ${idFile && idFile.name ? idFile.name : 'No file uploaded'}\n` +
-                `Submitted: ${new Date().toLocaleString()}`;
-
-            // Create mailto link as fallback
-            const mailtoLink = `mailto:contactperankh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailtoLink;
         }
 
         function showSuccessMessage() {
