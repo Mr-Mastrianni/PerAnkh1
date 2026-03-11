@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Psilocybin Protocols & Guidelines | Per Ankh Knowledge Base</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/variables.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script type="module" src="/src/auth/auth.js"></script>
+    <style>
+        :root {
+            --per-ankh-deep-blue: #1E3A8A;
+            --per-ankh-dark: #0F172A;
+            --per-ankh-light: #F8FAFC;
+        }
+        
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background: linear-gradient(135deg, var(--per-ankh-dark) 0%, var(--per-ankh-deep-blue) 50%, var(--per-ankh-purple) 100%);
+            color: var(--per-ankh-light);
+        }
+        
+        .cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        
+        .ankh-gradient {
+            background: linear-gradient(45deg, var(--per-ankh-gold), #FCD34D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .sacred-card {
+            background: rgba(107, 70, 193, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.2);
+        }
+        
+        .protocol-card {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(107, 70, 193, 0.6));
+            border: 2px solid var(--per-ankh-gold);
+            transform: perspective(1000px) rotateX(2deg);
+            transition: all 0.3s ease;
+        }
+        
+        .protocol-card:hover {
+            transform: perspective(1000px) rotateX(0deg) scale(1.02);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+        
+        .quote-box {
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.2), rgba(252, 211, 77, 0.1));
+            border-left: 4px solid var(--per-ankh-gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.03'%3E%3Cpath d='M20 20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8zm0 20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8zm20-20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8zm0 20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .sacred-geometry {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(107, 70, 193, 0.1) 0%, transparent 50%);
+        }
+        
+        .mushroom-icon {
+            color: var(--per-ankh-gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .consciousness-wave {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(212, 175, 55, 0.3) 25%, 
+                rgba(107, 70, 193, 0.3) 50%, 
+                rgba(212, 175, 55, 0.3) 75%, 
+                transparent 100%
+            );
+            animation: wave 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(-100px); opacity: 0.5; }
+            100% { transform: translateX(100px); opacity: 1; }
+        }
+        
+        .protocol-number {
+            background: radial-gradient(circle, var(--per-ankh-gold), #B8860B);
+            color: var(--per-ankh-dark);
+            font-weight: bold;
+            text-shadow: none;
+        }
+        
+        .danger-warning {
+            background: linear-gradient(45deg, #DC2626, #B91C1C);
+            border: 2px solid #FCA5A5;
+            animation: warning-pulse 2s infinite;
+        }
+        
+        @keyframes warning-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(220, 38, 38, 0.6); }
+        }
+    </style>
+</head>
+<body onload="checkAdminAccess()">
+    <!-- Admin Access Overlay -->
+    <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="/assets/images/logo/PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
+                    <a href="/" class="text-2xl font-bold" style="color: #DAA520; font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div style="height:64px"></div>
+
+    <div id="adminOverlay" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.9));
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        backdrop-filter: blur(10px);
+    ">
+        <div style="
+            background: rgba(107, 70, 193, 0.2);
+            border: 2px solid var(--per-ankh-gold);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            margin: 2rem;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        ">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🔒</div>
+            <h2 style="
+                font-family: 'Cinzel', serif;
+                color: var(--per-ankh-gold);
+                margin-bottom: 1rem;
+                font-size: 1.8rem;
+            ">Admin Access Required</h2>
+            <p style="margin-bottom: 2rem; line-height: 1.6; color: #f8fafc;">
+                This sacred knowledge base contains advanced psilocybin protocols and is restricted to authenticated administrators only.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/admin" class="cta-button" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login as Admin
+                </a>
+                <a href="/" class="cta-button" style="padding: 0.8rem 1.5rem; font-size: 0.9rem; background: rgba(107, 70, 193, 0.3);">
+                    <i class="fas fa-home mr-2"></i>Return Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="pageContent" style="display: none;"> 
+    <!-- Sacred Header -->
+    <header class="relative overflow-hidden py-16 sacred-geometry">
+        <div class="absolute inset-0 consciousness-wave"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-8">
+                <div class="flex justify-center items-center mb-6">
+                    <i class="fas fa-ankh text-6xl text-yellow-400 mr-4"></i>
+                    <div class="text-6xl mushroom-icon">🍄</div>
+                    <i class="fas fa-ankh text-6xl text-yellow-400 ml-4"></i>
+                </div>
+                <h1 class="cinzel text-5xl font-bold ankh-gradient mb-4">Sacred Psilocybin Protocols</h1>
+                <h2 class="cinzel text-3xl text-yellow-400 mb-6">The 5-7-9 Gram Sacred System</h2>
+                <p class="text-xl max-w-4xl mx-auto leading-relaxed">
+                    🔱 <em>As taught by Kilindi Iyi</em> 🔱
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Per Ankh Mission Statement -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div class="quote-box p-8 rounded-lg mb-12">
+                <div class="text-center">
+                    <i class="fas fa-quote-left text-3xl text-yellow-400 mb-4"></i>
+                    <p class="cinzel text-2xl font-semibold mb-4">
+                        "PER-ANKH is a non-denominational, interfaith religious organization. At Per-Ankh we support the research, understanding and safe access of all Entheogenic plants, with a focus on CANNABIS & MAGIC MUSHROOMS"
+                    </p>
+                    <p class="text-lg italic">
+                        🌟 <strong>Entheogen:</strong> To generate the god or deity within you. You are all gods, all goddesses - that is your power, that is your strength. 🌟
+                    </p>
+                </div>
+            </div>
+
+            <!-- Kilindi Iyi Tribute -->
+            <div class="bg-gradient-to-r from-purple-900/40 to-yellow-900/40 p-8 rounded-lg mb-12 border-2 border-yellow-500">
+                <div class="text-center">
+                    <i class="fas fa-crown text-4xl text-yellow-400 mb-4"></i>
+                    <h3 class="cinzel text-2xl font-bold text-yellow-400 mb-4">In Honor of Our Teacher</h3>
+                    <p class="text-lg leading-relaxed mb-4">
+                        These sacred protocols were developed by <strong class="text-yellow-400">Baba Kilindi Iyi</strong>, 
+                        a pioneering consciousness explorer who dedicated his life to understanding the spiritual dimensions 
+                        of psilocybin mushrooms. His courageous high-dose research and the revolutionary 5-7-9 gram protocol 
+                        have opened pathways to healing and awakening for countless seekers.
+                    </p>
+                    <p class="text-yellow-300 italic">
+                        "The world is waiting for you to be more than what you are."
+                    </p>
+                    <p class="text-sm text-gray-400 mt-2">— Baba Kilindi Iyi (1962-2021)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sacred Definitions -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <h2 class="cinzel text-4xl font-bold text-center ankh-gradient mb-12">Sacred Terminology 📚</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="sacred-card p-6 rounded-lg">
+                    <div class="text-3xl mb-4 text-center">🧠</div>
+                    <h3 class="cinzel text-xl font-bold text-yellow-400 mb-3">Psychedelic</h3>
+                    <p><strong>Mind Manifesting</strong> - Opening the door to the dormant 90% of your brain</p>
+                </div>
+                <div class="sacred-card p-6 rounded-lg">
+                    <div class="text-3xl mb-4 text-center">🚪</div>
+                    <h3 class="cinzel text-xl font-bold text-yellow-400 mb-3">Hallucinate</h3>
+                    <p><strong>To wander through your own mind</strong> - Not "going crazy" but exploring inner realms</p>
+                </div>
+                <div class="sacred-card p-6 rounded-lg">
+                    <div class="text-3xl mb-4 text-center">🔱</div>
+                    <h3 class="cinzel text-xl font-bold text-yellow-400 mb-3">Entheogen</h3>
+                    <p><strong>To generate the god within</strong> - Awakening your divine essence and power</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Sacred 5-7-9 Protocol System -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="cinzel text-5xl font-bold text-center ankh-gradient mb-4">The Sacred Protocol System</h2>
+            <p class="text-center text-xl mb-12">🍄 <em>Developed by Baba Kilindi Iyi for spiritual exploration and consciousness expansion</em> 🍄</p>
+
+            <!-- 5 Grams Protocol -->
+            <div class="protocol-card p-8 rounded-lg mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="protocol-number w-16 h-16 rounded-full flex items-center justify-center text-3xl cinzel mr-6">5</div>
+                    <div>
+                        <h3 class="cinzel text-3xl font-bold text-yellow-400">Five Grams - Visual Acuity</h3>
+                        <p class="text-lg">👁️ <em>Foundation Level - Enhanced Perception</em></p>
+                    </div>
+                </div>
+                
+                <div class="quote-box p-6 rounded-lg mb-6">
+                    <p class="text-lg italic mb-2">
+                        <i class="fas fa-quote-left text-yellow-400 mr-2"></i>
+                        "Five grams promotes <strong>visual acuity</strong> - everything starts to just, you know what I'm talking about, you can see better, you have a better advantage because you can see and hear better."
+                        <i class="fas fa-quote-right text-yellow-400 ml-2"></i>
+                    </p>
+                    
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="cinzel text-xl font-semibold text-yellow-400 mb-3">🌟 Effects & Experiences:</h4>
+                        <ul class="space-y-2">
+                            <li>• Room starts to disintegrate</li>
+                            <li>• Lights and colors pop off</li>
+                            <li>• Enhanced visual and auditory perception</li>
+                            <li>• Serotonin receptor sites activate</li>
+                            <li>• Generally an easy, manageable trip</li>
+                            <li>• Everything dissolves into color and light</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="cinzel text-xl font-semibold text-yellow-400 mb-3">🛡️ Safety Guidelines:</h4>
+                        <ul class="space-y-2">
+                            <li>• Perfect starting dose for beginners</li>
+                            <li>• Recommended to have a sitter first time</li>
+                            <li>• Set and setting are crucial</li>
+                            <li>• Duration: 4-6 hours typically</li>
+                            <li>• Ancient use: hunters and gatherers</li>
+                            <li>• Enhanced hunting and gathering abilities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 Grams Protocol -->
+            <div class="protocol-card p-8 rounded-lg mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="protocol-number w-16 h-16 rounded-full flex items-center justify-center text-3xl cinzel mr-6">7</div>
+                    <div>
+                        <h3 class="cinzel text-3xl font-bold text-yellow-400">Seven Grams - Sacred Sexuality</h3>
+                        <p class="text-lg">💫 <em>CNSA - Central Nervous System Arousal</em></p>
+                    </div>
+                </div>
+                
+                <div class="quote-box p-6 rounded-lg mb-6">
+                    <p class="text-lg italic mb-2">
+                        <i class="fas fa-quote-left text-yellow-400 mr-2"></i>
+                        "Seven is like an <strong>aphrodisiac type kind of energy</strong> - CNSA, Central Nervous System Arousal. On seven, you're moving into the experience of <strong>hypnosis</strong> - becoming one flesh."
+                        <i class="fas fa-quote-right text-yellow-400 ml-2"></i>
+                    </p>
+                    
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="cinzel text-xl font-semibold text-yellow-400 mb-3">🔥 Sacred Sexuality Effects:</h4>
+                        <ul class="space-y-2">
+                            <li>• Enhanced sexual energy and connection</li>
+                            <li>• Man experiences arousal and erection</li>
+                            <li>• Woman experiences increased receptivity</li>
+                            <li>• Understanding of sacred, non-orgasmic connection</li>
+                            <li>• Communication in "another language"</li>
+                            <li>• Movement becomes sacred dance</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="cinzel text-xl font-semibold text-yellow-400 mb-3">👫 Hypnosis - Becoming One:</h4>
+                        <ul class="space-y-2">
+                            <li>• Both partners take seven grams together</li>
+                            <li>• Focus on the sacredness of sexual union</li>
+                            <li>• About connection, not climax</li>
+                            <li>• Breathing, blood flow, essence merge</li>
+                            <li>• Potential for conscious conception</li>
+                            <li>• Creation of "mushroom babies"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="danger-warning p-6 rounded-lg mt-6">
+                    <h4 class="cinzel text-xl font-bold text-white mb-3">⚠️ Important Considerations:</h4>
+                    <ul class="space-y-2 text-white">
+                        <li>• Only for committed, loving partnerships</li>
+                        <li>• Requires preparation and proper set/setting</li>
+                        <li>• Not about recreational sexuality</li>
+                        <li>• Sacred context and spiritual intention essential</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 9 Grams Protocol -->
+            <div class="protocol-card p-8 rounded-lg mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="protocol-number w-16 h-16 rounded-full flex items-center justify-center text-3xl cinzel mr-6">9</div>
+                    <div>
+                        <h3 class="cinzel text-3xl font-bold text-yellow-400">Nine Grams - Galactic Mysteries</h3>
+                        <p class="text-lg">🌌 <em>Multiverse Travel - Leaving This Planet</em></p>
+                    </div>
+                </div>
+                
+                <div class="quote-box p-6 rounded-lg mb-6">
+                    <p class="text-lg italic mb-2">
+                        <i class="fas fa-quote-left text-yellow-400 mr-2"></i>
+                        "The <strong>nine grams imparts the mysteries</strong> - you start to leave this planet, you start to travel galactically and go out into the multiverse."
+                        <i class="fas fa-quote-right text-yellow-400 ml-2"></i>
+                    </p>
+                    
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="cinzel text-xl font-semibold text-yellow-400 mb-3">🚀 Galactic Experiences:</h4>
+                        <ul class="space-y-2">
+                            <li>• Leave the planetary consciousness</li>
+                            <li>• Travel through the multiverse</li>
+                            <li>• Receive ancient mysteries and wisdom</li>
+                            <li>• Connect with cosmic intelligence</li>
+                            <li>• Experience non-human realms</li>
+                            <li>• Access akashic records</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="cinzel text-xl font-semibold text-yellow-400 mb-3">🔮 Requirements:</h4>
+                        <ul class="space-y-2">
+                            <li>• Experienced sitter absolutely required</li>
+                            <li>• Must have completed 5 and 7 gram journeys</li>
+                            <li>• Safe, sacred setting essential</li>
+                            <li>• 6-10 hour duration preparation</li>
+                            <li>• Integration support necessary</li>
+                            <li>• Spiritual preparation and grounding</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- High Dose Experiences -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="cinzel text-4xl font-bold text-center ankh-gradient mb-12">Advanced High Dose Protocols 🏔️</h2>
+
+            <!-- 12-21 Gram Range -->
+            <div class="sacred-card p-8 rounded-lg mb-8">
+                <h3 class="cinzel text-2xl font-bold text-yellow-400 mb-4">12-21 Grams - Crystal Technology & Trans-dimensional Work</h3>
+                
+                <div class="quote-box p-6 rounded-lg mb-6">
+                    <p class="text-lg italic">
+                        "At 21 grams you need to have at least 15 grams under your belt. You sit before the Palantir stone - the Iyi stone - and you need your trans-dimensional crystal as you go in."
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="cinzel text-xl font-semibold text-yellow-400 mb-3">🔮 Crystal Technology:</h4>
+                        <ul class="space-y-2">
+                            <li>• Work with trans-dimensional crystals</li>
+                            <li>• Access to the Palantir stone</li>
+                            <li>• Invitation to interdimensional village</li>
+                            <li>• Meeting with other high-dose travelers</li>
+                            <li>• Advanced geometric visions</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="cinzel text-xl font-semibold text-yellow-400 mb-3">⚠️ Advanced Safety:</h4>
+                        <ul class="space-y-2">
+                            <li>• Experienced guide/sitter mandatory</li>
+                            <li>• Proper crystal technology training</li>
+                            <li>• Sacred ceremonial setting</li>
+                            <li>• Emergency protocols in place</li>
+                            <li>• Extended integration period</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kilindi's Extreme Protocols -->
+            <div class="danger-warning p-8 rounded-lg mb-8">
+                <h3 class="cinzel text-2xl font-bold text-white mb-4">⚡ Kilindi's Extreme Protocols: 40-50 Grams</h3>
+                
+                <div class="bg-black bg-opacity-30 p-6 rounded-lg mb-6">
+                    <p class="text-lg italic text-white mb-4">
+                        "Baba decided to take 40 grams to go in there and pull Kai out of her coma. What happened was Kai pulled him out - she was in that space to guide him safely through."
+                    </p>
+                    <p class="text-lg italic text-white">
+                        "He took 50 grams standing in front of the mirror. This entity said 'I will give you whatever you want - all the women, all the riches, all the material things - but you must bow down and worship me.' That man of courage and conviction said NO."
+                    </p>
+                </div>
+
+                <div class="bg-red-900 bg-opacity-50 p-6 rounded-lg">
+                    <h4 class="cinzel text-xl font-bold text-white mb-3">🚨 EXTREME CAUTION REQUIRED:</h4>
+                    <ul class="space-y-2 text-white">
+                        <li>• These doses are for advanced practitioners only</li>
+                        <li>• Serious entity encounters possible</li>
+                        <li>• Risk of getting "stuck" in other dimensions</li>
+                        <li>• Professional medical support advisable</li>
+                        <li>• Not recommended without extensive experience</li>
+                        <li>• Kilindi had 20+ years of experience</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Protocols -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="cinzel text-4xl font-bold text-center ankh-gradient mb-12">Sacred Safety Protocols 🛡️</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="sacred-card p-6 rounded-lg">
+                    <h3 class="cinzel text-2xl font-bold text-yellow-400 mb-4">🧘‍♂️ Sitter Requirements</h3>
+                    <ul class="space-y-3">
+                        <li>• <strong>First three times:</strong> Always have an experienced sitter</li>
+                        <li>• <strong>Sitter experience:</strong> Must have extensive personal journey experience</li>
+                        <li>• <strong>Emergency knowledge:</strong> Know how to bring someone "out of darkness"</li>
+                        <li>• <strong>Micro-dosing:</strong> Sitter may take 1-2 grams to "hang out" with traveler</li>
+                        <li>• <strong>Duration awareness:</strong> Prepared for 6-10 hour sessions</li>
+                        <li>• <strong>Calm presence:</strong> Ability to remain centered during intense experiences</li>
+                    </ul>
+                </div>
+
+                <div class="sacred-card p-6 rounded-lg">
+                    <h3 class="cinzel text-2xl font-bold text-yellow-400 mb-4">🏠 Set & Setting</h3>
+                    <ul class="space-y-3">
+                        <li>• <strong>Sacred space:</strong> Clean, comfortable, protected environment</li>
+                        <li>• <strong>Natural elements:</strong> Access to nature preferred</li>
+                        <li>• <strong>Minimal distractions:</strong> Remove electronic devices</li>
+                        <li>• <strong>Spiritual objects:</strong> Crystals, sacred images, altar space</li>
+                        <li>• <strong>Safety items:</strong> Water, blankets, emergency contacts</li>
+                        <li>• <strong>Privacy:</strong> No interruptions for entire duration</li>
+                    </ul>
+                </div>
+
+                <div class="sacred-card p-6 rounded-lg">
+                    <h3 class="cinzel text-2xl font-bold text-yellow-400 mb-4">🎯 Intent Setting</h3>
+                    <div class="quote-box p-4 rounded mb-4">
+                        <p class="italic">
+                            "You open up the bag, you inhale the energy, and you give forth what it is that you intend on doing. You ask the mushrooms: 'I want to see this, I want to do that, I want to go there.'"
+                        </p>
+                    </div>
+                    <ul class="space-y-3">
+                        <li>• <strong>Clear intention:</strong> Know why you're taking this journey</li>
+                        <li>• <strong>Respectful approach:</strong> Honor the fungi as a teacher</li>
+                        <li>• <strong>Specific requests:</strong> Ask for particular insights or healing</li>
+                        <li>• <strong>Gratitude practice:</strong> Thank the mushrooms before ingestion</li>
+                        <li>• <strong>Release attachment:</strong> Be open to unexpected teachings</li>
+                    </ul>
+                </div>
+
+                <div class="sacred-card p-6 rounded-lg">
+                    <h3 class="cinzel text-2xl font-bold text-yellow-400 mb-4">🌅 Integration Practices</h3>
+                    <ul class="space-y-3">
+                        <li>• <strong>Journal immediately:</strong> Record insights while fresh</li>
+                        <li>• <strong>Rest period:</strong> Allow 24-48 hours for integration</li>
+                        <li>• <strong>Nature connection:</strong> Spend time outdoors</li>
+                        <li>• <strong>Community sharing:</strong> Discuss with experienced practitioners</li>
+                        <li>• <strong>Practical application:</strong> Implement insights in daily life</li>
+                        <li>• <strong>Patience:</strong> Allow wisdom to unfold over time</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sacred vs Recreational -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="cinzel text-4xl font-bold text-center ankh-gradient mb-12">Sacred vs. Recreational Use 🔱</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="sacred-card p-8 rounded-lg border-4 border-yellow-400">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🏛️</div>
+                        <h3 class="cinzel text-2xl font-bold text-yellow-400">SACRED USE</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li>• <strong>Spiritual exploration</strong> and consciousness expansion</li>
+                        <li>• <strong>Healing trauma</strong> and ancestral wounds</li>
+                        <li>• <strong>Connecting with ancestors</strong> and divine guidance</li>
+                        <li>• <strong>Personal transformation</strong> and growth</li>
+                        <li>• <strong>Sacred sexuality</strong> and conscious conception</li>
+                        <li>• <strong>Mystical experiences</strong> and wisdom seeking</li>
+                        <li>• <strong>Community healing</strong> and ritual work</li>
+                    </ul>
+                    
+                    <div class="quote-box p-4 rounded mt-6">
+                        <p class="italic text-center">
+                            "We're talking about the spiritual energy that we're connecting with in the multiverse, on the other side, with our ancestors."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sacred-card p-8 rounded-lg border-2 border-gray-400">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎉</div>
+                        <h3 class="cinzel text-2xl font-bold text-gray-300">RECREATIONAL USE</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li>• <strong>One gram</strong> - "go to the party, hang out"</li>
+                        <li>• <strong>Social experiences</strong> without deeper intent</li>
+                        <li>• <strong>Entertainment</strong> and fun activities</li>
+                        <li>• <strong>Casual exploration</strong> without preparation</li>
+                        <li>• <strong>Weekend activities</strong> without integration</li>
+                        <li>• <strong>Party enhancement</strong> rather than healing</li>
+                    </ul>
+                    
+                    <div class="bg-gray-800 p-4 rounded mt-6">
+                        <p class="italic text-center text-gray-300">
+                            "Of course there's a recreational dose - one gram, go to the party, hang out - but we're talking about the spiritual energy..."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-box p-8 rounded-lg mt-12">
+                <h3 class="cinzel text-2xl font-bold text-yellow-400 text-center mb-6">The Sacred Responsibility</h3>
+                <p class="text-lg text-center italic mb-4">
+                    "It is my goal to keep it sacred, and that was Baba's work - the sacredness of the psilocybin mushrooms. How do we do that? We do that by opening our heart up with <strong>honor and integrity</strong>."
+                </p>
+                <p class="text-lg text-center">
+                    🍄 <strong>Honor the fungi • Speak to the people around you • Create balance and relationship • Use with integrity</strong> 🍄
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growing & Honoring -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="cinzel text-4xl font-bold text-center ankh-gradient mb-12">Growing & Honoring the Fungi 🌱</h2>
+
+            <div class="sacred-card p-8 rounded-lg mb-8">
+                <div class="quote-box p-6 rounded-lg mb-6">
+                    <p class="text-lg italic mb-4">
+                        "If you learn how to grow mushrooms, you won't ever be hungry, because when you have this type of technology, a mushroom sandwich is going to taste real good."
+                    </p>
+                    <p class="text-lg italic">
+                        "You create a symbiotic relationship with the fungi... It was the love that Baba poured into the plant or fungi that made it what it was - Temerian Blue."
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="cinzel text-xl font-bold text-yellow-400 mb-4">🌿 Sacred Growing Practices</h3>
+                        <ul class="space-y-3">
+                            <li>• <strong>Love and intention:</strong> Pour love into your cultivation</li>
+                            <li>• <strong>Clean practices:</strong> Maintain sterile, respectful environment</li>
+                            <li>• <strong>No profanity:</strong> Speak respectfully around growing fungi</li>
+                            <li>• <strong>Quality over quantity:</strong> Grow the best fruit possible</li>
+                            <li>• <strong>Learn the process:</strong> Understand every step of cultivation</li>
+                            <li>• <strong>Symbiotic relationship:</strong> Connect with the organism</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="cinzel text-xl font-bold text-yellow-400 mb-4">🧘‍♀️ Harvest & Preparation</h3>
+                        <ul class="space-y-3">
+                            <li>• <strong>Clean each mushroom individually:</strong> Handle with care and respect</li>
+                            <li>• <strong>Perfect preparation:</strong> Remove all substrate and debris</li>
+                            <li>• <strong>Quality control:</strong> Check each piece for purity</li>
+                            <li>• <strong>Proper drying:</strong> Preserve potency and prevent contamination</li>
+                            <li>• <strong>Respectful storage:</strong> Keep in sacred containers</li>
+                            <li>• <strong>Share knowledge:</strong> Teach others the proper methods</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="danger-warning p-6 rounded-lg">
+                <h3 class="cinzel text-xl font-bold text-white mb-4">⚠️ What NOT to Do</h3>
+                <div class="text-white">
+                    <p class="mb-4 italic">
+                        "I got a batch of mushrooms where it had vermiculite all over it, it was crunchy, it was all black where it had thrown spores... What are you selling this to?"
+                    </p>
+                    <ul class="space-y-2">
+                        <li>• Don't sell contaminated or poorly prepared mushrooms</li>
+                        <li>• Don't treat it like drug dealing - this is sacred work</li>
+                        <li>• Don't prioritize money over quality and safety</li>
+                        <li>• Don't disrespect the fungi with careless handling</li>
+                        <li>• Don't skip proper education and preparation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Microdosing -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="cinzel text-4xl font-bold text-center ankh-gradient mb-12">Microdosing for Daily Practice 🌸</h2>
+
+            <div class="sacred-card p-8 rounded-lg">
+                <div class="quote-box p-6 rounded-lg mb-6">
+                    <p class="text-lg italic">
+                        "I do more microdosing now than ever because I put my dues in, baby. Twenty years of doing mushrooms - I don't want to taste it no more."
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="cinzel text-xl font-bold text-yellow-400 mb-4">💊 Dosage Guidelines</h3>
+                        <ul class="space-y-3">
+                            <li>• <strong>0.1-0.3 grams:</strong> Sub-perceptual dose</li>
+                            <li>• <strong>0.5-1 gram:</strong> Mild enhancement</li>
+                            <li>• <strong>1-2 grams:</strong> Light journey experience</li>
+                            <li>• <strong>Every 3-4 days:</strong> Prevent tolerance buildup</li>
+                            <li>• <strong>Monitor effects:</strong> Adjust based on response</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="cinzel text-xl font-bold text-yellow-400 mb-4">🌟 Daily Benefits</h3>
+                        <ul class="space-y-3">
+                            <li>• Enhanced creativity and problem-solving</li>
+                            <li>• Improved mood and emotional balance</li>
+                            <li>• Increased spiritual sensitivity</li>
+                            <li>• Better connection to nature</li>
+                            <li>• Heightened intuition and awareness</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="cinzel text-xl font-bold text-yellow-400 mb-4">🤰 Pregnancy Protocol</h3>
+                        <div class="quote-box p-4 rounded mb-4">
+                            <p class="text-sm italic">
+                                "Once you conceived, start taking your microdosing, maybe a gram or two throughout your pregnancy... these children become extremely aware when they're in the womb."
+                            </p>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li>• 1-2 grams during pregnancy (with care)</li>
+                            <li>• 2-3 grams mid-pregnancy (experienced users)</li>
+                            <li>• Avoid high doses in 9th month</li>
+                            <li>• Home birth with midwife preferred</li>
+                            <li>• Breastfeeding integration possible</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Sacred Reminder -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="quote-box p-12 rounded-lg text-center">
+                <div class="text-6xl mb-6">🔱</div>
+                <h2 class="cinzel text-3xl font-bold ankh-gradient mb-6">Sacred Commitment</h2>
+                <p class="text-xl mb-6 italic">
+                    "The mushrooms and the renaissance that has happened with the mushrooms are here for a reason - because the Mother Earth says my children are in trouble and I need to bring this back out so that they can heal themselves."
+                </p>
+                <p class="text-lg">
+                    <strong>Honor • Integrity • Reverence</strong>
+                </p>
+                <p class="text-lg mt-4">
+                    🍄 <em>Just like it's here right now, it can be snatched away if we don't honor it, if we don't use it with integrity.</em> 🍄
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black bg-opacity-50">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center items-center mb-6">
+                <i class="fas fa-ankh text-3xl text-yellow-400 mr-3"></i>
+                <span class="cinzel text-2xl font-bold text-yellow-400">Per Ankh Entheogenic Church</span>
+                <i class="fas fa-ankh text-3xl text-yellow-400 ml-3"></i>
+            </div>
+            <p class="text-lg mb-4">
+                🔱 <em>Preserving the sacred teachings of Kilindi Iyi</em> 🔱
+            </p>
+            <p class="text-sm opacity-75">
+                These teachings are shared for educational and spiritual purposes within the context of religious practice.<br>
+                Always consult with experienced practitioners and consider local laws and personal health conditions.<br>
+                🌟 May the fungi guide you with wisdom, healing, and transformation 🌟
+            </p>
+        </div>
+    </footer>
+    </div>
+    
+    <script>
+        function checkAdminAccess() {
+            if (typeof perAnkhAuth === 'undefined') {
+                console.error('Authentication system not loaded');
+                return;
+            }
+            
+            if (perAnkhAuth.isAuthenticated()) {
+                document.getElementById('adminOverlay').style.display = 'none';
+                document.getElementById('pageContent').style.display = 'block';
+            } else {
+                document.getElementById('adminOverlay').style.display = 'flex';
+                document.getElementById('pageContent').style.display = 'none';
+            }
+        }
+        
+        // Check authentication status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminAccess();
+        });
+    </script>
+    </body>
+</html>

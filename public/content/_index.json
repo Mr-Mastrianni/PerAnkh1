@@ -1,0 +1,11 @@
+{
+  "pages": [
+    { "id": "home", "name": "Home", "path": "index.html" },
+    { "id": "events", "name": "Events", "path": "events.html" },
+    { "id": "become-a-member", "name": "Become a Member", "path": "become-a-member.html" },
+    { "id": "ethos-structure", "name": "Ethos & Structure", "path": "per-ankh.html" },
+    { "id": "ceremony-safety", "name": "Ceremony and Safety", "path": "ceremony-and-safety.html" },
+    { "id": "donate", "name": "Donate", "path": "donate.html" },
+    { "id": "contact", "name": "Contact", "path": "contact.html" }
+  ]
+}

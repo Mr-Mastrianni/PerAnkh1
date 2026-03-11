@@ -1,0 +1,51 @@
+{
+  "pageId": "ceremony-safety",
+  "name": "Ceremony and Safety",
+  "path": "ceremony-and-safety.html",
+  "lastModified": "2026-03-11T00:00:00.000Z",
+  "sections": [
+    { "key": "heroTitle", "type": "text", "label": "Hero Title", "value": "Ceremony and Safety" },
+    { "key": "heroSubtitle", "type": "text", "label": "Hero Subtitle", "value": "Sacred practices and safety guidelines for psilocybin ceremonies" },
+    { "key": "introText1", "type": "richtext", "label": "Introduction Paragraph 1", "value": "Psilocybin ceremonies involve the intentional use of psilocybin Sacraments after preparation and meditation on an intent for the experience. These ceremonies allow individuals to access sources of knowledge and wisdom that may be otherwise inaccessible. Through the direct mystical experiences that can occur during ceremony, individuals may gain insight into their spiritual journey, their faith, and their life's purpose." },
+    { "key": "introText2", "type": "richtext", "label": "Introduction Paragraph 2", "value": "Those seeking a psilocybin experience may have questions for God, a sense of searching for meaning, a longing for completeness, or a desire to connect to something more. Many come with big life questions tugging at their hearts, spirits, minds, and bodies. The wisdom and spiritual insights that can be gained through these direct mystical experiences are innumerable and hold an unquantifiable potential for inducing positive transformation." },
+    { "key": "warningText", "type": "richtext", "label": "Safety Warning", "value": "It is imperative that all safety and dosage information is thoroughly read and understood. Never attempt to consume psilocybin without careful preparation and adherence to safety guidelines." },
+    { "key": "safetyTitle", "type": "text", "label": "Safety Section Title", "value": "Safety Information" },
+    {
+      "key": "safetyItems", "type": "list", "label": "Safety Items", "value": [
+        { "title": "Read all dosage information thoroughly" },
+        { "title": "Understand traditional vs. Per-Ankh calculator dosing" },
+        { "title": "Review dosage levels and guides" },
+        { "title": "Consult with physician if on medications" },
+        { "title": "Consider heart conditions before use" }
+      ]
+    },
+    { "key": "guidesTitle", "type": "text", "label": "Guides Section Title", "value": "Available Guides" },
+    {
+      "key": "guidesItems", "type": "list", "label": "Available Guides", "value": [
+        { "title": "Microdose Guide" },
+        { "title": "Common Doses Guide" },
+        { "title": "High/Heroic Guide" },
+        { "title": "Dosage Calculator" },
+        { "title": "Potency Information" }
+      ]
+    },
+    { "key": "intentTitle", "type": "text", "label": "Setting Intent Title", "value": "Setting an Intent" },
+    {
+      "key": "intentQuestions", "type": "list", "label": "Intent Questions", "value": [
+        { "title": "What is my purpose on earth?" },
+        { "title": "How do I learn to be more patient?" },
+        { "title": "What are my God given gifts? How do I use them?" },
+        { "title": "How do I heal my body?" }
+      ]
+    },
+    {
+      "key": "intentStatements", "type": "list", "label": "Intent Statements", "value": [
+        { "title": "Introduce me to my guardian angels" },
+        { "title": "Help me heal my trauma" },
+        { "title": "Teach me about my ancestors" },
+        { "title": "Strengthen my faith and spirit" }
+      ]
+    },
+    { "key": "intentText", "type": "richtext", "label": "Intent Description", "value": "Maintaining a clear and sincere focus upon the intent before, during, and after each ceremony is helpful for numerous reasons. Focusing on the intent for a psilocybin ceremony sets the stage for a focused mindset, presents your inquiry or request to the divine, and serves as an anchor during potential difficulties that may arise." }
+  ]
+}

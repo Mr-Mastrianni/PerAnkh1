@@ -1,0 +1,12 @@
+{
+  "pageId": "become-a-member",
+  "name": "Become a Member",
+  "path": "become-a-member.html",
+  "lastModified": "2026-03-11T00:00:00.000Z",
+  "sections": [
+    { "key": "heroTitle", "type": "text", "label": "Hero Title", "value": "Join Our Sacred Community" },
+    { "key": "heroSubtitle", "type": "text", "label": "Hero Subtitle", "value": "Begin Your Journey into Ancient Wisdom and Sacred Plant Medicines" },
+    { "key": "introTitle", "type": "text", "label": "Introduction Title", "value": "Sacred Membership Application" },
+    { "key": "introText", "type": "richtext", "label": "Introduction Text", "value": "Complete this application to join the Per Ankh Entheogenic Church community. All information will be kept confidential and used only for membership processing." }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "pageId": "home",
+  "name": "Home",
+  "path": "index.html",
+  "lastModified": "2026-03-11T00:00:00.000Z",
+  "sections": [
+    { "key": "heroTitle", "type": "text", "label": "Hero Title", "value": "WELCOME TO PER ANKH" },
+    { "key": "heroSubtitle", "type": "text", "label": "Hero Subtitle", "value": "A Sacred Digital Sanctuary for Consciousness Exploration" },
+    { "key": "heroDescription", "type": "richtext", "label": "Hero Description", "value": "PER-ANKH is a non-denominational, interfaith religious organization. At Per-Ankh we support the research, understanding and safe access of all Entheogenic plants, with a focus on CANNABIS & MAGIC MUSHROOMS" },
+    { "key": "quoteText", "type": "richtext", "label": "Featured Quote", "value": "The true Pioneers in the field of psychedelics have still yet to emerge from the shadows to share their own personal experiences" },
+    { "key": "quoteAuthor", "type": "text", "label": "Quote Author", "value": "— Kilindi iyi" },
+    { "key": "aboutTitle", "type": "text", "label": "About Title", "value": "WHO ARE WE?" },
+    { "key": "aboutText1", "type": "richtext", "label": "About Paragraph 1", "value": "We are a community of visionaries exploring the cutting-edge of awakening through psychedelics and sacred plant medicines." },
+    { "key": "aboutText2", "type": "richtext", "label": "About Paragraph 2", "value": "As worldwide interest in psychedelics expands, we are finding ourselves in the midst of a Psychedelic Renaissance and Global Shamanic Revival, an exciting intersection of groundbreaking science, cultural exchange, cutting-edge therapy, and game-changing personal development." },
+    { "key": "aboutText3", "type": "richtext", "label": "About Paragraph 3", "value": "At Per Ankh we provide deeply researched content about psychedelics – primarily natural psychedelics long-used by indigenous people around the world – and how you can work with them for healing and spiritual growth. We explore these topics through the multifaceted framework of science, culture, and spirituality." },
+    { "key": "ctaButtonText", "type": "text", "label": "CTA Button Text", "value": "JOIN THE SACRED JOURNEY" }
+  ]
+}

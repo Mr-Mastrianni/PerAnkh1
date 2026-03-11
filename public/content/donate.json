@@ -1,0 +1,32 @@
+{
+  "pageId": "donate",
+  "name": "Donate",
+  "path": "donate.html",
+  "lastModified": "2026-03-11T00:00:00.000Z",
+  "sections": [
+    { "key": "heroTitle", "type": "text", "label": "Hero Title", "value": "Support Per-Ankh" },
+    { "key": "heroSubtitle", "type": "text", "label": "Hero Subtitle", "value": "Help Us Cultivate Consciousness & Freedom" },
+    { "key": "introText", "type": "richtext", "label": "Introduction Text", "value": "PerAnkh is more than an organization—it's a movement dedicated to spiritual awakening, healing, and the decriminalization of entheogens. Based in Detroit, we are committed to advocating for the sacred use of plant medicines while providing education, community support, and safe spaces for exploration." },
+    { "key": "missionTitle", "type": "text", "label": "Mission Title", "value": "Our Mission" },
+    {
+      "key": "missionItems", "type": "list", "label": "Mission Items", "value": [
+        { "title": "Advocate for entheogen decriminalization" },
+        { "title": "Host educational and spiritual gatherings" },
+        { "title": "Provide access to sacred plant medicine practices" },
+        { "title": "Build a thriving community rooted in healing and transformation" }
+      ]
+    },
+    { "key": "impactTitle", "type": "text", "label": "Impact Title", "value": "Your Impact" },
+    { "key": "impactText", "type": "richtext", "label": "Impact Text", "value": "Every contribution, big or small, fuels the vision of a world where natural medicines are recognized, respected, and accessible to those seeking spiritual and personal growth." },
+    { "key": "bookstoreTitle", "type": "text", "label": "Bookstore Title", "value": "Sacred Books Store" },
+    { "key": "bookstoreSubtitle", "type": "text", "label": "Bookstore Subtitle", "value": "Expand your consciousness with transformative literature from our curated collection of sacred texts and consciousness-expanding works." },
+    {
+      "key": "books", "type": "list", "label": "Books", "value": [
+        { "title": "Sacred Mushroom Rituals", "subtitle": "The Search for the Blood of Quetzalcoatl", "author": "Tom Lane", "price": "$40.00", "description": "Embark on a profound journey into the ancient wisdom of sacred mushroom rituals and the mystical quest for Quetzalcoatl's divine essence.", "image": "sacredmushritual.jpg" }
+      ]
+    },
+    { "key": "donationFormTitle", "type": "text", "label": "Donation Form Title", "value": "Sacred Donation Form" },
+    { "key": "gratitudeText", "type": "text", "label": "Gratitude Message", "value": "The PerAnkh Family" },
+    { "key": "hashtags", "type": "text", "label": "Hashtags", "value": "#SupportPerAnkh #DecriminalizeNature #EntheogenicFreedom" }
+  ]
+}

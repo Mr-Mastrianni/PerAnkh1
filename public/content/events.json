@@ -1,0 +1,27 @@
+{
+  "pageId": "events",
+  "name": "Events",
+  "path": "events.html",
+  "lastModified": "2026-03-11T00:00:00.000Z",
+  "sections": [
+    { "key": "heroTitle", "type": "text", "label": "Hero Title", "value": "Sacred Events" },
+    { "key": "heroSubtitle", "type": "text", "label": "Hero Subtitle", "value": "Join us for transformative ceremonies, educational workshops, and community gatherings" },
+    { "key": "sectionTitle", "type": "text", "label": "Section Title", "value": "UPCOMING EVENTS" },
+    { "key": "sectionSubtitle", "type": "text", "label": "Section Subtitle", "value": "Please scroll down to find the event you want to attend. Thank you!" },
+    {
+      "key": "events", "type": "list", "label": "Events", "value": [
+        { "title": "MIDNIGHT MASS", "schedule": "See flyer for details", "description": "", "image": "eventsimages/midnitemassevent.jpeg" },
+        { "title": "OPEN DECK NIGHT", "schedule": "Every Wednesday", "description": "", "image": "eventsimages/perankhopendeck.jpeg" }
+      ]
+    },
+    { "key": "eventDetailsTitle", "type": "text", "label": "Event Details Title", "value": "Event Details" },
+    { "key": "locationName", "type": "text", "label": "Location Name", "value": "Per-Ankh House of Life" },
+    { "key": "locationAddress", "type": "text", "label": "Location Address", "value": "15605 Woodrow Wilson" },
+    { "key": "locationCity", "type": "text", "label": "Location City", "value": "Detroit, MI 48238" },
+    { "key": "locationNote", "type": "text", "label": "Location Note", "value": "All events are held at our sacred space unless otherwise noted." },
+    { "key": "registrationTitle", "type": "text", "label": "Registration Title", "value": "Registration & Contact" },
+    { "key": "registrationText", "type": "text", "label": "Registration Text", "value": "For questions or assistance with registration:" },
+    { "key": "contactEmail", "type": "text", "label": "Contact Email", "value": "info@perankh.org" },
+    { "key": "registrationNote", "type": "text", "label": "Registration Note", "value": "Please register in advance as spaces are limited." }
+  ]
+}

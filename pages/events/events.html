@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Events - Per Ankh Entheogenic Church - Join our upcoming ceremonies, workshops, and community gatherings.">
+    <meta name="keywords" content="events, per ankh, entheogenic church, ceremonies, workshops, grow classes">
+    <meta name="author" content="Per Ankh Entheogenic Church">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://perankh1.org/events/">
+    <meta property="og:title" content="Events - Per Ankh Entheogenic Church">
+    <meta property="og:description" content="Join our upcoming ceremonies, workshops, and community gatherings.">
+    <meta property="og:image" content="./PerAnkhLogo.png">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./PerAnkhLogo.png">
+    <link rel="apple-touch-icon" href="./PerAnkhLogo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/variables.css">
+
+    <title>Events - Per Ankh Entheogenic Church</title>
+
+    <style>
+        :root {
+            --earth-brown: #8B4513;
+            --forest-green: #228B22;
+            --golden-ankh: #DAA520;
+            --sacred-amber: #FFBF00;
+            --mycelium-white: #F5F5DC;
+            --consciousness-purple: #663399;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(45, 27, 105, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, var(--matte-black) 0%, #0f0f0f 100%);
+            background-attachment: fixed;
+            animation: cosmicFlow 20s ease-in-out infinite alternate;
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Sacred Geometry Background */
+        .sacred-geometry {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Geometry elements removed */
+
+        /* Cinematic Container */
+        .cinematic-container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
+                linear-gradient(135deg, rgba(45, 27, 105, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(45, 27, 105, 0.4) 0%, transparent 50%);
+            animation: cosmicFlow 25s ease-in-out infinite alternate;
+        }
+
+        .temple-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 200px;
+            background:
+                linear-gradient(to top,
+                    rgba(212, 175, 55, 0.8) 0%,
+                    rgba(212, 175, 55, 0.4) 50%,
+                    transparent 100%);
+            clip-path: polygon(20% 100%, 0% 60%, 15% 40%, 25% 45%, 35% 30%, 50% 35%, 65% 30%, 75% 45%, 85% 40%, 100% 60%, 80% 100%);
+            animation: templeGlow 4s ease-in-out infinite alternate;
+        }
+
+        .temple-silhouette::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 10%;
+            width: 80%;
+            height: 40px;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.3), transparent);
+            border-radius: 50%;
+            filter: blur(10px);
+        }
+
+        .floating-ankh {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            width: 120px;
+            height: auto;
+            animation: ankh3DRotation 8s linear infinite;
+            perspective: 1000px;
+            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
+            font-size: 4rem;
+            color: var(--primary-gold);
+            animation: ankh3DRotation 12s linear infinite;
+            transform-style: preserve-3d;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            animation: titlePulse 3s ease-in-out infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--ethereal-white);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            animation: subtitleGlow 4s ease-in-out infinite alternate;
+        }
+
+        /* Event Cards Styling */
+        .event-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            animation: containerGlow 6s ease-in-out infinite alternate;
+        }
+
+        /* Form Input Styling */
+        .consciousness-card input[type="text"],
+        .consciousness-card input[type="email"],
+        .consciousness-card input[type="tel"],
+        .consciousness-card select {
+            background-color: white !important;
+            color: #333 !important;
+            border: 2px solid #d1d5db !important;
+        }
+
+        .consciousness-card input[type="text"]:focus,
+        .consciousness-card input[type="email"]:focus,
+        .consciousness-card input[type="tel"]:focus,
+        .consciousness-card select:focus {
+            border-color: #f59e0b !important;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1) !important;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+            border-color: var(--primary-gold);
+        }
+
+        .event-title {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .event-price {
+            color: var(--deep-gold);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .event-button {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .event-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Form Styling */
+        .sacred-form {
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+            animation: containerGlow 8s ease-in-out infinite alternate;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .form-label {
+            display: block;
+            color: var(--ethereal-white);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(45, 27, 105, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: var(--ethereal-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            background: rgba(45, 27, 105, 0.3);
+        }
+
+        .submit-button {
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Mystical Animations */
+        @keyframes cosmicFlow {
+            0% {
+                background:
+                    radial-gradient(circle at 30% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
+                    linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            }
+
+            100% {
+                background:
+                    radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.4) 0%, transparent 60%),
+                    radial-gradient(circle at 30% 80%, rgba(45, 27, 105, 0.5) 0%, transparent 60%),
+                    linear-gradient(135deg, transparent 20%, rgba(212, 175, 55, 0.15) 60%, transparent 80%);
+            }
+        }
+
+        @keyframes templeGlow {
+            0% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+                filter: brightness(1);
+            }
+
+            100% {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+                filter: brightness(1.2);
+            }
+        }
+
+        @keyframes ankh3DRotation {
+            0% {
+                transform: translateX(-50%) rotateY(0deg) rotateZ(0deg);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            }
+
+            25% {
+                transform: translateX(-50%) rotateY(90deg) rotateZ(5deg);
+                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+            }
+
+            50% {
+                transform: translateX(-50%) rotateY(180deg) rotateZ(0deg);
+                text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+            }
+
+            75% {
+                transform: translateX(-50%) rotateY(270deg) rotateZ(-5deg);
+                text-shadow: 0 0 40px rgba(212, 175, 55, 1);
+            }
+
+            100% {
+                transform: translateX(-50%) rotateY(360deg) rotateZ(0deg);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            }
+        }
+
+        @keyframes titlePulse {
+            0% {
+                filter: brightness(1) saturate(1);
+                transform: scale(1);
+            }
+
+            100% {
+                filter: brightness(1.2) saturate(1.3);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes subtitleGlow {
+            0% {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+                opacity: 0.9;
+            }
+
+            100% {
+                text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.3);
+                opacity: 1;
+            }
+        }
+
+        @keyframes geometryFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes containerGlow {
+            0% {
+                box-shadow:
+                    0 20px 60px rgba(212, 175, 55, 0.2),
+                    0 0 40px rgba(45, 27, 105, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                border-color: var(--primary-gold);
+            }
+
+            100% {
+                box-shadow:
+                    0 25px 80px rgba(212, 175, 55, 0.3),
+                    0 0 60px rgba(45, 27, 105, 0.15),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                border-color: var(--deep-gold);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-gray-900 px-4 py-2 rounded-md z-50">Skip
+        to main content</a>
+
+    <!-- Sacred Geometry Background removed -->
+
+    <!-- Navigation -->
+    <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="/assets/images/logo/PerAnkhLogo.png" alt="Per Ankh Logo" class="h-10 md:h-14 w-auto mr-3" />
+                    <a href="/" class="text-2xl font-bold"
+                        style="color: var(--golden-ankh); font-family: 'Cinzel', serif;">PER ANKH ENTHEOGENIC CHURCH</a>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-white hover:text-yellow-400 transition-colors">Home</a>
+                    <a href="/become-a-member" class="text-white hover:text-yellow-400 transition-colors">Become a
+                        Member</a>
+                    <a href="/events" class="text-yellow-400 hover:text-yellow-300 transition-colors">Events</a>
+                    <a href="/per-ankh" class="text-white hover:text-yellow-400 transition-colors">Ethos &
+                        Structure</a>
+                    <a href="/ceremony-and-safety"
+                        class="text-white hover:text-yellow-400 transition-colors">Ceremony and Safety</a>
+                    <a href="/donate" class="text-white hover:text-yellow-400 transition-colors">Donate</a>
+                    <a href="/contact" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
+                    <a href="/calculator" class="text-white hover:text-yellow-400 transition-colors">Calculator</a>
+                    <a href="/admin"
+                        class="bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">Admin</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <link rel="stylesheet" href="/src/components/SideNav/SideNav.css">
+    <script type="module" src="/src/components/SideNav/SideNav.js" defer></script>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main" class="cinematic-container">
+        <!-- Mystical Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            <div class="temple-silhouette"></div>
+            <img src="/assets/images/logo/floating-ankh.png" alt="Sacred Ankh Symbol" class="floating-ankh">
+
+            <div class="hero-content">
+                <h1 class="hero-title" data-cms="heroTitle">Sacred Events</h1>
+                <p class="hero-subtitle" data-cms="heroSubtitle">
+                    Join us for transformative ceremonies, educational workshops, and community gatherings
+                </p>
+            </div>
+        </section>
+
+        <!-- Sacred Events Section -->
+        <section class="py-16" style="position: relative; z-index: 10;">
+            <div class="container mx-auto px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold mb-4"
+                            style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">
+                            UPCOMING EVENTS</h2>
+                        <p style="color: var(--ethereal-white); font-size: 1.1rem;">Please scroll down to find the event
+                            you want to attend. Thank you!</p>
+                    </div>
+
+                    <!-- Upcoming Events Section -->
+                    <div class="mb-16">
+                        <!-- Mushroom Cultivation Workshop Event -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 max-w-7xl mx-auto px-2 sm:px-4">
+                            <div class="event-card p-4 sm:p-6 md:p-8">
+                                <div class="relative">
+                                    <button type="button" id="eventZoomTriggerMushroom"
+                                        class="w-full mb-4 sm:mb-6 focus:outline-none" style="cursor: zoom-in;">
+                                        <img src="/assets/images/events/upcoming-event-latest-march-15th.jpeg" alt="Mushroom Cultivation Workshop"
+                                            class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-contain rounded-lg">
+                                    </button>
+                                    <div class="text-center">
+                                        <h4 class="event-title text-2xl sm:text-3xl mb-3 sm:mb-4">Mushroom Cultivation Workshop</h4>
+                                        <p class="mb-2 text-yellow-400 font-semibold">March 15th | 12-3:30 PM</p>
+                                        <p class="mb-4 text-sm opacity-90">📍 Per Ankh Church</p>
+                                        <a href="#register"
+                                            class="inline-block bg-yellow-600 text-white px-5 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-700 transition-colors">Register Now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event Description -->
+                            <div class="event-card p-4 sm:p-6 md:p-8 flex flex-col justify-center">
+                                <h4 class="event-title text-xl sm:text-2xl mb-4">About This Event</h4>
+                                <p class="text-lg leading-relaxed mb-4" style="color: var(--ethereal-white);">
+                                    Beneath the soil lies one of nature's greatest teachers. 🍄
+                                </p>
+                                <p class="text-base leading-relaxed mb-4" style="color: var(--ethereal-white);">
+                                    Learn the art and science of mushroom cultivation, explore the power of mycelium, and leave with your own mushroom kit.
+                                </p>
+                                <div class="mt-4 p-4 rounded-lg" style="background: rgba(212, 175, 55, 0.1); border-left: 3px solid var(--primary-gold);">
+                                    <p class="text-yellow-400 font-semibold mb-1">Sip and Learn.</p>
+                                    <p class="text-yellow-400 font-semibold">Grow with the mycelium network.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lightbox overlay for mushroom event -->
+                        <div id="imageLightboxMushroom"
+                            class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+                            style="display: none;">
+                            <img id="lightboxImgMushroom" src="/assets/images/events/upcoming-event-latest-march-15th.jpeg" alt="Mushroom Cultivation Workshop"
+                                style="max-width: 90vw; max-height: 90vh; border-radius: 0.5rem;">
+                        </div>
+
+                        <!-- Event Registration Form -->
+                        <div class="consciousness-card p-8 rounded-lg"
+                            style="background-color: var(--mycelium-white); color: #333;">
+                            <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--consciousness-purple);">
+                                Register for Mushroom Cultivation Workshop</h3>
+                            <p class="text-center mb-6 text-gray-600">
+                                March 15th | 12-3:30 PM | Per Ankh Church<br>
+                                <span class="text-sm">Spaces are limited - reserve your spot today!</span>
+                            </p>
+                            <a id="register"></a>
+                            <form id="growClassForm" action="https://formspree.io/f/xlgnavwo" method="POST"
+                                class="space-y-6">
+                                <input type="hidden" name="_subject" value="Mushroom Cultivation Workshop Registration - March 15th">
+                                <input type="hidden" name="event" value="Mushroom Cultivation Workshop - March 15th">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                        <input type="text" id="firstName" name="firstName" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-gray-900"
+                                            placeholder="First"
+                                            style="color: #333 !important; background-color: white !important;">
+                                    </div>
+                                    <div>
+                                        <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                        <input type="text" id="lastName" name="lastName" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                            placeholder="Last">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                        placeholder="your@email.com">
+                                </div>
+
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                                    <input type="tel" id="phone" name="phone" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                        placeholder="(555) 123-4567">
+                                </div>
+
+                                <div>
+                                    <label for="questions" class="block text-sm font-medium text-gray-700 mb-2">Questions or Comments (optional)</label>
+                                    <textarea id="questions" name="questions" rows="3"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                        placeholder="Any dietary restrictions, accessibility needs, or questions about the workshop..."></textarea>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit"
+                                        class="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                                        Complete My Registration
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Event Details & Additional Information -->
+                    <div class="mb-16">
+                        <h3 class="text-3xl font-bold text-center mb-8"
+                            style="font-family: 'Cinzel', serif; color: var(--primary-gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">
+                            Event Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                            <!-- Location Information -->
+                            <div class="event-card">
+                                <h4 class="event-title text-xl mb-4">Location</h4>
+                                <div style="color: var(--ethereal-white);">
+                                    <p class="mb-2"><strong>Per-Ankh House of Life</strong></p>
+                                    <p class="mb-2">15605 Woodrow Wilson</p>
+                                    <p class="mb-4">Detroit, MI 48238</p>
+                                    <p class="text-sm opacity-80">All events are held at our sacred space unless
+                                        otherwise noted.</p>
+                                </div>
+                            </div>
+
+                            <!-- Contact & Registration -->
+                            <div class="event-card">
+                                <h4 class="event-title text-xl mb-4">Registration & Contact</h4>
+                                <div style="color: var(--ethereal-white);">
+                                    <p class="mb-2">For questions or assistance with registration:</p>
+                                    <p class="mb-2"><strong>Email:</strong> info@perankh.org</p>
+                                    <p class="mb-4"><strong>Phone:</strong> Available upon request</p>
+                                    <p class="text-sm opacity-80">Please register in advance as spaces are limited.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Modal -->
+                    <div id="eventModal"
+                        class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+                        <div class="bg-white rounded-lg p-8 max-w-2xl mx-4 relative">
+                            <button onclick="closeEventModal()"
+                                class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                            <div id="modalContent">
+                                <!-- Modal content will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            </footer>
+
+            <script>
+                // Initialize page
+                document.addEventListener('DOMContentLoaded', () => {
+                    console.log('Per Ankh - Events Page Loaded');
+                    initializeEventForms();
+
+                    // Lightbox: events page event image (Midnight Mass)
+                    const triggerEvents = document.getElementById('eventZoomTriggerEvents');
+                    const lightboxEvents = document.getElementById('imageLightboxEvents');
+                    if (triggerEvents && lightboxEvents) {
+                        const openLightbox = () => { lightboxEvents.style.display = 'flex'; };
+                        const closeLightbox = () => { lightboxEvents.style.display = 'none'; };
+                        triggerEvents.addEventListener('click', openLightbox);
+                        lightboxEvents.addEventListener('click', (e) => {
+                            if (e.target === lightboxEvents) closeLightbox();
+                        });
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape') closeLightbox();
+                        });
+                    }
+
+                    // Lightbox: events page event image (Open Deck Night)
+                    const triggerOpenDeck = document.getElementById('eventZoomTriggerOpenDeck');
+                    const lightboxOpenDeck = document.getElementById('imageLightboxOpenDeck');
+                    if (triggerOpenDeck && lightboxOpenDeck) {
+                        const openLightbox = () => { lightboxOpenDeck.style.display = 'flex'; };
+                        const closeLightbox = () => { lightboxOpenDeck.style.display = 'none'; };
+                        triggerOpenDeck.addEventListener('click', openLightbox);
+                        lightboxOpenDeck.addEventListener('click', (e) => {
+                            if (e.target === lightboxOpenDeck) closeLightbox();
+                        });
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape') closeLightbox();
+                        });
+                    }
+
+                    // Lightbox: Mushroom Cultivation Workshop
+                    const triggerMushroom = document.getElementById('eventZoomTriggerMushroom');
+                    const lightboxMushroom = document.getElementById('imageLightboxMushroom');
+                    if (triggerMushroom && lightboxMushroom) {
+                        const openLightbox = () => { lightboxMushroom.style.display = 'flex'; };
+                        const closeLightbox = () => { lightboxMushroom.style.display = 'none'; };
+                        triggerMushroom.addEventListener('click', openLightbox);
+                        lightboxMushroom.addEventListener('click', (e) => {
+                            if (e.target === lightboxMushroom) closeLightbox();
+                        });
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape') closeLightbox();
+                        });
+                    }
+                });
+
+                function initializeEventForms() {
+                    const growClassForm = document.getElementById('growClassForm');
+                    const eventRegistrationForm = document.getElementById('eventRegistrationForm');
+
+                    // Grow Class Form submission
+                    if (growClassForm) {
+                        growClassForm.addEventListener('submit', handleGrowClassSubmission);
+                    }
+
+                    // Event Registration Form submission
+                    if (eventRegistrationForm) {
+                        eventRegistrationForm.addEventListener('submit', handleEventRegistrationSubmission);
+                    }
+                }
+
+                async function handleGrowClassSubmission(event) {
+                    event.preventDefault();
+
+                    const form = event.target;
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.textContent;
+
+                    // Disable submit button and show loading state
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Processing...';
+                    submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+
+                    try {
+                        // Collect form data
+                        const formData = new FormData(form);
+                        const registrationData = {
+                            firstName: formData.get('firstName'),
+                            lastName: formData.get('lastName'),
+                            email: formData.get('email'),
+                            selectedClass: formData.get('availableClasses'),
+                            submissionDate: new Date().toISOString(),
+                            formType: 'Grow Class Registration'
+                        };
+
+                        // Send email
+                        await sendRegistrationEmail(registrationData);
+
+                        // Show success message
+                        showSuccessMessage('Grow class registration submitted successfully!');
+
+                        // Reset form
+                        form.reset();
+
+                    } catch (error) {
+                        console.error('Form submission error:', error);
+                        showErrorMessage('There was an error submitting your registration. Please try again or contact us directly.');
+                    } finally {
+                        // Re-enable submit button
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                        submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                }
+
+                async function handleEventRegistrationSubmission(event) {
+                    event.preventDefault();
+
+                    const form = event.target;
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.textContent;
+
+                    // Disable submit button and show loading state
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Processing...';
+                    submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+
+                    try {
+                        // Collect form data
+                        const formData = new FormData(form);
+                        const registrationData = {
+                            firstName: formData.get('eventFirstName'),
+                            lastName: formData.get('eventLastName'),
+                            email: formData.get('eventEmail'),
+                            phone: formData.get('eventPhone'),
+                            selectedEvent: formData.get('selectedEvent'),
+                            submissionDate: new Date().toISOString(),
+                            formType: 'Event Registration'
+                        };
+
+                        // Send email
+                        await sendRegistrationEmail(registrationData);
+
+                        // Show success message
+                        showSuccessMessage('Event registration submitted successfully!');
+
+                        // Reset form
+                        form.reset();
+
+                    } catch (error) {
+                        console.error('Form submission error:', error);
+                        showErrorMessage('There was an error submitting your registration. Please try again or contact us directly.');
+                    } finally {
+                        // Re-enable submit button
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                        submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                }
+
+                async function sendRegistrationEmail(registrationData) {
+                    const subject = `${registrationData.formType} - ${registrationData.firstName} ${registrationData.lastName}`;
+                    const body = `New ${registrationData.formType.toLowerCase()} received:\n\n` +
+                        `Name: ${registrationData.firstName} ${registrationData.lastName}\n` +
+                        `Email: ${registrationData.email}\n` +
+                        `Phone: ${registrationData.phone || 'Not provided'}\n` +
+                        `Selected Class/Event: ${registrationData.selectedClass || registrationData.selectedEvent || 'Not specified'}\n` +
+                        `Submitted: ${new Date().toLocaleString()}`;
+
+                    // Create mailto link
+                    const mailtoLink = `mailto:contactperankh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                    // Store registration data in localStorage for backup
+                    localStorage.setItem('lastEventRegistration', JSON.stringify(registrationData));
+
+                    // Open email client
+                    window.location.href = mailtoLink;
+                }
+
+                function showSuccessMessage(message) {
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50';
+                    notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-3"></i>
+                    <div>
+                        <h4 class="font-bold">Success!</h4>
+                        <p class="text-sm">${message}</p>
+                    </div>
+                </div>
+            `;
+
+                    document.body.appendChild(notification);
+
+                    // Remove message after 5 seconds
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 5000);
+                }
+
+                function showErrorMessage(errorText) {
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg z-50';
+                    notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-exclamation-triangle mr-3"></i>
+                    <div>
+                        <h4 class="font-bold">Error</h4>
+                        <p class="text-sm">${errorText}</p>
+                    </div>
+                </div>
+            `;
+
+                    document.body.appendChild(notification);
+
+                    // Remove message after 7 seconds
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 7000);
+                }
+
+                // Event Modal Functions
+                function openEventModal(eventType) {
+                    const modal = document.getElementById('eventModal');
+                    const modalContent = document.getElementById('modalContent');
+
+                    let content = '';
+
+                    switch (eventType) {
+                        case 'fivetrips':
+                            content = `
+                        <div class="text-center">
+                            <img src="/assets/images/events/fivetrips.png" alt="Five Trips Event" class="w-full max-w-md mx-auto mb-6 rounded-lg">
+                            <h2 class="text-3xl font-bold mb-4" style="color: var(--earth-brown); font-family: 'Cinzel', serif;">Five Trips</h2>
+                            <p class="text-lg mb-2"><strong>Presenter:</strong> Kendis Gibson</p>
+                            <p class="text-lg mb-2"><strong>Date:</strong> July 27th</p>
+                            <p class="text-lg mb-4"><strong>Location:</strong> Per Ankh Entheogenic Church</p>
+                            <p class="text-gray-700 mb-6">An investigative journey into mental health, psychedelic healing, and saving a life. Join us for this transformative presentation exploring the intersection of consciousness and healing.</p>
+                            <div class="flex justify-center space-x-4">
+                                <button onclick="registerForEvent('five-trips')" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition-colors">
+                                    Register for Event
+                                </button>
+                                <button onclick="closeEventModal()" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                            break;
+
+                        case 'readyletgo':
+                            content = `
+                        <div class="text-center">
+                            <img src="/assets/images/events/readyletgo.png" alt="Ready Set Let Go Event" class="w-full max-w-md mx-auto mb-6 rounded-lg">
+                            <h2 class="text-3xl font-bold mb-4" style="color: var(--consciousness-purple); font-family: 'Cinzel', serif;">Ready! Set! Let Go!</h2>
+                            <p class="text-lg mb-2"><strong>Type:</strong> Bi-Weekly Entheogenic Healing Ceremony</p>
+                            <p class="text-lg mb-2"><strong>Date:</strong> July 13th</p>
+                            <p class="text-lg mb-2"><strong>Time:</strong> 5pm - 10pm</p>
+                            <p class="text-lg mb-2"><strong>Cost:</strong> $150</p>
+                            <p class="text-lg mb-4"><strong>Location:</strong> 15605 Woodrow Wilson, Detroit, MI</p>
+                            <p class="text-gray-700 mb-6">Join us for our bi-weekly entheogenic healing ceremony. A sacred space for transformation, healing, and spiritual growth through guided plant medicine experiences.</p>
+                            <div class="flex justify-center space-x-4">
+                                <button onclick="registerForEvent('ready-set-let-go')" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                    Register for Event
+                                </button>
+                                <button onclick="closeEventModal()" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                            break;
+
+                        case 'midnitemass':
+                            content = `
+                        <div class="text-center">
+                            <img src="/assets/images/events/midnitemass.png" alt="Midnight Mass Event" class="w-full max-w-md mx-auto mb-6 rounded-lg">
+                            <h2 class="text-3xl font-bold mb-4" style="color: var(--sacred-amber); font-family: 'Cinzel', serif;">Midnight Mass</h2>
+                            <p class="text-lg mb-2"><strong>Date:</strong> July 19th, 2025</p>
+                            <p class="text-lg mb-2"><strong>Time:</strong> 7PM</p>
+                            <p class="text-lg mb-2"><strong>Location:</strong> Per-Ankh House of Life</p>
+                            <p class="text-lg mb-4"><strong>Address:</strong> 15605 Woodrow Wilson, Detroit, MI 48238</p>
+                            <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                                <p class="text-sm mb-2"><strong>Special Notes:</strong></p>
+                                <p class="text-sm mb-1">• Refreshments will be available</p>
+                                <p class="text-sm">• Wear ceremonial whites or comfortable clothing</p>
+                            </div>
+                            <p class="text-gray-700 mb-6">A sacred midnight ceremony combining traditional entheogenic practices with spiritual communion. Experience deep healing and connection in our sacred space.</p>
+                            <div class="flex justify-center space-x-4">
+                                <button onclick="registerForEvent('midnight-mass')" class="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition-colors">
+                                    Register for Event
+                                </button>
+                                <button onclick="closeEventModal()" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                            break;
+                    }
+
+                    modalContent.innerHTML = content;
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+
+                function closeEventModal() {
+                    const modal = document.getElementById('eventModal');
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }
+
+                function registerForEvent(eventType) {
+                    // Close modal
+                    closeEventModal();
+
+                    // Scroll to registration form
+                    const registrationForm = document.getElementById('eventRegistrationForm');
+                    if (registrationForm) {
+                        registrationForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                        // Pre-select the event in the dropdown
+                        const eventSelect = document.getElementById('selectedEvent');
+                        if (eventSelect) {
+                            eventSelect.value = eventType;
+                            eventSelect.focus();
+                        }
+                    }
+                }
+
+                // Close modal when clicking outside of it
+                document.addEventListener('click', function (event) {
+                    const modal = document.getElementById('eventModal');
+                    if (event.target === modal) {
+                        closeEventModal();
+                    }
+                });
+
+                // Close modal with Escape key
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape') {
+                        closeEventModal();
+                    }
+                });
+            </script>
+
+            <!-- GSAP ScrollTrigger Animations -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+            <script>
+                // Register ScrollTrigger plugin
+                gsap.registerPlugin(ScrollTrigger);
+
+                // Animate hero title
+                gsap.from(".hero-title", {
+                    y: 60,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    delay: 0.3
+                });
+
+                // Animate hero subtitle
+                gsap.from(".hero-subtitle", {
+                    y: 40,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    delay: 0.6
+                });
+
+                // Animate upcoming events heading
+                gsap.from("section h2", {
+                    scrollTrigger: {
+                        trigger: "section h2",
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+
+                // Animate event cards with stagger
+                gsap.from(".event-card", {
+                    scrollTrigger: {
+                        trigger: ".event-card",
+                        start: "top 75%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 100,
+                    opacity: 0,
+                    duration: 0.8,
+                    stagger: 0.25,
+                    ease: "power2.out"
+                });
+
+                // Animate event images with zoom effect
+                gsap.from(".event-card img", {
+                    scrollTrigger: {
+                        trigger: ".event-card img",
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    scale: 1.1,
+                    opacity: 0,
+                    duration: 1.2,
+                    stagger: 0.25,
+                    ease: "power2.out"
+                });
+
+                // Parallax effect on event images
+                gsap.to(".event-card img", {
+                    scrollTrigger: {
+                        trigger: ".event-card",
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1.5
+                    },
+                    y: -40,
+                    ease: "none"
+                });
+
+                // Animate event details section
+                gsap.from(".event-card h4", {
+                    scrollTrigger: {
+                        trigger: ".event-card h4",
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.6,
+                    stagger: 0.15,
+                    ease: "power2.out"
+                });
+
+                // Animate registration form
+                gsap.from("#growClassForm", {
+                    scrollTrigger: {
+                        trigger: "#growClassForm",
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 60,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+
+                // Animate form fields with stagger
+                gsap.from("#growClassForm > div", {
+                    scrollTrigger: {
+                        trigger: "#growClassForm",
+                        start: "top 75%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.5,
+                    stagger: 0.1,
+                    ease: "power2.out",
+                    delay: 0.3
+                });
+
+                // Event Details section animation
+                gsap.from("section.mb-16 h3", {
+                    scrollTrigger: {
+                        trigger: "section.mb-16 h3",
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+
+                // Clean up ScrollTrigger on page unload
+                window.addEventListener('beforeunload', () => {
+                    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+                });
+            </script>
+</body>
+<script type="module" src="/src/services/cms-loader.js"></script>
+
+</html>

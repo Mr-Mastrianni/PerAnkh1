@@ -1,0 +1,18 @@
+{
+  "pageId": "contact",
+  "name": "Contact",
+  "path": "contact.html",
+  "lastModified": "2026-03-11T00:00:00.000Z",
+  "sections": [
+    { "key": "heroTitle", "type": "text", "label": "Hero Title", "value": "Contact Us" },
+    { "key": "heroSubtitle", "type": "text", "label": "Hero Subtitle", "value": "Connect with the Per Ankh community" },
+    { "key": "getInTouchTitle", "type": "text", "label": "Get In Touch Title", "value": "Get In Touch" },
+    { "key": "address", "type": "text", "label": "Address", "value": "15705 Woodrow Wilson, Detroit, Michigan" },
+    { "key": "email", "type": "text", "label": "Email", "value": "contactperankh@gmail.com" },
+    { "key": "connectTitle", "type": "text", "label": "Connect Section Title", "value": "Connect With Us" },
+    { "key": "connectText", "type": "richtext", "label": "Connect Description", "value": "Reach out to learn more about membership, events, or our spiritual practices. We welcome all sincere seekers on the path of consciousness exploration." },
+    { "key": "contactFormTitle", "type": "text", "label": "Contact Form Title", "value": "Send Us a Message" },
+    { "key": "instagramUrl", "type": "text", "label": "Instagram URL", "value": "https://www.instagram.com/perankh_church" },
+    { "key": "facebookUrl", "type": "text", "label": "Facebook URL", "value": "https://www.facebook.com/profile.php?id=61565651284992" }
+  ]
+}

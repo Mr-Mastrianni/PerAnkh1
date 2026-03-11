@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manager - Per Ankh Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/variables.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Rich Text Editor -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <style>
+        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-logo .ankh {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .admin-logo h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--ethereal-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(248, 248, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--ethereal-white);
+        }
+
+        .content-manager {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .manager-header {
+            margin-bottom: 2rem;
+        }
+
+        .manager-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .manager-subtitle {
+            color: rgba(248, 248, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .content-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            color: rgba(248, 248, 255, 0.7);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-button.active {
+            color: var(--primary-gold);
+            border-bottom-color: var(--primary-gold);
+        }
+
+        .tab-button:hover {
+            color: var(--ethereal-white);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .page-list {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .page-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .page-item:last-child {
+            border-bottom: none;
+        }
+
+        .page-item:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .page-info {
+            flex: 1;
+        }
+
+        .page-name {
+            font-weight: 600;
+            color: var(--ethereal-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .page-path {
+            color: rgba(248, 248, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .page-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--deep-gold) 100%);
+            color: var(--matte-black);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: rgba(45, 27, 105, 0.6);
+            color: var(--ethereal-white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.danger {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+        }
+
+        .editor-container {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .editor-title {
+            flex: 1;
+        }
+
+        .editor-title input {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .editor-title input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .editor-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .ql-container {
+            min-height: 400px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .ql-toolbar {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(45, 27, 105, 0.2);
+        }
+
+        .ql-editor {
+            color: var(--ethereal-white);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .file-upload {
+            background: rgba(45, 27, 105, 0.3);
+            border: 2px dashed rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-gold);
+            background: rgba(45, 27, 105, 0.5);
+        }
+
+        .file-upload.dragover {
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            color: rgba(248, 248, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-subtext {
+            color: rgba(248, 248, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .create-page {
+            background: rgba(28, 28, 28, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-select {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-textarea {
+            background: rgba(45, 27, 105, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--ethereal-white);
+            width: 100%;
+            font-size: 1rem;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .content-manager {
+                padding: 1rem;
+            }
+
+            .content-tabs {
+                flex-wrap: wrap;
+            }
+
+            .page-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .page-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="admin-logo">
+                <div class="ankh">☥</div>
+                <h1>Content Manager</h1>
+            </div>
+            <div class="breadcrumb">
+                <a href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <span>/</span>
+                <span>Content Manager</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Manager -->
+    <div class="content-manager">
+        <div class="manager-header">
+            <h1 class="manager-title">Content Management System</h1>
+            <p class="manager-subtitle">Manage all website content, pages, and sacred teachings</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="content-tabs">
+            <button class="tab-button active" onclick="switchTab('pages')">
+                <i class="fas fa-file-alt mr-2"></i>Manage Pages
+            </button>
+            <button class="tab-button" onclick="switchTab('editor')">
+                <i class="fas fa-edit mr-2"></i>Page Editor
+            </button>
+            <button class="tab-button" onclick="switchTab('media')">
+                <i class="fas fa-images mr-2"></i>Media Library
+            </button>
+            <button class="tab-button" onclick="switchTab('profiles')">
+                <i class="fas fa-user mr-2"></i>Profiles
+            </button>
+        </div>
+
+        <!-- Manage Pages Tab -->
+        <div id="pages-tab" class="tab-content active">
+            <div class="page-list">
+                <h2 style="color: var(--primary-gold); margin-bottom: 1.5rem; font-family: 'Cinzel', serif;">
+                    <i class="fas fa-file-alt mr-2"></i>Website Pages
+                </h2>
+                <div id="page-list-container">
+                    <!-- Pages will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Editor Tab (Section-Based) -->
+        <div id="editor-tab" class="tab-content">
+            <div class="editor-container">
+                <div class="success-message" id="save-success">
+                    <i class="fas fa-check-circle mr-2"></i>Page saved successfully!
+                </div>
+                <div class="error-message" id="save-error">
+                    <i class="fas fa-exclamation-circle mr-2"></i>Error saving page. Please try again.
+                </div>
+
+                <div class="editor-header"
+                    style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
+                    <div>
+                        <h2 id="editor-page-name"
+                            style="color: var(--primary-gold); font-family: 'Cinzel', serif; font-size: 1.8rem; margin:0;">
+                            Select a page to edit</h2>
+                        <span id="editor-page-path" style="color: rgba(248,248,255,.5); font-size: 0.9rem;"></span>
+                    </div>
+                    <div class="editor-controls" style="display:flex; gap:0.5rem;">
+                        <button class="action-btn" onclick="savePage()">
+                            <i class="fas fa-save mr-2"></i>Save All Changes
+                        </button>
+                        <button class="action-btn secondary" onclick="previewPage()">
+                            <i class="fas fa-eye mr-2"></i>Preview
+                        </button>
+                    </div>
+                </div>
+
+                <div id="sections-editor" style="display:flex; flex-direction:column; gap:1.5rem;">
+                    <div style="color: rgba(248,248,255,.5); text-align:center; padding:3rem;">
+                        <i class="fas fa-arrow-left"
+                            style="font-size:2rem; margin-bottom:1rem; display:block; color:var(--primary-gold);"></i>
+                        Click "Edit" on a page from the Manage Pages tab to begin editing its content sections.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Media Library Tab -->
+        <div id="media-tab" class="tab-content">
+            <div class="create-page">
+                <h2 style="color: var(--primary-gold); margin-bottom: 1.5rem; font-family: 'Cinzel', serif;">
+                    <i class="fas fa-images mr-2"></i>Media Library
+                </h2>
+
+                <div class="file-upload" id="file-upload-area">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">Drag and drop files here or click to browse</div>
+                    <div class="upload-subtext">Supported formats: JPG, PNG, GIF, PDF, MP4</div>
+                    <input type="file" id="file-input" multiple style="display: none;">
+                </div>
+
+                <div id="media-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <!-- Media files will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Profiles Tab -->
+        <div id="profiles-tab" class="tab-content">
+            <div class="create-page">
+                <h2
+                    style="color: var(--primary-gold); margin-bottom: 1.5rem; font-family: 'Cinzel', serif; display:flex; align-items:center; gap:.5rem;">
+                    <i class="fas fa-user"></i> Profiles Manager
+                </h2>
+
+                <div id="profiles-messages" style="margin-bottom:1rem; display:none;" class="success-message"></div>
+
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1rem;">
+                    <div style="color: rgba(248, 248, 255, 0.8);">Create and edit personal profile pages.</div>
+                    <button class="action-btn" onclick="openProfileForm()"><i class="fas fa-plus mr-2"></i>Add
+                        Profile</button>
+                </div>
+
+                <div id="profiles-list"
+                    style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:1rem;"></div>
+
+                <!-- Profile Form Modal -->
+                <div id="profile-modal"
+                    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); z-index:10000; align-items:center; justify-content:center;">
+                    <div
+                        style="background: rgba(28,28,28,.95); border:1px solid rgba(212,175,55,.3); border-radius:12px; padding:1.5rem; width:95%; max-width:720px;">
+                        <div
+                            style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; border-bottom:1px solid rgba(212,175,55,.2); padding-bottom:.75rem;">
+                            <div style="color:var(--primary-gold); font-family:'Cinzel', serif; font-weight:600;">
+                                Profile</div>
+                            <button onclick="closeProfileForm()"
+                                style="background:none; border:none; color:#fff; font-size:1.4rem; cursor:pointer;">&times;</button>
+                        </div>
+
+                        <form id="profile-form">
+                            <input type="hidden" id="profile-id">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input id="profile-name" class="form-input" placeholder="Full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Title/Role</label>
+                                <input id="profile-title" class="form-input" placeholder="e.g., Temple Keeper">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Profile Page Path</label>
+                                <input id="profile-path" class="form-input" placeholder="jon.html" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Avatar URL</label>
+                                <div style="display:flex; gap:.5rem;">
+                                    <input id="profile-avatar" class="form-input" placeholder="https://..."
+                                        style="flex:1;">
+                                    <input type="file" id="profile-avatar-file" accept="image/*" style="display:none;">
+                                    <button type="button" class="action-btn secondary"
+                                        onclick="document.getElementById('profile-avatar-file').click()"><i
+                                            class="fas fa-upload mr-1"></i>Upload</button>
+                                </div>
+                                <div id="profile-avatar-preview" style="margin-top:.5rem;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Short Bio</label>
+                                <textarea id="profile-bio" class="form-textarea" placeholder="Brief bio..."></textarea>
+                            </div>
+                            <div
+                                style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+                                <div>
+                                    <label class="form-label">Email</label>
+                                    <input id="profile-email" class="form-input" placeholder="email@example.com">
+                                </div>
+                                <div>
+                                    <label class="form-label">Website</label>
+                                    <input id="profile-website" class="form-input" placeholder="https://...">
+                                </div>
+                                <div>
+                                    <label class="form-label">Instagram</label>
+                                    <input id="profile-instagram" class="form-input" placeholder="@handle or URL">
+                                </div>
+                                <div>
+                                    <label class="form-label">Twitter/X</label>
+                                    <input id="profile-twitter" class="form-input" placeholder="@handle or URL">
+                                </div>
+                            </div>
+                            <div style="display:flex; gap:.75rem; justify-content:flex-end; margin-top:1rem;">
+                                <button type="button" class="action-btn secondary"
+                                    onclick="closeProfileForm()">Cancel</button>
+                                <button type="submit" class="action-btn">Save Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/auth/clerk-admin-protect.js"></script>
+
+    <!-- Tab switching - standalone non-module script so it always works -->
+    <script>
+        function switchTab(tabId) {
+            // Special case for dashboard
+            if (tabId === 'dashboard') {
+                window.location.href = '/admin/dashboard';
+                return;
+            }
+
+            // Remove active class from all tabs and buttons
+            document.querySelectorAll('.tab-content').forEach(function (tab) { tab.classList.remove('active'); });
+            document.querySelectorAll('.tab-button').forEach(function (btn) { btn.classList.remove('active'); });
+
+            // Add active class to selected tab and button
+            var selectedTab = document.getElementById(tabId + '-tab');
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // Find and activate the corresponding button
+            var tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(function (btn) {
+                var onclickAttr = btn.getAttribute('onclick');
+                if (onclickAttr && onclickAttr.indexOf("switchTab('" + tabId + "')") !== -1) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Lazy-load content for the selected tab
+            try {
+                if (tabId === 'pages' && typeof window.loadPageList === 'function') window.loadPageList();
+                if (tabId === 'media' && typeof window.initMediaLibrary === 'function') window.initMediaLibrary();
+                if (tabId === 'profiles' && typeof window.renderProfiles === 'function') window.renderProfiles();
+            } catch (e) { console.warn('Tab content load error:', e); }
+        }
+    </script>
+
+    <script type="module">
+        import { db, storage } from '/src/services/firebase-config.js';
+        import { collection, addDoc, getDocs, doc, setDoc, deleteDoc, query, orderBy, getDoc } from 'firebase/firestore';
+        import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage';
+
+        // Export to window for inline onclick handlers to access
+        window.db = db;
+        window.storage = storage;
+        window.collection = collection;
+        window.addDoc = addDoc;
+        window.getDocs = getDocs;
+        window.doc = doc;
+        window.setDoc = setDoc;
+        window.deleteDoc = deleteDoc;
+        window.query = query;
+        window.orderBy = orderBy;
+        window.getDoc = getDoc;
+        window.ref = ref;
+        window.uploadBytesResumable = uploadBytesResumable;
+        window.getDownloadURL = getDownloadURL;
+        window.deleteObject = deleteObject;
+
+        let quillEditor;
+        let currentEditingPage = null;
+
+        // Auth is handled by clerk-admin-protect.js (loaded above)
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Content Manager page initializing...');
+            initializeEditors();
+            loadPageList();
+            setupFileUpload();
+            initMediaLibrary();
+        });
+
+        // Initialize editors (no-op now, editors are created dynamically)
+        function initializeEditors() {
+            console.log('Section-based editor ready');
+        }
+
+        const API_BASE = 'http://localhost:4000';
+
+        async function initMediaLibrary() {
+            try {
+                const mediaGrid = document.getElementById('media-grid');
+                mediaGrid.innerHTML = '';
+
+                let hasServerMedia = false;
+                // 1) Try server media (Legacy API fallback, though we are migrating to Firebase)
+                try {
+                    const resp = await fetch(`${API_BASE}/api/media`, { credentials: 'include' });
+                    if (resp.ok) {
+                        const serverItems = await resp.json();
+                        serverItems
+                            .sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate))
+                            .forEach(item => renderMediaItem({ ...item, blob: null }));
+                        if (serverItems.length > 0) hasServerMedia = true;
+                    }
+                } catch (e) {
+                    console.warn('Server media fetch failed, proceeding to Firebase');
+                }
+
+                // 2) Firebase Storage media metadata from Firestore
+                try {
+                    const mediaRef = window.collection(window.db, "media");
+                    const q = window.query(mediaRef, window.orderBy("uploadDate", "desc"));
+                    const querySnapshot = await window.getDocs(q);
+
+                    querySnapshot.forEach((doc) => {
+                        const mediaData = { id: doc.id, ...doc.data() };
+                        renderMediaItem(mediaData);
+                    });
+                } catch (e) {
+                    console.error("Failed to load Firebase media metadata:", e);
+                }
+            } catch (e) {
+                console.error('Failed to load media library:', e);
+            }
+        }
+
+        function renderMediaItem(media) {
+            const mediaGrid = document.getElementById('media-grid');
+            const item = document.createElement('div');
+            item.className = 'media-item';
+            item.dataset.id = media.id;
+            item.dataset.name = media.name || '';
+            item.dataset.type = media.type || '';
+            item.style.cssText = `
+                background: rgba(28, 28, 28, 0.8);
+                border: 1px solid rgba(212, 175, 55, 0.3);
+                border-radius: 10px;
+                padding: 1rem;
+                text-align: center;
+                transition: all 0.3s ease;
+                position: relative;
+            `;
+
+            const isImage = media.type && media.type.startsWith('image/');
+            const src = media.blob ? getBlobUrlFor(media) : (media.url ? media.url : '');
+            if (src) item.dataset.url = src;
+            const preview = isImage ?
+                `<img src="${src}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 5px; margin-bottom: 0.5rem;">` :
+                `<div style="width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; background: rgba(212, 175, 55, 0.1); border-radius: 5px; margin-bottom: 0.5rem;">
+                    <i class="fas fa-file" style="font-size: 3rem; color: var(--primary-gold);"></i>
+                </div>`;
+
+            item.innerHTML = `
+                ${preview}
+                <div class="media-name" style="color: var(--ethereal-white); font-size: 0.9rem; margin-bottom: 0.25rem; word-break: break-word;">${media.name}</div>
+                <div class="media-size" style="color: rgba(248, 248, 255, 0.6); font-size: 0.8rem; margin-bottom: 0.5rem;">${formatFileSize(media.size)}</div>
+                <div class="media-actions" style="display: flex; gap: 0.5rem; justify-content: center;">
+                    <button class="action-btn" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="event.stopPropagation(); downloadMedia('${media.id}')" title="Download">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="action-btn danger" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="event.stopPropagation(); deleteMediaItem('${media.id}', this)" title="Delete">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+
+            // Click to preview
+            item.addEventListener('click', () => openMediaPreview(item.dataset.id));
+            mediaGrid.insertBefore(item, mediaGrid.firstChild);
+        }
+
+        function openMediaPreview(id) {
+            const el = document.querySelector(`.media-item[data-id="${id}"]`);
+            if (!el) return;
+            const url = el.dataset.url;
+            const type = el.dataset.type;
+            const name = el.dataset.name || 'file';
+
+            const modal = document.createElement('div');
+            modal.id = 'media-preview-modal';
+            modal.style.cssText = `
+                position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+                z-index: 10000; display: flex; align-items: center; justify-content: center;
+                padding: 2rem; backdrop-filter: blur(6px);
+            `;
+
+            const box = document.createElement('div');
+            box.style.cssText = `
+                max-width: 90vw; max-height: 85vh; background: #111827; border: 1px solid rgba(212,175,55,.3);
+                border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,.4);
+            `;
+
+            const header = document.createElement('div');
+            header.style.cssText = `display:flex; justify-content: space-between; align-items:center; padding:.75rem 1rem; border-bottom:1px solid rgba(212,175,55,.2); color:#F8F8FF;`;
+            header.innerHTML = `<div style="font-weight:600;">${name}</div><button style="background:none;border:none;color:#F8F8FF;font-size:1.5rem;cursor:pointer;">&times;</button>`;
+            header.lastChild.addEventListener('click', () => modal.remove());
+
+            const content = document.createElement('div');
+            content.style.cssText = `padding: 1rem; display:flex; align-items:center; justify-content:center;`;
+
+            if (type && type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.src = url;
+                img.style.maxWidth = '85vw';
+                img.style.maxHeight = '75vh';
+                img.style.borderRadius = '8px';
+                content.appendChild(img);
+            } else if (type && type.startsWith('video/')) {
+                const vid = document.createElement('video');
+                vid.src = url;
+                vid.controls = true;
+                vid.style.maxWidth = '85vw';
+                vid.style.maxHeight = '75vh';
+                vid.style.borderRadius = '8px';
+                content.appendChild(vid);
+            } else if (type === 'application/pdf') {
+                const iframe = document.createElement('iframe');
+                iframe.src = url;
+                iframe.style.width = '85vw';
+                iframe.style.height = '75vh';
+                iframe.style.background = 'white';
+                content.appendChild(iframe);
+            } else {
+                content.innerHTML = `<div style="color:#F8F8FF; text-align:center">Preview unavailable. <a href="${url}" target="_blank" style="color: var(--primary-gold); text-decoration: underline;">Open</a> or use Download.</div>`;
+            }
+
+            box.appendChild(header);
+            box.appendChild(content);
+            modal.appendChild(box);
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+            document.body.appendChild(modal);
+        }
+
+        async function deleteMediaItem(id, btn) {
+            if (!confirm('Delete this file? This action cannot be undone.')) return;
+            const el = btn ? btn.closest('.media-item') : document.querySelector(`.media-item[data-id="${id}"]`);
+            if (!el) return;
+            const isServerId = isNaN(Number(id)) && !id.startsWith('media_');
+            const isFirebaseId = !isServerId && id.length > 5; // Basic heuristic, Firestore IDs are long strings
+
+            try {
+                if (isFirebaseId) {
+                    const docRef = window.doc(window.db, "media", id);
+                    const docSnap = await window.getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        const mediaData = docSnap.data();
+
+                        // Delete from Storage
+                        if (mediaData.storagePath) {
+                            const storageRef = window.ref(window.storage, mediaData.storagePath);
+                            await window.deleteObject(storageRef);
+                        }
+
+                        // Delete from Firestore
+                        await window.deleteDoc(docRef);
+                    }
+                } else if (isServerId) {
+                    const res = await fetch(`${API_BASE}/api/media/${id}`, { method: 'DELETE' });
+                    if (!res.ok) throw new Error('Server delete failed');
+                }
+
+                el.style.opacity = '0';
+                el.style.transform = 'scale(0.98)';
+                setTimeout(() => el.remove(), 200);
+            } catch (e) {
+                alert('Failed to delete media. See console for details.');
+                console.error(e);
+            }
+        }
+
+        async function downloadMedia(id) {
+            try {
+                // Get URL directly from the rendered element
+                let url = null;
+                let name = 'download';
+
+                const el = document.querySelector(`.media-item[data-id="${id}"]`);
+                if (el) {
+                    url = el.dataset.url;
+                    name = el.dataset.name || name;
+                }
+
+                if (!url) {
+                    alert('Could not locate file URL for download.');
+                    return;
+                }
+
+                // For cross-origin Firebase Storage URLs, standard a.download doesn't always work perfectly,
+                // but we will try it first. Alternatively we can fetch and create a blob.
+                const response = await fetch(url);
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = name;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+
+                setTimeout(() => URL.revokeObjectURL(blobUrl), 100);
+            } catch (e) {
+                console.error('Download failed:', e);
+                alert('Download failed. Please try opening the file directly.');
+            }
+        }
+
+        // Load list of pages from pageContent collection
+        async function loadPageList() {
+            const container = document.getElementById('page-list-container');
+            if (!container) return;
+
+            container.innerHTML = '<div style="color:var(--primary-gold);">Loading pages...</div>';
+
+            try {
+                const pagesRef = window.collection(window.db, "pageContent");
+                const querySnapshot = await window.getDocs(pagesRef);
+
+                const pages = [];
+                querySnapshot.forEach((d) => {
+                    pages.push({ id: d.id, ...d.data() });
+                });
+
+                if (pages.length === 0) {
+                    container.innerHTML = '<div style="color: rgba(248,248,255,.6);">No pages found. Run the seed script first (seed-database.html).</div>';
+                    return;
+                }
+
+                // Sort by name
+                pages.sort((a, b) => a.name.localeCompare(b.name));
+
+                container.innerHTML = pages.map(page => {
+                    const sectionCount = (page.sections || []).length;
+                    const modified = page.lastModified ? new Date(page.lastModified).toLocaleDateString() : 'Never';
+                    return `
+                    <div class="page-item" data-id="${page.id}" style="display:flex; justify-content:space-between; align-items:center; padding:1rem; border:1px solid rgba(212,175,55,.2); border-radius:10px; margin-bottom:0.75rem; background:rgba(28,28,28,.6); transition:all .2s;">
+                        <div class="page-info">
+                            <div class="page-name" style="color:var(--ethereal-white); font-weight:600; font-size:1.1rem;">${page.name}</div>
+                            <div class="page-path" style="color:rgba(248,248,255,.5); font-size:0.85rem;">${page.path} • ${sectionCount} sections • Modified ${modified}</div>
+                        </div>
+                        <div class="page-actions" style="display:flex; gap:0.5rem;">
+                            <button class="action-btn" onclick="editPage('${page.id}')">
+                                <i class="fas fa-edit mr-1"></i>Edit
+                            </button>
+                            <button class="action-btn secondary" onclick="viewPage('${page.path}')">
+                                <i class="fas fa-eye mr-1"></i>View
+                            </button>
+                        </div>
+                    </div>
+                `}).join('');
+            } catch (error) {
+                console.error("Error loading pages:", error);
+                container.innerHTML = '<div style="color: #fca5a5;">Failed to load pages. Please check database connection.</div>';
+            }
+        }
+
+        // ── Section editor rendering ──────────────────────────────────
+
+        function renderSectionEditor(section, index) {
+            const { key, type, label, value } = section;
+            const cardStyle = `background:rgba(28,28,28,.7); border:1px solid rgba(212,175,55,.2); border-radius:12px; padding:1.25rem; transition:border-color .2s;`;
+            const labelStyle = `color:var(--primary-gold); font-weight:600; font-size:0.9rem; margin-bottom:0.5rem; display:block;`;
+            const inputStyle = `width:100%; padding:0.75rem; background:rgba(10,10,10,.8); border:1px solid rgba(212,175,55,.3); border-radius:8px; color:var(--ethereal-white); font-size:1rem; outline:none; transition:border-color .2s;`;
+
+            if (type === 'text') {
+                return `<div style="${cardStyle}">
+                    <label style="${labelStyle}">${label}</label>
+                    <input type="text" data-section-key="${key}" data-section-type="text" value="${escapeAttr(value || '')}" style="${inputStyle}" onfocus="this.style.borderColor='var(--primary-gold)'" onblur="this.style.borderColor='rgba(212,175,55,.3)'">
+                </div>`;
+            }
+
+            if (type === 'richtext') {
+                return `<div style="${cardStyle}">
+                    <label style="${labelStyle}">${label}</label>
+                    <textarea data-section-key="${key}" data-section-type="richtext" rows="5" style="${inputStyle} resize:vertical; font-family:inherit; line-height:1.6;" onfocus="this.style.borderColor='var(--primary-gold)'" onblur="this.style.borderColor='rgba(212,175,55,.3)'">${escapeHtml(value || '')}</textarea>
+                </div>`;
+            }
+
+            if (type === 'list') {
+                const items = value || [];
+                const itemFields = items.length > 0 ? Object.keys(items[0]).filter(k => k !== 'id') : ['title'];
+
+                let itemsHtml = items.map((item, i) => {
+                    const fieldsHtml = itemFields.map(field => {
+                        const fieldValue = item[field] || '';
+                        // Image field: show preview + path input + upload button
+                        if (field === 'image') {
+                            const uid = 'img_' + key + '_' + i + '_' + Date.now();
+                            return `<div style="margin-bottom:0.5rem;">
+                                <label style="color:rgba(248,248,255,.6); font-size:0.8rem; text-transform:capitalize;">Image</label>
+                                <div id="preview_${uid}" style="margin-bottom:0.5rem;">${fieldValue ? `<img src="${escapeAttr(fieldValue)}" style="max-width:200px; max-height:140px; object-fit:contain; border-radius:6px; border:1px solid rgba(212,175,55,.2);" onerror="this.style.display='none'">` : ''}</div>
+                                <div style="display:flex; gap:0.5rem; align-items:center;">
+                                    <input type="text" data-list-field="${field}" id="input_${uid}" value="${escapeAttr(fieldValue)}" placeholder="Image path or URL" style="${inputStyle} font-size:0.9rem; flex:1;">
+                                    <button type="button" onclick="uploadImageForField('${uid}')" style="background:linear-gradient(45deg,#d4af37,#b8941f); color:#1a1a1a; border:none; border-radius:8px; padding:0.5rem 1rem; font-size:0.85rem; cursor:pointer; font-weight:600; white-space:nowrap;">
+                                        <i class='fas fa-upload' style='margin-right:4px;'></i>Upload
+                                    </button>
+                                </div>
+                                <input type="file" id="file_${uid}" accept="image/*" style="display:none;">
+                            </div>`;
+                        }
+                        const isLong = field === 'description' || field === 'bio' || fieldValue.length > 100;
+                        if (isLong) {
+                            return `<div style="margin-bottom:0.5rem;">
+                                <label style="color:rgba(248,248,255,.6); font-size:0.8rem; text-transform:capitalize;">${field}</label>
+                                <textarea data-list-field="${field}" rows="3" style="${inputStyle} resize:vertical; font-size:0.9rem;">${escapeHtml(fieldValue)}</textarea>
+                            </div>`;
+                        }
+                        return `<div style="margin-bottom:0.5rem;">
+                            <label style="color:rgba(248,248,255,.6); font-size:0.8rem; text-transform:capitalize;">${field}</label>
+                            <input type="text" data-list-field="${field}" value="${escapeAttr(fieldValue)}" style="${inputStyle} font-size:0.9rem;">
+                        </div>`;
+                    }).join('');
+
+                    return `<div class="list-item" data-list-index="${i}" style="background:rgba(10,10,10,.5); border:1px solid rgba(212,175,55,.15); border-radius:8px; padding:1rem; position:relative;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                            <span style="color:var(--primary-gold); font-weight:600; font-size:0.85rem;">Item ${i + 1}</span>
+                            <button type="button" onclick="removeListItem(this)" style="background:rgba(220,38,38,.2); color:#f87171; border:1px solid rgba(220,38,38,.3); border-radius:6px; padding:0.25rem 0.6rem; font-size:0.8rem; cursor:pointer;" title="Remove item">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                        ${fieldsHtml}
+                    </div>`;
+                }).join('');
+
+                return `<div style="${cardStyle}" data-section-key="${key}" data-section-type="list" data-list-fields="${escapeAttr(JSON.stringify(itemFields))}">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                        <label style="${labelStyle} margin-bottom:0;">${label} (${items.length} items)</label>
+                        <button type="button" onclick="addListItem(this.closest('[data-section-key]'))" style="background:rgba(212,175,55,.15); color:var(--primary-gold); border:1px solid rgba(212,175,55,.3); border-radius:8px; padding:0.4rem 1rem; font-size:0.85rem; cursor:pointer; font-weight:600;">
+                            <i class="fas fa-plus mr-1"></i>Add Item
+                        </button>
+                    </div>
+                    <div class="list-items-container" style="display:flex; flex-direction:column; gap:0.75rem;">
+                        ${itemsHtml}
+                    </div>
+                </div>`;
+            }
+
+            return '';
+        }
+
+        function escapeAttr(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        // ── List item add/remove ──────────────────────────────────────
+
+        window.addListItem = function (container) {
+            const fields = JSON.parse(container.dataset.listFields);
+            const listContainer = container.querySelector('.list-items-container');
+            const existingItems = listContainer.querySelectorAll('.list-item');
+            const newIndex = existingItems.length;
+            const inputStyle = `width:100%; padding:0.75rem; background:rgba(10,10,10,.8); border:1px solid rgba(212,175,55,.3); border-radius:8px; color:var(--ethereal-white); font-size:0.9rem; outline:none;`;
+
+            const fieldsHtml = fields.map(field => {
+                if (field === 'image') {
+                    const uid = 'img_new_' + newIndex + '_' + Date.now();
+                    return `<div style="margin-bottom:0.5rem;">
+                        <label style="color:rgba(248,248,255,.6); font-size:0.8rem; text-transform:capitalize;">Image</label>
+                        <div id="preview_${uid}" style="margin-bottom:0.5rem;"></div>
+                        <div style="display:flex; gap:0.5rem; align-items:center;">
+                            <input type="text" data-list-field="${field}" id="input_${uid}" value="" placeholder="Image path or URL" style="${inputStyle} flex:1;">
+                            <button type="button" onclick="uploadImageForField('${uid}')" style="background:linear-gradient(45deg,#d4af37,#b8941f); color:#1a1a1a; border:none; border-radius:8px; padding:0.5rem 1rem; font-size:0.85rem; cursor:pointer; font-weight:600; white-space:nowrap;">
+                                <i class='fas fa-upload' style='margin-right:4px;'></i>Upload
+                            </button>
+                        </div>
+                        <input type="file" id="file_${uid}" accept="image/*" style="display:none;">
+                    </div>`;
+                }
+                const isLong = field === 'description' || field === 'bio';
+                if (isLong) {
+                    return `<div style="margin-bottom:0.5rem;">
+                        <label style="color:rgba(248,248,255,.6); font-size:0.8rem; text-transform:capitalize;">${field}</label>
+                        <textarea data-list-field="${field}" rows="3" style="${inputStyle} resize:vertical;"></textarea>
+                    </div>`;
+                }
+                return `<div style="margin-bottom:0.5rem;">
+                    <label style="color:rgba(248,248,255,.6); font-size:0.8rem; text-transform:capitalize;">${field}</label>
+                    <input type="text" data-list-field="${field}" value="" style="${inputStyle}">
+                </div>`;
+            }).join('');
+
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'list-item';
+            itemDiv.dataset.listIndex = newIndex;
+            itemDiv.style.cssText = 'background:rgba(10,10,10,.5); border:1px solid rgba(212,175,55,.15); border-radius:8px; padding:1rem; position:relative; animation: fadeIn .3s ease;';
+            itemDiv.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                    <span style="color:var(--primary-gold); font-weight:600; font-size:0.85rem;">Item ${newIndex + 1}</span>
+                    <button type="button" onclick="removeListItem(this)" style="background:rgba(220,38,38,.2); color:#f87171; border:1px solid rgba(220,38,38,.3); border-radius:6px; padding:0.25rem 0.6rem; font-size:0.8rem; cursor:pointer;" title="Remove item">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+                ${fieldsHtml}
+            `;
+            listContainer.appendChild(itemDiv);
+
+            // Update count in label
+            const labelEl = container.querySelector('label');
+            const currentCount = listContainer.querySelectorAll('.list-item').length;
+            const baseLabel = labelEl.textContent.replace(/\s*\(\d+ items\)/, '');
+            labelEl.textContent = `${baseLabel} (${currentCount} items)`;
+        };
+
+        window.removeListItem = function (btn) {
+            const listItem = btn.closest('.list-item');
+            const container = listItem.closest('[data-section-key]');
+            listItem.style.opacity = '0';
+            listItem.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                listItem.remove();
+                // Renumber items
+                const listContainer = container.querySelector('.list-items-container');
+                listContainer.querySelectorAll('.list-item').forEach((item, i) => {
+                    item.dataset.listIndex = i;
+                    const numSpan = item.querySelector('span');
+                    if (numSpan) numSpan.textContent = `Item ${i + 1}`;
+                });
+                // Update count
+                const labelEl = container.querySelector('label');
+                const currentCount = listContainer.querySelectorAll('.list-item').length;
+                const baseLabel = labelEl.textContent.replace(/\s*\(\d+ items\)/, '');
+                labelEl.textContent = `${baseLabel} (${currentCount} items)`;
+            }, 200);
+        };
+
+        // ── Image upload for list item image fields ────────────────────
+
+        window.uploadImageForField = function (uid) {
+            const fileInput = document.getElementById('file_' + uid);
+            if (!fileInput) return;
+
+            fileInput.onchange = async function () {
+                const file = fileInput.files[0];
+                if (!file) return;
+
+                const pathInput = document.getElementById('input_' + uid);
+                const previewDiv = document.getElementById('preview_' + uid);
+                const uploadBtn = document.querySelector(`button[onclick="uploadImageForField('${uid}')"]`);
+
+                // Show uploading state
+                if (uploadBtn) {
+                    uploadBtn.disabled = true;
+                    uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right:4px;"></i>Uploading...';
+                }
+
+                try {
+                    const timestamp = Date.now();
+                    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                    const storagePath = `pageImages/${timestamp}_${safeName}`;
+                    const storageRef = window.ref(window.storage, storagePath);
+                    const uploadTask = window.uploadBytesResumable(storageRef, file);
+
+                    await new Promise((resolve, reject) => {
+                        uploadTask.on('state_changed', null, reject, resolve);
+                    });
+
+                    const downloadURL = await window.getDownloadURL(storageRef);
+
+                    // Set the URL into the path input
+                    if (pathInput) pathInput.value = downloadURL;
+
+                    // Show preview
+                    if (previewDiv) {
+                        previewDiv.innerHTML = `<img src="${downloadURL}" style="max-width:200px; max-height:140px; object-fit:contain; border-radius:6px; border:1px solid rgba(212,175,55,.2);">`;
+                    }
+
+                    console.log('Image uploaded:', downloadURL);
+                } catch (error) {
+                    console.error('Image upload failed:', error);
+                    alert('Image upload failed: ' + error.message);
+                } finally {
+                    if (uploadBtn) {
+                        uploadBtn.disabled = false;
+                        uploadBtn.innerHTML = "<i class='fas fa-upload' style='margin-right:4px;'></i>Upload";
+                    }
+                    fileInput.value = '';
+                }
+            };
+
+            fileInput.click();
+        };
+
+        // ── Edit a page (load sections) ───────────────────────────────
+
+        async function editPage(pageId) {
+            try {
+                // Try pageContent collection first
+                let docRef = window.doc(window.db, "pageContent", pageId);
+                let docSnap = await window.getDoc(docRef);
+
+                if (!docSnap.exists()) {
+                    console.error("No page content found for:", pageId);
+                    alert("Page content not found. Please run the seed script first.");
+                    return;
+                }
+
+                const page = docSnap.data();
+                currentEditingPage = { id: pageId, ...page };
+
+                // Update header
+                document.getElementById('editor-page-name').textContent = page.name;
+                document.getElementById('editor-page-path').textContent = page.path;
+
+                // Render section editors
+                const sectionsContainer = document.getElementById('sections-editor');
+                const sections = page.sections || [];
+
+                if (sections.length === 0) {
+                    sectionsContainer.innerHTML = '<div style="color:rgba(248,248,255,.5); text-align:center; padding:2rem;">No editable sections found for this page.</div>';
+                } else {
+                    sectionsContainer.innerHTML = sections.map((s, i) => renderSectionEditor(s, i)).join('');
+                }
+
+                // Switch to editor tab
+                switchTab('editor');
+            } catch (error) {
+                console.error("Error loading page for editing:", error);
+                alert("Failed to load page sections. See console for details.");
+            }
+        }
+
+        // ── Save page (collect section values) ────────────────────────
+
+        async function savePage() {
+            if (!currentEditingPage || !currentEditingPage.id) {
+                showError('save-error', 'No page selected for editing');
+                return;
+            }
+
+            try {
+                const sections = currentEditingPage.sections || [];
+                const updatedSections = [];
+
+                // Collect text and richtext values
+                document.querySelectorAll('#sections-editor [data-section-key]').forEach(el => {
+                    const key = el.dataset.sectionKey;
+                    const type = el.dataset.sectionType;
+                    const original = sections.find(s => s.key === key);
+
+                    if (type === 'text') {
+                        updatedSections.push({ ...original, key, type, value: el.value });
+                    } else if (type === 'richtext') {
+                        updatedSections.push({ ...original, key, type, value: el.value });
+                    } else if (type === 'list') {
+                        const items = [];
+                        el.querySelectorAll('.list-item').forEach(itemEl => {
+                            const item = {};
+                            itemEl.querySelectorAll('[data-list-field]').forEach(fieldEl => {
+                                item[fieldEl.dataset.listField] = fieldEl.value || fieldEl.textContent || '';
+                            });
+                            items.push(item);
+                        });
+                        updatedSections.push({ ...original, key, type, value: items });
+                    }
+                });
+
+                const docRef = window.doc(window.db, "pageContent", currentEditingPage.id);
+                await window.setDoc(docRef, {
+                    sections: updatedSections,
+                    lastModified: new Date().toISOString()
+                }, { merge: true });
+
+                // Update local state
+                currentEditingPage.sections = updatedSections;
+
+                showSuccess('save-success', 'All sections saved successfully!');
+            } catch (error) {
+                console.error("Error saving page:", error);
+                showError('save-error', 'Failed to save page.');
+            }
+        }
+
+        // Preview page
+        function previewPage() {
+            if (!currentEditingPage || !currentEditingPage.path) {
+                alert('No page selected for preview');
+                return;
+            }
+            window.open(currentEditingPage.path, '_blank');
+        }
+
+        // View page
+        function viewPage(path) {
+            window.open(path, '_blank');
+        }
+
+
+
+        // Setup file upload (uses backend API if available)
+        function setupFileUpload() {
+            const uploadArea = document.getElementById('file-upload-area');
+            const fileInput = document.getElementById('file-input');
+
+            uploadArea.addEventListener('click', () => fileInput.click());
+
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files);
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+        }
+
+        // Handle file uploads with enhanced feedback
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                uploadFileWithProgress(file);
+            });
+        }
+
+        // Enhanced file upload with better user experience
+        function uploadFileWithProgress(file) {
+            // Validate file type
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'application/pdf', 'video/mp4'];
+            if (!allowedTypes.includes(file.type)) {
+                alert(`❌ Error: File type "${file.type}" is not supported.\n\nSupported formats: JPG, PNG, GIF, WEBP, PDF, MP4`);
+                return;
+            }
+
+            // Validate file size (10MB limit)
+            const maxSize = 10 * 1024 * 1024;
+            if (file.size > maxSize) {
+                alert(`❌ Error: File "${file.name}" is too large.\n\nMaximum file size: 10MB\nYour file size: ${formatFileSize(file.size)}`);
+                return;
+            }
+
+            // Create and show upload progress
+            const uploadNotification = createUploadNotification(file);
+            document.body.appendChild(uploadNotification);
+
+            // If backend is available, upload to API; otherwise fall back to IndexedDB demo storage
+            if (window.location.protocol.startsWith('http')) {
+                uploadToServer(file, uploadNotification);
+            } else {
+                simulateUploadProgress(file, uploadNotification);
+            }
+        }
+
+        async function uploadToServer(file, notification) {
+            const progressBar = notification.querySelector('.upload-progress');
+            const statusText = notification.querySelector('.upload-status');
+
+            try {
+                // 1. Upload to Firebase Storage
+                const storagePath = `media/${Date.now()}_${file.name}`;
+                const storageRef = window.ref(window.storage, storagePath);
+
+                const uploadTask = window.uploadBytesResumable(storageRef, file);
+
+                uploadTask.on('state_changed',
+                    (snapshot) => {
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        progressBar.style.width = progress + '%';
+                        statusText.textContent = `Uploading... ${Math.round(progress)}%`;
+                    },
+                    (error) => {
+                        console.error('Upload failed:', error);
+                        statusText.textContent = 'Upload failed. ' + error.message;
+                    },
+                    async () => {
+                        // Upload completed successfully, now we can get the download URL
+                        const downloadURL = await window.getDownloadURL(uploadTask.snapshot.ref);
+
+                        // 2. Save metadata to Firestore
+                        const mediaRecord = {
+                            name: file.name,
+                            size: file.size,
+                            type: file.type,
+                            uploadDate: new Date().toISOString(),
+                            url: downloadURL,
+                            storagePath: storagePath
+                        };
+
+                        const docRef = await window.addDoc(window.collection(window.db, "media"), mediaRecord);
+                        mediaRecord.id = docRef.id;
+
+                        statusText.innerHTML = '<i class="fas fa-check-circle" style="color: #86efac; margin-right: 0.5rem;"></i>Upload completed successfully!';
+
+                        // Render returned record
+                        renderMediaItem(mediaRecord);
+
+                        setTimeout(() => {
+                            notification.style.transform = 'translateX(100%)';
+                            notification.style.opacity = '0';
+                            setTimeout(() => notification.remove(), 300);
+                        }, 1500);
+                    }
+                );
+            } catch (e) {
+                console.error("Firebase upload setup failed:", e);
+                statusText.textContent = 'Upload failed completely.';
+            }
+        }
+
+        // Create upload notification
+        function createUploadNotification(file) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: rgba(28, 28, 28, 0.95);
+                border: 1px solid rgba(212, 175, 55, 0.3);
+                border-radius: 10px;
+                padding: 1rem;
+                color: var(--ethereal-white);
+                z-index: 10000;
+                min-width: 300px;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            `;
+
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <i class="fas fa-upload" style="color: var(--primary-gold);"></i>
+                    <strong>Uploading File</strong>
+                </div>
+                <div style="margin-bottom: 0.5rem; font-size: 0.9rem; word-break: break-word;">${file.name}</div>
+                <div style="margin-bottom: 0.5rem; font-size: 0.8rem; color: rgba(248, 248, 255, 0.6);">${formatFileSize(file.size)}</div>
+                <div style="background: rgba(156, 163, 175, 0.3); height: 6px; border-radius: 3px; margin-bottom: 0.5rem; overflow: hidden;">
+                    <div class="upload-progress" style="background: linear-gradient(90deg, var(--primary-gold), var(--deep-gold)); height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                </div>
+                <div class="upload-status" style="font-size: 0.8rem; color: rgba(248, 248, 255, 0.8);">Initializing upload...</div>
+            `;
+
+            return notification;
+        }
+
+
+        // Format file size helper
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Utility functions
+        function showSuccess(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+            setTimeout(() => element.style.display = 'none', 3000);
+        }
+
+        function showError(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+            setTimeout(() => element.style.display = 'none', 5000);
+        }
+
+        // Auto-save draft every 30 seconds
+        setInterval(() => {
+            if (currentEditingPage && quillEditor.root.innerHTML.trim()) {
+                console.log('Auto-saving draft...');
+                // In a real system, this would save a draft version
+            }
+        }, 30000);
+
+
+
+        // ===================== Profiles Manager =====================
+
+        // Removed local storage getters in favor of Firebase directly
+
+        async function renderProfiles() {
+            const list = document.getElementById('profiles-list');
+            list.innerHTML = '<div style="color:var(--primary-gold);">Loading profiles...</div>';
+
+            try {
+                const profilesRef = window.collection(window.db, "profiles");
+                const q = window.query(profilesRef, window.orderBy("name"));
+                const querySnapshot = await window.getDocs(q);
+
+                const profiles = [];
+                querySnapshot.forEach((doc) => {
+                    profiles.push({ id: doc.id, ...doc.data() });
+                });
+
+                list.innerHTML = profiles.map(p => `
+                    <div class="profile-card" style="background: rgba(28,28,28,.8); border:1px solid rgba(212,175,55,.3); border-radius:10px; padding:1rem;">
+                        <div style="display:flex; gap:1rem; align-items:center;">
+                            <img src="${p.avatar || ''}" onerror="this.style.display='none'" style="width:56px; height:56px; object-fit:cover; border-radius:50%; border:1px solid rgba(212,175,55,.3);">
+                            <div style="flex:1;">
+                                <div style="color:var(--ethereal-white); font-weight:600;">${p.name}</div>
+                                <div style="color:rgba(248,248,255,.6); font-size:.9rem;">${p.title || ''}</div>
+                                <div style="color:rgba(248,248,255,.5); font-size:.8rem;">${p.path}</div>
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:.5rem; justify-content:flex-end; margin-top:.75rem;">
+                            <button class="action-btn secondary" onclick="editProfile('${p.id}')"><i class="fas fa-edit mr-1"></i>Edit</button>
+                            <button class="action-btn danger" onclick="deleteProfile('${p.id}')"><i class="fas fa-trash mr-1"></i>Delete</button>
+                            <a class="action-btn" href="${p.path}" target="_blank"><i class="fas fa-external-link-alt mr-1"></i>View</a>
+                        </div>
+                    </div>
+                `).join('');
+
+                if (profiles.length === 0) {
+                    list.innerHTML = '<div style="color: rgba(248,248,255,.6);">No profiles found.</div>';
+                }
+            } catch (error) {
+                console.error("Error fetching profiles: ", error);
+                list.innerHTML = '<div style="color: #fca5a5;">Failed to load profiles. Please check permissions.</div>';
+            }
+        }
+
+        function openProfileForm(existing) {
+            const modal = document.getElementById('profile-modal');
+            modal.style.display = 'flex';
+            if (existing) {
+                document.getElementById('profile-id').value = existing.id;
+                document.getElementById('profile-name').value = existing.name || '';
+                document.getElementById('profile-title').value = existing.title || '';
+                document.getElementById('profile-path').value = existing.path || '';
+                document.getElementById('profile-avatar').value = existing.avatar || '';
+                document.getElementById('profile-bio').value = existing.bio || '';
+                updateAvatarPreview();
+            } else {
+                document.getElementById('profile-form').reset();
+                document.getElementById('profile-id').value = '';
+                updateAvatarPreview();
+            }
+        }
+        function closeProfileForm() { document.getElementById('profile-modal').style.display = 'none'; }
+
+        async function editProfile(id) {
+            try {
+                const docRef = window.doc(window.db, "profiles", id);
+                const docSnap = await window.getDoc(docRef);
+                if (docSnap.exists()) {
+                    const p = { id: docSnap.id, ...docSnap.data() };
+                    openProfileForm(p);
+                }
+            } catch (e) {
+                console.error("Error fetching profile to edit:", e);
+                alert("Could not load profile.");
+            }
+        }
+
+        async function deleteProfile(id) {
+            if (!confirm('Delete this profile?')) return;
+            try {
+                await window.deleteDoc(window.doc(window.db, "profiles", id));
+                renderProfiles();
+            } catch (e) {
+                console.error("Error deleting profile:", e);
+                alert("Failed to delete profile.");
+            }
+        }
+
+        function updateAvatarPreview() {
+            const url = document.getElementById('profile-avatar').value;
+            const preview = document.getElementById('profile-avatar-preview');
+            if (url) {
+                preview.innerHTML = `<img src="${url}" style="width:100px; height:100px; object-fit:cover; border-radius:8px; border:1px solid rgba(212,175,55,.3);">`;
+            } else {
+                preview.innerHTML = '';
+            }
+        }
+
+        document.getElementById('profile-avatar').addEventListener('input', updateAvatarPreview);
+        document.getElementById('profile-avatar-file').addEventListener('change', async (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            // Try upload via API, fallback to blob URL
+            try {
+                const form = new FormData();
+                form.append('files', file);
+                const resp = await fetch('http://localhost:4000/api/media', { method: 'POST', body: form });
+                if (resp.ok) {
+                    const [saved] = await resp.json();
+                    document.getElementById('profile-avatar').value = saved.url;
+                } else {
+                    document.getElementById('profile-avatar').value = URL.createObjectURL(file);
+                }
+            } catch {
+                document.getElementById('profile-avatar').value = URL.createObjectURL(file);
+            }
+            updateAvatarPreview();
+        });
+
+        document.getElementById('profile-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Saving...';
+
+            const id = document.getElementById('profile-id').value;
+            const p = {
+                name: document.getElementById('profile-name').value.trim(),
+                title: document.getElementById('profile-title').value.trim(),
+                path: document.getElementById('profile-path').value.trim(),
+                avatar: document.getElementById('profile-avatar').value.trim(),
+                bio: document.getElementById('profile-bio').value.trim(),
+                email: document.getElementById('profile-email').value.trim(),
+                website: document.getElementById('profile-website').value.trim(),
+                instagram: document.getElementById('profile-instagram').value.trim(),
+                twitter: document.getElementById('profile-twitter').value.trim(),
+                updatedAt: new Date().toISOString()
+            };
+
+            if (!p.name || !p.path) { alert('Name and Path are required'); submitBtn.disabled = false; submitBtn.textContent = 'Save Profile'; return; }
+
+            try {
+                if (id) {
+                    await window.setDoc(window.doc(window.db, "profiles", id), p, { merge: true });
+                } else {
+                    p.createdAt = new Date().toISOString();
+                    await window.addDoc(window.collection(window.db, "profiles"), p);
+                }
+
+                closeProfileForm();
+                renderProfiles();
+                const msg = document.getElementById('profiles-messages');
+                msg.textContent = 'Profile saved successfully';
+                msg.style.display = 'block'; setTimeout(() => msg.style.display = 'none', 3000);
+            } catch (error) {
+                console.error("Error saving profile:", error);
+                alert("Failed to save profile. Please see console.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Save Profile';
+            }
+        });
+
+        // Seed with Jon and Mou Dou Baqui if not present - Commented out for Firebase as we don't want to spam DB on every load
+        /*
+        (async function seedProfiles(){
+            // Removed to prevent DB thrashing. Users should add these manually via the CMS now.
+        })();
+        */
+
+        // Expose functions to global scope for inline HTML handlers
+        window.loadPageList = loadPageList;
+        window.initMediaLibrary = initMediaLibrary;
+        window.editPage = editPage;
+        window.viewPage = viewPage;
+        window.savePage = savePage;
+        window.previewPage = previewPage;
+        window.deleteMediaItem = deleteMediaItem;
+        window.downloadMedia = downloadMedia;
+        window.openProfileForm = openProfileForm;
+        window.closeProfileForm = closeProfileForm;
+        window.editProfile = editProfile;
+        window.deleteProfile = deleteProfile;
+        window.renderProfiles = renderProfiles;
+
+        // Render on load
+        document.addEventListener('DOMContentLoaded', renderProfiles);
+    </script>
+</body>
+
+</html>

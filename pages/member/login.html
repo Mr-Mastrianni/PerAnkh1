@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login - Per Ankh Entheogenic Church</title>
+    
+    <!-- Content Security Policy for Clerk v5 -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.clerk.accounts.dev https://*.clerk.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+        font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://*.clerk.accounts.dev https://*.clerk.com data:;
+        img-src 'self' data: https:;
+        connect-src 'self' https: https://*.clerk.accounts.dev https://*.clerk.com;
+        frame-src 'self' https://*.clerk.accounts.dev https://*.clerk.com;
+        worker-src 'self' blob:;
+        object-src 'none';
+    ">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/variables.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--matte-black) 0%, var(--cosmic-blue) 50%, var(--dark-purple) 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--ethereal-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container {
+            background: rgba(28, 28, 28, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 10;
+            animation: containerGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes containerGlow {
+            0% {
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+                border-color: rgba(212, 175, 55, 0.3);
+            }
+            100% {
+                box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+                border-color: rgba(212, 175, 55, 0.5);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .ankh-symbol {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            animation: ankhPulse 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
+        @keyframes ankhPulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.05); opacity: 1; }
+        }
+
+        .login-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-gold), var(--deep-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: rgba(248, 248, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Clerk SignIn component container */
+        #clerk-sign-in {
+            width: 100%;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            border-radius: 20px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-top: 3px solid var(--primary-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .clerk-loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--primary-gold);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .back-link a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: var(--ethereal-white);
+            transform: translateX(-3px);
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 1rem;
+                padding: 2rem;
+            }
+            
+            .login-title {
+                font-size: 1.5rem;
+            }
+            
+            .ankh-symbol {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner"></div>
+        </div>
+        
+        <div class="login-header">
+            <div class="ankh-symbol">☥</div>
+            <h1 class="login-title">Member Portal</h1>
+            <p class="login-subtitle">Sacred Access to Per Ankh Community</p>
+        </div>
+
+        <!-- Clerk SignIn Component -->
+        <div id="clerk-sign-in">
+            <div class="clerk-loading">
+                <div class="loading-spinner" style="margin: 0 auto 1rem;"></div>
+                <p>Loading authentication...</p>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="/">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Return to Main Site
+            </a>
+        </div>
+    </div>
+
+    <script type="module">
+        // Clerk Publishable Key — read from Vite env variable
+        // Set VITE_CLERK_PUBLISHABLE_KEY in your .env file
+        // Get your key from: https://dashboard.clerk.com/last-active?path=api-keys
+        const CLERK_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY || '';
+
+        import { initClerk, isAuthenticated } from '/src/auth/clerk-auth.js';
+
+        async function initializeAuth() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const signInContainer = document.getElementById('clerk-sign-in');
+            
+            // Set a timeout to prevent infinite loading
+            const timeoutId = setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+                signInContainer.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: #fca5a5;">
+                        <i class="fas fa-clock" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <p><strong>Loading Timeout</strong></p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                            Authentication is taking longer than expected. This might be due to a slow connection.
+                        </p>
+                        <button onclick="window.location.reload()" style="
+                            margin-top: 1rem;
+                            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+                            color: #0A0A0A;
+                            border: none;
+                            padding: 0.75rem 1.5rem;
+                            border-radius: 10px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">Retry</button>
+                    </div>
+                `;
+            }, 15000); // 15 second timeout
+
+            try {
+                // Check if Clerk is configured
+                if (!CLERK_KEY) {
+                    clearTimeout(timeoutId);
+                    signInContainer.innerHTML = `
+                        <div style="text-align: center; padding: 2rem; color: #fca5a5;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                            <p><strong>Authentication Not Configured</strong></p>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                                Clerk authentication is not yet set up. Please add your publishable key to the login page.
+                            </p>
+                            <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.7;">
+                                Visit <a href="https://clerk.com" target="_blank" style="color: var(--primary-gold);">clerk.com</a> to create an account.
+                            </p>
+                        </div>
+                    `;
+                    loadingOverlay.style.display = 'none';
+                    return;
+                }
+
+                // Initialize Clerk with the key
+                const clerk = await initClerk({ publishableKey: CLERK_KEY });
+                
+                if (!clerk) {
+                    throw new Error('Failed to initialize Clerk');
+                }
+
+                // Check if already authenticated
+                if (isAuthenticated()) {
+                    // Redirect to home page or stored redirect URL
+                    const redirectUrl = sessionStorage.getItem('clerk:redirectAfterSignIn') || '/';
+                    sessionStorage.removeItem('clerk:redirectAfterSignIn');
+                    window.location.href = redirectUrl;
+                    return;
+                }
+
+                // Clear timeout before mounting
+                clearTimeout(timeoutId);
+                
+                // Mount the SignIn component
+                clerk.mountSignIn(signInContainer, {
+                    routing: 'path',
+                    path: '/member/login',
+                    forceRedirectUrl: '/',
+                    signUpForceRedirectUrl: '/',
+                    signUpUrl: '/become-a-member',
+                    appearance: {
+                        variables: {
+                            colorPrimary: '#D4AF37',
+                            colorBackground: 'transparent',
+                            colorText: '#F8F8FF',
+                            colorInputBackground: 'rgba(10, 10, 10, 0.5)',
+                            colorInputBorder: 'rgba(212, 175, 55, 0.2)',
+                            borderRadius: '10px',
+                            fontFamily: 'Inter, sans-serif',
+                        },
+                        elements: {
+                            card: {
+                                backgroundColor: 'transparent',
+                                border: 'none',
+                                boxShadow: 'none',
+                            },
+                            headerTitle: {
+                                display: 'none', // Hide default title
+                            },
+                            headerSubtitle: {
+                                display: 'none',
+                            },
+                            formButtonPrimary: {
+                                background: 'linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)',
+                                color: '#0A0A0A',
+                                fontWeight: '600',
+                                borderRadius: '10px',
+                                padding: '1rem',
+                            },
+                            formFieldInput: {
+                                backgroundColor: 'rgba(10, 10, 10, 0.5)',
+                                border: '1px solid rgba(212, 175, 55, 0.2)',
+                                borderRadius: '10px',
+                                color: '#F8F8FF',
+                                padding: '1rem',
+                            },
+                            footer: {
+                                display: 'none', // Hide default footer
+                            },
+                            socialButtonsBlockButton: {
+                                backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                                border: '1px solid rgba(212, 175, 55, 0.3)',
+                                color: '#F8F8FF',
+                            },
+                        },
+                    },
+                });
+
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+
+            } catch (error) {
+                clearTimeout(timeoutId);
+                console.error('[Member Login] Failed to initialize:', error);
+                signInContainer.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: #fca5a5;">
+                        <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <p><strong>Authentication Error</strong></p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">${error.message}</p>
+                        <button onclick="window.location.reload()" style="
+                            margin-top: 1rem;
+                            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+                            color: #0A0A0A;
+                            border: none;
+                            padding: 0.75rem 1.5rem;
+                            border-radius: 10px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">Retry</button>
+                    </div>
+                `;
+                loadingOverlay.style.display = 'none';
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeAuth);
+        } else {
+            initializeAuth();
+        }
+    </script>
+</body>
+</html>

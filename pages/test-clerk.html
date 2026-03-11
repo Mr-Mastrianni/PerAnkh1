@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Clerk Loading - Per Ankh</title>
+
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.clerk.accounts.dev https://*.clerk.com;
+        style-src 'self' 'unsafe-inline';
+        font-src 'self' https://fonts.gstatic.com https://*.clerk.accounts.dev https://*.clerk.com data:;
+        connect-src 'self' https: https://*.clerk.accounts.dev https://*.clerk.com;
+        frame-src 'self' https://*.clerk.accounts.dev https://*.clerk.com;
+        worker-src 'self' blob:;
+    ">
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #1a1a1a;
+            color: #eee;
+        }
+        .log {
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success { color: #4ade80; }
+        .error { color: #f87171; }
+        .info { color: #60a5fa; }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        button:hover { background: #2563eb; }
+        .env-key {
+            background: #374151;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clerk v5 Loading Test (npm import)</h1>
+
+    <h2>Environment Configuration</h2>
+    <div id="envInfo">
+        <p>Checking environment variables...</p>
+    </div>
+
+    <h2>Tests</h2>
+    <button id="btnTestInit">Test Clerk Init (npm)</button>
+    <button id="btnClear">Clear Log</button>
+
+    <h2>Log Output</h2>
+    <div id="log" class="log">Waiting for tests...</div>
+
+    <h2>Network Info</h2>
+    <div id="networkInfo"></div>
+
+    <script type="module">
+        import { Clerk } from '@clerk/clerk-js';
+
+        const logEl = document.getElementById('log');
+
+        function log(message, type = 'info') {
+            const time = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : 'info';
+            logEl.innerHTML += `[${time}] <span class="${className}">${message}</span>\n`;
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+
+        document.getElementById('btnClear').addEventListener('click', () => { logEl.innerHTML = ''; });
+
+        // Check environment
+        const key = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY || '';
+        const envInfo = document.getElementById('envInfo');
+
+        if (key) {
+            log(`Clerk key configured: ${key.substring(0, 20)}...`, 'success');
+            envInfo.innerHTML = `
+                <p class="success">VITE_CLERK_PUBLISHABLE_KEY is set</p>
+                <p>Key starts with: <code class="env-key">${key.substring(0, 20)}...</code></p>
+            `;
+        } else {
+            log('Clerk key NOT configured', 'error');
+            envInfo.innerHTML = `
+                <p class="error">VITE_CLERK_PUBLISHABLE_KEY is NOT set</p>
+                <p style="margin-top: 1rem;"><strong>To fix:</strong></p>
+                <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Create a <code>.env</code> file in the project root</li>
+                    <li>Add: <code class="env-key">VITE_CLERK_PUBLISHABLE_KEY=pk_test_YOUR_KEY_HERE</code></li>
+                </ol>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    Get your key from <a href="https://dashboard.clerk.com" target="_blank" style="color: #60a5fa;">Clerk Dashboard</a>
+                </p>
+            `;
+        }
+
+        // Test Clerk initialization via npm import
+        document.getElementById('btnTestInit').addEventListener('click', async () => {
+            logEl.innerHTML = '';
+
+            if (!key) {
+                log('Cannot test: no VITE_CLERK_PUBLISHABLE_KEY in .env', 'error');
+                return;
+            }
+
+            try {
+                log('Creating Clerk instance via npm import...');
+                const clerk = new Clerk(key);
+                log('Clerk instance created. Calling clerk.load()...');
+
+                await clerk.load();
+                log('clerk.load() completed!', 'success');
+                log(`Clerk version: ${clerk.version || 'unknown'}`, 'info');
+                log(`User: ${clerk.user ? clerk.user.id : 'not signed in'}`, 'info');
+                log(`Session: ${clerk.session ? 'active' : 'none'}`, 'info');
+            } catch (err) {
+                log(`Failed: ${err.message}`, 'error');
+                log(`Stack: ${err.stack}`, 'error');
+            }
+        });
+
+        // Network info
+        const info = document.getElementById('networkInfo');
+        info.innerHTML = `
+            <p><strong>Online:</strong> ${navigator.onLine ? 'Yes' : 'No'}</p>
+            <p><strong>Connection:</strong> ${navigator.connection ? navigator.connection.effectiveType : 'unknown'}</p>
+            <p><strong>User Agent:</strong> ${navigator.userAgent}</p>
+        `;
+    </script>
+</body>
+</html>

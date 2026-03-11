@@ -1,14 +1,18 @@
 /* Per Ankh Main Stylesheet - Modern Component Architecture */
-/* Centralized CSS following 2025 best practices with proper import order */
+/* Centralized CSS following 2026 best practices with proper import order */
 
 /* 1. Base Styles - Variables and Reset */
-@import url('./base/variables.css');
+@import url('./variables.css');
 
 /* 2. External Dependencies */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css');
 
-/* 3. Base Styles */
+/* 3. Component Imports (must be before non-import rules) */
+@import url('../components/Navigation/c-navigation.css');
+@import url('../components/SacredCard/c-sacred-card.css');
+
+/* 4. Base Styles */
 * {
     box-sizing: border-box;
 }
@@ -41,9 +45,17 @@ body {
     gap: var(--space-lg);
 }
 
-.l-grid--2 { grid-template-columns: repeat(2, 1fr); }
-.l-grid--3 { grid-template-columns: repeat(3, 1fr); }
-.l-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.l-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.l-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.l-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+}
 
 .l-flex {
     display: flex;
@@ -64,22 +76,57 @@ body {
 }
 
 /* 5. Utility Classes */
-.u-text-center { text-align: center; }
-.u-text-left { text-align: left; }
-.u-text-right { text-align: right; }
+.u-text-center {
+    text-align: center;
+}
 
-.u-margin-none { margin: 0; }
-.u-margin-sm { margin: var(--space-sm); }
-.u-margin-md { margin: var(--space-md); }
-.u-margin-lg { margin: var(--space-lg); }
+.u-text-left {
+    text-align: left;
+}
 
-.u-padding-none { padding: 0; }
-.u-padding-sm { padding: var(--space-sm); }
-.u-padding-md { padding: var(--space-md); }
-.u-padding-lg { padding: var(--space-lg); }
+.u-text-right {
+    text-align: right;
+}
 
-.u-hidden { display: none; }
-.u-visible { display: block; }
+.u-margin-none {
+    margin: 0;
+}
+
+.u-margin-sm {
+    margin: var(--space-sm);
+}
+
+.u-margin-md {
+    margin: var(--space-md);
+}
+
+.u-margin-lg {
+    margin: var(--space-lg);
+}
+
+.u-padding-none {
+    padding: 0;
+}
+
+.u-padding-sm {
+    padding: var(--space-sm);
+}
+
+.u-padding-md {
+    padding: var(--space-md);
+}
+
+.u-padding-lg {
+    padding: var(--space-lg);
+}
+
+.u-hidden {
+    display: none;
+}
+
+.u-visible {
+    display: block;
+}
 
 .u-sr-only {
     position: absolute;
@@ -105,43 +152,116 @@ body {
 }
 
 /* 6. Typography Utilities */
-.u-text-golden { color: var(--golden-ankh); }
-.u-text-amber { color: var(--sacred-amber); }
-.u-text-earth { color: var(--earth-brown); }
-.u-text-forest { color: var(--forest-green); }
-.u-text-purple { color: var(--consciousness-purple); }
+.u-text-golden {
+    color: var(--golden-ankh);
+}
 
-.u-font-heading { font-family: var(--font-heading); }
-.u-font-mono { font-family: var(--font-mono); }
+.u-text-amber {
+    color: var(--sacred-amber);
+}
 
-.u-text-xs { font-size: var(--text-xs); }
-.u-text-sm { font-size: var(--text-sm); }
-.u-text-base { font-size: var(--text-base); }
-.u-text-lg { font-size: var(--text-lg); }
-.u-text-xl { font-size: var(--text-xl); }
-.u-text-2xl { font-size: var(--text-2xl); }
-.u-text-3xl { font-size: var(--text-3xl); }
+.u-text-earth {
+    color: var(--earth-brown);
+}
 
-.u-font-light { font-weight: var(--font-light); }
-.u-font-normal { font-weight: var(--font-normal); }
-.u-font-medium { font-weight: var(--font-medium); }
-.u-font-semibold { font-weight: var(--font-semibold); }
-.u-font-bold { font-weight: var(--font-bold); }
+.u-text-forest {
+    color: var(--forest-green);
+}
+
+.u-text-purple {
+    color: var(--consciousness-purple);
+}
+
+.u-font-heading {
+    font-family: var(--font-heading);
+}
+
+.u-font-mono {
+    font-family: var(--font-mono);
+}
+
+.u-text-xs {
+    font-size: var(--text-xs);
+}
+
+.u-text-sm {
+    font-size: var(--text-sm);
+}
+
+.u-text-base {
+    font-size: var(--text-base);
+}
+
+.u-text-lg {
+    font-size: var(--text-lg);
+}
+
+.u-text-xl {
+    font-size: var(--text-xl);
+}
+
+.u-text-2xl {
+    font-size: var(--text-2xl);
+}
+
+.u-text-3xl {
+    font-size: var(--text-3xl);
+}
+
+.u-font-light {
+    font-weight: var(--font-light);
+}
+
+.u-font-normal {
+    font-weight: var(--font-normal);
+}
+
+.u-font-medium {
+    font-weight: var(--font-medium);
+}
+
+.u-font-semibold {
+    font-weight: var(--font-semibold);
+}
+
+.u-font-bold {
+    font-weight: var(--font-bold);
+}
 
 /* 7. Background Utilities */
-.u-bg-card { background: var(--bg-card); }
-.u-bg-overlay { background: var(--bg-overlay); }
-.u-bg-glass { background: var(--bg-glass); }
+.u-bg-card {
+    background: var(--bg-card);
+}
+
+.u-bg-overlay {
+    background: var(--bg-overlay);
+}
+
+.u-bg-glass {
+    background: var(--bg-glass);
+}
 
 /* 8. State Classes */
-.is-active { /* Applied via JavaScript */ }
-.is-loading { /* Applied via JavaScript */ }
-.is-disabled { 
+.is-active {
+    /* Applied via JavaScript */
+}
+
+.is-loading {
+    /* Applied via JavaScript */
+}
+
+.is-disabled {
     opacity: 0.6;
     pointer-events: none;
 }
-.is-hidden { display: none !important; }
-.is-visible { display: block !important; }
+
+.is-hidden {
+    display: none !important;
+}
+
+.is-visible {
+    display: block !important;
+}
 
 .has-error {
     border-color: var(--color-error) !important;
@@ -152,10 +272,6 @@ body {
     border-color: var(--color-success) !important;
     box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
 }
-
-/* 9. Component Imports */
-@import url('./components/c-navigation.css');
-@import url('./components/c-sacred-card.css');
 
 /* 10. Sacred Geometry Background */
 .sacred-geometry-bg {
@@ -176,17 +292,17 @@ body {
     .l-container {
         padding: 0 var(--space-md);
     }
-    
+
     .l-grid--2,
     .l-grid--3,
     .l-grid--4 {
         grid-template-columns: 1fr;
     }
-    
+
     .l-flex {
         flex-direction: column;
     }
-    
+
     /* Geometry elements removed */
 }
 
@@ -195,12 +311,12 @@ body {
     .sacred-geometry-bg {
         display: none;
     }
-    
+
     body {
         background: white;
         color: black;
     }
-    
+
     .c-navigation {
         display: none;
     }

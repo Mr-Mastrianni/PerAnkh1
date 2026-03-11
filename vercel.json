@@ -5,157 +5,54 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "framework": "vite",
-  "routes": [
-    {
-      "src": "/admin",
-      "dest": "/admin-login.html"
-    },
-    {
-      "src": "/admin/dashboard",
-      "dest": "/admin-dashboard.html"
-    },
-    {
-      "src": "/admin/users",
-      "dest": "/admin-user-manager.html"
-    },
-    {
-      "src": "/admin/content",
-      "dest": "/admin-content-manager.html"
-    },
-    {
-      "src": "/admin/analytics",
-      "dest": "/admin-analytics.html"
-    },
-    {
-      "src": "/admin/settings",
-      "dest": "/admin-settings.html"
-    },
-    {
-      "src": "/admin/notifications",
-      "dest": "/admin-notifications.html"
-    },
-    {
-      "src": "/per-ankh",
-      "dest": "/per-ankh.html"
-    },
-    {
-      "src": "/community",
-      "dest": "/community.html"
-    },
-    {
-      "src": "/events",
-      "dest": "/events.html"
-    },
-    {
-      "src": "/contact",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/donate",
-      "dest": "/donate.html"
-    },
-    {
-      "src": "/member/login",
-      "dest": "/member-login.html"
-    },
-    {
-      "src": "/protocols",
-      "dest": "/protocols.html"
-    },
-    {
-      "src": "/calculator",
-      "dest": "/calculator.html"
-    },
-    {
-      "src": "/crystaltech",
-      "dest": "/crystaltech.html"
-    },
-    {
-      "src": "/mamayana",
-      "dest": "/mamayana.html"
-    },
-    {
-      "src": "/moudoubaqui",
-      "dest": "/moudoubaqui.html"
-    },
-    {
-      "src": "/jon",
-      "dest": "/jon.html"
-    },
-    {
-      "src": "/shanna",
-      "dest": "/Shanna1.html"
-    },
-    {
-      "src": "/become-a-member",
-      "dest": "/become-a-member.html"
-    },
-    {
-      "src": "/vendor-registration",
-      "dest": "/vendor-registration.html"
-    },
-    {
-      "src": "/ceremony-and-safety",
-      "dest": "/ceremony-and-safety.html"
-    },
-    {
-      "src": "/community-partnership",
-      "dest": "/communitypartnership.html"
-    },
-    {
-      "src": "/sacred-community",
-      "dest": "/sacredcommunityrelationships.html"
-    },
-    {
-      "src": "/women-empowerment",
-      "dest": "/women'sempowerment.html"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+  "rewrites": [
+    { "source": "/admin",                 "destination": "/pages/admin/login.html" },
+    { "source": "/admin/dashboard",       "destination": "/pages/admin/dashboard.html" },
+    { "source": "/admin/users",           "destination": "/pages/admin/user-manager.html" },
+    { "source": "/admin/content",         "destination": "/pages/admin/content-manager.html" },
+    { "source": "/admin/analytics",       "destination": "/pages/admin/analytics.html" },
+    { "source": "/admin/settings",        "destination": "/pages/admin/settings.html" },
+    { "source": "/admin/notifications",   "destination": "/pages/admin/notifications.html" },
+    { "source": "/admin/per-ankh-tech",   "destination": "/pages/admin/internal/per-ankh-tech.html" },
+    { "source": "/admin/:clerk*",         "destination": "/pages/admin/login.html" },
+    { "source": "/per-ankh",             "destination": "/pages/programs/per-ankh.html" },
+    { "source": "/community",            "destination": "/pages/community/community.html" },
+    { "source": "/community-partnership","destination": "/pages/community/partnership.html" },
+    { "source": "/sacred-community",     "destination": "/pages/community/sacred-relationships.html" },
+    { "source": "/women-empowerment",    "destination": "/pages/community/womens-empowerment.html" },
+    { "source": "/events",               "destination": "/pages/events/events.html" },
+    { "source": "/contact",              "destination": "/pages/support/contact.html" },
+    { "source": "/donate",               "destination": "/pages/support/donate.html" },
+    { "source": "/vendor-registration",  "destination": "/pages/support/vendor-registration.html" },
+    { "source": "/member/login",         "destination": "/pages/member/login.html" },
+    { "source": "/member/login/:clerk*", "destination": "/pages/member/login.html" },
+    { "source": "/become-a-member",      "destination": "/pages/member/become-a-member.html" },
+    { "source": "/protocols",            "destination": "/pages/programs/protocols.html" },
+    { "source": "/calculator",           "destination": "/pages/programs/calculator.html" },
+    { "source": "/crystaltech",          "destination": "/pages/programs/crystaltech.html" },
+    { "source": "/ceremony-and-safety",  "destination": "/pages/programs/ceremony-and-safety.html" },
+    { "source": "/moudoubaqui",          "destination": "/pages/people/moudoubaqui.html" },
+    { "source": "/jon",                  "destination": "/pages/people/jon.html" },
+    { "source": "/shanna",               "destination": "/pages/people/shanna.html" },
+    { "source": "/terms",                "destination": "/pages/index.html" },
+    { "source": "/privacy",              "destination": "/pages/index.html" },
+    { "source": "/(.*)",                 "destination": "/pages/index.html" }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
+        { "key": "X-Frame-Options",       "value": "DENY" },
+        { "key": "X-Content-Type-Options","value": "nosniff" },
+        { "key": "Referrer-Policy",       "value": "strict-origin-when-cross-origin" },
+        { "key": "X-XSS-Protection",      "value": "1; mode=block" }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  }
+  ]
 }
